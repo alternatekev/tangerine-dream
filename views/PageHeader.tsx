@@ -2,7 +2,7 @@ import {FC} from 'react'
 import {useTheme} from 'emotion-theming'
 
 import {DerivedTheme, prepareStyles, t, css,} from '@alt/styles'
-import {Header, Card, Avatar, UtilityBar} from '@alt/components'
+import {Header, Card} from '@alt/components'
 import {HeaderMenu} from '@alt/views'
 
 export const PageHeader: FC = () => {  
@@ -29,10 +29,7 @@ export const PageHeader: FC = () => {
             inverted 
             weightedLabel
             utilityComponent={
-              <UtilityBar>
-                <HeaderMenu />
-                
-              </UtilityBar>
+              <HeaderMenu />
             }
           >
             KEVIN CONBOY

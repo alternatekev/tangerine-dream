@@ -26,6 +26,10 @@ strong {
   font-weight: 700;
 }
 
+strong.medium {
+  font-weight: 500;
+}
+
 em {
   font-family: var(--font-family-header);
   font-style: italic;

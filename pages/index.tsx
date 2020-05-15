@@ -1,5 +1,7 @@
-import {Page, Card, Avatar, Layout, Divider, P, List, ListItem, ListItemProps} from '@alt/components'
+import { Page, Card, Avatar, Layout, Divider, P, List, ListItem, ListItemProps, Medium} from '@alt/components'
 import {Layouts} from '@alt/types'
+import {css, DerivedTheme } from '@alt/styles'
+import { NextPage } from 'next'
 
 const listItemProps: ListItemProps = {
   compact: true,
@@ -7,18 +9,20 @@ const listItemProps: ListItemProps = {
   divider: true
 }
 
-const Home = () => <Page title="Hello :)">
-<Card stacked level={2}>
-  <P large><strong>I'm Kevin,</strong> and I’ve been working to make the internet more usable, friendly, and fun since 1999. I’ve developed an incredibly effective way of achieving interaction design using a blend of traditional design tools and code; I see HTML as the fabric of the web, and its designers should know how to weave it. I’m here to have an impact on real users, in the real world, with real software.</P>
-  <Divider weighted level={0} />
-  <Layout kind={Layouts.MidRight}>
-    <div>
+const Home: NextPage = () => <Page title="Hello :)">
+  {(theme: DerivedTheme) => 
+  <Card stacked level={2}>
+
+    <P large><strong>I'm Kevin,</strong> and I’ve been working to make the internet more <Medium>usable, friendly, and fun</Medium> since 1999. I’ve developed an incredibly effective way of achieving interaction design using a blend of <Medium>traditional design tools and code</Medium>; I see HTML as the <Medium>fabric of the web</Medium>, and its designers should know how to weave it. I’m here to have an impact on <Medium>real users, in the real world, with real software</Medium>.</P>
+    <Divider weighted level={0} />
+    <Layout kind={Layouts.MidRight}>
+      <div>
         <Card fullBleed borderless alignRight><Avatar img="/MCM_0894.png" circle size={280} /></Card>
         <P compact alignRight superWeighted><em>Over the course of my career, I’ve run the gamut of user experience design, user interface design, interaction design, interactive prototyping, data visualization and content strategy. I believe in the power of the internet to bring people together and I worry about its tendency to drive us apart.</em></P>
         <Divider weighted level={0} />
         <P compact alignRight><em>Over the course of my career, I’ve run the gamut of user experience design, user interface design, interaction design, interactive prototyping, data visualization and content strategy. I believe in the power of the internet to bring people together and I worry about its tendency to drive us apart.</em></P>
-    </div>
-    <div>
+      </div>
+      <div>
         <P>I’ve written extensively about <a href="https://alternatekev.me">my work history on my blog</a>, so you can read that if you’re interested. If you’re short on time or just want the highlights, some clients I’ve worked on include:</P>
         <Layout>
           <List>
@@ -37,7 +41,7 @@ const Home = () => <Page title="Hello :)">
             </>}
           </List>
           <List>
-           {() => <>
+            {() => <>
               <ListItem {...listItemProps}>Bank of America / 2005 – 2006</ListItem>
               <ListItem {...listItemProps}>Great-West Healthcare / 2005</ListItem>
               <ListItem {...listItemProps}>Echostar / 2004</ListItem>
@@ -51,10 +55,10 @@ const Home = () => <Page title="Hello :)">
             </>}
           </List>
         </Layout>
-    </div>
-  </Layout>
-</Card>
-
+      </div>
+    </Layout>
+  </Card>
+}
 </Page>
 
 export default Home

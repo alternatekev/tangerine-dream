@@ -1,4 +1,4 @@
-import React, {Component, ReactNode} from 'react'
+import React, {Component} from 'react'
 import {ThemeProvider} from 'emotion-theming'
 import Head from 'next/head'
 
@@ -7,7 +7,7 @@ import {PageHeader, ParallaxHeader} from '@alt/views'
 
 interface Props {
   title?: string
-  children?: ReactNode
+  children?(theme: DerivedTheme): JSX.Element
   image?: any
   theme?: ThemeContext
 }
@@ -25,7 +25,8 @@ const getStyles = (image: any, themeContext: DerivedTheme) => {
       ...t.mb5,
       maxWidth: 960,
       marginLeft: 'auto',
-      marginRight: 'auto'
+      marginRight: 'auto',
+      transition: 'all 100ms ease-in-out'
     },
     PageChildren: {
       ...t.flex,
@@ -75,7 +76,7 @@ export class Page extends Component<Props, State> {
             <PageHeader />
             <ParallaxHeader title={title} />
             <article css={css(styles.PageChildren)} id="PageChildren">
-              {children}
+              {children && typeof children === 'function' ? children(currentTheme) : children}
             </article>
           </ThemeProvider>
         </main>
