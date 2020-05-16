@@ -5037,6 +5037,13 @@ react-use@^14.2.0:
     ts-easing "^0.2.0"
     tslib "^1.10.0"
 
+react-vfx@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/react-vfx/-/react-vfx-0.1.4.tgz#15a506be791cc548027326905da177dce3d85b7c"
+  integrity sha512-jCVmqRxNzpuBWrPd12eejbD2treFvZwrtADCUqQfznztUKl72cnl7zHif43B3DPnqZY4Xra0+rCAIrL9xVO4tQ==
+  dependencies:
+    three "^0.111.0"
+
 react@^16.7.0:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react/-/react-16.13.1.tgz#2e818822f1a9743122c063d6410d85c1e3afe48e"
@@ -5818,6 +5825,11 @@ terser@4.6.13, terser@^4.1.2:
     commander "^2.20.0"
     source-map "~0.6.1"
     source-map-support "~0.5.12"
+
+three@^0.111.0:
+  version "0.111.0"
+  resolved "https://registry.yarnpkg.com/three/-/three-0.111.0.tgz#9cedb73e79b7f6bf2440cb67a273f883faa923b6"
+  integrity sha512-AcTqyGJ3H75AIusOuADy0LsP958QKQwm/YhABHFMzd6RFXPNVay1rlSbbG6WYv7KM72G2THMMwqbjQd4dVHMkQ==
 
 throttle-debounce@^2.1.0:
   version "2.1.0"

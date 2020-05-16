@@ -190,6 +190,7 @@ export const getButtonStyles = (theme: DerivedTheme) => {
       ...t.br0,
       ...t.b__transparent,
       ...t.bg_transparent,
+      ...t.underline,
       color: theme.link700,
       ':hover': {
         ...t.bg_transparent

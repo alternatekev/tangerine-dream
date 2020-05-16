@@ -16,7 +16,6 @@ export const PageHeader: FC = () => {
     })
 
     return(
-
       <header>
         <Card 
           customBackgroundColor={theme.background200} 
@@ -28,9 +27,7 @@ export const PageHeader: FC = () => {
             intense 
             inverted 
             weightedLabel
-            utilityComponent={
-              <HeaderMenu />
-            }
+            utilityComponent={<HeaderMenu />}
           >
             KEVIN CONBOY
             <span css={css(styles.PageTitle)}>ALTERNATE.ORG</span>

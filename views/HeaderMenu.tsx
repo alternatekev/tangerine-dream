@@ -1,8 +1,15 @@
 import React, {FC} from 'react'
 
 import {Menu, MenuItem} from '@alt/components'
+import {t,prepareStyles} from 'styles'
 
-export enum MenuItems {
+const styles = prepareStyles({
+  TopHeaderMenu: {
+    ...t.mt1
+  }
+})
+
+enum MenuItems {
   Home = '/',
   Visual = '/visual',
   Audio = '/audio',
@@ -10,9 +17,9 @@ export enum MenuItems {
 }
 
 export const HeaderMenu: FC = () =>
-  <Menu horizontal>
-    <MenuItem href={MenuItems.Home} inverted>HOME</MenuItem>
-    <MenuItem href={MenuItems.Visual} inverted>VISUAL</MenuItem>
-    <MenuItem href={MenuItems.Audio} inverted>AUDIO</MenuItem>
-    <MenuItem href={MenuItems.Blog} external inverted>BLOG</MenuItem>
+  <Menu horizontal extraStyles={styles.TopHeaderMenu}>
+    <MenuItem href={MenuItems.Home}>HOME</MenuItem>
+    <MenuItem href={MenuItems.Visual}>VISUAL</MenuItem>
+    <MenuItem href={MenuItems.Audio}>AUDIO</MenuItem>
+    <MenuItem href={MenuItems.Blog} external>BLOG</MenuItem>
   </Menu>

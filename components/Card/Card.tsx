@@ -103,6 +103,12 @@ export function getCardStyles(props: Props) {
         ...t.br__top
       }
     },
+    isBottomStacked: {
+      ...t.br__bottom,
+      ':last-of-type': {
+        ...t.br__bottom
+      }
+    },
     isWeighted: {
       ...t.mb3
     },
@@ -512,7 +518,7 @@ export class Card extends Component<Props, State> {
     if (external && href) {
       return (<a href={href} target={target}>{children}</a>)
     } else {
-      return (<Link as={href || ''}><a>{children}</a></Link>)
+      return (<Link href={href || ''}><a>{children}</a></Link>)
     }
   }
 

@@ -11,7 +11,8 @@ const styles = prepareStyles({
   Menu: {
     ...t.list,
     ...t.pa0,
-    ...t.ma0
+    ...t.ma0,
+    outline: 0,
   },
   isHorizontal: {
     ...t.flex

@@ -2,11 +2,14 @@ import React from 'react'
 import App from 'next/app'
 import { CacheProvider } from '@emotion/core'
 import { cache } from 'emotion'
+import {VFXProvider} from 'react-vfx'
 
 function MyApp({pageProps, Component}) {
   return (
-    <CacheProvider value= { cache } >
-      <Component { ...pageProps } />
+    <CacheProvider value= { cache }>
+      <VFXProvider>
+        <Component {...pageProps} />
+      </VFXProvider>
     </CacheProvider>
   )
 }

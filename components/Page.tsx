@@ -2,14 +2,28 @@ import React, {Component} from 'react'
 import {ThemeProvider} from 'emotion-theming'
 import Head from 'next/head'
 
-import {css, t, prepareStyles, ThemeContext, DerivedTheme, deriveThemes, seedThemes} from '@alt/styles'
-import {PageHeader, ParallaxHeader} from '@alt/views'
+import {
+  css, 
+  t, 
+  prepareStyles, 
+  ThemeContext, 
+  DerivedTheme, 
+  deriveThemes, 
+  seedThemes
+} from '@alt/styles'
+import {
+  PageFooter,
+  PageHeader, 
+  ParallaxHeader
+} from '@alt/views'
 
 interface Props {
   title?: string
+  compact?: boolean
   children?(theme: DerivedTheme): JSX.Element
   image?: any
   theme?: ThemeContext
+  header?: string
 }
 
 interface State {
@@ -54,7 +68,13 @@ export class Page extends Component<Props, State> {
 
   render() {
    
-    const {children, image, title} = this.props
+    const {
+      children, 
+      image, 
+      compact,
+      title, 
+      header
+    } = this.props
     const {currentTheme} = this.state
     const styles = getStyles(image, currentTheme)
 
@@ -74,10 +94,11 @@ export class Page extends Component<Props, State> {
         <main id="Page" css={css(styles.Page)}>
           <ThemeProvider theme={currentTheme}>
             <PageHeader />
-            <ParallaxHeader title={title} />
+            <ParallaxHeader compact={compact} background={header} title={title} />
             <article css={css(styles.PageChildren)} id="PageChildren">
               {children && typeof children === 'function' ? children(currentTheme) : children}
             </article>
+            <PageFooter />
           </ThemeProvider>
         </main>
       </>

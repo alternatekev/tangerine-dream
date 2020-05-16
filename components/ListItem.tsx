@@ -90,7 +90,7 @@ const UnthemedListItem: FC<Props> = ({
       ...t.items_center
     },
     isCompactIcon: {
-      ...t.pt0,
+      marginTop: -3,
       lineHeight: 1
     },
     isCompactUtility: {

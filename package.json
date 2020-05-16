@@ -30,7 +30,8 @@
     "react-grid-system": "^6.4.2",
     "react-responsive": "^8.0.3",
     "react-stack-grid": "^0.7.1",
-    "react-use": "^14.2.0"
+    "react-use": "^14.2.0",
+    "react-vfx": "^0.1.4"
   },
   "devDependencies": {
     "@types/node": "^13.13.5",

@@ -37,6 +37,7 @@ interface Props {
   divider?: boolean
   dulled?: boolean
   extraStyles?: ExtraStyles
+  labelStyles?: ExtraStyles
   forwardComponent?: ReactNode
   icon?: JSX.Element
   id?: string
@@ -103,6 +104,7 @@ export const Header: FC<Props> = ({
   primary,
   secondary,
   selectedClassName,
+  labelStyles,
   superTopWeighted,
   superWeighted,
   topWeighted,
@@ -154,7 +156,7 @@ export const Header: FC<Props> = ({
         color: theme.secondary500
       },
       isPrimary: {
-        color: theme.primary500
+        color: theme.primary50
       },
       isInverted: {
         color: theme.white500
@@ -421,6 +423,7 @@ export const Header: FC<Props> = ({
                 actionable && !alignLeft && styles.isActionableLabel,
                 clickableText && styles.isClickable,
                 overflowEllipsis && styles.isOverflowEllipsis,
+                labelStyles
               )}>
               {icon && alignCenter && <span css={css(styles.headerIcon)}>{icon}</span>}
               {children}

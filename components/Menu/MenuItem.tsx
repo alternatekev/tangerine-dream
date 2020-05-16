@@ -183,6 +183,9 @@ class UnthemedMenuItem extends PureComponent<MenuItemProps & ButtonProps> {
         },
         ':first-of-type': {
           ...t.ml0
+        },
+        ' button': {
+          textDecoration: 'none',
         }
       },
       isSelectedHorizontalButton: {
