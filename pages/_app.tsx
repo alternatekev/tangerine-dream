@@ -1,20 +1,24 @@
 import React from 'react'
-import App from 'next/app'
+import App, { AppContext } from 'next/app'
 import {CacheProvider} from '@emotion/core'
 import {cache} from 'emotion'
-import {VFXProvider} from 'react-vfx'
 
-function MyApp({pageProps, Component}) {
+interface WTFProps {
+  pageProps: any //tslint:disable-line no-any
+}
+
+function MyApp(props: AppContext & WTFProps) {
+  const {Component, pageProps} = props
+  console.log(props)
+
   return (
     <CacheProvider value= { cache }>
-      <VFXProvider>
         <Component {...pageProps} />
-      </VFXProvider>
     </CacheProvider>
   )
 }
 
-MyApp.getInitialProps = async (appContext) => {
+MyApp.getInitialProps = async (appContext: AppContext) => {
   const appProps = await App.getInitialProps(appContext)
 
   return {...appProps}

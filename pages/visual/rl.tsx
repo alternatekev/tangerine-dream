@@ -1,7 +1,7 @@
-import { Page, Card, P, Divider, Header, Medium, Layout, Avatar, ProjectImage } from '@alt/components'
-import { ThemeContext } from '@alt/styles'
-import { Layouts } from '@alt/types'
-import { ProjectCard } from '@alt/views'
+import {Page, Card, P, Divider, Header, Layout, Avatar, ProjectImage} from '@alt/components'
+import {ThemeContext} from '@alt/styles'
+import {Layouts} from '@alt/types'
+import {ProjectCard} from '@alt/views'
 
 const Visual = () =>
   <Page

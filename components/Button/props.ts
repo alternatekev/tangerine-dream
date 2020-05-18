@@ -1,4 +1,4 @@
-import {FormEvent, MouseEvent, ReactNode, RefObject} from 'react'
+import {MouseEvent, ReactNode, RefObject} from 'react'
 
 import {ExtraStyles} from '@alt/styles'
 
@@ -66,7 +66,7 @@ export interface ButtonProps {
   wrap?: boolean
   hashLink?: boolean
   /** `Props` is unknown until declared */
-  onClick?(e: FormEvent<HTMLFormElement>, props?: unknown): any  // tslint:disable-line no-any (might be a Promise<T>, might be void)
+  onClick?(e: MouseEvent<HTMLButtonElement>, props?: unknown): any  // tslint:disable-line no-any (might be a Promise<T>, might be void)
   onHover?(e: MouseEvent<HTMLButtonElement>, props?: unknown): void
   onMouseDown?(e: MouseEvent<HTMLButtonElement>, props?: unknown): void
 }

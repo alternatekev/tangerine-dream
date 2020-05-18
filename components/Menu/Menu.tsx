@@ -215,7 +215,6 @@ export class Menu extends Component<MenuProps, MenuState> {
             {this.renderChildrenWithSelected(false)}
           </ul>
         </MediaQueryRenderer>
-        <MediaQueryRenderer breakpoints={BreakpointProps.Small}/>
       </>
     )
   }

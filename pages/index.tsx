@@ -1,5 +1,4 @@
 import {NextPage} from 'next'
-import * as VFX from 'react-vfx'
 
 import {
   Button,
@@ -15,7 +14,7 @@ import {
   Medium
 } from '@alt/components'
 import {Layouts} from '@alt/types'
-import {DerivedTheme, prepareStyles, css, t} from '@alt/styles'
+import {DerivedTheme} from '@alt/styles'
 
 const listItemProps: ListItemProps = {
   compact: true,

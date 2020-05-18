@@ -1,6 +1,6 @@
 import React, {Children, PureComponent} from 'react'
 
-import {Container, Row, setConfiguration, Col, Configuration} from 'react-grid-system'
+import {Container, Row, setConfiguration, Col, Configuration as Config} from 'react-grid-system'
 import {css, prepareStyles, t, ExtraStyles, ThemeProps, withTheme, DerivedTheme} from '../styles'
 
 import {LayoutItem} from './LayoutItem'
@@ -25,12 +25,13 @@ interface Props extends ThemeProps {
   alignment?: 'normal' | 'start' | 'center' | 'end'
 }
 
-export const LayoutConfig: Configuration = {
+export const LayoutConfig: Config = {
   gutterWidth: 40,
   defaultScreenClass: 'md',
   breakpoints: [460, 768, 1024, 1300]
 }
-export {Container, Row, Col, setConfiguration, Configuration}
+export {Container, Row, Col, setConfiguration}
+export type Configuration = Config
 
 const getStyles = (theme: DerivedTheme) => {
 
@@ -80,7 +81,7 @@ const getStyles = (theme: DerivedTheme) => {
 
 
 class UnthemedLayout extends PureComponent<Props> {
-  static defaultProps: Props = {
+  static defaultProps: Omit<Props, 'theme'> = {
     kind: Layouts.Equal,
     alignment: 'normal',
     disableResponsive: false

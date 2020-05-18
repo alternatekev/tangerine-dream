@@ -423,6 +423,7 @@ export function deriveThemes(seededThemes: Themes) {
   const derivedThemes: any = {} // tslint:disable-line no-any - mutated object
   if (seededThemes) {
     for (const theme of Object.keys(seededThemes)) {
+      //@ts-ignore
       derivedThemes[theme] = calculateColors(seededThemes[theme])
     }
   }

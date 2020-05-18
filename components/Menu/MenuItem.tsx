@@ -74,7 +74,7 @@ class UnthemedMenuItem extends PureComponent<MenuItemProps & ButtonProps> {
           : null
   }
 
-  onClick = e => {
+  onClick = (e: MouseEvent<HTMLButtonElement>) => {
     if (this.props.onClick) this.props.onClick(e, this.props)
   }
 

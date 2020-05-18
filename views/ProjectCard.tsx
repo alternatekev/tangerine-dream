@@ -1,6 +1,11 @@
 import {FC} from 'react'
-import {css, prepareStyles, t,inverseTachyonsUnit, ThemeProps, withTheme, DerivedTheme} from '@alt/styles'
-import {imageStyles} from '@alt/components'
+import {css, prepareStyles, t,ThemeProps, withTheme} from '@alt/styles'
+import {
+  Card,
+  Header,
+  P,
+  imageStyles
+} from '@alt/components'
 
 interface Props extends ThemeProps{
   title: string
@@ -26,11 +31,7 @@ const getStyles = (img: string) => prepareStyles({
   },
 })
 
-import {
-  Card,
-  Header,
-  P
-} from '@alt/components'
+
 
 const UnthemedProjectCard: FC<Props> = ({
   title,
@@ -55,8 +56,7 @@ const UnthemedProjectCard: FC<Props> = ({
     >
       <Header level={1} primary>{title}</Header>
       {subtitle && <Header level={2}>{subtitle}</Header>}
-      <div css={css(imageStyles(theme).ProjectImage, styles.ImageContainer)}>
-      </div>
+      <div css={css(imageStyles(theme).ProjectImage, styles.ImageContainer)}/>
       {description && <P compact weightless>{description}</P>}
     </Card>
   )

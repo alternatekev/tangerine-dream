@@ -94,7 +94,9 @@ export function calculateColors(
         return {
           ...innerResults,
           [colorName + level]: colorSet[colorName]
-            .darken(valueFamilies[level])
+        //@ts-ignore
+
+          .darken(valueFamilies[level])
             .rgb()
             .string()
         }
@@ -102,7 +104,9 @@ export function calculateColors(
         return {
           ...innerResults,
           [colorName + level]: colorSet[colorName]
-            .mix(Color(`#FFFFFF`), valueFamilies[level])
+        //@ts-ignore
+
+          .mix(Color(`#FFFFFF`), valueFamilies[level])
             .rgb()
             .string()
         }
@@ -128,6 +132,7 @@ export const findAccessibleContrast = ({
   const bg = new Color(backgroundColor)
 
   for (const i of Object.keys(valueFamilies)) {
+    //@ts-ignore
     const fg = new Color(theme[`${foregroundColorFamily}${i}`])
     const minContrast = large ? 3 : 4.5
 
@@ -136,7 +141,7 @@ export const findAccessibleContrast = ({
     }
   }
 }
-
+//@ts-ignore
 function getColorFamily(thisColor) {
   const localColors: { [key: string]: string } = {}
 
@@ -148,7 +153,7 @@ function getColorFamily(thisColor) {
     return results
   }, localColors)
 }
-
+//@ts-ignore
 function createColorFamilies(currentColors) {
   return mapObjIndexed(
     (color, colorName) => ({name: colorName, family: getColorFamily(color)}),

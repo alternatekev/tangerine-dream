@@ -1,7 +1,4 @@
 import React, {FC} from 'react'
-import {useRouter} from 'next/router'
-import Select from 'react-select'
-import MenuIcon from 'mdi-react/MenuIcon'
 
 import {
   t, 
@@ -10,33 +7,6 @@ import {
   withTheme, 
   DerivedTheme,
 } from '@alt/styles'
-
-const selectOptions = [
-  {
-    value: 'ca',
-    label: 'Agile Central / Catchfly'
-  },
-  {
-    value: 'cf',
-    label: 'Community Funded'
-  },
-  {
-    value: 'dp',
-    label: 'Down Periscope'
-  },
-  {
-    value: 'nyt',
-    label: 'The New York Times'
-  },
-  {
-    value: 'pd',
-    label: 'Polldaddy'
-  },
-  {
-    value: 'wp',
-    label: 'WordPress.com'
-  }
-]
 
 import {Card, Header} from '@alt/components'
 

@@ -1,7 +1,7 @@
-import Vimeo from '@u-wave/react-vimeo'
-import { Page, Card, P, Divider, Header, Medium, Layout, Avatar, ProjectImage } from '@alt/components'
-import { ThemeContext } from '@alt/styles'
-import { Layouts } from '@alt/types'
+import ReactPlayer from 'react-player'
+import {Page, Card, P, Divider, Header, Medium, Layout, Avatar, ProjectImage} from '@alt/components'
+import {ThemeContext} from '@alt/styles'
+import {Layouts} from '@alt/types'
 import {ProjectCard} from '@alt/views'
 
 const Visual = () =>
@@ -29,7 +29,7 @@ const Visual = () =>
         </Layout>
         <Divider superWeighted topWeighted level={0} />    
         <Layout alignment="center">
-            <Vimeo video="419446092" showTitle={false} />
+            <ReactPlayer video="419446092" showTitle={false} />
             <P>
 After meeting with their founders, and finding that I could have a strong passion for their
 business, I enthusiastically agreed to help. V1 was heavily based on WordPress, something

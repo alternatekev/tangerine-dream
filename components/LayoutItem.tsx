@@ -1,14 +1,15 @@
 import React, {SFC} from 'react'
-import {Layouts} from '../types'
+import {Layouts, Renderable} from '../types'
 import {Col} from 'react-grid-system'
 
 interface LayoutItemProps {
   kind?: Layouts
-  disableResponsive: boolean
-  totalLayoutItems: number
-  hasWide: boolean
-  hasMiddleWide: boolean
-  hasReallyWide: boolean
+  disableResponsive?: boolean
+  totalLayoutItems?: number
+  hasWide?: boolean
+  hasMiddleWide?: boolean
+  hasReallyWide?: boolean
+  children?: Renderable
 }
 
 const columns = {
@@ -48,9 +49,11 @@ const columns = {
   }
 }
 
-function getColumns(props) {
+function getColumns(props: LayoutItemProps) {
+  // @ts-ignore
   if (props.kind && columns[props.kind][props.totalLayoutItems]) {
-    return columns[props.kind][props.totalLayoutItems].columns
+    //@ts-ignore
+    return columns[props.kind][props.totalLayoutItems].columns 
   } else {
     let leftoverColumns
 
@@ -80,7 +83,7 @@ function getColumns(props) {
   }
 }
 
-export const LayoutItem: SFC<Partial<LayoutItemProps>> = props => {
+export const LayoutItem: SFC<Partial<LayoutItemProps>> = (props: LayoutItemProps) => {
 
   if (props.totalLayoutItems == null) throw new Error('Props: totalLayoutItems must be a number and cannot be null or undefined.')
   const calculatedColumns = getColumns(props)

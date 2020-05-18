@@ -1,4 +1,4 @@
-import React, {PureComponent, MouseEvent, RefObject, createRef, FormEvent} from 'react'
+import React, {PureComponent, MouseEvent, RefObject, createRef} from 'react'
 import Link from 'next/link'
 
 import {withTheme, css, prepareStyles, ThemeProps} from '@alt/styles'
@@ -46,9 +46,9 @@ export class Button extends PureComponent<Props & ThemeProps, {}, RefObject<HTML
     }
   }
 
-  private handleClick = async (e: FormEvent<HTMLFormElement>) => {
+  private handleClick = (e: MouseEvent<HTMLButtonElement>) => {
     if (this.props.type !== 'submit' && !this.props.disabled && this.props.onClick) {
-      await this.props.onClick(e, this.props)
+      this.props.onClick(e, this.props)
     }
   }
  
@@ -83,7 +83,6 @@ export class Button extends PureComponent<Props & ThemeProps, {}, RefObject<HTML
           data-value={value}
           onMouseOver={this.onHover()}
           onMouseOut={this.onHover(true)}
-          onKeyDown={this.onKeyDown}
           disabled={disabled}
           type={type}
           ref={this.ButtonRef}
@@ -116,12 +115,6 @@ export class Button extends PureComponent<Props & ThemeProps, {}, RefObject<HTML
           </span>
         </button>
     )
-  }
-
-  private onKeyDown = async (e) => {
-    if (e.keyCode === 13) {
-      await this.handleClick(e)
-    }
   }
 
   private onHover = (mouseOut: boolean = false) => (e: MouseEvent<HTMLButtonElement>) => {

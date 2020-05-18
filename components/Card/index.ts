@@ -2,13 +2,11 @@ import Card, {Props as CProps} from './Card'
 import CardFooter, {CardFooterProps as CFProps} from './CardFooter'
 import CardHeader, {AspectRatio, CardHeaderProps as CHProps} from './CardHeader'
 import ScrollableCardContent from './ScrollableCardContent'
-import CardGrid from './CardGrid'
 
 export {
   AspectRatio,
   Card,
   CardFooter,
-  CardGrid,
   CardHeader,
   ScrollableCardContent,
 }
@@ -22,5 +20,4 @@ export default {
   CardHeader,
   CardFooter,
   ScrollableCardContent,
-  CardGrid
 }
