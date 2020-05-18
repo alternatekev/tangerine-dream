@@ -16,6 +16,7 @@ import {
   PageHeader, 
   ParallaxHeader
 } from '@alt/views'
+import {Breakpoints} from '@alt/types'
 
 interface Props {
   title?: string
@@ -41,14 +42,17 @@ const getStyles = (image: any, themeContext: DerivedTheme) => { // tslint:disabl
       maxWidth: 960,
       marginLeft: 'auto',
       marginRight: 'auto',
-      transition: 'all 100ms ease-in-out'
+      transition: 'all 100ms ease-in-out',
+      [Breakpoints.Small]: {
+        ...t.pa1
+      }
     },
     PageChildren: {
       ...t.flex,
       ...t.flex_column,
       zIndex: 1,
       ...t.relative,
-    }
+    },
   })
 }
 
