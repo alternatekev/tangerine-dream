@@ -40,8 +40,7 @@ const Visual = () =>
 After meeting with their founders, and finding that I could have a strong passion for their
 business, I enthusiastically agreed to help. V1 was heavily based on WordPress, something
 I have a unique amount of experience building and building for; React + Next.js were my
-suggestions for the front-end technologies, and six months later, we are well on our way
-to having an MVP available in the second quarter of this year. I have worked hand-in-hand
+suggestions for the front-end technologies, and three years later, we launched to live clients in the first quarter of 2020. I have worked hand-in-hand
 with the CTO, Chief Creative Officer, and VP of Product to craft not just a cohesive visual
 design system, but the codebase and UX patterns necessary to pull it off, in a real product,
 right now
