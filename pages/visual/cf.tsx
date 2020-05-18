@@ -1,8 +1,14 @@
 import ReactPlayer from 'react-player'
 import {Page, Card, P, Divider, Header, Medium, Layout, Avatar, ProjectImage} from '@alt/components'
-import {ThemeContext} from '@alt/styles'
+import {ThemeContext, t, css, prepareStyles} from '@alt/styles'
 import {Layouts} from '@alt/types'
 import {ProjectCard} from '@alt/views'
+
+const styles = prepareStyles({
+  Player: {
+    ...t.fill_available
+  }
+})
 
 const Visual = () =>
   <Page
@@ -29,7 +35,7 @@ const Visual = () =>
         </Layout>
         <Divider superWeighted topWeighted level={0} />    
         <Layout alignment="center">
-            <ReactPlayer video="419446092" showTitle={false} />
+            <ReactPlayer url="https://vimeo.com/419446092" width="100%" css={css(styles.Player)} />
             <P>
 After meeting with their founders, and finding that I could have a strong passion for their
 business, I enthusiastically agreed to help. V1 was heavily based on WordPress, something

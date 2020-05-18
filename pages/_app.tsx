@@ -9,7 +9,6 @@ interface WTFProps {
 
 function MyApp(props: AppContext & WTFProps) {
   const {Component, pageProps} = props
-  console.log(props)
 
   return (
     <CacheProvider value= { cache }>
