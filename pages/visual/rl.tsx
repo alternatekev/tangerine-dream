@@ -14,54 +14,40 @@ const Visual = () =>
     <>
       <Card level={2} middleStacked>
         <Layout kind={Layouts.WideRight} alignment="center">
-          <Avatar img="https://www.houstonperiscope.com/static/img/partners/eg.svg" circle size={210} />
+          <Avatar img="/rl/logo.png" circle size={210} />
           <>
             <Header level={2} intense>WORDPRESS & REACT / WOOCOMMERCE</Header>
             <P large>
-              <Medium>Community Funded</Medium> came to me with one need: the first version of their product that got
-              them to where they were was built on old technology, and was now limiting their
-              growth potential. Could I help steer them toward the right choices to make for version 2?
+             Rule is one of Denver's premier art galleries, representing some of the most talked-about names in both Denver and Marfa, Texas. 
           </P>
-            <P large>
-              And could I <strong>help them build it?</strong>
-            </P>
+          
           </>
         </Layout>
         <Divider superWeighted superTopWeighted level={0} />
         <Layout kind={Layouts.Left} alignment="center">
-          <ProjectImage src="/wp/Component-Map.png" alt="" />
+          <ProjectImage src="/rl/card.png" alt="" />
           <P>
-            <Medium>Community Funde</Medium>d came to me with one need: the first version of their product that got
-              them to where they were was built on old technology, and was now limiting their
-              growth potential. Could I help steer them toward the right choices to make for version 2?
+           Leveraging a sleek, minimalist feel, this website was a joy to work on, letting white space breathe, and giving the art work space to speak for itself.
           </P>
         </Layout>
         <Divider superWeighted superTopWeighted level={0} />
         <Layout kind={Layouts.Right} alignment="center">
           <P>
-            <Medium>Community Funde</Medium>d came to me with one need: the first version of their product that got
-              them to where they were was built on old technology, and was now limiting their
-              growth potential. Could I help steer them toward the right choices to make for version 2?
+            This site uses Advanced Custom Fields for custom post types, Timber for templating, and a statically-built React app for browsing art.
           </P>
-          <ProjectImage src="/wp/Component-Map.png" alt="" />
+          <ProjectImage src="/rl/rl1.png" alt="" />
         </Layout>
         <Divider superWeighted superTopWeighted level={0} />
-        <Layout kind={Layouts.Left} alignment="center">
-          <ProjectImage src="/wp/Component-Map.png" alt="" />
-          <P>
-            <Medium>Community Funde</Medium>d came to me with one need: the first version of their product that got
-              them to where they were was built on old technology, and was now limiting their
-              growth potential. Could I help steer them toward the right choices to make for version 2?
-          </P>
+        <Layout alignment="center">
+          <ProjectImage src="/rl/rl2.png" alt="" />
+          <ProjectImage src="/rl/rl3.png" alt="" />
         </Layout>
         <Divider superWeighted superTopWeighted level={0} />
         <Layout kind={Layouts.Right} alignment="center">
-          <P>
-            <Medium>Community Funde</Medium>d came to me with one need: the first version of their product that got
-              them to where they were was built on old technology, and was now limiting their
-              growth potential. Could I help steer them toward the right choices to make for version 2?
+            <P>
+              Due to COVID-19 restrictions, the gallery cannot be open to the public. We quickly put together a WooCommerce site to get cash flowing to the artsists in need again.
           </P>
-          <ProjectImage src="/wp/Component-Map.png" alt="" />
+          <ProjectImage src="/rl/rl4.png" alt="" />
         </Layout>
       </Card>
       <Card middleStacked level={0}>

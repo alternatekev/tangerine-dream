@@ -12,8 +12,7 @@ export enum MenuItems {
 
 export const FooterMenu: FC = () =>
   <Menu horizontal>
-    <MenuItem href={MenuItems.Home}>CONTACT</MenuItem>
-    <MenuItem href={MenuItems.Visual}>INSTAGRAM</MenuItem>
-    <MenuItem href={MenuItems.Audio}>SOUNDCLOUD</MenuItem>
-    <MenuItem href={MenuItems.Blog} external>BANDCAMP</MenuItem>
+    <MenuItem external href="https://instagram.com/alternatekev">INSTAGRAM</MenuItem>
+    <MenuItem external href="https://soundcloud.com/alternatekev">SOUNDCLOUD</MenuItem>
+    <MenuItem external href="https://bandcamp.com/alternatekev">BANDCAMP</MenuItem>
   </Menu>
