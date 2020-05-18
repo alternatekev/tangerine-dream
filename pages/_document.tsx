@@ -31,6 +31,7 @@ export default class MyDocument extends Document<EmotionCriticalProps & Document
         <body>
           <Main />
           <NextScript />
+          <div id="portal" />
         </body>
       </Html>
     )
