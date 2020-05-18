@@ -27,7 +27,7 @@ const Visual = () =>
         <Layout kind={Layouts.Left} alignment="center">
           <ProjectImage src="/rl/card.png" alt="" />
           <P>
-           Leveraging a sleek, minimalist feel, this website was a joy to work on, letting white space breathe, and giving the art work space to speak for itself.
+           Leveraging a sleek, minimalist feel, this website was a joy to work on, letting white space breathe, and giving the artwork space to speak for itself.
           </P>
         </Layout>
         <Divider superWeighted superTopWeighted level={0} />

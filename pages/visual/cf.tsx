@@ -59,7 +59,7 @@ We used an iterative, design sprint-based approach that incldued customers, clie
           <Layout alignment="center">
             <ProjectImage src="/cf/cf2.png" alt="" />
             <P>
-I began my work with CF by asking questions, and iterating on Next.js-based prototypes complete with animation, beautfiul custom components, and an extensible architecture that worked as a bridge between quick prototypying and prodution-ready code.
+I began my work with CF by asking questions, and iterating on Next.js-based prototypes complete with animation, beautfiul custom components, and an extensible architecture that worked as a bridge between quick prototyping and prodution-ready code.
             </P>
           </Layout> 
           <Divider superWeighted topWeighted level={0} />
