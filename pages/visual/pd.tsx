@@ -55,7 +55,7 @@ const Visual = () =>
             </P>
         </Layout>
         <Divider superWeighted superTopWeighted level={0} />
-        <Layout kind={Layouts.Right} alignment="center">
+        <Layout superWeighted kind={Layouts.Right} alignment="center">
           <P>
             <Medium>Community Funde</Medium>d came to me with one need: the first version of their product that got
                 them to where they were was built on old technology, and was now limiting their

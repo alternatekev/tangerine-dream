@@ -44,7 +44,7 @@ As our main work would take over a complete CNAME subdomain of their site, our d
             </P>
         </Layout>
         <Divider superWeighted superTopWeighted level={0} />
-        <Layout kind={Layouts.Right} alignment="center">
+        <Layout superWeighted kind={Layouts.Right} alignment="center">
           <P>
               In 2006, when we first pitched the client, I had been with the company a year, and was still a relatively new member of the design team, taking much direction from the Creative Director. By late 2007, when we started work from scratch, I was an Associate Creative Director myself, and oversaw 60-70% of the design and front-end engineering work, managing a range of 2-3 designers at a time. Our Creative Director oversaw the broad scope of work but many day-to-day management tasks were handled by me.
             </P>

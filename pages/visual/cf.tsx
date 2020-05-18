@@ -59,7 +59,7 @@ I began my work with CF by asking questions, and iterating on Next.js-based prot
           </Layout> 
           <Divider superWeighted topWeighted level={0} />
 
-          <Layout alignment="center">
+          <Layout superWeighted alignment="center">
             <P>
 Using a modified Agile methodology, with an ad-hoc mixture of scrum, dailies, plannings sessions and spikes, we delivered a beautiful experience to delighted users, who often found that the extensive training needed to onboard for the first version of the prdouct, was now simply unnecesary.
             </P>

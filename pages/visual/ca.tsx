@@ -17,51 +17,45 @@ const Visual = () =>
           <>
             <Header level={2} intense>MARKETS RESEARCH</Header>
             <P large>
-              <Medium>Community Funded</Medium> came to me with one need: the first version of their product that got
-                them to where they were was built on old technology, and was now limiting their
-                growth potential. Could I help steer them toward the right choices to make for version 2?
-            </P>
-            <P large>
-              And could I <strong>help them build it?</strong>
+              Rally Software was a company providing Jira-like Agile tools, which got purchased by CA in 2015. As part of a broader initiative to modernize CA's software offerings, Project Catchfly was spun up as a startup within the large corporation.
             </P>
           </>
         </Layout>
         <Divider superWeighted superTopWeighted level={0} />
         <Layout kind={Layouts.Left} alignment="center">
-          <ProjectImage src="/wp/Component-Map.png" alt="" />
+          <ProjectImage src="/ca/card.png" alt="" />
           <P>
-            <Medium>Community Funde</Medium>d came to me with one need: the first version of their product that got
-                them to where they were was built on old technology, and was now limiting their
-                growth potential. Could I help steer them toward the right choices to make for version 2?
+            Within the first two days on Project Catchfly, I had outlined the problem the team was trying to solve – something they had tried to use Lean Startup methodology to define – and had provided the first real mockup of their app they'd ever seen.
             </P>
         </Layout>
         <Divider superWeighted superTopWeighted level={0} />
         <Layout kind={Layouts.Right} alignment="center">
           <P>
-            <Medium>Community Funde</Medium>d came to me with one need: the first version of their product that got
-                them to where they were was built on old technology, and was now limiting their
-                growth potential. Could I help steer them toward the right choices to make for version 2?
+           We quickly iterated through approaches to find the right solution. We held design sprint sessions, big-room planning sessons, and worked with a team in North Carolina building the mobile version of the app.
             </P>
-          <ProjectImage src="/wp/Component-Map.png" alt="" />
+          <ProjectImage src="/ca/ca2.png" alt="" />
         </Layout>
         <Divider superWeighted superTopWeighted level={0} />
         <Layout kind={Layouts.Left} alignment="center">
-          <ProjectImage src="/wp/Component-Map.png" alt="" />
+          <ProjectImage src="/ca/ca3.png" alt="" />
           <P>
-            <Medium>Community Funde</Medium>d came to me with one need: the first version of their product that got
-                them to where they were was built on old technology, and was now limiting their
-                growth potential. Could I help steer them toward the right choices to make for version 2?
-            </P>
+           I spent a lot of time taking Material UI (a Material Design component library implemented in React), and customizing it for our needs. This was also my first introduction to TypeScript.
+           </P>
         </Layout>
         <Divider superWeighted superTopWeighted level={0} />
         <Layout kind={Layouts.Right} alignment="center">
           <P>
-            <Medium>Community Funde</Medium>d came to me with one need: the first version of their product that got
-                them to where they were was built on old technology, and was now limiting their
-                growth potential. Could I help steer them toward the right choices to make for version 2?
+          When the business needed me to step out of the codebase and into Sketch in order to iterate even faster on projections 1.5 years into the future, I re-built our component system as graphical assets in Sketch.
             </P>
-          <ProjectImage src="/wp/Component-Map.png" alt="" />
+          <ProjectImage src="/ca/ca4.png" alt="" />
         </Layout>
+          <Divider superWeighted superTopWeighted level={0} />
+          <Layout superWeighted kind={Layouts.Left} alignment="center">
+            <ProjectImage src="/ca/ca5.png" alt="" />
+            <P>
+    When Project Catchfly was cancelled 9 months afer I started, I quickly pivoted to providing prototyping for the Agile Central (Rally) design team. Within a week, I had a custom component library rendering a Kanban board, that the designers were taking screenshots of to send to their developers as the final design.
+           </P>
+          </Layout>
       </Card>
       <Card middleStacked level={0}>
         <Layout>

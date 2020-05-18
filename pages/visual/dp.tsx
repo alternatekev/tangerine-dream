@@ -31,7 +31,7 @@ const Visual = () =>
           </P>
       </Layout>
       <Divider superWeighted superTopWeighted level={0} />
-      <Layout kind={Layouts.Right} alignment="center">
+      <Layout superWeighted kind={Layouts.Right} alignment="center">
         <P>
 While this screenshot doesn't do the application justice (the applcation is down due to COVID-19 restrictions), you can see that we built a way to control a camera in 360-degree space as well as zoom in/zoom out. We even added a light switch. The Node server solution I built uses WebSockets to manage permission between multiple conccurrent web users, as well as on-site.
           </P>

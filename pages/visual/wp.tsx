@@ -54,7 +54,7 @@ We had historically eschewed email, working together through the internally-deve
             </div>
           </Layout>
           <Divider superWeighted superTopWeighted level={0} />
-          <Layout kind={Layouts.Right} alignment="center">
+          <Layout superWeighted kind={Layouts.Right} alignment="center">
             <P>
               There was a third group of recommendations which were generally agreed upon by everyone, but were not going to be worked on by anyone, so I took it upon myself to get them finished. I took specific problems that the team had seen crop up over and over again and created Pull Requests in Github to address them. I re-engineered the interfaces in question to use core Calypso React components, got my designs and code reviewed by my peers, and launched them into production.
             </P>

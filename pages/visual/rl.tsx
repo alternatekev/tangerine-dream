@@ -43,7 +43,7 @@ const Visual = () =>
           <ProjectImage src="/rl/rl3.png" alt="" />
         </Layout>
         <Divider superWeighted superTopWeighted level={0} />
-        <Layout kind={Layouts.Right} alignment="center">
+        <Layout superWeighted kind={Layouts.Right} alignment="center">
             <P>
               Due to COVID-19 restrictions, the gallery cannot be open to the public. We quickly put together a WooCommerce site to get cash flowing to the artsists in need again.
           </P>

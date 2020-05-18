@@ -38,7 +38,7 @@ const Visual = () =>
           <ProjectImage src="/eg/eg1.png" alt="" />
         </Layout>
         <Divider superWeighted superTopWeighted level={0} />
-        <Layout kind={Layouts.Left} alignment="center">
+        <Layout superWeighted kind={Layouts.Left} alignment="center">
           <ProjectImage src="/eg/eg2.png" alt="" />
           <P>
            I've also worked on other work with them, including sound samples for Talking Parking Meters in Denver, Colorado as well as full React and Node developement for <Link href="/visual/dp"><a>the Down Periscope project in Houston, Texas.</a></Link>
