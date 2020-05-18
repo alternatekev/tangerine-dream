@@ -3,7 +3,7 @@ import MenuIcon from 'mdi-react/MenuIcon'
 
 import {Menu, MenuItem, MediaQueryRenderer, Button} from '@alt/components'
 import {BreakpointProps} from '@alt/types'
-import {t,prepareStyles, css, withTheme, ThemeProps, DerivedTheme} from 'styles'
+import {t,prepareStyles, withTheme, ThemeProps, DerivedTheme} from 'styles'
 
 const getStyles = (theme: DerivedTheme) => prepareStyles({
   TopHeaderMenu: {

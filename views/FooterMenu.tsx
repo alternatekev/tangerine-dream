@@ -2,13 +2,6 @@ import React, {FC} from 'react'
 
 import {Menu, MenuItem} from '@alt/components'
 
-export enum MenuItems {
-  Home = '/',
-  Visual = '/visual',
-  Audio = '/audio',
-  Blog = 'https://alternatekev.me'
-}
-
 export const FooterMenu: FC = () =>
   <Menu horizontal>
     <MenuItem external href="https://instagram.com/alternatekev">INSTAGRAM</MenuItem>
