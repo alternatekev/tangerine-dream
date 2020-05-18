@@ -38,14 +38,6 @@ export const VisualProjectCards: FC = () =>
     </Col>
     <Col md={4}>
       <ProjectCard
-        title="Polldaddy"
-        img="/pd/card.png"
-        url="/visual/pd"
-        description="UI & UX Design, CSS, HTML5, JQuery, Public Speaking"
-      />
-    </Col>
-    <Col md={4}>
-      <ProjectCard
         title="Down Periscope"
         img="/dp/card.png"
         url="/visual/dp"

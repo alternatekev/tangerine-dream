@@ -45,7 +45,7 @@ const Home: NextPage = () =>
               <ListItem {...listItemProps}><Button intense href="/visual/cf" borderless inline compact>Community Funded</Button> / 2017 - 2020</ListItem>
               <ListItem {...listItemProps}><Button intense href="/visual/ca" borderless inline compact>Project Catchfly / CA Technologies</Button> / 2016</ListItem>
               <ListItem {...listItemProps}><Button intense href="/visual/wp" borderless inline compact>WordPress.com</Button> / 2012 – 2016</ListItem>
-              <ListItem {...listItemProps}><Button intense href="/visual/pd" borderless inline compact>Polldaddy</Button> / 2010 – 2012</ListItem>
+              <ListItem {...listItemProps}>Polldaddy / 2010 – 2012</ListItem>
               <ListItem {...listItemProps}>Dynavox / 2010</ListItem>
               <ListItem {...listItemProps}>State of Wisconsin / 2009</ListItem>
               <ListItem {...listItemProps}>Commonwealth of Pennsylvania / 2009</ListItem>

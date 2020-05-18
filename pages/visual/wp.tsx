@@ -75,12 +75,7 @@ We had historically eschewed email, working together through the internally-deve
             url="/visual/cf"
             description="Node.js Consulting, Design Systems, UI & UX Design"
           />
-            <ProjectCard
-              title="Polldaddy"
-              img="/pd/card.png"
-              url="/visual/pd"
-              description="UI & UX Design, CSS, HTML5, JQuery, Public Speaking"
-            />
+           
         </Layout>
       </Card>
     </>
