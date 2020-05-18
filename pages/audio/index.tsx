@@ -18,47 +18,59 @@ const Audio = () =>
     <Row>
       <Col md={6}>
         <ProjectCard
+          autoHeight={false}
+          external
           title="Sodium Lights"
           subtitle="Colormath"
           img="/cm/card.png"
-          url="/audio/cm"
+          url="https://vimeo.com/user107065772"
           description="Goth-inspired shoegaze, with Carly Stambaugh"
         />
         <ProjectCard
+          autoHeight={false}
+          external
           title="States"
           subtitle="For the Earth Was Empty of Form"
           img="/fteweof/states.png"
-          url="/audio/st"
+          url="https://soundcloud.com/alternatekev/sets/states"
           description="Noisy/ambient post-rock, solo project"
         />
         <ProjectCard
+          autoHeight={false}
+          external
           title="December"
           subtitle="For the Earth Was Empty of Form"
           img="/fteweof/december.png"
-          url="/audio/dec"
+          url="https://soundcloud.com/alternatekev/sets/december"
           description="Electronic post-rock, solo project"
         />
       </Col>
       <Col md={6}>
         <ProjectCard
+          autoHeight={false}
+          external
           title="From The Middle Out"
           subtitle="A Documentary Company"
           img="/adc/card.png"
-          url="/"
+          url="https://adocumentarycompany.com/left-of-cinema"
           description="Soundtrack for short documentary"
         />
         <ProjectCard
+          autoHeight={false}
+          external
           title="Morocco"
           subtitle="For the Earth Was Empty of Form"
           img="/fteweof/morocco.png"
-          url="/audio/mc"
+          url="https://soundcloud.com/alternatekev/sets/morocco "
           description="Post-rock, solo project"
         />
         <ProjectCard
+          autoHeight={false}
+          external
           title="An Earthen Ocean"
           subtitle="For the Earth Was Empty of Form"
           img="/fteweof/anearthenocean.png"
-          url="/audio/aeo"
+          url="https://soundcloud.com/alternatekev/sets/an-earthen-ocean"
           description="Post-rock, solo project"
         />
       </Col>

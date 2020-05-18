@@ -6,6 +6,8 @@ interface Props extends ThemeProps{
   title: string
   subtitle?: string
   img: string
+  external?: boolean
+  autoHeight?: boolean
   description?: string
   url: string
 }
@@ -34,7 +36,9 @@ const UnthemedProjectCard: FC<Props> = ({
   title,
   theme,
   img,
+  external,
   description,
+  autoHeight = true,
   subtitle,
   url
 }: Props) => {
@@ -44,7 +48,8 @@ const UnthemedProjectCard: FC<Props> = ({
     <Card
       level={0}
       weighted
-      autoHeight
+      external={external}
+      autoHeight={autoHeight}
       flat
       href={url}
     >
