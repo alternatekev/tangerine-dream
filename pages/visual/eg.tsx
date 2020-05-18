@@ -19,7 +19,7 @@ const Visual = () =>
           <>
             <Header level={2} intense>WORDPRESS & REACT / MUSIC COMPOSITION & CONSULTING</Header>
             <P large>
-                Ryan Elmendorf and Nick Geurts are local artists and engineers, who specialize in metalworking and large-scale interactive artowrk. Think Burning Man, because that's their bread and butter.
+                Ryan Elmendorf and Nick Geurts are local artists and engineers, who specialize in metalworking and large-scale interactive artwork. Think Burning Man, because that's their bread and butter.
           </P>
           </>
         </Layout>
