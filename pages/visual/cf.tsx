@@ -1,5 +1,5 @@
 import Vimeo from '@u-wave/react-vimeo'
-import { Page, Card, P, Divider, Header, Medium, Layout, Avatar } from '@alt/components'
+import { Page, Card, P, Divider, Header, Medium, Layout, Avatar, ProjectImage } from '@alt/components'
 import { ThemeContext } from '@alt/styles'
 import { Layouts } from '@alt/types'
 import {ProjectCard} from '@alt/views'
@@ -47,12 +47,12 @@ right now
             <P>
 We used an iterative, design sprint-based approach that incldued customers, clients, success managers, board members, and executives. This all-inclusive approach led to the product improving by leaps and bounds in short amounts of time, with ideas we knew were already vetted with users.
             </P>
-            <Vimeo video="419446092" showTitle={false} />
+            <ProjectImage src="/cf/cf1.png" alt="" />
 
           </Layout> 
           <Divider superWeighted topWeighted level={0} />    
           <Layout alignment="center">
-            <Vimeo video="419446092" showTitle={false} />
+            <ProjectImage src="/cf/cf2.png" alt="" />
             <P>
 I began my work with CF by asking questions, and iterating on Next.js-based prototypes complete with animation, beautfiul custom components, and an extensible architecture that worked as a bridge between quick prototypying and prodution-ready code.
             </P>
@@ -63,7 +63,7 @@ I began my work with CF by asking questions, and iterating on Next.js-based prot
             <P>
 Using a modified Agile methodology, with an ad-hoc mixture of scrum, dailies, plannings sessions and spikes, we delivered a beautiful experience to delighted users, who often found that the extensive training needed to onboard for the first version of the prdouct, was now simply unnecesary.
             </P>
-            <Vimeo video="419446092" showTitle={false} />
+            <ProjectImage src="/cf/cf3.png" alt="" />
 
           </Layout> 
       </Card>
