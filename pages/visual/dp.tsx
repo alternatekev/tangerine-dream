@@ -14,7 +14,7 @@ const Visual = () =>
     <>
     <Card level={2} middleStacked>
       <Layout kind={Layouts.WideRight} alignment="center">
-          <Avatar img="https://www.houstonperiscope.com/static/img/partners/eg.svg" circle size={210} />
+            <Avatar alignCenter superWeighted img="https://www.houstonperiscope.com/static/img/partners/eg.svg" circle size={210} />
         <>
           <Header level={2} intense>DONALD LIPSKI & ELMENDORF/GEURTS</Header>
           <P large>

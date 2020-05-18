@@ -14,7 +14,7 @@ const Visual = () =>
     <>
       <Card level={2} middleStacked>
         <Layout kind={Layouts.WideRight} alignment="center">
-          <Avatar img="/nyt/logo.png" circle size={210} />
+          <Avatar superWeighted alignCenter img="/nyt/logo.png" circle size={210} />
           <>
             <Header level={2} intense>MARKETS RESEARCH &mdash; WALL ST ON DEMAND</Header>
             <P large>

@@ -20,7 +20,7 @@ const Visual = () =>
     <>
       <Card level={2} middleStacked>
         <Layout kind={Layouts.WideRight} alignment="center">
-          <Avatar img="/cf/logo-green.png" circle size={210} />
+          <Avatar alignCenter superWeighted img="/cf/logo-green.png" circle size={210} />
           <>
             <Header level={2} intense>VERSION 2.0</Header>
             <P large>

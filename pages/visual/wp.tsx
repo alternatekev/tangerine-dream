@@ -13,7 +13,7 @@ const Visual = () =>
     <>
       <Card level={2} middleStacked>
         <Layout kind={Layouts.WideRight} alignment="center">
-            <Avatar img="/wp/wpcom-wmark.png" circle size={210} />
+            <Avatar alignCenter superWeighted img="/wp/wpcom-wmark.png" circle size={210} />
           <>
             <Header level={2} intense>CALYPSO</Header>
             <P large>

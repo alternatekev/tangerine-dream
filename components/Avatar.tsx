@@ -1,5 +1,9 @@
 import React, {Component, ReactElement, MouseEvent} from 'react'
-import {css, prepareStyles, t, ExtraStyles, ThemeProps, withTheme} from '@alt/styles'
+import { SerializedStyles} from '@emotion/core'
+
+import {css, prepareStyles, t, ExtraStyles, ThemeProps, withTheme, } from '@alt/styles'
+import {Breakpoints, Renderable} from '@alt/types'
+import {ConditionalWrap} from '@alt/components'
 
 interface Props extends ThemeProps {
   img?: string,
@@ -8,21 +12,28 @@ interface Props extends ThemeProps {
   circle?: boolean,
   inverted?: boolean,
   badge?: ReactElement,
+  alignCenter?: boolean
   autoWidth?: boolean,
   hexagon?: boolean,
   icon?: ReactElement<HTMLElement>,
   wide?: boolean,
   extraStyles?: ExtraStyles,
   weighted?: boolean,
+  superWeighted?: boolean
   topWeighted?: boolean,
   superWide?: boolean
   onClick?(e: MouseEvent<HTMLElement>): void,
 }
 
+interface Styles {[key: string]: SerializedStyles}
+
 export interface AvatarProps extends Props {}
 
 const DEFAULT_IMAGE = '/img/avatar-42px_360.png'
 const DEFAULT_ORG_IMAGE = '/img/default-org.svg'
+
+const wrapWithCenter = (styles: Styles) => (children: Renderable) =>
+  <div css={css(styles.isAlignedCenter)}>{children}</div>
 
 class UnthemedAvatar extends Component<Props> {
 
@@ -48,8 +59,10 @@ class UnthemedAvatar extends Component<Props> {
     const {
       theme,
       size,
+      alignCenter,
       organization,
       autoWidth,
+      superWeighted,
       inverted,
       badge,
       circle,
@@ -84,16 +97,28 @@ class UnthemedAvatar extends Component<Props> {
         ...t.cover,
         ...t.bg_center
       },
+      isAlignedCenter: {
+        ...t.flex,
+        ...t.items_center,
+        ...t.justify_center
+      },
       isInverted: {
         backgroundColor: theme.white500
       },
       isAutoWidth: {
-        ...t.fill_available,
-        height: 'auto',
-        backgroundImage: 'none',
+        ...t.w_100,
+        height: 0,
         ...t.flex,
         ...t.items_center,
-        ...t.justify_center
+        ...t.justify_center,
+        paddingTop: '75%',
+        [Breakpoints.Medium]: {
+          paddingTop: '55%',
+        }
+
+      },
+      isSuperWeighted: {
+        ...t.mb5
       },
       isCircle: {
         ...t.br_100
@@ -110,7 +135,9 @@ class UnthemedAvatar extends Component<Props> {
       },
       autoWidthImage: {
         ...t.fill_available,
-        height: 'auto',
+        ...t.w_100,
+        maxHeight: '100%',
+        marginTop: '-100%',
       },
       semanticImage: {
         ...t.dn
@@ -142,34 +169,37 @@ class UnthemedAvatar extends Component<Props> {
     })
 
     return (
-      <figure
-        role={onClick && 'button'}
-        css={css(
-          avatarStyles.Avatar,
-          !img && avatarStyles.isIcon,
-          circle && avatarStyles.isCircle,
-          autoWidth && avatarStyles.isAutoWidth,
-          hexagon && avatarStyles.isHexagon,
-          inverted && avatarStyles.isInverted,
-          weighted && avatarStyles.isWeighted,
-          topWeighted && avatarStyles.isTopWeighted,
-          img === DEFAULT_IMAGE && avatarStyles.isDefaultImage,
-          extraStyles)
-        }
-        onClick={onClick}>
-        {icon && !img && icon}
-        {img &&
-          <img
-            data-test-id={`image-${img && img.lastIndexOf != null ? img.substring(img.lastIndexOf('/') + 1) : ''}` }
-            alt="Profile image"
-            width={autoWidth ? 'auto' : size}
-            height={autoWidth ? 'auto' : size}
-            src={img}
-            css={css(avatarStyles.semanticImage, autoWidth && avatarStyles.autoWidthImage)}
-          />
-        }
-        {badge && <div css={css(avatarStyles.AvatarBadge)}>{badge}</div>}
-      </figure>
+      <ConditionalWrap condition={!!alignCenter} wrap={wrapWithCenter(avatarStyles)}>
+        <figure
+          role={onClick && 'button'}
+          css={css(
+            avatarStyles.Avatar,
+            !img && avatarStyles.isIcon,
+            circle && avatarStyles.isCircle,
+            autoWidth && avatarStyles.isAutoWidth,
+            hexagon && avatarStyles.isHexagon,
+            inverted && avatarStyles.isInverted,
+            weighted && avatarStyles.isWeighted,
+            topWeighted && avatarStyles.isTopWeighted,
+            superWeighted && avatarStyles.isSuperWeighted,
+            img === DEFAULT_IMAGE && avatarStyles.isDefaultImage,
+            extraStyles)
+          }
+          onClick={onClick}>
+          {icon && !img && icon}
+          {img &&
+            <img
+              data-test-id={`image-${img && img.lastIndexOf != null ? img.substring(img.lastIndexOf('/') + 1) : ''}`}
+              alt="Profile image"
+              width={autoWidth ? 'auto' : size}
+              height={autoWidth ? 'auto' : size}
+              src={img}
+              css={css(avatarStyles.semanticImage, autoWidth && avatarStyles.autoWidthImage)}
+            />
+          }
+          {badge && <div css={css(avatarStyles.AvatarBadge)}>{badge}</div>}
+        </figure>
+      </ConditionalWrap>
     )
   }
 }

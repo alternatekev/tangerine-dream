@@ -14,7 +14,7 @@ const Visual = () =>
     <>
       <Card level={2} middleStacked>
         <Layout kind={Layouts.WideRight} alignment="center">
-          <Avatar img="/rl/logo.png" circle size={210} />
+            <Avatar alignCenter superWeighted img="/rl/logo.png" circle size={210} />
           <>
             <Header level={2} intense>WORDPRESS & REACT / WOOCOMMERCE</Header>
             <P large>
