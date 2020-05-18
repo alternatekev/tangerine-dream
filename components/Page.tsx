@@ -2,6 +2,9 @@ import React, {Component} from 'react'
 import {ThemeProvider} from 'emotion-theming'
 import Head from 'next/head'
 
+import {MediaQueryRenderer} from '@alt/components'
+import {BreakpointProps} from '@alt/types'
+
 import {
   css, 
   t, 
@@ -105,7 +108,9 @@ export class Page extends Component<Props, State> {
             <article css={css(styles.PageChildren)} id="PageChildren">
               {children && typeof children === 'function' ? children(currentTheme) : children}
             </article>
-            <PageFooter />
+            <MediaQueryRenderer breakpoints={BreakpointProps.NotSmall}>
+              <PageFooter />
+            </MediaQueryRenderer>
           </ThemeProvider>
         </main>
       </>

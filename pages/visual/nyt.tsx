@@ -24,7 +24,7 @@ const Visual = () =>
         </Layout>
         <Divider superWeighted superTopWeighted level={0} />
         <Layout kind={Layouts.Left} alignment="center">
-          <ProjectImage src="/nyt/nyt1.png" alt="" />
+          <ProjectImage src="/nyt/card.png" alt="" />
           <P>
               While our pitch work had been valuable in demonstrating our abilities from a cold start, we needed to start all over again once things were officially underway. This included meetings on-site with news editors, graphics editors, and web designers. We learned the ins-and-outs of their archaic publishing system (since replaced with WordPress) so that we could better understand how their web content producers’ work flowed throughout the day and night.
           </P>
