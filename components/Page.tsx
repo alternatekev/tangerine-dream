@@ -92,6 +92,7 @@ export class Page extends Component<Props, State> {
             }
           `}
           </style>
+          <title>Alternate.org // {title}</title>
         </Head>
         <main id="Page" css={css(styles.Page)}>
           <ThemeProvider theme={currentTheme}>

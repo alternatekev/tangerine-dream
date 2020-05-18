@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { Page, Card, P, Divider, Header, Medium, Layout, Avatar, ProjectImage } from '@alt/components'
 import { ThemeContext } from '@alt/styles'
 import { Layouts } from '@alt/types'
@@ -18,51 +19,32 @@ const Visual = () =>
           <>
             <Header level={2} intense>WORDPRESS & REACT / MUSIC COMPOSITION & CONSULTING</Header>
             <P large>
-              <Medium>Community Funded</Medium> came to me with one need: the first version of their product that got
-              them to where they were was built on old technology, and was now limiting their
-              growth potential. Could I help steer them toward the right choices to make for version 2?
+                Ryan Elmendorf and Nick Geurts are local artists and engineers, who specialize in metalworking and large-scale interactive artowrk. Think Burning Man, because that's their bread and butter.
           </P>
-            <P large>
-              And could I <strong>help them build it?</strong>
-            </P>
           </>
         </Layout>
         <Divider superWeighted superTopWeighted level={0} />
         <Layout kind={Layouts.Left} alignment="center">
-          <ProjectImage src="/wp/Component-Map.png" alt="" />
+          <ProjectImage src="/eg/card.png" alt="" />
           <P>
-            <Medium>Community Funde</Medium>d came to me with one need: the first version of their product that got
-              them to where they were was built on old technology, and was now limiting their
-              growth potential. Could I help steer them toward the right choices to make for version 2?
+              While never having attending the Burn myself, I often find myself involved in their projects, from music composition for the openings of their own art pieces (Levitt Pavilion & Civic Center Park, Denver), or designing their logo and building out their web presence.
           </P>
         </Layout>
         <Divider superWeighted superTopWeighted level={0} />
         <Layout kind={Layouts.Right} alignment="center">
           <P>
-            <Medium>Community Funde</Medium>d came to me with one need: the first version of their product that got
-              them to where they were was built on old technology, and was now limiting their
-              growth potential. Could I help steer them toward the right choices to make for version 2?
+            Their site features a Next.js-powered front-end, with a WordPress/ACF-powered backend, using the WordPress JSON API to communicate.
           </P>
-          <ProjectImage src="/wp/Component-Map.png" alt="" />
+          <ProjectImage src="/eg/eg1.png" alt="" />
         </Layout>
         <Divider superWeighted superTopWeighted level={0} />
         <Layout kind={Layouts.Left} alignment="center">
-          <ProjectImage src="/wp/Component-Map.png" alt="" />
+          <ProjectImage src="/eg/eg2.png" alt="" />
           <P>
-            <Medium>Community Funde</Medium>d came to me with one need: the first version of their product that got
-              them to where they were was built on old technology, and was now limiting their
-              growth potential. Could I help steer them toward the right choices to make for version 2?
-          </P>
+           I've also worked on other work with them, including sound samples for Talking Parking Meters in Denver, Colorado as well as full React and Node developement for <Link href="/visual/dp"><a>the Down Periscope project in Houston, Texas.</a></Link>
+           </P>
         </Layout>
-        <Divider superWeighted superTopWeighted level={0} />
-        <Layout kind={Layouts.Right} alignment="center">
-          <P>
-            <Medium>Community Funde</Medium>d came to me with one need: the first version of their product that got
-              them to where they were was built on old technology, and was now limiting their
-              growth potential. Could I help steer them toward the right choices to make for version 2?
-          </P>
-          <ProjectImage src="/wp/Component-Map.png" alt="" />
-        </Layout>
+       
       </Card>
       <Card middleStacked level={0}>
         <Layout>
