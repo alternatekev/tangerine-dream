@@ -1,7 +1,8 @@
 import {FC} from 'react'
-import {css, prepareStyles, t,inverseTachyonsUnit} from '@alt/styles'
+import {css, prepareStyles, t,inverseTachyonsUnit, ThemeProps, withTheme, DerivedTheme} from '@alt/styles'
+import {imageStyles} from '@alt/components'
 
-interface Props {
+interface Props extends ThemeProps{
   title: string
   subtitle?: string
   img: string
@@ -11,14 +12,14 @@ interface Props {
 
 const getStyles = (img: string) => prepareStyles({
   ImageContainer: {
-    ...t.overflow_hidden,
+    width: 'unset',
     background: `url("${img}")`,
+    ...t.no_repeat,
     ...t.cover,
+    ...t.bg_center,
     ...t.w_100,
     paddingTop: '56.25%',
     height: 0,
-    ...inverseTachyonsUnit(t.ml1),
-    ...inverseTachyonsUnit(t.mr1),
     ...t.mb2
   },
 })
@@ -29,8 +30,9 @@ import {
   P
 } from '@alt/components'
 
-export const ProjectCard: FC<Props> = ({
+const UnthemedProjectCard: FC<Props> = ({
   title,
+  theme,
   img,
   description,
   subtitle,
@@ -42,21 +44,17 @@ export const ProjectCard: FC<Props> = ({
     <Card
       level={0}
       weighted
-      compact
+      autoHeight
       flat
       href={url}
     >
       <Header level={1} primary>{title}</Header>
       {subtitle && <Header level={2}>{subtitle}</Header>}
-      <div css={css(styles.ImageContainer)}>
-        <img
-          src={img}
-          alt={title}
-          css={css(styles.Image)}
-        />
+      <div css={css(imageStyles(theme).ProjectImage, styles.ImageContainer)}>
       </div>
       {description && <P compact weightless>{description}</P>}
     </Card>
   )
 }
-  
+
+export const ProjectCard = withTheme(UnthemedProjectCard)

@@ -3,7 +3,7 @@ import React, {ReactNode, PureComponent, MouseEvent, RefObject, createRef} from 
 import {css, prepareStyles, t, ExtraStyles, ThemeProps, withTheme, CustomColor} from '@alt/styles'
 
 import {Button, UtilityBar, ButtonProps} from '@alt/components'
-import {Renderable } from '@alt/types'
+import {Renderable} from '@alt/types'
 
 export interface MenuItemProps extends ThemeProps {
   as?: string
@@ -33,7 +33,7 @@ export interface MenuItemProps extends ThemeProps {
     selected: ReactNode
   },
   inline?: boolean
-  level?: 0|1|2|3|4|5|6
+  level?: 0 | 1 | 2 | 3 | 4 | 5 | 6
   selected?: boolean
   selectedStyles?: ExtraStyles
   labelStyles?: ExtraStyles

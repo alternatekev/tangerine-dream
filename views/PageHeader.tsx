@@ -5,7 +5,11 @@ import {DerivedTheme, prepareStyles, t, css,} from '@alt/styles'
 import {Header, Card} from '@alt/components'
 import {HeaderMenu} from '@alt/views'
 
-export const PageHeader: FC = () => {  
+interface Props {
+  invertedMenu?: boolean
+}
+
+export const PageHeader: FC<Props> = ({invertedMenu}: Props) => {  
     const theme: DerivedTheme = useTheme()
     const styles = prepareStyles({
       PageTitle: {
@@ -27,7 +31,7 @@ export const PageHeader: FC = () => {
             intense 
             inverted 
             weightedLabel
-            utilityComponent={<HeaderMenu />}
+            utilityComponent={<HeaderMenu invertedMenu={invertedMenu} />}
           >
             KEVIN CONBOY
             <span css={css(styles.PageTitle)}>ALTERNATE.ORG</span>

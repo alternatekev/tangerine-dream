@@ -8,7 +8,7 @@ export enum portfolioTypes {
   WordPress = 'WordPress Design & Development'
 }
 
-export interface PortfolioImage {
+export interface ProjectImage {
   body: Renderable
   url: string
   title: string
@@ -19,5 +19,5 @@ export interface PortfolioItem {
   image: string
   url: string
   body: Renderable
-  images: PortfolioImage[]
+  images: ProjectImage[]
 }

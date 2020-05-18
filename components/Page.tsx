@@ -20,17 +20,18 @@ import {
 interface Props {
   title?: string
   compact?: boolean
-  children?(theme: DerivedTheme): JSX.Element
-  image?: any
+  invertedMenu?: boolean
+  image?: any // tslint:disable-line no-any
   theme?: ThemeContext
   header?: string
+  children?(theme: DerivedTheme): JSX.Element
 }
 
 interface State {
   currentTheme: DerivedTheme,
 }
 
-const getStyles = (image: any, themeContext: DerivedTheme) => {
+const getStyles = (image: any, themeContext: DerivedTheme) => { // tslint:disable-line no-any
 
   return prepareStyles({
     Page: {
@@ -72,6 +73,7 @@ export class Page extends Component<Props, State> {
       children, 
       image, 
       compact,
+      invertedMenu,
       title, 
       header
     } = this.props
@@ -93,7 +95,7 @@ export class Page extends Component<Props, State> {
         </Head>
         <main id="Page" css={css(styles.Page)}>
           <ThemeProvider theme={currentTheme}>
-            <PageHeader />
+            <PageHeader invertedMenu={invertedMenu} />
             <ParallaxHeader compact={compact} background={header} title={title} />
             <article css={css(styles.PageChildren)} id="PageChildren">
               {children && typeof children === 'function' ? children(currentTheme) : children}

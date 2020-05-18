@@ -1,12 +1,6 @@
 import Color from 'color'
 import {calculateColors} from '@alt/styles'
 
-export enum ThemeContext {
-  Home = 'home',
-  Portfolio = 'portfolio',
-  Audio = 'audio'
-}
-
 export type ValueFamilies =  // tslint:disable:no-multi-spaces
   | 1000
   | 975
@@ -309,10 +303,10 @@ export const seedThemes = {
   home: defaultTheme,
   portfolio: {
     primary: Color(`#362250`),
-    secondary: Color(`#7E5582`),
+    secondary: Color(`#FFF`),
     background: Color(`#362250`),
     button: Color(`#362250`),
-    link: Color(`#7E5582`),
+    link: Color(`#211531`),
     grey: Color(`#999`),
     black: Color(`#3E3E3E`),
     white: Color(`#FFF`),
@@ -326,13 +320,103 @@ export const seedThemes = {
     grey: Color(`#999`),
     black: Color(`#3E3E3E`),
     white: Color(`#FFF`),
+  },
+  cf: {
+    primary: Color(`#33CF66`),
+    secondary: Color(`#FFF`),
+    background: Color(`#33CF66`),
+    button: Color(`#33CF66`),
+    link: Color(`#2099B6`),
+    grey: Color(`#797979`),
+    black: Color(`#2E2E2E`),
+    white: Color(`#FFF`),
+  },
+  wp: {
+    primary: Color(`#0387BE`),
+    secondary: Color(`#0A5D98`),
+    background: Color(`#0A5D98`),
+    button: Color(`#0387BE`),
+    link: Color(`#0A5D98`),
+    grey: Color(`#797979`),
+    black: Color(`#2E2E2E`),
+    white: Color(`#FFF`),
+  },
+  nyt: {
+    primary: Color(`#333`),
+    secondary: Color(`#666`),
+    background: Color(`#CCC`),
+    button: Color(`#567B95`),
+    link: Color(`#567B95`),
+    grey: Color(`#797979`),
+    black: Color(`#2E2E2E`),
+    white: Color(`#FFF`),
+  },
+  ca: {
+    primary: Color(`#E20052`),
+    secondary: Color(`#FFF`),
+    background: Color(`#5B8578`),
+    button: Color(`#567B95`),
+    link: Color(`#E20052`),
+    grey: Color(`#797979`),
+    black: Color(`#2E2E2E`),
+    white: Color(`#FFF`),
+  },
+  pd: {
+    primary: Color(`#B32825`),
+    secondary: Color(`#F89B4C`),
+    background: Color(`#B32825`),
+    button: Color(`#3AA4D9`),
+    link: Color(`#3AA4D9`),
+    grey: Color(`#797979`),
+    black: Color(`#2E2E2E`),
+    white: Color(`#FFF`),
+  },
+  dp: {
+    primary: Color(`#0387BE`),
+    secondary: Color(`#0A5D98`),
+    background: Color(`#217BB9`),
+    button: Color(`#217BB9`),
+    link: Color(`#217BB9`),
+    grey: Color(`#797979`),
+    black: Color(`#2E2E2E`),
+    white: Color(`#FFF`),
+  },
+  eg: {
+    primary: Color(`#F23614`),
+    secondary: Color(`#FFF`),
+    background: Color(`#F3590D`),
+    button: Color(`#F3590D`),
+    link: Color(`#F3590D`),
+    grey: Color(`#797979`),
+    black: Color(`#2E2E2E`),
+    white: Color(`#FFF`),
   }
+}
+
+export enum ThemeContext {
+  Home = 'home',
+  Portfolio = 'portfolio',
+  Audio = 'audio',
+  CF = 'cf',
+  WP = 'wp',
+  NYT = 'nyt',
+  CA = 'ca',
+  PD = 'pd',
+  DP = 'dp',
+  EG = 'eg'
 }
 
 interface Themes {
   home: Theme,
   portfolio: Theme,
-  audio: Theme
+  audio: Theme,
+  cf: Theme,
+  wp: Theme,
+  nyt: Theme,
+  ca: Theme,
+  pd: Theme,
+  dp: Theme,
+  eg: Theme
 }
 
 export function deriveThemes(seededThemes: Themes) {

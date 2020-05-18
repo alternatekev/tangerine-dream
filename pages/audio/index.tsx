@@ -1,15 +1,8 @@
 import {Row, Col} from 'react-grid-system'
 
-import {Page, Card, P, Divider, Medium} from '@alt/components'
-import {ThemeContext, t, css, prepareStyles} from '@alt/styles'
+import {Page, Card, P, Divider} from '@alt/components'
+import {ThemeContext} from '@alt/styles'
 import {ProjectCard} from '@alt/views'
-
-const styles = prepareStyles({
-  BG: {
-    filter: `opacity(0.75) contrast(120%) blur(0.5px)`,
-    mixBlendMode: 'color-burn'
-  }
-})
 
 const Audio = () => 
 <Page 
@@ -29,18 +22,21 @@ const Audio = () =>
           subtitle="Colormath"
           img="/cm/card.png"
           url="/audio/cm"
+          description="Goth-inspired shoegaze, with Carly Stambaugh"
         />
         <ProjectCard
           title="States"
           subtitle="For the Earth Was Empty of Form"
           img="/fteweof/states.png"
           url="/audio/st"
+          description="Noisy/ambient post-rock, solo project"
         />
         <ProjectCard
           title="December"
           subtitle="For the Earth Was Empty of Form"
           img="/fteweof/december.png"
           url="/audio/dec"
+          description="Electronic post-rock, solo project"
         />
       </Col>
       <Col md={6}>
@@ -49,18 +45,21 @@ const Audio = () =>
           subtitle="A Documentary Company"
           img="/adc/card.png"
           url="/"
+          description="Soundtrack for short documentary"
         />
         <ProjectCard
           title="Morocco"
           subtitle="For the Earth Was Empty of Form"
           img="/fteweof/morocco.png"
           url="/audio/mc"
+          description="Post-rock, solo project"
         />
         <ProjectCard
           title="An Earthen Ocean"
           subtitle="For the Earth Was Empty of Form"
           img="/fteweof/anearthenocean.png"
           url="/audio/aeo"
+          description="Post-rock, solo project"
         />
       </Col>
     </Row>

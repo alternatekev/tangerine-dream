@@ -60,7 +60,7 @@ export interface ButtonProps {
   superWeighted?: boolean
   tertiary?: boolean
   topWeighted?: boolean
-  type?: 'button'|'submit'|'reset'
+  type?: 'button' | 'submit' | 'reset'
   unread?: boolean
   weighted?: boolean
   wrap?: boolean

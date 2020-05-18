@@ -1,5 +1,5 @@
-import Document, {Html, Head, Main, NextScript, DocumentContext, DocumentProps } from 'next/document'
-import { extractCritical } from 'emotion-server'
+import Document, {Html, Head, Main, NextScript, DocumentContext, DocumentProps} from 'next/document'
+import {extractCritical} from 'emotion-server'
 
 export interface EmotionCriticalProps {
   html: string
@@ -12,7 +12,8 @@ export default class MyDocument extends Document<EmotionCriticalProps & Document
     const page = await ctx.renderPage()
     const pageProps = await Document.getInitialProps(ctx)
     const styles = extractCritical(page.html)
-    return { ...pageProps, ...styles }
+
+    return {...pageProps, ...styles}
   }
 
   render() {
@@ -24,7 +25,7 @@ export default class MyDocument extends Document<EmotionCriticalProps & Document
           <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@200;300;400;700;800&family=Yrsa:wght@300;500;700&display=swap" rel="stylesheet" />
           <style
             data-emotion-css={this.props.ids.join(' ')}
-            dangerouslySetInnerHTML={{ __html: this.props.css }}
+            dangerouslySetInnerHTML={{__html: this.props.css}}
           />
         </Head>
         <body>

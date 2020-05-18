@@ -1,4 +1,4 @@
-import { NextPage } from 'next'
+import {NextPage} from 'next'
 import * as VFX from 'react-vfx'
 
 import {
@@ -15,7 +15,7 @@ import {
   Medium
 } from '@alt/components'
 import {Layouts} from '@alt/types'
-import {DerivedTheme, prepareStyles, css, t } from '@alt/styles'
+import {DerivedTheme, prepareStyles, css, t} from '@alt/styles'
 
 const listItemProps: ListItemProps = {
   compact: true,
@@ -35,15 +35,13 @@ const Home: NextPage = () =>
     <Divider weighted level={0} />
     <Layout kind={Layouts.MidRight}>
       <div>
-        <Card fullBleed borderless alignRight><Avatar img="/MCM_0894.png" circle size={280} /></Card>
+        <Card fullBleed borderless alignRight><Avatar img="/MCM_0894.png" circle size={240} /></Card>
         <P compact alignRight superWeighted><em>Over the course of my career, I’ve run the gamut of user experience design, user interface design, interaction design, interactive prototyping, data visualization and content strategy. I believe in the power of the internet to bring people together and I worry about its tendency to drive us apart.</em></P>
-        <Divider weighted level={0} />
-        <P compact alignRight><em>Over the course of my career, I’ve run the gamut of user experience design, user interface design, interaction design, interactive prototyping, data visualization and content strategy. I believe in the power of the internet to bring people together and I worry about its tendency to drive us apart.</em></P>
       </div>
       <div>
         <P>I’ve written extensively about <a href="https://alternatekev.me">my work history on my blog</a>, so you can read that if you’re interested. If you’re short on time or just want the highlights, some clients I’ve worked on include:</P>
-        <Layout>
-          <List>
+        <Layout noGutter>
+          <List indented={false}>
             {() => <>
               <ListItem {...listItemProps}><Button intense href="/visual/cf" borderless inline compact>Community Funded</Button> / 2017 - 2020</ListItem>
               <ListItem {...listItemProps}><Button intense href="/visual/ca" borderless inline compact>Project Catchfly / CA Technologies</Button> / 2016</ListItem>

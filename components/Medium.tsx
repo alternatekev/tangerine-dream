@@ -7,6 +7,6 @@ interface MediumProps extends ThemeProps{
 }
 
 const UnthemedMedium: FC<MediumProps> = ({theme, children}: MediumProps) =>
-<strong className="medium" css={css({ color: theme.primary400 })}>{children}</strong>
+<strong className="medium" css={css({color: theme.primary400})}>{children}</strong>
 
 export const Medium = withTheme(UnthemedMedium)

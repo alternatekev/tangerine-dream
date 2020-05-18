@@ -16,10 +16,14 @@ enum MenuItems {
   Blog = 'https://alternatekev.me'
 }
 
-export const HeaderMenu: FC = () =>
+interface Props {
+  invertedMenu?: boolean
+}
+
+export const HeaderMenu: FC<Props> = ({invertedMenu}: Props) =>
   <Menu horizontal extraStyles={styles.TopHeaderMenu}>
-    <MenuItem href={MenuItems.Home}>HOME</MenuItem>
-    <MenuItem href={MenuItems.Visual}>VISUAL</MenuItem>
-    <MenuItem href={MenuItems.Audio}>AUDIO</MenuItem>
-    <MenuItem href={MenuItems.Blog} external>BLOG</MenuItem>
+    <MenuItem inverted={invertedMenu} href={MenuItems.Home}>HOME</MenuItem>
+    <MenuItem inverted={invertedMenu} href={MenuItems.Visual}>VISUAL</MenuItem>
+    <MenuItem inverted={invertedMenu} href={MenuItems.Audio}>AUDIO</MenuItem>
+    <MenuItem inverted={invertedMenu} href={MenuItems.Blog} external>BLOG</MenuItem>
   </Menu>

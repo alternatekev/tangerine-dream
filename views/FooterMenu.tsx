@@ -1,7 +1,7 @@
 import React, {FC} from 'react'
 
 import {Menu, MenuItem} from '@alt/components'
-import { Alignment } from '@alt/types'
+import {Alignment} from '@alt/types'
 
 export enum MenuItems {
   Home = '/',

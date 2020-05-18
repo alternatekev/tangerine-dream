@@ -26,7 +26,7 @@ interface Props extends ThemeProps {
 }
 
 export const LayoutConfig: Configuration = {
-  gutterWidth: 20,
+  gutterWidth: 40,
   defaultScreenClass: 'md',
   breakpoints: [460, 768, 1024, 1300]
 }

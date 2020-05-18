@@ -1,7 +1,7 @@
 import React from 'react'
 import App from 'next/app'
-import { CacheProvider } from '@emotion/core'
-import { cache } from 'emotion'
+import {CacheProvider} from '@emotion/core'
+import {cache} from 'emotion'
 import {VFXProvider} from 'react-vfx'
 
 function MyApp({pageProps, Component}) {
@@ -15,9 +15,9 @@ function MyApp({pageProps, Component}) {
 }
 
 MyApp.getInitialProps = async (appContext) => {
-  const appProps = await App.getInitialProps(appContext);
+  const appProps = await App.getInitialProps(appContext)
 
-  return { ...appProps }
+  return {...appProps}
 }
 
 export default MyApp
