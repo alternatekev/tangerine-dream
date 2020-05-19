@@ -18,6 +18,6 @@ export interface PortfolioItem {
   title: string
   image: string
   url: string
-  body: Renderable
-  images: ProjectImage[]
+  description: string
+  //images: ProjectImage[]
 }
