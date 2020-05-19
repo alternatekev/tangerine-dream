@@ -50,7 +50,7 @@ right now
 
           <Layout alignment="center">
             <P>
-We used an iterative, design sprint-based approach that incldued customers, clients, success managers, board members, and executives. This all-inclusive approach led to the product improving by leaps and bounds in short amounts of time, with ideas we knew were already vetted with users.
+We used an iterative, design sprint-based approach that included customers, clients, success managers, board members, and executives. This all-inclusive approach led to the product improving by leaps and bounds in short amounts of time, with ideas we knew were already vetted with users.
             </P>
             <ProjectImage src="/cf/cf1.png" alt="" />
 
