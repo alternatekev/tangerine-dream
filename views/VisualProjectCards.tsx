@@ -20,7 +20,7 @@ export const VisualProjectCards: FC<Props> = ({
 }: Props) =>
   <Row nogutter>
     {portfolio.map((item, i) => {
-      if(item.id !== pid) {
+      if (item.id !== pid) {
         return (
           <Col md={4} key={`col_${i}`}>
             <ProjectCard

@@ -29,7 +29,7 @@ export const getButtonStyles = (theme: DerivedTheme) => {
       color: theme.black500,
       fill: `inherit`,
       borderColor: theme.grey200,
-      transition: `background-color 100ms ease-in-out`,
+      transition: `all 100ms ease-in-out`,
       ...t.lh_copy,
       ':focus': {
         outline: `1px ${theme.button200} solid`,
@@ -190,7 +190,6 @@ export const getButtonStyles = (theme: DerivedTheme) => {
       ...t.br0,
       ...t.b__transparent,
       ...t.bg_transparent,
-      ...t.underline,
       color: theme.link700,
       ':hover': {
         ...t.bg_transparent

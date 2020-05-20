@@ -63,7 +63,7 @@ const UnthemedProjectCard: FC<Props> = ({
       flat={flat}
       href={!disabled ? url : undefined}
     >
-      <Header level={1} inverted={disabled}>{title}</Header>
+      <Header level={1} inverted={disabled || inverted}>{title}</Header>
       {subtitle && <Header level={2}>{subtitle}</Header>}
       <div css={css(imageStyles(theme).ProjectImage, styles.ImageContainer)}/>
       {description && <P compact weightless inverted={inverted}>{description}</P>}

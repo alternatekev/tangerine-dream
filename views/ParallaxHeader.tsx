@@ -34,7 +34,7 @@ const getStyles = (theme: DerivedTheme, background?: string, compact?: boolean) 
     [Breakpoints.Small]: {
       fontSize: '4rem',
       fontWeight: 100,
-      lineHeight: '8.5rem',
+      lineHeight: '4.5rem',
       letterSpacing: `-0.1rem`
     }
   },
