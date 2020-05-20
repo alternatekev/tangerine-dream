@@ -124,3 +124,8 @@ input {
 strong {
   font-weight: 700;
 }
+
+.react-slidedown.slide-down {
+    transition-duration: 100ms;
+    transition-timing-function: ease-in-out;
+}

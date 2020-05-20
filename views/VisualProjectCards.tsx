@@ -19,20 +19,24 @@ export const VisualProjectCards: FC<Props> = ({
   autoHeight
 }: Props) =>
   <Row nogutter>
-    {portfolio.map((item, i) => 
-      <Col md={4} key={`col_${i}`}>
-        <ProjectCard
-          level={pid === item.id ? 0 : cardLevel ? cardLevel : 0}
-          disabled={pid === item.id}
-          flat={pid === item.id ? false : true}
-          autoHeight={autoHeight}
-          inverted={inverted}
-          borderless={borderless && pid !== item.id}
-          title={item.title}
-          img={item.image}
-          url={item.url}
-          description={item.description}
-        />
-      </Col>
+    {portfolio.map((item, i) => {
+      if(item.id !== pid) {
+        return (
+          <Col md={4} key={`col_${i}`}>
+            <ProjectCard
+              level={pid === item.id ? 0 : cardLevel ? cardLevel : 0}
+              disabled={pid === item.id}
+              flat={pid === item.id ? false : true}
+              autoHeight={autoHeight}
+              inverted={inverted}
+              borderless={borderless && pid !== item.id}
+              title={item.title}
+              img={item.image}
+              url={item.url}
+              description={item.description}
+            />
+          </Col>)
+        }
+      }
     )}
   </Row>

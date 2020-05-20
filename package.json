@@ -20,6 +20,7 @@
     "@emotion/styled": "10.0.27",
     "@types/color": "^3.0.1",
     "@types/ramda": "^0.27.4",
+    "@types/react-motion": "^0.0.29",
     "@types/react-responsive": "^8.0.2",
     "@types/react-select": "^3.0.13",
     "color": "^3.1.2",
@@ -36,6 +37,7 @@
     "react-player": "^2.0.1",
     "react-responsive": "^8.0.3",
     "react-select": "^3.1.0",
+    "react-slidedown": "^2.4.5",
     "react-stack-grid": "^0.7.1",
     "react-use": "^14.2.0",
     "vercel": "^19.0.1"

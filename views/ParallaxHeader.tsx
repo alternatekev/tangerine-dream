@@ -1,6 +1,7 @@
 import React, {FC, useState, Dispatch, SetStateAction} from 'react'
 import {useRouter} from 'next/router'
 import AppsIcon from 'mdi-react/AppsIcon'
+import {SlideDown} from 'react-slidedown'
 
 import {Breakpoints} from '@alt/types'
 import {id} from '@alt/data'
@@ -10,6 +11,7 @@ import {
   prepareStyles, 
   ThemeProps, 
   withTheme, 
+  css,
   DerivedTheme,
 } from '@alt/styles'
 
@@ -22,7 +24,9 @@ const getStyles = (theme: DerivedTheme, background?: string, compact?: boolean) 
     ...t.bg_center,
     backgroundBlendMode: 'luminosity',
     backgroundImage: background ? `url("${background}")` : undefined,
-    backgroundColor: theme.background500_50
+    backgroundColor: theme.background500_50,
+    ...t.relative,
+    zIndex: 1000
   },
   ContentTitle: {
     fontSize: compact ? '6.5rem' : '15rem',
@@ -52,6 +56,10 @@ const getStyles = (theme: DerivedTheme, background?: string, compact?: boolean) 
     ...t.overflow_auto,
     height: `40vh`,
     backgroundColor: theme.background500_50
+  },
+  Slider: {
+    transitionDuration: '100ms',
+    transitionTimingFunction: 'ease-in-out'
   }
 })
 
@@ -94,10 +102,10 @@ const UnthemedParallaxHeader: FC<Props> = ({
           primary
           utilityComponent={showMenu 
             ? <Button 
-                inverted 
+                inverted={!open} 
                 borderless 
                 onClick={onClick(open, setOpen)} 
-              icon={<AppsIcon />} 
+                icon={<AppsIcon />} 
               /> 
             : null
           }
@@ -105,11 +113,22 @@ const UnthemedParallaxHeader: FC<Props> = ({
           {title}
         </Header>
       </Card>
-      {showMenu && open &&
-        <Card middleStacked level={1} extraStyles={styles.ParallaxMenu}>
-        <VisualProjectCards cardLevel={1} borderless autoHeight={false} inverted pid={split[2] as id} />
-        </Card>
-      }
+      <SlideDown className="slide-down">
+        {showMenu && open &&
+          <Card 
+            middleStacked level={1} 
+            extraStyles={styles.ParallaxMenu}
+          >
+            <VisualProjectCards 
+              cardLevel={1} 
+              borderless 
+              autoHeight={false} 
+              inverted 
+              pid={split[2] as id} 
+            />
+          </Card>
+        }
+      </SlideDown>
     </>
   )
 }
