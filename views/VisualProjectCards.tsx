@@ -4,7 +4,7 @@ import {ProjectCard,} from '@alt/views'
 import {portfolio, id} from '@alt/data'
 
 interface Props {
-  cardLevel: 0 | 1 | 2 | 3 | 4 | 5
+  cardLevel?: 0 | 1 | 2 | 3 | 4 | 5
   borderless?: boolean
   autoHeight?: boolean
   inverted?: boolean

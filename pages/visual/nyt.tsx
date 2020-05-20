@@ -1,5 +1,5 @@
 import React from 'react'
-import {Page, Card, P, Divider, Header, Layout, Avatar, ProjectImage} from '@alt/components'
+import {Page, Card, P, Divider, Layout, ProjectImage} from '@alt/components'
 import {ThemeContext} from '@alt/styles'
 import {Layouts} from '@alt/types'
 import {RelatedProjectCards, ProjectHeader} from '@alt/views'
@@ -13,7 +13,7 @@ const Visual = () =>
   >{() =>
     <>
       <Card level={2} middleStacked>
-        <ProjectHeader subhead="MARKETS RESEARCH &mdash; WALL ST ON DEMAND" logo="/nyt/logo.png" circle size={210}>
+        <ProjectHeader subhead="MARKETS RESEARCH &mdash; WALL ST ON DEMAND" logo="/nyt/logo.png" >
           <P large>
             In the fall of 2006, I was part of a small team at Wall Street on Demand that pitched The New York Times on a replacement for their MarketWatch-powered (meaning competitor-powered) financial markets research portal. We continued to meet with the client periodically for about a year before work started in earnest.
           </P>

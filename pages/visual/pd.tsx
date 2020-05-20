@@ -64,7 +64,7 @@ const Visual = () =>
           <ProjectImage src="/wp/Component-Map.png" alt="" />
         </Layout>
       </Card>
-        <RelatedProjectCards pid="pd" />
+        <RelatedProjectCards pid="eg" />
     </>
     }
   </Page>

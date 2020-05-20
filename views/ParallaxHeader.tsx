@@ -2,7 +2,7 @@ import React, {FC, useState, Dispatch, SetStateAction} from 'react'
 import {useRouter} from 'next/router'
 import AppsIcon from 'mdi-react/AppsIcon'
 
-import { Breakpoints } from '@alt/types'
+import {Breakpoints} from '@alt/types'
 import {id} from '@alt/data'
 
 import {
@@ -14,7 +14,7 @@ import {
 } from '@alt/styles'
 
 import {Card, Header, Button} from '@alt/components'
-import { VisualProjectCards } from '@alt/views'
+import {VisualProjectCards} from '@alt/views'
 
 const getStyles = (theme: DerivedTheme, background?: string, compact?: boolean) => prepareStyles({
   Background: {
@@ -61,7 +61,7 @@ interface Props extends ThemeProps {
   background?: string
 }
 
-const onClick = (open: boolean, setOpen: Dispatch<SetStateAction<boolean>>) => (_) => {
+const onClick = (open: boolean, setOpen: Dispatch<SetStateAction<boolean>>) => () => {
   setOpen(!open)
 }
 

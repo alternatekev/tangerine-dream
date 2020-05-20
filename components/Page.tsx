@@ -3,7 +3,7 @@ import {ThemeProvider} from 'emotion-theming'
 import Head from 'next/head'
 
 import {MediaQueryRenderer} from '@alt/components'
-import {BreakpointProps} from '@alt/types'
+import {BreakpointProps, Breakpoints} from '@alt/types'
 
 import {
   css, 
@@ -19,7 +19,6 @@ import {
   PageHeader, 
   ParallaxHeader
 } from '@alt/views'
-import {Breakpoints} from '@alt/types'
 
 interface Props {
   title?: string

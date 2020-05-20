@@ -1,5 +1,5 @@
 import React from 'react'
-import App, { AppContext } from 'next/app'
+import App, {AppContext} from 'next/app'
 import {CacheProvider} from '@emotion/core'
 import {cache} from 'emotion'
 

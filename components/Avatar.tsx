@@ -1,7 +1,7 @@
 import React, {Component, ReactElement, MouseEvent} from 'react'
-import { SerializedStyles} from '@emotion/core'
+import {SerializedStyles} from '@emotion/core'
 
-import {css, prepareStyles, t, ExtraStyles, ThemeProps, withTheme, } from '@alt/styles'
+import {css, prepareStyles, t, ExtraStyles, ThemeProps, withTheme,} from '@alt/styles'
 import {Breakpoints, Renderable} from '@alt/types'
 import {ConditionalWrap} from '@alt/components'
 
