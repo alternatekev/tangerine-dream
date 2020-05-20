@@ -1,7 +1,7 @@
-import {Page, Card, P, Divider, Header, Medium, Layout, Avatar, ProjectImage, List, ListItem} from '@alt/components'
+import {Page, Card, P, Divider, Medium, Layout, ProjectImage, List, ListItem} from '@alt/components'
 import {ThemeContext} from '@alt/styles'
 import {Layouts} from '@alt/types'
-import {ProjectCard} from '@alt/views'
+import {RelatedProjectCards, ProjectHeader} from '@alt/views'
 
 const Visual = () =>
   <Page
@@ -12,16 +12,11 @@ const Visual = () =>
   >{() =>
     <>
       <Card level={2} middleStacked>
-        <Layout kind={Layouts.WideRight} alignment="center">
-            <Avatar alignCenter superWeighted img="/wp/wpcom-wmark.png" circle size={210} />
-          <>
-            <Header level={2} intense>CALYPSO</Header>
-            <P large>
-                I worked at <Medium>Automattic</Medium> for six years, and two of them were spent on <strong>Calypso, an API- and JavaScript-powered UI for WordPress</strong>. Calypso runs the WordPress desktop app, the WordPress.com UI, influences the UX of the WordPress mobile app and is built using Node.js + React.
-            </P>
-          </>
-        </Layout>
-        <Divider superWeighted superTopWeighted level={0} />
+        <ProjectHeader subhead="CALYPSO" logo="/wp/wpcom-wmark.png">
+          <P large>
+              I worked at <Medium>Automattic</Medium> for six years, and two of them were spent on <strong>Calypso, an API- and JavaScript-powered UI for WordPress</strong>. Calypso runs the WordPress desktop app, the WordPress.com UI, influences the UX of the WordPress mobile app and is built using Node.js + React.
+          </P>
+        </ProjectHeader>
         <Layout kind={Layouts.Left} alignment="center">
           <ProjectImage src="/wp/wp1.png" alt="" />
             <P>
@@ -31,7 +26,7 @@ const Visual = () =>
         <Divider superWeighted superTopWeighted level={0} />
           <Layout kind={Layouts.Right} alignment="center">
             <P compact>
-We had historically eschewed email, working together through the internally-developed P2 WordPress theme and IRC. Prior to Calypso, we usually launched code pretty quickly through Subversion to the main production codebase, and teams often iterated in silos, attending to their own needs first and foremost. Calypso changed all of that, moving a large portion of the design and development discussion to Slack and Github, adding beneficial layers of peer-based code and design review on top of each Pull Request. The end result was a more cohesive product, for us in the code and for our users in the experience. Designers started working more closely together on specific issues across teams, developers and designers collaborated in quicker iterations to get to better solutions, and the standards we used to build the app progressed along with evolving React and ES6 best practices
+              We had historically eschewed email, working together through the internally-developed P2 WordPress theme and IRC. Prior to Calypso, we usually launched code pretty quickly through Subversion to the main production codebase, and teams often iterated in silos, attending to their own needs first and foremost. Calypso changed all of that, moving a large portion of the design and development discussion to Slack and Github, adding beneficial layers of peer-based code and design review on top of each Pull Request. The end result was a more cohesive product, for us in the code and for our users in the experience. Designers started working more closely together on specific issues across teams, developers and designers collaborated in quicker iterations to get to better solutions, and the standards we used to build the app progressed along with evolving React and ES6 best practices
             </P>
             <ProjectImage src="/wp/wp2.png" alt="" />
           </Layout>
@@ -61,23 +56,7 @@ We had historically eschewed email, working together through the internally-deve
             <ProjectImage src="/wp/wp3.png" alt="" />
           </Layout>
       </Card>
-      <Card middleStacked level={0}>
-        <Layout>
-            <ProjectCard
-              title="The New York Times"
-              img="/nyt/card.png"
-              url="/visual/nyt"
-              description="Creative Direction, Dev Team Management, UX & UI Design, Data Visualization"
-            />
-          <ProjectCard
-            title="Community Funded 2.0"
-            img="/cf/card.png"
-            url="/visual/cf"
-            description="Node.js Consulting, Design Systems, UI & UX Design"
-          />
-           
-        </Layout>
-      </Card>
+        <RelatedProjectCards pid="wp" />
     </>
   }
   </Page>

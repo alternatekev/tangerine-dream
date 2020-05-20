@@ -1,12 +1,4 @@
 import {Renderable} from '@alt/types'
-export enum portfolioTypes {
-  UI = 'UI Design',
-  UX = 'UX Design',
-  React = 'React Development',
-  DesignSystem = 'Design Systems',
-  Info = 'Information Design',
-  WordPress = 'WordPress Design & Development'
-}
 
 export interface ProjectImage {
   body: Renderable
@@ -19,5 +11,6 @@ export interface PortfolioItem {
   image: string
   url: string
   description: string
+  id: string
   //images: ProjectImage[]
 }

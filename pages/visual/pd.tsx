@@ -1,7 +1,7 @@
 import {Page, Card, P, Divider, Header, Medium, Layout, Avatar, ProjectImage} from '@alt/components'
 import {ThemeContext} from '@alt/styles'
 import {Layouts} from '@alt/types'
-import {ProjectCard} from '@alt/views'
+import {RelatedProjectCards} from '@alt/views'
 
 const Visual = () =>
   <Page
@@ -64,28 +64,7 @@ const Visual = () =>
           <ProjectImage src="/wp/Component-Map.png" alt="" />
         </Layout>
       </Card>
-        <Card middleStacked level={0}>
-          <Layout>
-            <ProjectCard
-              title="WordPress.com"
-              img="/wp/card.png"
-              url="/visual/wp"
-              description="UI & UX Design, Design Systems, CSS"
-            />
-            <ProjectCard
-              title="The New York Times"
-              img="/nyt/card.png"
-              url="/visual/nyt"
-              description="Creative Direction, Dev Team Management, UX & UI Design, Data Visualization"
-            />
-            <ProjectCard
-              title="Community Funded 2.0"
-              img="/cf/card.png"
-              url="/visual/cf"
-              description="Node.js Consulting, Design Systems, UI & UX Design"
-            />
-          </Layout>
-        </Card>
+        <RelatedProjectCards pid="pd" />
     </>
     }
   </Page>

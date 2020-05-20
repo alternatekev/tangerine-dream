@@ -1,8 +1,8 @@
 import Link from 'next/link'
-import {Page, Card, P, Divider, Header, Layout, Avatar, ProjectImage} from '@alt/components'
+import {Page, Card, P, Divider, Layout, ProjectImage} from '@alt/components'
 import {ThemeContext} from '@alt/styles'
 import {Layouts} from '@alt/types'
-import {ProjectCard} from '@alt/views'
+import {RelatedProjectCards, ProjectHeader} from '@alt/views'
 
 const Visual = () =>
   <Page
@@ -14,20 +14,15 @@ const Visual = () =>
   >{() =>
     <>
       <Card level={2} middleStacked>
-        <Layout kind={Layouts.WideRight} alignment="center">
-            <Avatar alignCenter superWeighted img="https://www.houstonperiscope.com/static/img/partners/eg.svg" circle size={210} />
-          <>
-            <Header level={2} intense>WORDPRESS & REACT / MUSIC COMPOSITION & CONSULTING</Header>
-            <P large>
-                Ryan Elmendorf and Nick Geurts are local artists and engineers, who specialize in metalworking and large-scale interactive artwork. Think Burning Man, because that's their bread and butter.
+        <ProjectHeader subhead="WORDPRESS & REACT / MUSIC COMPOSITION & CONSULTING" logo="https://www.houstonperiscope.com/static/img/partners/eg.svg">
+          <P large>
+            Ryan Elmendorf and Nick Geurts are local artists and engineers, who specialize in metalworking and large-scale interactive artwork. Think Burning Man, because that's their bread and butter.
           </P>
-          </>
-        </Layout>
-        <Divider superWeighted superTopWeighted level={0} />
+        </ProjectHeader>
         <Layout kind={Layouts.Left} alignment="center">
           <ProjectImage src="/eg/card.png" alt="" />
           <P>
-              While never having attending the Burn myself, I often find myself involved in their projects, from music composition for the openings of their own art pieces (Levitt Pavilion & Civic Center Park, Denver), or designing their logo and building out their web presence.
+            While never having attending the Burn myself, I often find myself involved in their projects, from music composition for the openings of their own art pieces (Levitt Pavilion & Civic Center Park, Denver), or designing their logo and building out their web presence.
           </P>
         </Layout>
         <Divider superWeighted superTopWeighted level={0} />
@@ -41,33 +36,12 @@ const Visual = () =>
         <Layout superWeighted kind={Layouts.Left} alignment="center">
           <ProjectImage src="/eg/eg2.png" alt="" />
           <P>
-           I've also worked on other work with them, including sound samples for Talking Parking Meters in Denver, Colorado as well as full React and Node developement for <Link href="/visual/dp"><a>the Down Periscope project in Houston, Texas.</a></Link>
+            I've also worked on other work with them, including sound samples for Talking Parking Meters in Denver, Colorado as well as full React and Node developement for <Link href="/visual/dp"><a>the Down Periscope project in Houston, Texas.</a></Link>
            </P>
         </Layout>
        
       </Card>
-      <Card middleStacked level={0}>
-        <Layout>
-            <ProjectCard
-              title="Rule Gallery"
-              img="/rl/card.png"
-              url="/visual/rl"
-              description="WordPress & WooCommerce Design & Build, React Components"
-            />
-            <ProjectCard
-              title="Down Periscope"
-              img="/dp/card.png"
-              url="/visual/dp"
-              description="Real-Time Node.js Server Architecture, React Components"
-            />
-          <ProjectCard
-            title="Community Funded 2.0"
-            img="/cf/card.png"
-            url="/visual/cf"
-            description="Node.js Consulting, Design Systems, UI & UX Design"
-          />
-        </Layout>
-      </Card>
+        <RelatedProjectCards pid="eg" />
     </>
     }
   </Page>

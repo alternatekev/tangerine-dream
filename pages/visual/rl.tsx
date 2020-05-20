@@ -1,7 +1,7 @@
-import {Page, Card, P, Divider, Header, Layout, Avatar, ProjectImage} from '@alt/components'
+import {Page, Card, P, Divider, Layout, ProjectImage} from '@alt/components'
 import {ThemeContext} from '@alt/styles'
 import {Layouts} from '@alt/types'
-import {ProjectCard} from '@alt/views'
+import {RelatedProjectCards, ProjectHeader} from '@alt/views'
 
 const Visual = () =>
   <Page
@@ -13,17 +13,11 @@ const Visual = () =>
   >{() =>
     <>
       <Card level={2} middleStacked>
-        <Layout kind={Layouts.WideRight} alignment="center">
-            <Avatar alignCenter superWeighted img="/rl/logo.png" circle size={210} />
-          <>
-            <Header level={2} intense>WORDPRESS & REACT / WOOCOMMERCE</Header>
-            <P large>
-             Rule is one of Denver's premier art galleries, representing some of the most talked-about names in both Denver and Marfa, Texas. 
+        <ProjectHeader subhead="WORDPRESS & REACT / WOOCOMMERCE" logo="/rl/logo.png">
+          <P large>
+            Rule is one of Denver's premier art galleries, representing some of the most talked-about names in both Denver and Marfa, Texas. 
           </P>
-          
-          </>
-        </Layout>
-        <Divider superWeighted superTopWeighted level={0} />
+        </ProjectHeader>
         <Layout kind={Layouts.Left} alignment="center">
           <ProjectImage src="/rl/card.png" alt="" />
           <P>
@@ -50,28 +44,7 @@ const Visual = () =>
           <ProjectImage src="/rl/rl4.png" alt="" />
         </Layout>
       </Card>
-      <Card middleStacked level={0}>
-        <Layout>
-          <ProjectCard
-            title="Elmendorf/Geurts"
-            img="/eg/card.png"
-            url="/visual/eg"
-            description="Headless WordPress, React Components, Music Composition, Branding, Collateral"
-          />
-            <ProjectCard
-              title="Down Periscope"
-              img="/dp/card.png"
-              url="/visual/dp"
-              description="Real-Time Node.js Server Architecture, React Components"
-            />
-          <ProjectCard
-            title="Community Funded 2.0"
-            img="/cf/card.png"
-            url="/visual/cf"
-            description="Node.js Consulting, Design Systems, UI & UX Design"
-          />
-        </Layout>
-      </Card>
+        <RelatedProjectCards pid="rl" />
     </>
     }
   </Page>

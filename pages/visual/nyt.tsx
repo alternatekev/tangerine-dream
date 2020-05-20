@@ -2,7 +2,7 @@ import React from 'react'
 import {Page, Card, P, Divider, Header, Layout, Avatar, ProjectImage} from '@alt/components'
 import {ThemeContext} from '@alt/styles'
 import {Layouts} from '@alt/types'
-import {ProjectCard} from '@alt/views'
+import {RelatedProjectCards, ProjectHeader} from '@alt/views'
 
 const Visual = () =>
   <Page
@@ -13,16 +13,11 @@ const Visual = () =>
   >{() =>
     <>
       <Card level={2} middleStacked>
-        <Layout kind={Layouts.WideRight} alignment="center">
-          <Avatar superWeighted alignCenter img="/nyt/logo.png" circle size={210} />
-          <>
-            <Header level={2} intense>MARKETS RESEARCH &mdash; WALL ST ON DEMAND</Header>
-            <P large>
-                In the fall of 2006, I was part of a small team at Wall Street on Demand that pitched The New York Times on a replacement for their MarketWatch-powered (meaning competitor-powered) financial markets research portal. We continued to meet with the client periodically for about a year before work started in earnest.
-            </P>
-          </>
-        </Layout>
-        <Divider superWeighted superTopWeighted level={0} />
+        <ProjectHeader subhead="MARKETS RESEARCH &mdash; WALL ST ON DEMAND" logo="/nyt/logo.png" circle size={210}>
+          <P large>
+            In the fall of 2006, I was part of a small team at Wall Street on Demand that pitched The New York Times on a replacement for their MarketWatch-powered (meaning competitor-powered) financial markets research portal. We continued to meet with the client periodically for about a year before work started in earnest.
+          </P>
+        </ProjectHeader>
         <Layout kind={Layouts.Left} alignment="center">
           <ProjectImage src="/nyt/card.png" alt="" />
           <P>
@@ -51,28 +46,7 @@ As our main work would take over a complete CNAME subdomain of their site, our d
           <ProjectImage src="/nyt/nyt4.png" alt="" />
         </Layout>
       </Card>
-        <Card middleStacked level={0}>
-          <Layout>
-            <ProjectCard
-              title="Community Funded 2.0"
-              img="/cf/card.png"
-              url="/visual/cf"
-              description="Node.js Consulting, Design Systems, UI & UX Design"
-            />
-            <ProjectCard
-              title="WordPress.com"
-              img="/wp/card.png"
-              url="/visual/wp"
-              description="UI & UX Design, Design Systems, CSS"
-            />
-            <ProjectCard
-              title="Elmendorf/Geurts"
-              img="/eg/card.png"
-              url="/visual/eg"
-              description="Headless WordPress, React Components, Music Composition, Branding, Collateral"
-            />
-          </Layout>
-        </Card>
+        <RelatedProjectCards pid="nyt" />
     </>
     }
   </Page>
