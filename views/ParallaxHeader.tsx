@@ -1,5 +1,9 @@
-import React, {FC} from 'react'
-import {Breakpoints} from '@alt/types'
+import React, {FC, useState, Dispatch, SetStateAction} from 'react'
+import {useRouter} from 'next/router'
+import AppsIcon from 'mdi-react/AppsIcon'
+
+import { Breakpoints } from '@alt/types'
+import {id} from '@alt/data'
 
 import {
   t, 
@@ -9,7 +13,8 @@ import {
   DerivedTheme,
 } from '@alt/styles'
 
-import {Card, Header} from '@alt/components'
+import {Card, Header, Button} from '@alt/components'
+import { VisualProjectCards } from '@alt/views'
 
 const getStyles = (theme: DerivedTheme, background?: string, compact?: boolean) => prepareStyles({
   Background: {
@@ -24,10 +29,10 @@ const getStyles = (theme: DerivedTheme, background?: string, compact?: boolean) 
     letterSpacing: compact ? '-0.125rem' : `-0.5rem`,
     fontWeight: compact ? 100 : 700,
     [Breakpoints.Small]: {
-      fontSize: '9.652rem',
+      fontSize: '4rem',
       fontWeight: 100,
       lineHeight: '8.5rem',
-      letterSpacing: `-0.4rem`
+      letterSpacing: `-0.1rem`
     }
   },
   Gradient: {
@@ -39,6 +44,14 @@ const getStyles = (theme: DerivedTheme, background?: string, compact?: boolean) 
     ...t.aspect_ratio__object,
     backgroundColor: theme.background500,
     zIndex: 100
+  },
+  ParallaxMenu: {
+    zIndex: 0,
+    boxShadow: `0 0 50px ${theme.background900} inset`,
+    border: `1px ${theme.white500_10} solid`,
+    ...t.overflow_auto,
+    height: `40vh`,
+    backgroundColor: theme.background500_50
   }
 })
 
@@ -48,6 +61,10 @@ interface Props extends ThemeProps {
   background?: string
 }
 
+const onClick = (open: boolean, setOpen: Dispatch<SetStateAction<boolean>>) => (_) => {
+  setOpen(!open)
+}
+
 const UnthemedParallaxHeader: FC<Props> = ({
   title,
   background,
@@ -55,28 +72,46 @@ const UnthemedParallaxHeader: FC<Props> = ({
   theme
 }: Props) => {
   const styles = getStyles(theme, background, compact)
+  const paths = useRouter().pathname
+  const split = paths.split('/')
+  const showMenu = split[1] === 'visual' && split[2]
+  const [open, setOpen] = useState(false)
 
   return (
-    <Card
-      middleStacked
-      stacked
-      level={0}
-      secondary
-      inflated
-      extraStyles={styles.Background}
-    >
-      <Header
-        level={0}
-        extraStyles={styles.ContentTitle}
-        labelStyles={styles.Gradient}
-        intense
-        primary
+    <>
+      <Card
+        middleStacked
+        level={1}
+        secondary
+        inflated
+        extraStyles={styles.Background}
       >
-        {title}
-      </Header>
-
-    </Card>
+        <Header
+          level={0}
+          extraStyles={styles.ContentTitle}
+          labelStyles={styles.Gradient}
+          intense
+          primary
+          utilityComponent={showMenu 
+            ? <Button 
+                inverted 
+                borderless 
+                onClick={onClick(open, setOpen)} 
+              icon={<AppsIcon />} 
+              /> 
+            : null
+          }
+        >
+          {title}
+        </Header>
+      </Card>
+      {showMenu && open &&
+        <Card middleStacked level={1} extraStyles={styles.ParallaxMenu}>
+        <VisualProjectCards cardLevel={1} borderless autoHeight={false} inverted pid={split[2] as id} />
+        </Card>
+      }
+    </>
   )
 }
 
-  export const ParallaxHeader = withTheme(UnthemedParallaxHeader)
+export const ParallaxHeader = withTheme(UnthemedParallaxHeader)

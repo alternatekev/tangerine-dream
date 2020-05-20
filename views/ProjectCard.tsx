@@ -12,9 +12,14 @@ interface Props extends ThemeProps{
   subtitle?: string
   img: string
   external?: boolean
+  inverted?: boolean
+  disabled?: boolean
+  level?: 0 | 1 | 2 | 3 | 4 | 5
+  borderless?: boolean
   autoHeight?: boolean
   description?: string
   url: string
+  flat?: boolean
 }
 
 const getStyles = (img: string) => prepareStyles({
@@ -31,13 +36,16 @@ const getStyles = (img: string) => prepareStyles({
   },
 })
 
-
-
 const UnthemedProjectCard: FC<Props> = ({
   title,
   theme,
+  disabled,
   img,
+  level,
+  inverted,
+  borderless,
   external,
+  flat = true,
   description,
   autoHeight = true,
   subtitle,
@@ -47,17 +55,18 @@ const UnthemedProjectCard: FC<Props> = ({
 
   return (
     <Card
-      level={0}
+      level={level || 0}
       weighted
+      borderless={borderless}
       external={external}
       autoHeight={autoHeight}
-      flat
-      href={url}
+      flat={flat}
+      href={!disabled ? url : undefined}
     >
-      <Header level={1} primary>{title}</Header>
+      <Header level={1} inverted={disabled}>{title}</Header>
       {subtitle && <Header level={2}>{subtitle}</Header>}
       <div css={css(imageStyles(theme).ProjectImage, styles.ImageContainer)}/>
-      {description && <P compact weightless>{description}</P>}
+      {description && <P compact weightless inverted={inverted}>{description}</P>}
     </Card>
   )
 }
