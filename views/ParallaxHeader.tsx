@@ -11,7 +11,6 @@ import {
   prepareStyles, 
   ThemeProps, 
   withTheme, 
-  css,
   DerivedTheme,
 } from '@alt/styles'
 
