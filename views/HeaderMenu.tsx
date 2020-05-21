@@ -1,14 +1,30 @@
 import React, {FC} from 'react'
 import MenuIcon from 'mdi-react/MenuIcon'
 
-import {Menu, MenuItem, MediaQueryRenderer, Button} from '@alt/components'
-import {BreakpointProps} from '@alt/types'
-import {t,prepareStyles, withTheme, ThemeProps, DerivedTheme} from 'styles'
+import {Menu, MenuItem,Button} from '@alt/components'
+import {Breakpoints} from '@alt/types'
+import {t,prepareStyles, withTheme, ThemeProps, DerivedTheme, css} from 'styles'
 
 const getStyles = (theme: DerivedTheme) => prepareStyles({
   TopHeaderMenu: {
     ...t.mt1
   },
+  BigMenu: {
+    [Breakpoints.Medium]: {
+      ...t.db
+    },
+    [Breakpoints.Small]: {
+      ...t.dn
+    }
+  },
+  SmallMenu: {
+    [Breakpoints.Small]: {
+      ...t.db
+    },
+    [Breakpoints.Medium]: {
+      ...t.dn
+    }
+  }
 })
 
 export enum MenuItems {
@@ -32,17 +48,17 @@ const UnthemedHeaderMenu: FC<Props> = ({
 
   return (
     <>
-      <MediaQueryRenderer breakpoints={BreakpointProps.Medium}>
+      <div css={css(styles.BigMenu)}>
         <Menu horizontal extraStyles={styles.TopHeaderMenu}>
           <MenuItem inverted={invertedMenu} href={MenuItems.Home}>HOME</MenuItem>
           <MenuItem inverted={invertedMenu} href={MenuItems.Visual}>VISUAL</MenuItem>
           <MenuItem inverted={invertedMenu} href={MenuItems.Audio}>AUDIO</MenuItem>
           <MenuItem inverted={invertedMenu} href={MenuItems.Blog} external>BLOG</MenuItem>
         </Menu>
-      </MediaQueryRenderer>
-      <MediaQueryRenderer breakpoints={BreakpointProps.Small}>
+      </div>
+      <div css={css(styles.SmallMenu)}>
         <Button onClick={onClick} borderless icon={<MenuIcon />} inline iconOnly />
-      </MediaQueryRenderer>
+      </div>
     </>
   )
 }
