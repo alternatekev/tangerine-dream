@@ -1,4 +1,5 @@
 import React from 'react'
+import {Context as ResponsiveContext} from 'react-responsive'
 import App, {AppContext} from 'next/app'
 import {CacheProvider} from '@emotion/core'
 import {cache} from 'emotion'
@@ -13,9 +14,11 @@ function MyApp(props: AppContext & WTFProps) {
   const {Component, pageProps} = props
 
   return (
-    <CacheProvider value= { cache }>
+    <ResponsiveContext.Provider value={{width: 960}}>
+      <CacheProvider value= { cache }>
         <Component {...pageProps} />
-    </CacheProvider>
+      </CacheProvider>
+    </ResponsiveContext.Provider>
   )
 }
 

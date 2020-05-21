@@ -47,7 +47,7 @@ export const PageHeader: FC<Props> = ({invertedMenu}: Props) => {
 
     return(
       <header>
-        <MediaQueryRenderer breakpoints={BreakpointProps.NotSmall}>
+        <MediaQueryRenderer breakpoints={BreakpointProps.Medium}>
           <Card
             customBackgroundColor={theme.background200}
             topStacked

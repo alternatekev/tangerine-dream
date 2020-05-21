@@ -106,7 +106,7 @@ const UnthemedParallaxHeader: FC<Props> = ({
 
   return (
     <>
-      <MediaQueryRenderer breakpoints={BreakpointProps.NotSmall}>
+      <MediaQueryRenderer breakpoints={BreakpointProps.Medium}>
         <Card
           middleStacked
           level={1}
