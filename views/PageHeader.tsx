@@ -5,7 +5,7 @@ import {SlideDown} from 'react-slidedown'
 import {DerivedTheme, prepareStyles, t, css,} from '@alt/styles'
 import {Header, Card, Menu, MenuItem, MediaQueryRenderer} from '@alt/components'
 import {HeaderMenu, MenuItems} from '@alt/views'
-import {BreakpointProps} from '@alt/types'
+import {BreakpointProps, Breakpoints} from '@alt/types'
 
 interface Props {
   invertedMenu?: boolean
@@ -22,6 +22,10 @@ export const PageHeader: FC<Props> = ({invertedMenu}: Props) => {
         ...t.fw2,
         color: theme.secondary500_75,
         ...t.ml5,
+        [Breakpoints.Small]: {
+          ...t.ml0,
+          ...t.db
+        }
       },
       MenuCard: {
         boxShadow: `0 0 50px ${theme.background975} inset`,
@@ -29,26 +33,42 @@ export const PageHeader: FC<Props> = ({invertedMenu}: Props) => {
       }
     })
     const [open, setOpen] = useState(false)
+    const headerChildren = (
+      <Header
+        intense
+        inverted
+        weightedLabel
+        utilityComponent={<HeaderMenu onClick={onClick(open, setOpen)} invertedMenu={invertedMenu} />}
+      >
+        KEVIN CONBOY
+        <span css={css(styles.PageTitle)}>ALTERNATE.ORG</span>
+      </Header>
+    )
 
     return(
       <header>
-        <Card 
-          customBackgroundColor={theme.background200} 
-          topStacked 
-          popoverFriendly
-          level={1} 
-          inflated
-        >
-          <Header 
-            intense 
-            inverted 
-            weightedLabel
-            utilityComponent={<HeaderMenu onClick={onClick(open, setOpen)} invertedMenu={invertedMenu} />}
+        <MediaQueryRenderer breakpoints={BreakpointProps.NotSmall}>
+          <Card
+            customBackgroundColor={theme.background200}
+            topStacked
+            popoverFriendly
+            level={1}
+            inflated
           >
-            KEVIN CONBOY
-            <span css={css(styles.PageTitle)}>ALTERNATE.ORG</span>
-          </Header>
-        </Card>
+            {headerChildren}
+          </Card>
+        </MediaQueryRenderer>
+        <MediaQueryRenderer breakpoints={BreakpointProps.Small}>
+          <Card
+            customBackgroundColor={theme.background200}
+            topStacked
+            popoverFriendly
+            level={1}
+          >
+            {headerChildren}
+          </Card>
+        </MediaQueryRenderer>
+       
         <SlideDown className="slide-down">
 
         {open && 

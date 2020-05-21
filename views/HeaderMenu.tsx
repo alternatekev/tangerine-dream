@@ -41,7 +41,7 @@ const UnthemedHeaderMenu: FC<Props> = ({
         </Menu>
       </MediaQueryRenderer>
       <MediaQueryRenderer breakpoints={BreakpointProps.Small}>
-        <Button onClick={onClick} borderless icon={<MenuIcon />} iconOnly />
+        <Button onClick={onClick} borderless icon={<MenuIcon />} inline iconOnly />
       </MediaQueryRenderer>
     </>
   )

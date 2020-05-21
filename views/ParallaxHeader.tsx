@@ -3,7 +3,7 @@ import {useRouter} from 'next/router'
 import AppsIcon from 'mdi-react/AppsIcon'
 import {SlideDown} from 'react-slidedown'
 
-import {Breakpoints} from '@alt/types'
+import {Breakpoints, BreakpointProps} from '@alt/types'
 import {id} from '@alt/data'
 
 import {
@@ -14,7 +14,7 @@ import {
   DerivedTheme,
 } from '@alt/styles'
 
-import {Card, Header, Button} from '@alt/components'
+import {Card, Header, Button, MediaQueryRenderer} from '@alt/components'
 import {VisualProjectCards} from '@alt/views'
 
 const getStyles = (theme: DerivedTheme, background?: string, compact?: boolean) => prepareStyles({
@@ -83,35 +83,50 @@ const UnthemedParallaxHeader: FC<Props> = ({
   const split = paths.split('/')
   const showMenu = split[1] === 'visual' && split[2]
   const [open, setOpen] = useState(false)
+  const headerChildren = (
+    <Header
+      level={0}
+      extraStyles={styles.ContentTitle}
+      labelStyles={styles.Gradient}
+      intense
+      primary
+      utilityComponent={showMenu
+        ? <Button
+          inverted={!open}
+          borderless
+          onClick={onClick(open, setOpen)}
+          icon={<AppsIcon />}
+        />
+        : null
+      }
+    >
+      {title}
+    </Header>
+  )
 
   return (
     <>
-      <Card
-        middleStacked
-        level={1}
-        secondary
-        inflated
-        extraStyles={styles.Background}
-      >
-        <Header
-          level={0}
-          extraStyles={styles.ContentTitle}
-          labelStyles={styles.Gradient}
-          intense
-          primary
-          utilityComponent={showMenu 
-            ? <Button 
-                inverted={!open} 
-                borderless 
-                onClick={onClick(open, setOpen)} 
-                icon={<AppsIcon />} 
-              /> 
-            : null
-          }
+      <MediaQueryRenderer breakpoints={BreakpointProps.NotSmall}>
+        <Card
+          middleStacked
+          level={1}
+          secondary
+          inflated
+          extraStyles={styles.Background}
         >
-          {title}
-        </Header>
-      </Card>
+          {headerChildren}
+        </Card>
+      </MediaQueryRenderer>
+      <MediaQueryRenderer breakpoints={BreakpointProps.Small}>
+        <Card
+          middleStacked
+          level={1}
+          secondary
+          extraStyles={styles.Background}
+        >
+          {headerChildren}
+        </Card>
+      </MediaQueryRenderer>
       <SlideDown className="slide-down">
         {showMenu && open &&
           <Card 
