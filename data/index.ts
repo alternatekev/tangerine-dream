@@ -52,7 +52,6 @@ export const portfolio: PortfolioItem[] = [
   },
 ]
 
-
 export type id = 'cf' | 'wp' | 'nyt' | 'ca' | 'dp' | 'rl' | 'eg'
 
 export function getRelatedProjectCards(pid: id) {

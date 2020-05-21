@@ -1,10 +1,11 @@
 import {FC} from 'react'
+import OpenInNewIcon from 'mdi-react/OpenInNewIcon'
 
 import {
   Layout,
   Avatar,
-  Divider,
-  Header
+  Header,
+  Button
 } from '@alt/components'
 import {
   Layouts, 
@@ -15,20 +16,52 @@ interface Props {
   logo: string
   subhead: string
   children: Renderable
+  url?: string
 }
 
 export const ProjectHeader: FC<Props> = ({
   logo,
   subhead,
-  children
+  children,
+  url
 }: Props) =>
   <>
-    <Layout kind={Layouts.WideRight} alignment="center">
-      <Avatar alignCenter superWeighted img={logo} circle size={210} />
+    <Layout 
+      divider 
+      superWeighted 
+      topWeighted 
+      kind={Layouts.WideRight} 
+      alignment="center"
+    >
+      <Avatar 
+        alignCenter 
+        superWeighted 
+        img={logo} 
+        circle 
+        size={210} 
+      />
       <>
-        <Header level={2} intense>{subhead}</Header>
+        <Header 
+          utilityComponent={url 
+            ? 
+              <Button 
+                icon={<OpenInNewIcon size={15} />}
+                href={url} 
+                external 
+                compact 
+                tertiary 
+                target="_new"
+              >
+                View Project
+              </Button> 
+            : null
+          } 
+          level={2} 
+          intense
+        >
+          {subhead}
+        </Header>
         {children}
       </>
     </Layout>
-      <Divider superWeighted superTopWeighted level={0} />
   </>

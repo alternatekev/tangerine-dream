@@ -194,7 +194,7 @@ export const Header: FC<Props> = ({
       /** dividers */
       hasDivider: {
         ...t.pb2,
-        borderBottomColor: theme.secondary500_50,
+        borderBottomColor: theme.secondary500_25,
         borderBottomStyle: `solid`,
         borderBottomWidth: 1
       },

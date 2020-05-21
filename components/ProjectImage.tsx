@@ -11,6 +11,8 @@ export const imageStyles = (theme: DerivedTheme) => prepareStyles({
   ProjectImage: {
     ...t.w_100,
     ...t.br2,
+    ...t.mb2,
+    ...t.mt1,
     boxShadow: `0 0 0 ${theme.background100}, 0 0 0 ${theme.background100}, 0 0 0 ${theme.background100}`,
     transition: 'all 100ms ease-in-out',
    ':hover': {
@@ -22,7 +24,7 @@ export const imageStyles = (theme: DerivedTheme) => prepareStyles({
 const UnthemedProjectImage: FC<Props> = ({
   src, 
   alt, 
-  theme
+  theme,
 }: Props) =>
   <img 
     alt={alt} 

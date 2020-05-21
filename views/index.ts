@@ -1,3 +1,4 @@
+export * from './Block'
 export * from './FooterMenu'
 export * from './HeaderMenu'
 export * from './PageHeader'

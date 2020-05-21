@@ -15,6 +15,7 @@ interface Props extends ThemeProps {
   miniTopWeighted?: boolean
   miniWeighted?: boolean
   padded?: boolean
+  debug?: boolean
   superTopWeighted?: boolean
   divider?: boolean
   topDivider?: boolean
@@ -58,12 +59,12 @@ const getStyles = (theme: DerivedTheme) => {
       ...t.mt5
     },
     hasDivider: {
-      ...t.pb5,
-      borderBottom: `1px ${theme.grey300} solid`
+      ...t.pb4,
+      borderBottom: `1px ${theme.grey25} solid`
     },
     hasTopDivider: {
       ...t.pt5,
-      borderTop: `1px ${theme.grey700} solid`
+      borderTop: `1px ${theme.grey100} solid`
     },
     isCardLayout: {
       marginBottom: 20
@@ -93,10 +94,11 @@ class UnthemedLayout extends PureComponent<Props> {
   }
 
   renderChildrenWithLayout = () => {
-    const {children, kind, disableResponsive} = this.props
+    const {children, kind, disableResponsive, debug} = this.props
     const length = Children.toArray(children).length
 
     return Children.map(children, (child, index) => {
+      if (debug){console.log(child)}
       if (child !== null) {
         const isLeft = kind === Layouts.Left
         const isWideLeft = kind === Layouts.WideLeft
