@@ -19,11 +19,12 @@ const Visual = () =>
             Rule is one of Denver's premier art galleries, representing some of the most talked-about names in both Denver and Marfa, Texas. 
           </P>
         </ProjectHeader>
-        <Block image="/rl/card.png" layout={Layouts.Left}>
+        <Card borderless middleStacked inflated>
+          <ProjectImage src="/rl/card.png" alt="" />
           <P>
             Leveraging a sleek, minimalist feel, this website was a joy to work on, letting white space breathe, and giving the artwork space to speak for itself.
           </P>
-        </Block>
+        </Card>
         <Block image="/rl/rl1.png" layout={Layouts.Right}>
           <P>
             This site uses Advanced Custom Fields for custom post types, Timber for templating, and a statically-built React app for browsing art.

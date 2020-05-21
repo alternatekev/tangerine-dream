@@ -1,5 +1,5 @@
 import OpenInNewIcon from 'mdi-react/OpenInNewIcon'
-import {Page, Card, P, Button} from '@alt/components'
+import {Page, Card, P, Button, ProjectImage} from '@alt/components'
 import {ThemeContext} from '@alt/styles'
 import {Layouts} from '@alt/types'
 import {RelatedProjectCards, ProjectHeader, Block} from '@alt/views'
@@ -18,11 +18,13 @@ const Visual = () =>
             Rally Software was a company providing Jira-like Agile tools, which got purchased by CA in 2015. As part of a broader initiative to modernize CA's software offerings, Project Catchfly was spun up as a startup within the large corporation.
           </P>
         </ProjectHeader>
-        <Block layout={Layouts.Equal} image="/ca/card.png">
-          <P>
-            Within the first two days on Project Catchfly, I had outlined the problem the team was trying to solve – something they had tried to use Lean Startup methodology to define – and had provided the first real mockup of their app they'd ever seen.
-          </P>
-        </Block>
+        
+          <Card divider middleStacked megaWeighted borderless inflated>
+            <ProjectImage alt="" src="/ca/card.png" />
+            <P>
+              Within the first two days on Project Catchfly, I had outlined the problem the team was trying to solve – something they had tried to use Lean Startup methodology to define – and had provided the first real mockup of their app they'd ever seen.
+            </P>
+        </Card>
         <Block layout={Layouts.Left} image="/ca/ca2.png" >
           <P>
             We quickly iterated through approaches to find the right solution. We held design sprint sessions, big-room planning sessons, and worked with a team in North Carolina building the mobile version of the app.

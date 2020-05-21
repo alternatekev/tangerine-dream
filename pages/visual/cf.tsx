@@ -31,11 +31,13 @@ const Visual = () =>
             </P>
           </>
         </ProjectHeader>
-        <Block video={<ReactPlayer url="https://vimeo.com/419446092" width="100%" css={css(styles.Player)} />}>
+          <ReactPlayer url="https://vimeo.com/419446092" width="100%" css={css(styles.Player)} />
+
+        <Card divider middleStacked megaWeighted borderless inflated>
           <P>
             After meeting with their founders, and finding that I could have a strong passion for their business, I enthusiastically agreed to help. V1 was heavily based on WordPress, something I have a unique amount of experience building and building for; React + Next.js were my suggestions for the front-end technologies, and three years later, we launched to live clients in the first quarter of 2020. I have worked hand-in-hand with the CTO, Chief Creative Officer, and VP of Product to craft not just a cohesive visual design system, but the codebase and UX patterns necessary to pull it off, in a real product, right now
           </P>
-        </Block> 
+        </Card> 
 
           <Block layout={Layouts.Left} image="/cf/cf1.png">
             <P>
