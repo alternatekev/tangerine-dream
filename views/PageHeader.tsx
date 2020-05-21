@@ -70,19 +70,15 @@ export const PageHeader: FC<Props> = ({invertedMenu}: Props) => {
         </MediaQueryRenderer>
        
         <SlideDown className="slide-down">
-
-        {open && 
-        
-        <MediaQueryRenderer breakpoints={BreakpointProps.Small}>
-           <Card flat extraStyles={styles.MenuCard} fullBleed autoWidth middleStacked customBackgroundColor={theme.background800}>
+          {open && 
+            <Card flat extraStyles={styles.MenuCard} fullBleed autoWidth middleStacked customBackgroundColor={theme.background800}>
               <Menu extraStyles={styles.TopHeaderMenu}>
                 <MenuItem inverted href={MenuItems.Home}>HOME</MenuItem>
                 <MenuItem inverted href={MenuItems.Visual}>VISUAL</MenuItem>
                 <MenuItem inverted href={MenuItems.Audio}>AUDIO</MenuItem>
                 <MenuItem inverted href={MenuItems.Blog} external>BLOG</MenuItem>
               </Menu>
-            </Card>
-          </MediaQueryRenderer>}
+            </Card>}
         </SlideDown>
       </header>
     )
