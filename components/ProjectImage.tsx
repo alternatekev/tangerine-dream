@@ -1,6 +1,6 @@
 import {FC} from 'react'
 import Zoom from 'react-medium-image-zoom'
-import {css, prepareStyles, t, DerivedTheme, ThemeProps, withTheme, inverseTachyonsUnit} from '@alt/styles'
+import {css, prepareStyles, t, DerivedTheme, ThemeProps, withTheme} from '@alt/styles'
 
 interface Props extends ThemeProps {
   src: string
@@ -37,8 +37,6 @@ const UnthemedProjectImage: FC<Props> = ({
           <img 
             src={src} 
             alt={alt}
-            rel="preload"
-            as="image"
             css={css(imageStyles(theme).ProjectImage)} 
           />
         </Zoom>
