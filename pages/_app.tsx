@@ -5,6 +5,8 @@ import {CacheProvider} from '@emotion/core'
 import {cache} from 'emotion'
 //tslint:disable-next-line no-import-side-effect
 import 'react-slidedown/lib/slidedown.css' 
+//tslint:disable-next-line no-import-side-effect
+import 'react-medium-image-zoom/dist/styles.css'
 
 interface WTFProps {
   pageProps: any //tslint:disable-line no-any
