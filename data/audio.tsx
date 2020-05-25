@@ -21,6 +21,7 @@ export const audio: AudioItem[] = [
     subhead: 'Colormath',
     remoteUrl: 'https://colormath.bandcamp.com/releases',
     image: '/cm/card.png',
+    logo: '/cm/cover.jpg',
     url: '/audio/cm',
     columns: 6,
     id: 'cm',
@@ -42,7 +43,6 @@ export const audio: AudioItem[] = [
         </P>
       </Card>
     ),
-    logo: '/cm/cover.png'
   },
   {
     title: 'From The Middle Out',
