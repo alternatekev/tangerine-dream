@@ -102,7 +102,7 @@ export class Page extends Component<Props, State> {
         </Head>
         <main id="Page" css={css(styles.Page)}>
           <ThemeProvider theme={currentTheme}>
-            <PageHeader invertedMenu={invertedMenu} />
+            <PageHeader invertedMenu={invertedMenu} background={header} />
             <ParallaxHeader compact={compact} background={header} title={title} />
             <article css={css(styles.PageChildren)} id="PageChildren">
               {children && typeof children === 'function' ? children(currentTheme) : children}

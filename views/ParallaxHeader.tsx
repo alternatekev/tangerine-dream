@@ -15,18 +15,21 @@ import {
 } from '@alt/styles'
 
 import {Card, Header, Button, MediaQueryRenderer} from '@alt/components'
-import {VisualProjectCards} from '@alt/views'
+import {VisualProjectCards, AudioProjectCards} from '@alt/views'
 
-const getStyles = (theme: DerivedTheme, background?: string, compact?: boolean) => prepareStyles({
+const getStyles = (theme: DerivedTheme, background?: string, compact?: boolean, open?: boolean) => prepareStyles({
   Background: {
     ...t.cover,
-    ...t.bg_center,
+    backgroundPosition: 'bottom left',
     backgroundBlendMode: 'luminosity',
+    transition: 'all 100ms ease-in-out',
     backgroundImage: background ? `url("${background}")` : undefined,
+    opacity: open ? 0.5 : 1,
     backgroundColor: theme.background500_50,
     ...t.relative,
     zIndex: 1000
   },
+
   ContentTitle: {
     fontSize: compact ? '6.5rem' : '15rem',
     letterSpacing: compact ? '-0.125rem' : `-0.5rem`,
@@ -51,10 +54,15 @@ const getStyles = (theme: DerivedTheme, background?: string, compact?: boolean) 
   ParallaxMenu: {
     zIndex: 0,
     boxShadow: `0 0 50px ${theme.background900} inset`,
+    backgroundImage: background ? `url("${background}")` : undefined,
     border: `1px ${theme.white500_10} solid`,
     ...t.overflow_auto,
     height: `40vh`,
-    backgroundColor: theme.background500_50
+    backgroundColor: theme.background500_50,
+    backgroundPosition: 'top right',
+    backgroundBlendMode: 'luminosity',
+    transition: 'all 100ms ease-in-out',
+
   },
   Slider: {
     transitionDuration: '100ms',
@@ -75,14 +83,17 @@ const onClick = (open: boolean, setOpen: Dispatch<SetStateAction<boolean>>) => (
 const UnthemedParallaxHeader: FC<Props> = ({
   title,
   background,
+  
   compact,
   theme
 }: Props) => {
-  const styles = getStyles(theme, background, compact)
   const paths = useRouter().pathname
   const split = paths.split('/')
-  const showMenu = split[1] === 'visual' && split[2]
+  const showVisualMenu = split[1] === 'visual' && split[2]
+  const showAudioMenu = split[1] === 'audio' && split[2]
   const [open, setOpen] = useState(false)
+  const styles = getStyles(theme, background, compact, open)
+
   const headerChildren = (
     <Header
       level={0}
@@ -90,7 +101,7 @@ const UnthemedParallaxHeader: FC<Props> = ({
       labelStyles={styles.Gradient}
       intense
       primary
-      utilityComponent={showMenu
+      utilityComponent={showVisualMenu || showAudioMenu
         ? <Button
           inverted={!open}
           borderless
@@ -128,7 +139,7 @@ const UnthemedParallaxHeader: FC<Props> = ({
         </Card>
       </MediaQueryRenderer>
       <SlideDown className="slide-down">
-        {showMenu && open &&
+        {showVisualMenu && open &&
           <Card 
             middleStacked level={1} 
             extraStyles={styles.ParallaxMenu}
@@ -139,6 +150,21 @@ const UnthemedParallaxHeader: FC<Props> = ({
               autoHeight={false} 
               inverted 
               pid={split[2] as id} 
+            />
+          </Card>
+        }
+        {showAudioMenu && open &&
+          <Card
+            middleStacked level={1}
+            extraStyles={styles.ParallaxMenu}
+          >
+            <AudioProjectCards
+              useColumns={false}
+              cardLevel={1}
+              borderless
+              autoHeight={false}
+              inverted
+              pid={split[2] as id}
             />
           </Card>
         }

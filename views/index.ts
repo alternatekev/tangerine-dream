@@ -1,3 +1,4 @@
+export * from './AudioProjectCards'
 export * from './Block'
 export * from './FooterMenu'
 export * from './HeaderMenu'

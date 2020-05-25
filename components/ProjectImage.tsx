@@ -33,13 +33,18 @@ const UnthemedProjectImage: FC<Props> = ({
 }: Props) =>
   <figure css={css(imageStyles(theme).OuterFigure)}>
     {typeof document !== 'undefined' && //tslint:disable-line
-        <Zoom portalEl={document.body} overlayBgColorStart={theme.background500_5} overlayBgColorEnd={theme.background800} zoomMargin={50}>
-          <img 
-            src={src} 
-            alt={alt}
-            css={css(imageStyles(theme).ProjectImage)} 
-          />
-        </Zoom>
+      <Zoom 
+        portalEl={document.body} 
+        overlayBgColorStart={theme.background500_5} 
+        overlayBgColorEnd={theme.background500_90} 
+        zoomMargin={50}
+      >
+        <img 
+          src={src} 
+          alt={alt}
+          css={css(imageStyles(theme).ProjectImage)} 
+        />
+      </Zoom>
     }
   </figure>
 

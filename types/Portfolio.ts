@@ -12,5 +12,10 @@ export interface PortfolioItem {
   url: string
   description: string
   id: string
-  //images: ProjectImage[]
+}
+
+export interface AudioItem extends PortfolioItem {
+  artist?: string
+  remoteUrl: string
+  columns: number
 }

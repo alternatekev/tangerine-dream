@@ -384,13 +384,74 @@ export const seedThemes = {
   eg: {
     primary: Color(`#F23614`),
     secondary: Color(`#FFF`),
-    background: Color(`#F3590D`),
+    background: Color(`#EBC18B`),
+    button: Color(`#9B2A33`),
+    link: Color(`#9B2A33`),
+    grey: Color(`#797979`),
+    black: Color(`#2E2E2E`),
+    white: Color(`#FFF`),
+  },
+  cm: {
+    primary: Color(`#AF282E`),
+    secondary: Color(`#FDA901`),
+    background: Color(`#FB4C42`),
     button: Color(`#F3590D`),
     link: Color(`#F3590D`),
     grey: Color(`#797979`),
     black: Color(`#2E2E2E`),
     white: Color(`#FFF`),
-  }
+  },
+  adc: {
+    primary: Color(`#E83900`),
+    secondary: Color(`#F2EE02`),
+    background: Color(`#E83900`),
+    button: Color(`#E83900`),
+    link: Color(`#E83900`),
+    grey: Color(`#797979`),
+    black: Color(`#2E2E2E`),
+    white: Color(`#FFF`),
+  },
+  st: {
+    primary: Color(`#85161C`),
+    secondary: Color(`#621204`),
+    background: Color(`#85161C`),
+    button: Color(`#85161C`),
+    link: Color(`#E7C197`),
+    grey: Color(`#797979`),
+    black: Color(`#2E2E2E`),
+    white: Color(`#FFF`),
+  },
+  dec: {
+    primary: Color(`#FFF`),
+    secondary: Color(`#85ACD2`),
+    background: Color(`#C4D1E1`),
+    button: Color(`#85161C`),
+    link: Color(`#85ACD2`),
+    grey: Color(`#797979`),
+    black: Color(`#2E2E2E`),
+    white: Color(`#FFF`),
+  },
+  mc: {
+    primary: Color(`#AA9B91`),
+    secondary: Color(`#85ACD2`),
+    background: Color(`#D3A982`),
+    button: Color(`#4B575A`),
+    link: Color(`#4B575A`),
+    grey: Color(`#797979`),
+    black: Color(`#2E2E2E`),
+    white: Color(`#FFF`),
+  },
+  aeo: {
+    primary: Color(`#99A5AD`),
+    secondary: Color(`#85ACD2`),
+    background: Color(`#C4C8C4`),
+    button: Color(`#899BA7`),
+    link: Color(`#899BA7`),
+    grey: Color(`#797979`),
+    black: Color(`#2E2E2E`),
+    white: Color(`#FFF`),
+  },
+
 }
 
 export enum ThemeContext {
@@ -403,7 +464,13 @@ export enum ThemeContext {
   CA = 'ca',
   PD = 'pd',
   DP = 'dp',
-  EG = 'eg'
+  EG = 'eg',
+  CM = 'cm',
+  ADC = 'adc',
+  ST = 'st',
+  DEC = 'dec',
+  MC = 'mc',
+  AEO = 'aeo'
 }
 
 interface Themes {
@@ -416,7 +483,12 @@ interface Themes {
   ca: Theme,
   pd: Theme,
   dp: Theme,
-  eg: Theme
+  eg: Theme,
+  cm: Theme,
+  st: Theme,
+  dec: Theme,
+  mc: Theme,
+  aeo: Theme
 }
 
 export function deriveThemes(seededThemes: Themes) {

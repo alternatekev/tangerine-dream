@@ -13,17 +13,19 @@ import {
 } from '@alt/types'
 
 interface Props {
-  logo: string
-  subhead: string
+  logo?: string
+  subhead?: string
   children: Renderable
   url?: string
+  kind?: 'visual' | 'audio'
 }
 
 export const ProjectHeader: FC<Props> = ({
   logo,
   subhead,
   children,
-  url
+  url,
+  kind = 'visual'
 }: Props) =>
   <>
     <Layout 
@@ -33,15 +35,16 @@ export const ProjectHeader: FC<Props> = ({
       kind={Layouts.WideRight} 
       alignment="center"
     >
-      <Avatar 
+     {logo && <Avatar 
         alignCenter 
         superWeighted 
         img={logo} 
-        circle 
+        circle={kind === 'visual'}
         size={210} 
-      />
+      />}
       <>
         <Header 
+          uppercase
           utilityComponent={url 
             ? 
               <Button 
@@ -52,7 +55,7 @@ export const ProjectHeader: FC<Props> = ({
                 tertiary 
                 target="_new"
               >
-                View Project
+                {kind === 'visual' ? 'View Project' : 'Listen Now'}
               </Button> 
             : null
           } 

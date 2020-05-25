@@ -63,6 +63,7 @@ interface Props {
   weighted?: boolean
   weightedLabel?: boolean
   children?: Renderable
+  uppercase?: boolean
 }
 
 const wrapHeader = (iconStyle: SerializedStyles) => (children: React.ReactNode) => (
@@ -84,6 +85,7 @@ export const Header: FC<Props> = ({
   divider,
   decline,
   dulled,
+  uppercase,
   capitalize,
   extraStyles,
   forwardComponent,
@@ -189,6 +191,9 @@ export const Header: FC<Props> = ({
       },
       isCapitalized: {
         ...t.ttc
+      },
+      isUppercase: {
+        ...t.ttu
       },
 
       /** dividers */
@@ -384,6 +389,7 @@ export const Header: FC<Props> = ({
             intense && styles.isIntense,
             secondary && styles.isSecondary,
             primary && styles.isPrimary,
+            uppercase && styles.isUppercase,
             styles[`paddingLevel${paddingLevel}`],
             padTop && styles[`paddingLevelTop${paddingLevel}`],
             padBottom && styles[`paddingLevelBottom${paddingLevel}`],

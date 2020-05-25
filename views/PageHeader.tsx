@@ -9,13 +9,17 @@ import {BreakpointProps, Breakpoints} from '@alt/types'
 
 interface Props {
   invertedMenu?: boolean
+  background?: string
 }
 
 const onClick = (open: boolean, setOpen: Dispatch<SetStateAction<boolean>>) => () => {
   setOpen(!open)
 }
 
-export const PageHeader: FC<Props> = ({invertedMenu}: Props) => {  
+export const PageHeader: FC<Props> = ({
+  invertedMenu, 
+  background
+}: Props) => {  
     const theme: DerivedTheme = useTheme()
     const styles = prepareStyles({
       PageTitle: {
@@ -30,6 +34,9 @@ export const PageHeader: FC<Props> = ({invertedMenu}: Props) => {
       MenuCard: {
         boxShadow: `0 0 50px ${theme.background975} inset`,
         border: `1px ${theme.white500_10} solid`,
+        backgroundImage: `url(${background})`,
+        backgroundBlendMode: 'soft-light',
+        ...t.cover
       }
     })
     const [open, setOpen] = useState(false)
@@ -71,7 +78,14 @@ export const PageHeader: FC<Props> = ({invertedMenu}: Props) => {
        
         <SlideDown className="slide-down">
           {open && 
-            <Card flat extraStyles={styles.MenuCard} fullBleed autoWidth middleStacked customBackgroundColor={theme.background800}>
+            <Card 
+              flat 
+              extraStyles={styles.MenuCard} 
+              fullBleed 
+              autoWidth 
+              middleStacked 
+              customBackgroundColor={theme.background800}
+            >
               <Menu extraStyles={styles.TopHeaderMenu}>
                 <MenuItem inverted href={MenuItems.Home}>HOME</MenuItem>
                 <MenuItem inverted href={MenuItems.Visual}>VISUAL</MenuItem>

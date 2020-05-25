@@ -1,20 +1,24 @@
 import {FC} from 'react'
 
-import {id, getRelatedProjectCards} from '@alt/data'
+import {id, getRelatedProjectCards, portfolio, audio} from '@alt/data'
 import {Layout, Card} from '@alt/components'
 import {ProjectCard} from '@alt/views'
 
 interface Props {
   pid: id 
+  kind: 'visual' | 'audio'
 }
 
-export const RelatedProjectCards: FC<Props> = ({pid}: Props) => {
+export const RelatedProjectCards: FC<Props> = ({
+  pid, 
+  kind
+}: Props) => {
 
   return (
     <Card middleStacked level={0}>
       
       <Layout>
-        {getRelatedProjectCards(pid).map(p => 
+        {getRelatedProjectCards(kind === 'visual' ? portfolio : audio, pid).map(p => 
           <ProjectCard
             key={p.id}
             title={p.title}
