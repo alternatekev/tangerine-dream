@@ -104,6 +104,7 @@ const UnthemedParallaxHeader: FC<Props> = ({
         ? <Button
           inverted={!open}
           borderless
+          inline
           onClick={onClick(open, setOpen)}
           icon={<AppsIcon />}
         />

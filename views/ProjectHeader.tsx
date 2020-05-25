@@ -28,7 +28,7 @@ export const ProjectHeader: FC<Props> = ({
   url,
   kind = 'visual'
 }: Props) =>
-  <Card borderless compact>
+  <Card borderless inflated>
     <Layout 
       topWeighted 
       kind={Layouts.WideRight} 
@@ -36,7 +36,7 @@ export const ProjectHeader: FC<Props> = ({
     >
      {logo && <Avatar 
         alignCenter 
-        superWeighted 
+        weighted 
         img={logo} 
         circle={kind === 'visual'}
         size={210} 

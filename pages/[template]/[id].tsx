@@ -44,6 +44,7 @@ const IDPageTemplate: NextPage<Props> = ({
       kind={template}
       subhead={subhead || description}
       {...rest}
+      id={id}
       compact
     >
      {body}

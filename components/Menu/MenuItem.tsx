@@ -206,6 +206,7 @@ class UnthemedMenuItem extends PureComponent<MenuItemProps & ButtonProps> {
       collapsed,
       compact,
       horizontal,
+      external,
       divider,
       disabled,
       highlighted,
@@ -220,7 +221,6 @@ class UnthemedMenuItem extends PureComponent<MenuItemProps & ButtonProps> {
       labelStyles,
       tertiary,
       borderless,
-      external,
       ...rest
     } = this.props
 

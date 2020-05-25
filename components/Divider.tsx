@@ -57,7 +57,7 @@ export const Divider: FC<DividerProps> = props => {
       ...t.mt4
     },
     isSuperWeighted: {
-      ...t.mb6
+      ...t.mb5
     },
     isSuperTopWeighted: {
       ...t.mt6

@@ -2,12 +2,14 @@ import {FC} from 'react'
 
 import {Divider, Card, Page} from '@alt/components'
 import {Renderable, Template} from '@alt/types'
-import {ProjectHeader} from '@alt/views'
+import {ProjectHeader, RelatedProjectCards} from '@alt/views'
 import {ThemeContext} from '@alt/styles'
+import {ID} from '@alt/data'
 
 export interface PageProps {
   children: Renderable
   image?: string
+  id?: ID
   header: Renderable
   headerImage: string
   subhead?: string
@@ -24,6 +26,7 @@ export const PortfolioTemplate: FC<PageProps> = ({
   image,
   logo,
   header,
+  id,
   title,
   remoteUrl,
   kind,
@@ -38,17 +41,21 @@ export const PortfolioTemplate: FC<PageProps> = ({
     header={headerImage}
     theme={theme}
   >{() =>
-    <Card stacked level={2} middleStacked>
-      <ProjectHeader 
-        kind={kind}
-        url={remoteUrl}
-        subhead={subhead}
-        logo={logo || image}
-      >
-        {header}
-      </ProjectHeader>
-      <Divider weighted level={0} />
-      {children}
-    </Card>
+    <>
+      <Card level={2} middleStacked>
+        <ProjectHeader 
+          kind={kind}
+          url={remoteUrl}
+          subhead={subhead}
+          logo={logo || image}
+        >
+          {header}
+        </ProjectHeader>
+        <Divider superWeighted level={0} />
+        {children}
+        
+      </Card>
+      {id && <RelatedProjectCards kind={kind} pid={id} />}
+    </>
     }
   </Page>

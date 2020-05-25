@@ -57,7 +57,7 @@ const UnthemedHeaderMenu: FC<Props> = ({
         </Menu>
       </div>
       <div css={css(styles.SmallMenu)}>
-        <Button onClick={onClick} borderless icon={<MenuIcon />} inline iconOnly />
+        <Button onClick={onClick} borderless inline icon={<MenuIcon />} iconOnly />
       </div>
     </>
   )

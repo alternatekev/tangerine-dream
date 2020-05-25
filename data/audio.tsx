@@ -5,7 +5,7 @@ import {PageProps} from '@alt/templates'
 import {Medium, P, Card, Button} from '@alt/components'
 import {ThemeContext} from '@alt/styles'
 
-export const meta: Omit<PageProps, 'children'> = {
+export const meta: Omit<PageProps, 'children' | 'id'> = {
   header: (
     <P large>I've often thought that if I hadn't gone into web design and development, that I'd have loved to be a musician. Here are some of my musical projects, and feel free to check out my live band <a href="https://facebook.com/fullbleedband">Full Bleed</a> on Facebook.</P>
   ),

@@ -9,7 +9,7 @@ import {ProjectImage} from '@alt/components/ProjectImage'
 import {ThemeContext, css, styles} from '@alt/styles'
 import {Block} from '@alt/views/Block'
 
-export const meta: Omit<PageProps, 'children'> = {
+export const meta: Omit<PageProps, 'children' | 'id'> = {
   image: 'https://alternatekev.files.wordpress.com/2015/07/4366366361_a75c4a59f3_b.jpg',
   header: (
     <div>
@@ -115,9 +115,11 @@ export const portfolio: PortfolioItem[] = [
                 <ListItem compact>Provide recommendations on how to bring the app into a more pure Atomic Design model</ListItem>
               </>}
             </List>
-            <P compact>Since we were already using React, this made for a perfect time to adopt a more standards-driven UI design process, placing the idea of functional components at the heart of the design language. We reviewed every page, outlined the parts of it that differed from the UX of other parts of the app, and made general recommendations for how to bring the application more in-line with itself.</P>
-            <P compact>The result of these workshops were 6 lengthy internal blog posts outlining the changes that we felt should be made, and created much discussion. Some recommendations were implemented by other teams and some of them were decided against by the wider group of contributors.</P>
           </div>
+        </Block>
+        <Block layout={Layouts.Right}>
+          <P compact>Since we were already using React, this made for a perfect time to adopt a more standards-driven UI design process, placing the idea of functional components at the heart of the design language. We reviewed every page, outlined the parts of it that differed from the UX of other parts of the app, and made general recommendations for how to bring the application more in-line with itself.</P>
+          <P compact>The result of these workshops were 6 lengthy internal blog posts outlining the changes that we felt should be made, and created much discussion. Some recommendations were implemented by other teams and some of them were decided against by the wider group of contributors.</P>
         </Block>
         <Block image="/wp/wp3.png" layout={Layouts.Left} >
           <P>
@@ -202,17 +204,17 @@ export const portfolio: PortfolioItem[] = [
       <Block image="/ca/ca3.png">
         <P>
           I spent a lot of time taking Material UI (a Material Design component library implemented in React), and customizing it for our needs. This was also my first introduction to TypeScript.
-          </P>
+        </P>
       </Block>
       <Block layout={Layouts.Left} image="/ca/ca4.png">
         <P>
           When the business needed me to step out of the codebase and into Sketch in order to iterate even faster on projections 1.5 years into the future, I re-built our component system as graphical assets in Sketch.
-          </P>
+        </P>
       </Block>
       <Block layout={Layouts.Equal} image="/ca/ca5.png" divider={false} action={<Button block alignCenter compact tertiary icon={<OpenInNewIcon size={15} />} external href="https://electrolyte.herokuapp.com">View Prototype</Button>}>
         <P compact>
           When Project Catchfly was cancelled 9 months afer I started, I quickly pivoted to providing prototyping for the Agile Central (Rally) design team. Within a week, I had a custom component library rendering a Kanban board, that the designers were taking screenshots of to send to their developers as the final design.
-          </P>
+        </P>
       </Block>
     </>)
   },
