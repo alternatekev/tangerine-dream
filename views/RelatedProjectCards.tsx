@@ -1,11 +1,11 @@
 import {FC} from 'react'
 
-import {id, getRelatedProjectCards, portfolio, audio} from '@alt/data'
+import {ID, getRelatedProjectCards, portfolio, audio} from '@alt/data'
 import {Layout, Card} from '@alt/components'
 import {ProjectCard} from '@alt/views'
 
 interface Props {
-  pid: id 
+  pid: ID 
   kind?: 'visual' | 'audio'
 }
 

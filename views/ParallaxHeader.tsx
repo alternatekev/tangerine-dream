@@ -4,7 +4,7 @@ import AppsIcon from 'mdi-react/AppsIcon'
 import {SlideDown} from 'react-slidedown'
 
 import {Breakpoints, BreakpointProps} from '@alt/types'
-import {id} from '@alt/data'
+import {ID} from '@alt/data'
 
 import {
   t, 
@@ -87,10 +87,9 @@ const UnthemedParallaxHeader: FC<Props> = ({
   compact,
   theme
 }: Props) => {
-  const paths = useRouter().pathname
-  const split = paths.split('/')
-  const showVisualMenu = split[1] === 'visual' && split[2]
-  const showAudioMenu = split[1] === 'audio' && split[2]
+  const paths = useRouter().query
+  const showVisualMenu = paths.template === 'visual' && paths.id
+  const showAudioMenu = paths.template === 'audio' && paths.id
   const [open, setOpen] = useState(false)
   const styles = getStyles(theme, background, compact, open)
 
@@ -149,7 +148,7 @@ const UnthemedParallaxHeader: FC<Props> = ({
               borderless 
               autoHeight={false} 
               inverted 
-              pid={split[2] as id} 
+              pid={paths.id as ID} 
             />
           </Card>
         }
@@ -163,7 +162,7 @@ const UnthemedParallaxHeader: FC<Props> = ({
               cardLevel={1}
               borderless
               inverted
-              pid={split[2] as id}
+              pid={paths.id as ID}
             />
           </Card>
         }

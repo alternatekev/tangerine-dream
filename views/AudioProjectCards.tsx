@@ -1,13 +1,13 @@
 import {FC} from 'react'
 import {Row, Col} from 'react-grid-system'
 import {ProjectCard} from '@alt/views'
-import {audio, id} from '@alt/data'
+import {audio, ID} from '@alt/data'
 
 interface Props {
   cardLevel?: 0 | 1 | 2 | 3 | 4 | 5
   borderless?: boolean
   inverted?: boolean
-  pid?: id
+  pid?: ID
   useColumns?: boolean
 }
 
@@ -33,7 +33,7 @@ export const AudioProjectCards: FC<Props> = ({
               borderless={borderless && pid !== item.id}
               title={item.title}
               img={item.image}
-              subtitle={item.artist}
+              subtitle={item.subhead}
               url={item.url}
               description={item.description}
             />

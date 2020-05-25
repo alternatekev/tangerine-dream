@@ -1,14 +1,14 @@
 import {FC} from 'react'
 import {Row, Col} from 'react-grid-system'
 import {ProjectCard,} from '@alt/views'
-import {portfolio, id} from '@alt/data'
+import {portfolio, ID} from '@alt/data'
 
 interface Props {
   cardLevel?: 0 | 1 | 2 | 3 | 4 | 5
   borderless?: boolean
   autoHeight?: boolean
   inverted?: boolean
-  pid?: id
+  pid?: ID
 }
 
 export const VisualProjectCards: FC<Props> = ({

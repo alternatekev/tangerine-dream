@@ -1,12 +1,11 @@
-import {PortfolioItem} from '@alt/types'
+import {PortfolioItem, ID as id} from '@alt/types'
 import {portfolio} from './visual'
 export {portfolio}
 import {audio} from './audio'
 export {audio}
+export type ID = id
 
-export type id = 'cf' | 'wp' | 'nyt' | 'ca' | 'dp' | 'rl' | 'eg' | 'st' | 'cm' | 'dec' | 'adc' | 'mc' | 'aeo'
-
-export function getRelatedProjectCards(data: PortfolioItem[], pid: id) {
+export function getRelatedProjectCards(data: PortfolioItem[], pid: ID) {
   const match = data.findIndex((p: PortfolioItem) => p.id === pid)
   const count = data.length - 1
 

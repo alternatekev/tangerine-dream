@@ -1,4 +1,5 @@
 import {Renderable} from '@alt/types'
+import {ThemeContext} from './Theme'
 
 export interface ProjectImage {
   body: Renderable
@@ -12,10 +13,14 @@ export interface PortfolioItem {
   url: string
   description: string
   id: string
+  theme: ThemeContext
+  body: Renderable
+  header: Renderable
+  remoteUrl?: string
+  subhead?: string
+  logo?: string
 }
 
 export interface AudioItem extends PortfolioItem {
-  artist?: string
-  remoteUrl: string
   columns: number
 }

@@ -5,7 +5,8 @@ import {
   Layout,
   Avatar,
   Header,
-  Button
+  Button,
+  Card
 } from '@alt/components'
 import {
   Layouts, 
@@ -27,10 +28,8 @@ export const ProjectHeader: FC<Props> = ({
   url,
   kind = 'visual'
 }: Props) =>
-  <>
+  <Card borderless compact>
     <Layout 
-      divider 
-      superWeighted 
       topWeighted 
       kind={Layouts.WideRight} 
       alignment="center"
@@ -67,4 +66,4 @@ export const ProjectHeader: FC<Props> = ({
         {children}
       </>
     </Layout>
-  </>
+  </Card>
