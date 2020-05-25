@@ -6,12 +6,12 @@ import {ProjectCard} from '@alt/views'
 
 interface Props {
   pid: id 
-  kind: 'visual' | 'audio'
+  kind?: 'visual' | 'audio'
 }
 
 export const RelatedProjectCards: FC<Props> = ({
   pid, 
-  kind
+  kind = 'visual'
 }: Props) => {
 
   return (

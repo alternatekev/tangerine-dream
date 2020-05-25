@@ -58,7 +58,7 @@ const Visual = () =>
             </P>
           </Block> 
       </Card>
-      <RelatedProjectCards pid="cf" />
+      <RelatedProjectCards pid="cf" kind="visual" />
     </>
     }
   </Page>

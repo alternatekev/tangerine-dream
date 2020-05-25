@@ -162,7 +162,6 @@ const UnthemedParallaxHeader: FC<Props> = ({
               useColumns={false}
               cardLevel={1}
               borderless
-              autoHeight={false}
               inverted
               pid={split[2] as id}
             />

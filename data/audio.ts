@@ -1,4 +1,4 @@
-import { AudioItem } from '@alt/types'
+import {AudioItem} from '@alt/types'
 
 export const audio: AudioItem[] = [
   {

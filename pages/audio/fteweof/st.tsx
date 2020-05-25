@@ -1,8 +1,8 @@
 import ReactPlayer from 'react-player'
-import { Page, Card, P, Medium } from '@alt/components'
-import { ThemeContext } from '@alt/styles'
-import { RelatedProjectCards, ProjectHeader } from '@alt/views'
-import { audio } from '@alt/data'
+import {Page, Card, P, Medium} from '@alt/components'
+import {ThemeContext} from '@alt/styles'
+import {RelatedProjectCards, ProjectHeader} from '@alt/views'
+import {audio} from '@alt/data'
 
 const st = audio.find(a => a.id === 'st')
 

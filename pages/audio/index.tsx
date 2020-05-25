@@ -1,5 +1,3 @@
-import {Row, Col} from 'react-grid-system'
-
 import {Page, Card, P, Divider} from '@alt/components'
 import {ThemeContext} from '@alt/styles'
 import {AudioProjectCards} from '@alt/views'

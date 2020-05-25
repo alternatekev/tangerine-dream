@@ -46,7 +46,7 @@ const Visual = () =>
           </P>
         </Block>
       </Card>
-      <RelatedProjectCards pid="ca" />
+      <RelatedProjectCards pid="ca" kind="visual" />
     </>
     }
   </Page>
