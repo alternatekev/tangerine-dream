@@ -5,6 +5,7 @@ import {PortfolioTemplate} from '@alt/templates'
 import {meta as visualMeta, portfolio} from '@alt/data/visual'
 import {meta as audioMeta, audio} from '@alt/data/audio'
 import {ThemeContext} from '@alt/styles'
+import {Block} from '@alt/views'
 
 interface Props {
   template: Template
@@ -16,7 +17,9 @@ const defaultData: PortfolioItem = {
   image: '', 
   title: '',
   theme: ThemeContext.Home, 
-  body: <div />, 
+  body: {
+    special: <div />
+  }, 
   url: '',
   description: '',
   logo: '',
@@ -36,7 +39,15 @@ const IDPageTemplate: NextPage<Props> = ({
   const meta = metaMap[template] || metaMap.visual
   console.log(meta)
   const portfolioItem = data.find(p => p.id === id) || defaultData
-  const {body, subhead, description, ...rest} = portfolioItem
+  const {
+    body: {
+      special,
+      blocks
+    }, 
+    subhead, 
+    description, 
+    ...rest
+  } = portfolioItem
 
   return (
     <PortfolioTemplate
@@ -47,7 +58,17 @@ const IDPageTemplate: NextPage<Props> = ({
       id={id}
       compact
     >
-     {body}
+     {special}
+     {blocks && blocks.map((b, i) => 
+        <Block
+          action={b.action}
+          layout={b.layout}
+          image={b.image}
+          key={`block_${i}`}
+        >
+          {b.children}        
+        </Block>
+      )}
     </PortfolioTemplate>
   )
 }

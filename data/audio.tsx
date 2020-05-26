@@ -35,14 +35,16 @@ export const audio: AudioItem[] = [
         <P large primary>The lyrics, however, are written by Carly's robot.</P>
       </>
     ),
-    body: (
-      <Card divider middleStacked megaWeighted borderless inflated>
-        <ReactPlayer url="https://vimeo.com/382257201" width={860} height={500} />
-        <P>
-          In making this video in Adobe Premiere, we had help from my daughter Anika for the video of me and the streetlights, as well as Carly's husband Kevin for the video of her.
+    body: {
+      special: (
+        <Card divider middleStacked megaWeighted borderless inflated>
+          <ReactPlayer url="https://vimeo.com/382257201" width={860} height={500} />
+          <P>
+            In making this video in Adobe Premiere, we had help from my daughter Anika for the video of me and the streetlights, as well as Carly's husband Kevin for the video of her.
         </P>
-      </Card>
-    ),
+        </Card>
+      )
+    },
   },
   {
     title: 'From The Middle Out',
@@ -59,11 +61,13 @@ export const audio: AudioItem[] = [
         Long a fan of <Button inline borderless external large href="https://adocumentarycompany.com/films" target="_new">Joshua Labure's</Button> work, I reached out to him to see if he needed any music soon. Turns out, he did. I gave him nine minutes of original music, more than enough for this lovely doc.
       </P>
     ),
-    body: (
-      <Card divider middleStacked megaWeighted borderless inflated>
-        <Button borderless external href="https://vimeo.com/335533585"><ReactPlayer url="https://vimeo.com/335533585" width={860} height={500} /></Button>
-      </Card>
-    ),
+    body: {
+      special: (
+        <Card divider middleStacked megaWeighted borderless inflated>
+          <Button borderless external href="https://vimeo.com/335533585"><ReactPlayer url="https://vimeo.com/335533585" width={860} height={500} /></Button>
+        </Card>
+      )
+    },
   },
   {
     title: 'States',
@@ -80,11 +84,13 @@ export const audio: AudioItem[] = [
         Written and recorded in 2016, <Medium>States</Medium> was a meditation on loneliness, meaningless meaning found elsewhere, and a feeling of impending doom.
       </P>
     ),
-    body: (
-      <Card divider middleStacked megaWeighted borderless inflated>
-        <ReactPlayer width={860} url="https://soundcloud.com/alternatekev/sets/states" />
-      </Card>
-    ),
+    body: {
+      special: (
+        <Card divider middleStacked megaWeighted borderless inflated>
+          <ReactPlayer width={860} url="https://soundcloud.com/alternatekev/sets/states" />
+        </Card>
+      )
+    },
   },
   {
     title: 'December',
@@ -101,11 +107,13 @@ export const audio: AudioItem[] = [
         Written and recorded in 2014, <strong>December</strong> was inspired by a trio of consecutive Decembers.
       </P>
     ),
-    body: (
-      <Card divider middleStacked megaWeighted borderless inflated>
-        <ReactPlayer width={860} url="https://soundcloud.com/alternatekev/sets/december" />
-      </Card>
-    ),
+    body: {
+      special: (
+        <Card divider middleStacked megaWeighted borderless inflated>
+          <ReactPlayer width={860} url="https://soundcloud.com/alternatekev/sets/december" />
+        </Card>
+      )
+    },
   },
   {
     title: 'Morocco',
@@ -122,12 +130,14 @@ export const audio: AudioItem[] = [
         Written and recorded in 2014, <strong>Morocco</strong> was inspired by a trip to Morocco in 2012.
       </P>
     ),
-    body: (
-      <Card divider middleStacked megaWeighted borderless inflated>
-        <ReactPlayer width={860} url={'https://soundcloud.com/alternatekev/sets/morocco'} />
+    body: {
+      special: (
+        <Card divider middleStacked megaWeighted borderless inflated>
+          <ReactPlayer width={860} url={'https://soundcloud.com/alternatekev/sets/morocco'} />
 
-      </Card>
-    ),
+        </Card>
+      )
+    },
   },
   {
     title: 'An Earthen Ocean',
@@ -144,10 +154,12 @@ export const audio: AudioItem[] = [
         Written and recorded in 2012, <strong>An Earthen Ocean</strong> was my first foray into self-produced (live) music on my laptop. Drawing heavily from post-rock influences, I'm still very proud of this album's ability to be abstract yet full of form.
       </P>
     ),
-    body: (
-      <Card divider middleStacked megaWeighted borderless inflated>
-        <ReactPlayer width={860} url="https://soundcloud.com/alternatekev/sets/an-earthen-ocean" />
-      </Card>
-    ),
+    body: {
+      special: (
+        <Card divider middleStacked megaWeighted borderless inflated>
+          <ReactPlayer width={860} url="https://soundcloud.com/alternatekev/sets/an-earthen-ocean" />
+        </Card>
+      )
+    },
   },
 ]

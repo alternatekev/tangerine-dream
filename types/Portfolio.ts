@@ -1,5 +1,6 @@
 import {Renderable} from '@alt/types'
 import {ThemeContext} from './Theme'
+import { Layouts } from './Layouts'
 
 export interface ProjectImage {
   body: Renderable
@@ -14,7 +15,7 @@ export interface PortfolioItem {
   description: string
   id: string
   theme: ThemeContext
-  body: Renderable
+  body: PortfolioBody
   header: Renderable
   remoteUrl?: string
   subhead?: string
@@ -23,4 +24,16 @@ export interface PortfolioItem {
 
 export interface AudioItem extends PortfolioItem {
   columns: number
+}
+
+export interface PortfolioBody {
+  special?: Renderable
+  blocks?: PortfolioBlock[]
+}
+
+export interface PortfolioBlock {
+  layout?: Layouts.Equal | Layouts.Left | Layouts.Right
+  image?: string
+  children?: Renderable
+  action?: Renderable
 }
