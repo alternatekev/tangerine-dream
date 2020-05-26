@@ -1,6 +1,7 @@
 import {Renderable} from '@alt/types'
 import {ThemeContext} from './Theme'
-import { Layouts } from './Layouts'
+import {Layouts} from './Layouts'
+import { Alignment } from './Alignment'
 
 export interface ProjectImage {
   body: Renderable
@@ -32,8 +33,10 @@ export interface PortfolioBody {
 }
 
 export interface PortfolioBlock {
-  layout?: Layouts.Equal | Layouts.Left | Layouts.Right
+  layout?: Layouts
   image?: string
+  mobileImage?: string
+  alignMobile?: Alignment
   children?: Renderable
   action?: Renderable
 }

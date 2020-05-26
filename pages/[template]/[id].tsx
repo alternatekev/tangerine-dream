@@ -18,7 +18,7 @@ const defaultData: PortfolioItem = {
   title: '',
   theme: ThemeContext.Home, 
   body: {
-    special: <div />
+    special: <div />,
   }, 
   url: '',
   description: '',
@@ -61,9 +61,12 @@ const IDPageTemplate: NextPage<Props> = ({
      {special}
      {blocks && blocks.map((b, i) => 
         <Block
+          name={rest.title}
           action={b.action}
           layout={b.layout}
           image={b.image}
+          mobileImage={b.mobileImage}
+          alignMobile={b.alignMobile}
           key={`block_${i}`}
         >
           {b.children}        
