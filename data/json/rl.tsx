@@ -1,5 +1,4 @@
 import OpenInNewIcon from 'mdi-react/OpenInNewIcon'
-import Link from 'next/link'
 
 import { P, Card, Button } from '@alt/components'
 import { ThemeContext, } from '@alt/styles'
