@@ -7,6 +7,5 @@ export interface ContentProps {
 }
 export type ID = 'cf' | 'wp' | 'nyt' | 'ca' | 'dp' | 'rl' | 'eg' | 'st' | 'cm' | 'dec' | 'adc' | 'mc' | 'aeo'
 export * from './Layouts'
-export * from './Portfolio'
 export * from './Renderable'
 export type Template = 'visual' | 'audio'

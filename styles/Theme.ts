@@ -1,6 +1,6 @@
 import Color from 'color'
 import {mapObjIndexed} from 'ramda'
-import {ThemeOptions, DerivedTheme} from '@alt/types/Theme'
+import {ThemeOptions, DerivedTheme} from '@td/types/Theme'
 
 export interface ContrastColors {
   backgroundColor: string
@@ -164,4 +164,4 @@ function createColorFamilies(currentColors) {
 export const styleguideColors = createColorFamilies(colors)
 
 export default {baseColors, calculateColors, colors, styleguideColors}
-export * from '@alt/types/Theme'
+export * from '@td/types/Theme'

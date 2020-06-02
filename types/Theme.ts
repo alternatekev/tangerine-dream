@@ -1,5 +1,5 @@
 import Color from 'color'
-import {calculateColors} from '@alt/styles'
+import {calculateColors} from '@td/styles'
 
 export type ValueFamilies =  // tslint:disable:no-multi-spaces
   | 1000
