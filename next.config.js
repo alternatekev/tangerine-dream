@@ -5,7 +5,7 @@ module.exports = {
     config.node = {
       fs: 'empty'
     }
-    config.resolve.alias['@alt'] = path.resolve(__dirname);
+    config.resolve.alias['@td'] = path.resolve(__dirname);
 
     return config
   },
