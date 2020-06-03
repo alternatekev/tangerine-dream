@@ -1,10 +1,20 @@
 import {FC} from 'react'
 
 import {AgeVerification} from '@td/types'
-import {Card} from '@td/components'
+import {Card, Logo, P, Button} from '@td/components'
 
-export const AgeVerificationForm: FC<AgeVerification> = (props: AgeVerification) =>
-  <Card>
-    hi
-  </Card>
-  
+export const AgeVerificationForm: FC<AgeVerification> = ({
+  logoImage,
+  body,
+  button
+}: AgeVerification) => {
+  const {text, ...rest} = body
+
+  return (
+    <Card level={0} alignment={rest.alignment}>
+      <Logo {...logoImage} />
+      <P fontStyles={rest}>{text}</P>
+      <Button level={1} {...button}>{button.text}</Button>
+    </Card>
+  )
+}

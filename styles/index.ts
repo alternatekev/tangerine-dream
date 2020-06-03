@@ -7,3 +7,5 @@ export type ExtraStyles = SerializedStyles | undefined | SerializedStyles[] | (S
 export {css, t, prepareStyles, inverseTachyonsUnit, useTheme, withTheme}
 export * from './Theme'
 export * from './Colors'
+export * from '@td/types/UI'
+export * from './Animation'

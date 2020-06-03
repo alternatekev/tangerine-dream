@@ -7,6 +7,6 @@ export interface UIImage {
 export type ImageSize = number | Size
 
 export interface Size {
-  w: number
-  h: number
+  w?: number
+  h?: number
 }

@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {ThemeProvider} from 'emotion-theming'
 import Head from 'next/head'
 
-import {Breakpoints, UITheme} from '@td/types'
+import {Breakpoints, UITheme, ThemeState, PageKind} from '@td/types'
 
 import {
   css, 
@@ -15,6 +15,8 @@ import {
 
 interface Props {
   title?: string
+  kind: PageKind
+  captured?: boolean
   compact?: boolean
   uiTheme: UITheme
   invertedMenu?: boolean
@@ -22,11 +24,6 @@ interface Props {
   theme: Theme
   header?: string
   children?(theme: DerivedTheme): JSX.Element
-}
-
-interface State {
-  colors: DerivedTheme,
-  ui: UITheme
 }
 
 const getStyles = (image: any, theme: DerivedTheme) => { // tslint:disable-line no-any
@@ -42,13 +39,30 @@ const getStyles = (image: any, theme: DerivedTheme) => { // tslint:disable-line 
       ...t.pa5,
       ...t.pb0,
       ...t.mb5,
-      maxWidth: 960,
+      minHeight: '100vh',
       marginLeft: 'auto',
       marginRight: 'auto',
       transition: 'all 100ms ease-in-out',
       [Breakpoints.Small]: {
         ...t.pa1
       }
+    },
+    isLimited: {
+      maxWidth: 960,
+    },
+    isFullBleed: {
+      maxWidth: '100vw',
+      ...t.pa0,
+      ...t.ma0
+    },
+    isCaptured: {
+      ...t.flex,
+      maxWidth: 500,
+      ...t.justify_center,
+      ...t.items_center,
+      ...t.align_center,
+      margin: '0 auto',
+      ...t.pa0
     },
     PageChildren: {
       ...t.flex,
@@ -59,7 +73,7 @@ const getStyles = (image: any, theme: DerivedTheme) => { // tslint:disable-line 
   })
 }
 
-export class Page extends Component<Props, State> {
+export class Page extends Component<Props, ThemeState> {
   constructor(props: Props) {
     super(props)
 
@@ -78,6 +92,7 @@ export class Page extends Component<Props, State> {
    
     const {
       children, 
+      kind,
       image, 
       title, 
     } = this.props
@@ -90,9 +105,14 @@ export class Page extends Component<Props, State> {
           <style type="text/css" media="screen">{`
             body {${styles.body.styles}};
           `}</style>
-          <title>{title}</title>
+          <title>{title || 'Untitled Page'}</title>
         </Head>
-        <main id="Page" css={css(styles.Page)}>
+        <main id="Page" css={css(
+          styles.Page, 
+          kind === PageKind.Captured && styles.isCaptured,
+          kind === PageKind.FullBleed && styles.isFullBleed,
+          kind === PageKind.Limited && styles.isLimited
+        )}>
           <ThemeProvider theme={this.state}>
             <article css={css(styles.PageChildren)} id="PageChildren">
               {children && typeof children === 'function' ? children(colors) : children}

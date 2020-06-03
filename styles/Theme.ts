@@ -1,5 +1,11 @@
 import Color from 'color'
 import {defaultColors, calculateColorSteps} from './Colors'
+import {UITheme} from '@td/types'
+
+export interface ThemeState {
+  colors: DerivedTheme,
+  ui: UITheme
+}
 
 export type ValueFamilies =  // tslint:disable:no-multi-spaces
   | 1000

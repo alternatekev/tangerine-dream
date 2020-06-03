@@ -1,7 +1,7 @@
 import {UIImage} from './Image'
 import {VerticalAlignment, Alignment} from './Alignment'
 import {Placement} from './Placement'
-import {UITheme} from './UI'
+import {UITheme, PageKind, UIBodyText, UIButton} from './UI'
 import {Theme} from '@td/styles'
 
 export interface Dispensary {
@@ -10,11 +10,15 @@ export interface Dispensary {
   colors: Theme
 }
 
-export interface AgeVerification {
+export interface DispensaryPage {
   backgroundImage: UIImage
-  body: string
+  body: UIBodyText
+  kind: PageKind
+}
+
+export interface AgeVerification extends DispensaryPage {
   logoImage: UIImage
-  buttonText: string
+  button: UIButton
   checkbox: boolean
   vAlign: VerticalAlignment
   align: Alignment
