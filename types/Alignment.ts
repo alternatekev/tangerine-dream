@@ -8,5 +8,6 @@ export enum Alignment {
 export enum VerticalAlignment {
   Top = 'top',
   Bottom = 'bottom',
-  Auto = 'auto'
+  Auto = 'auto',
+  Center = 'center'
 }
