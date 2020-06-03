@@ -2,13 +2,12 @@ import React, {Component} from 'react'
 import {ThemeProvider} from 'emotion-theming'
 import Head from 'next/head'
 
-import {Breakpoints} from '@td/types'
+import {Breakpoints, UITheme} from '@td/types'
 
 import {
   css, 
   Theme,
   prepareStyles, 
-  calculateColorSteps,
   t,
   DerivedTheme,
   themify, 
@@ -17,6 +16,7 @@ import {
 interface Props {
   title?: string
   compact?: boolean
+  uiTheme: UITheme
   invertedMenu?: boolean
   image?: any // tslint:disable-line no-any
   theme: Theme
@@ -25,10 +25,11 @@ interface Props {
 }
 
 interface State {
-  currentTheme: DerivedTheme,
+  colors: DerivedTheme,
+  ui: UITheme
 }
 
-const getStyles = (image: any, themeContext: DerivedTheme) => { // tslint:disable-line no-any
+const getStyles = (image: any, theme: DerivedTheme) => { // tslint:disable-line no-any
 
   return prepareStyles({
     body: {
@@ -62,14 +63,15 @@ export class Page extends Component<Props, State> {
   constructor(props: Props) {
     super(props)
 
-    const currentTheme = themify(props.theme)
-    console.log(currentTheme)
-
-    this.state = {currentTheme}
+    const colors = themify(props.theme)
+    this.state = { 
+      colors, 
+      ui: props.uiTheme
+    }
   }
 
   setTheme = (theme: DerivedTheme) => {
-    this.setState({currentTheme: theme})
+    this.setState({colors: theme})
   }
 
   render() {
@@ -79,8 +81,8 @@ export class Page extends Component<Props, State> {
       image, 
       title, 
     } = this.props
-    const {currentTheme} = this.state
-    const styles = getStyles(image, currentTheme)
+    const {colors} = this.state
+    const styles = getStyles(image, colors)
 
     return (
       <>
@@ -88,12 +90,12 @@ export class Page extends Component<Props, State> {
           <style type="text/css" media="screen">{`
             body {${styles.body.styles}};
           `}</style>
-          <title>Alternate.org // {title}</title>
+          <title>{title}</title>
         </Head>
         <main id="Page" css={css(styles.Page)}>
-          <ThemeProvider theme={currentTheme}>
+          <ThemeProvider theme={this.state}>
             <article css={css(styles.PageChildren)} id="PageChildren">
-              {children && typeof children === 'function' ? children(currentTheme) : children}
+              {children && typeof children === 'function' ? children(colors) : children}
             </article>
           </ThemeProvider>
         </main>

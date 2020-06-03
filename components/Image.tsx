@@ -17,6 +17,6 @@ export const Image: FC<UIImage> = ({
   <img 
     src={src}
     alt={alt}
-    width={calc('w', size)}
-    height={calc('h', size)}
+    width={calcSize('w', size)}
+    height={calcSize('h', size)}
   />

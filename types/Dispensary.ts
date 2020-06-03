@@ -2,7 +2,7 @@ import {UIImage} from './Image'
 import {VerticalAlignment, Alignment} from './Alignment'
 import {Placement} from './Placement'
 import {UITheme} from './UI'
-import {Theme} from './Theme'
+import {Theme} from '@td/styles'
 
 export interface Dispensary {
   age: AgeVerification

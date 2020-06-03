@@ -61,6 +61,7 @@
         "no-eval": true,
         "react-a11y-anchors": false,
         "no-function-expression": false,
+        "react-unused-props-and-state": false,
         "react-no-dangerous-html": false,
         "no-http-string": false,
         "no-implicit-dependencies": false,

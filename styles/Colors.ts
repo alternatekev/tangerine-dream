@@ -52,10 +52,9 @@ export function calculateColorSteps(
     ...immutableThemeColors
   }
 
-  console.log(themeColors)
-
-  return Object.keys(colorSet).reduce((results, colorName) => {
-    const color = colorSet[colorName]
+  return Object.keys(themeColors).reduce((results, colorName) => {
+    // @ts-ignore
+    const color = themeColors[colorName] 
 
     return Object.keys(valueFamilies).reduce((innerResults, level) => {
       const levelInt = parseInt(level, 10)
@@ -95,7 +94,8 @@ export function calculateColorSteps(
       } else if (levelInt > 500) {
         return {
           ...innerResults,
-          [colorName + level]: colorSet[colorName]
+          // @ts-ignore
+          [colorName + level]: themeColors[colorName]
             //@ts-ignore
 
             .darken(valueFamilies[level])
@@ -103,11 +103,11 @@ export function calculateColorSteps(
             .string()
         }
       } else {
-        console.log(colorSet[colorName])
       
         return {
           ...innerResults,
-          [colorName + level]: colorSet[colorName]
+          // @ts-ignore
+          [colorName + level]: themeColors[colorName]
             //@ts-ignore
 
             .mix(Color(`#FFFFFF`), valueFamilies[level])
