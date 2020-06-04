@@ -18,10 +18,12 @@ const getStyles = (
 ) => {
   const {
     compact,
+    width,
     level = 1,
     alignment = Alignment.Left,
     fullBleed,
     weighted = 0,
+    height,
     topWeighted = 0,
   } = props
 
@@ -42,10 +44,10 @@ const getStyles = (
     1,
     1,
     2,
+    2,
     3,
-    5,
-    8,
-    13
+    3,
+    3
   ]
   const borderColor = [
     'transparent',
@@ -55,7 +57,8 @@ const getStyles = (
     colors.grey500,
     colors.grey900,
     colors.grey950,
-    colors.grey975
+    colors.grey975,
+    'transparent',
   ]
   const backgroundColor = [
     'transparent',
@@ -63,9 +66,10 @@ const getStyles = (
     colors.white500,
     colors.grey1,
     colors.grey10,
-    colors.grey50,
-    colors.grey200,
-    colors.grey500
+    colors.black50,
+    colors.black200,
+    colors.black500,
+    'transparent',
   ]
 
   if(ui.mode === UIMode.Dark) {
@@ -81,10 +85,12 @@ const getStyles = (
       ...t[`mb${weighted}`],
       ...t[`mb${topWeighted}`],
       ...t[`br${ui.card.borderRadius}`],
-      backgroundColor: backgroundColor[level],
-      border: `${borderWidth[level]}px solid ${borderColor[level]}`,
       ...t[`mt${weight?.topWeighted}`],
       ...t[`mb${weight?.weighted}`],
+      backgroundColor: backgroundColor[level],
+      border: `${borderWidth[level]}px solid ${borderColor[level]}`,
+      width,
+      height
     }
   })
 }
@@ -94,6 +100,7 @@ export const Card: FC<Props> = ({
   children,
   topWeighted,
   weighted,
+  unicorn,
   ...rest
 }: Props) => {
 
@@ -101,6 +108,6 @@ export const Card: FC<Props> = ({
   const styles = getStyles(rest, theme, {topWeighted, weighted})
 
   return jsx(tag || 'div', {
-    css: css(styles.Card)
+    css: css(styles.Card, unicorn)
   }, children)
 }

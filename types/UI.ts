@@ -30,8 +30,8 @@ export interface UITypography {
 }
 
 export interface UIFont {
-  font: string
-  weight: FontWeight
+  font?: string
+  weight?: FontWeight
 }
 
 export type FontWeight = 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900

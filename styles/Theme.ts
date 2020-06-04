@@ -4,7 +4,8 @@ import {UITheme} from '@td/types'
 
 export interface ThemeState {
   colors: DerivedTheme,
-  ui: UITheme
+  ui: UITheme,
+  editing: boolean
 }
 
 export type ValueFamilies =  // tslint:disable:no-multi-spaces
@@ -72,5 +73,5 @@ export function themify(theme: Theme) {
 }
 
 export interface ThemeProps {
-  theme: DerivedTheme
+  theme: ThemeState
 }

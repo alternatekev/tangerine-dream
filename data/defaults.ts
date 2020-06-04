@@ -22,6 +22,7 @@ export const defaults: Dispensary = {
     button: {
       text: 'Enter Site',
       size: 2.25,
+      font: {weight: 600},
       inline: true,
       borderWidth: 3,
       inverted: true
