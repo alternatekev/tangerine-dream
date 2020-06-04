@@ -4,11 +4,13 @@ import {defaultColors as defaultThemeColors} from './defaultColors'
 export const defaultColors = defaultThemeColors
 
 export const defaults: Dispensary = {
+  name: 'TangerineDream',
   age: {
+    title: `Let's check your ID.`,
     kind: PageKind.Captured,
     backgroundImage: {
       alt: 'default age verification image',
-      src: 'https://images.unsplash.com/photo-1555959304-4cfdc80a15d8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2551&q=80',
+      src: 'https://images.unsplash.com/photo-1512691831679-83dfb93bddd6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3151&q=80',
     },
     body: {
       text: 'By entering the site below, I verify I am at least 21 years of age.',

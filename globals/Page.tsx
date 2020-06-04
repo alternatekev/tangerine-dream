@@ -15,6 +15,7 @@ import {
 
 interface Props {
   title?: string
+  name: string
   kind: PageKind
   captured?: boolean
   compact?: boolean
@@ -93,6 +94,7 @@ export class Page extends Component<Props, ThemeState> {
     const {
       children, 
       kind,
+      name,
       image, 
       title, 
     } = this.props
@@ -105,7 +107,7 @@ export class Page extends Component<Props, ThemeState> {
           <style type="text/css" media="screen">{`
             body {${styles.body.styles}};
           `}</style>
-          <title>{title || 'Untitled Page'}</title>
+          <title>{name} / {title || 'Untitled Page'}</title>
         </Head>
         <main id="Page" css={css(
           styles.Page, 

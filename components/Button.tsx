@@ -3,7 +3,7 @@ import { FC } from 'react'
 import { jsx } from '@emotion/core'
 
 import { useTheme, t, css, prepareStyles, ThemeState, UIMode, UIButton, transition} from '@td/styles'
-import { BlockProps, Alignment } from '@td/types'
+import { BlockProps, Alignment, UIWeighting } from '@td/types'
 
 interface Props extends BlockProps {
   tag?: 'button' | 'a'
@@ -11,7 +11,11 @@ interface Props extends BlockProps {
 
 export interface ButtonProps extends Props { }
 
-const getStyles = (props: Omit<Props, 'tag' | 'children'> & Omit<UIButton, 'text'>, theme: ThemeState) => {
+const getStyles = (
+  props: Omit<Props, 'tag' | 'children'> & Omit<UIButton, 'text'>, 
+  theme: ThemeState, 
+  weight: UIWeighting
+) => {
   const {
     compact,
     inverted,
@@ -122,6 +126,8 @@ const getStyles = (props: Omit<Props, 'tag' | 'children'> & Omit<UIButton, 'text
       fontSize: size ? `${size}rem` : t.f2.fontSize,
       backgroundColor: backgroundColor[level],
       border: `${borderWidths[borderWidth]}px solid ${level === 0 ? 'transparent' : brColor}`,
+      ...t[`mt${weight?.topWeighted}`],
+      ...t[`mb${weight?.weighted}`],
       ':hover': {
         ...t.pointer,
         backgroundColor: inverted ? invertedBackgroundColor[level + 1] : backgroundColor[level + 1],
@@ -140,11 +146,13 @@ const getStyles = (props: Omit<Props, 'tag' | 'children'> & Omit<UIButton, 'text
 export const Button: FC<Props> = ({
   tag,
   children,
+  weighted,
+  topWeighted,
   ...rest
 }: Props) => {
 
   const theme: ThemeState = useTheme()
-  const styles = getStyles(rest, theme)
+  const styles = getStyles(rest, theme, {weighted, topWeighted})
 
   return jsx(tag || 'button', {
     css: css(styles.Button)
