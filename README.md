@@ -7,4 +7,3 @@ Hi.
 > yarn start
 
 ```
- 
