@@ -2,7 +2,13 @@ import React, {Component} from 'react'
 import {ThemeProvider} from 'emotion-theming'
 import Head from 'next/head'
 
-import {Breakpoints, UITheme, ThemeState, PageKind} from '@td/types'
+import {PageEditor} from './PageEditor'
+import {
+  Breakpoints, 
+  UITheme, 
+  ThemeState, 
+  PageKind
+} from '@td/types'
 
 import {
   css, 
@@ -12,6 +18,8 @@ import {
   DerivedTheme,
   themify, 
 } from '@td/styles'
+
+import {EditPageButton} from './EditPageButton'
 
 interface Props {
   title?: string
@@ -24,6 +32,7 @@ interface Props {
   image?: any // tslint:disable-line no-any
   theme: Theme
   header?: string
+  editing?: boolean
   children?(theme: DerivedTheme): JSX.Element
 }
 
@@ -80,14 +89,20 @@ export class Page extends Component<Props, ThemeState> {
 
     const colors = themify(props.theme)
     this.state = { 
+      editing: props.editing || false,
       colors, 
       ui: props.uiTheme
     }
   }
 
-  setTheme = (theme: DerivedTheme) => {
-    this.setState({colors: theme})
+  setTheme = (theme: ThemeState) => {
+    this.setState({
+      colors: theme.colors,
+      ui: theme.ui
+    })
   }
+
+  setEditing = () => { this.setState(prevState => ({ editing: !prevState.editing }))}
 
   render() {
    
@@ -98,7 +113,7 @@ export class Page extends Component<Props, ThemeState> {
       image, 
       title, 
     } = this.props
-    const {colors} = this.state
+    const {colors, editing} = this.state
     const styles = getStyles(image, colors)
 
     return (
@@ -116,6 +131,8 @@ export class Page extends Component<Props, ThemeState> {
           kind === PageKind.Limited && styles.isLimited
         )}>
           <ThemeProvider theme={this.state}>
+            {editing && <PageEditor />}
+            <EditPageButton setEditing={this.setEditing} editing={editing} />
             <article css={css(styles.PageChildren)} id="PageChildren">
               {children && typeof children === 'function' ? children(colors) : children}
             </article>

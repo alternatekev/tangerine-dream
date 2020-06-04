@@ -11,3 +11,11 @@ export enum VerticalAlignment {
   Auto = 'auto',
   Center = 'center'
 }
+
+export enum Viewport {
+  Top = 'top',
+  Right = 'right',
+  Bottom = 'bottom',
+  Left = 'left',
+  Unlocked = 'unlocked'
+}

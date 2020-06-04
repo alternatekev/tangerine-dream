@@ -1,18 +1,37 @@
 /** @jsx jsx */
-import { FC } from 'react'
+import { FC} from 'react'
 import { jsx } from '@emotion/core'
+import Link from 'next/link'
 
-import { useTheme, t, css, prepareStyles, ThemeState, UIMode, UIButton, transition} from '@td/styles'
-import { BlockProps, Alignment, UIWeighting } from '@td/types'
+import { 
+  useTheme, 
+  t, 
+  css, 
+  prepareStyles, 
+  ThemeState, 
+  UIMode, 
+  UIButton, 
+  transition
+} from '@td/styles'
+import { 
+  BlockProps, 
+  Alignment, 
+  UIWeighting,
+  Renderable,
+} from '@td/types'
+import {
+  ConditionalWrap
+} from '@td/components'
 
-interface Props extends BlockProps {
-  tag?: 'button' | 'a'
+interface Props extends BlockProps, Omit<UIButton, 'text'> {
+  href?: string
+  onClick?(): void
 }
 
 export interface ButtonProps extends Props { }
 
 const getStyles = (
-  props: Omit<Props, 'tag' | 'children'> & Omit<UIButton, 'text'>, 
+  props: Omit<Props, 'tag' | 'children'>, 
   theme: ThemeState, 
   weight: UIWeighting
 ) => {
@@ -22,6 +41,7 @@ const getStyles = (
     inline,
     level = 1,
     size,
+    font,
     borderWidth = 1,
     alignment = Alignment.Center,
     fullBleed,
@@ -98,6 +118,8 @@ const getStyles = (
     borderColor.reverse()
     textColor.reverse()
   }
+  const globalWeight = ui.typography.nav.weight || 300
+  const fontWeight = font && font.weight ? font.weight / 100 : globalWeight / 100
 
   const display = inline ? t.dib : t.db
   const brColor = inverted 
@@ -108,10 +130,6 @@ const getStyles = (
 
   return prepareStyles({
     Button: {
-      ...display,
-      ...t.border_box,
-      ...align,
-      ...transition,
       ...t[`pl${paddingLevel + 3}`],
       ...t[`pr${paddingLevel + 3}`],
       ...t[`pt${paddingLevel}`],
@@ -119,15 +137,19 @@ const getStyles = (
       ...t[`mb${weighted}`],
       ...t[`mb${topWeighted}`],
       ...t[`br${ui.button.borderRadius}`],
+      ...t[`mt${weight?.topWeighted}`],
+      ...t[`fw${fontWeight}`],
+      ...display,
+      ...t.border_box,
+      ...align,
+      ...transition,
       ...t.pointer,
+      zIndex: 10000,
       color: level === 0 ? colors.link500 : brColor,
       fontFamily: ui.typography.nav.font,
-      fontWeight: ui.typography.nav.weight,
       fontSize: size ? `${size}rem` : t.f2.fontSize,
       backgroundColor: backgroundColor[level],
       border: `${borderWidths[borderWidth]}px solid ${level === 0 ? 'transparent' : brColor}`,
-      ...t[`mt${weight?.topWeighted}`],
-      ...t[`mb${weight?.weighted}`],
       ':hover': {
         ...t.pointer,
         backgroundColor: inverted ? invertedBackgroundColor[level + 1] : backgroundColor[level + 1],
@@ -137,24 +159,34 @@ const getStyles = (
     },
     ButtonLabel: {
       ...t.relative,
-      top: -2,
-      ...t.pointer
+      ...t.pointer,
+      top: -1,
     }
   })
 }
 
+const wrapWithLink = (href?: string) => (children: Renderable) => <Link href={href || '#'}>{children}</Link>
+
 export const Button: FC<Props> = ({
-  tag,
   children,
   weighted,
   topWeighted,
+  unicorn,
+  href,
+  onClick,
   ...rest
 }: Props) => {
 
   const theme: ThemeState = useTheme()
   const styles = getStyles(rest, theme, {weighted, topWeighted})
+  const buttonTag = href ? 'a' : 'button'
 
-  return jsx(tag || 'button', {
-    css: css(styles.Button)
-  }, <label css={css(styles.ButtonLabel)}>{children}</label>)
+  return(
+    <ConditionalWrap condition={!!href} wrap={wrapWithLink(href)}>
+      {jsx(buttonTag, {
+        css: css(styles.Button, unicorn),
+        onClick: onClick
+      }, <label css={css(styles.ButtonLabel)}>{children}</label>)}
+    </ConditionalWrap>
+  )
 }

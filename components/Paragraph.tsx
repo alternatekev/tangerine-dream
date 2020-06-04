@@ -6,17 +6,17 @@ import {prepareStyles, css, useTheme, UIBodyText, UIMode, t} from '@td/styles'
 const getStyles = (
   theme: ThemeState, 
   font?: UIFont, 
-  fontStyles?: Omit<UIBodyText, 'text'>,
+  fontTheme?: Omit<UIBodyText, 'text'>,
   weight?: UIWeighting
 ) => {
   const {ui: {typography, mode}} = theme
   const white = theme.colors.white500
   const black = theme.colors.black500
   const color = mode === UIMode.Light 
-    ? fontStyles?.inverted
+    ? fontTheme?.inverted
       ? white
       : black
-    : fontStyles?.inverted
+    : fontTheme?.inverted
       ? black
       : white
 
@@ -24,8 +24,8 @@ const getStyles = (
     Paragrah: {
       fontFamily: font?.font || typography.body.font,
       fontWeight: font?.weight || typography.body.weight,
-      lineHeight: fontStyles?.lineHeight || `1rem`,
-      fontSize: `${fontStyles?.size}rem`,
+      lineHeight: fontTheme?.lineHeight || `1rem`,
+      fontSize: `${fontTheme?.size}rem`,
       color: color,
       ...t[`mt${weight?.topWeighted}`],
       ...t[`mb${weight?.weighted}`],
@@ -38,10 +38,10 @@ export const P: FC<BlockProps> = ({
   font,
   topWeighted,
   weighted = 4,
-  fontStyles,
+  fontTheme,
 }: BlockProps) => {
   const theme: ThemeState = useTheme()
-  const styles = getStyles(theme, font, fontStyles, {topWeighted, weighted})
+  const styles = getStyles(theme, font, fontTheme, {topWeighted, weighted})
 
   return (
     <p css={css(styles.Paragrah)}>

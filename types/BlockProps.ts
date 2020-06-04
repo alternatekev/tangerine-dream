@@ -2,8 +2,11 @@ import {Level} from './Level'
 import {Renderable} from './Renderable'
 import {UIFont, UIBodyText} from './UI'
 import { Alignment } from './Alignment'
+import {ExtraStyles} from '@td/styles'
 
 export interface BlockProps {
+  fontTheme?: Omit<UIBodyText, 'text'>
+  unicorn?: ExtraStyles
   level?: Level
   compact?: boolean
   fullBleed?: boolean
@@ -12,5 +15,6 @@ export interface BlockProps {
   children?: Renderable
   font?: UIFont
   alignment?: Alignment
-  fontStyles?: Omit<UIBodyText, 'text'>
+  width?: number
+  height?: number
 }
