@@ -57,3 +57,8 @@ export interface UIButton extends UIBodyText {
   borderColor?: string
   inline?: boolean
 }
+
+export interface UIWeighting {
+  weighted?: Level
+  topWeighted?: Level
+}
