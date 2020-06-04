@@ -1,4 +1,4 @@
-import { ThemeState } from './Theme'
+import {ThemeState} from './Theme'
 
 export const shadow = (theme: ThemeState) => ([
   {

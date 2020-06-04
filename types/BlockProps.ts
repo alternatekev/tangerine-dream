@@ -1,7 +1,7 @@
 import {Level} from './Level'
 import {Renderable} from './Renderable'
 import {UIFont, UIBodyText} from './UI'
-import { Alignment } from './Alignment'
+import {Alignment} from './Alignment'
 import {ExtraStyles} from '@td/styles'
 
 export interface BlockProps {

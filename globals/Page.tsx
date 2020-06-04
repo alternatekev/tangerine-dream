@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {ThemeProvider} from 'emotion-theming'
 import Head from 'next/head'
+import {SlideDown} from 'react-slidedown'
 
 import {PageEditor} from './PageEditor'
 import {
@@ -102,7 +103,7 @@ export class Page extends Component<Props, ThemeState> {
     })
   }
 
-  setEditing = () => { this.setState(prevState => ({ editing: !prevState.editing }))}
+  setEditing = () => { this.setState(prevState => ({editing: !prevState.editing}))}
 
   render() {
    
@@ -131,7 +132,9 @@ export class Page extends Component<Props, ThemeState> {
           kind === PageKind.Limited && styles.isLimited
         )}>
           <ThemeProvider theme={this.state}>
-            {editing && <PageEditor />}
+            <SlideDown className="slide-down">
+              {editing ? <PageEditor /> : null}
+            </SlideDown>
             <EditPageButton setEditing={this.setEditing} editing={editing} />
             <article css={css(styles.PageChildren)} id="PageChildren">
               {children && typeof children === 'function' ? children(colors) : children}

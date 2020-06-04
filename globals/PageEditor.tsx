@@ -33,7 +33,7 @@ class UnthemedPageEditor extends Component<Props, EditorState> {
   }
 
   private getStyles = () => {
-    const { theme } = this.props
+    const {theme} = this.props
     const {saving, touched} = this.state
     const kind = saving ? 'saving' : touched ? 'touched' : 'saved'
 

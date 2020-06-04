@@ -72,7 +72,7 @@ const getStyles = (
     'transparent',
   ]
 
-  if(ui.mode === UIMode.Dark) {
+  if (ui.mode === UIMode.Dark) {
     backgroundColor.reverse()
     borderColor.reverse()
   }

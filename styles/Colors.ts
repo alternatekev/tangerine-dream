@@ -1,7 +1,7 @@
 import Color from 'color'
-import { mapObjIndexed } from 'ramda'
+import {mapObjIndexed} from 'ramda'
 
-import { ThemeOptions, DerivedTheme } from './Theme'
+import {ThemeOptions, DerivedTheme} from './Theme'
 export * from '@td/data/defaultColors'
 
 export const immutableThemeColors = {
@@ -158,7 +158,7 @@ function getColorFamily(thisColor, colors) {
 //@ts-ignore
 function createColorFamilies(currentColors) {
   return mapObjIndexed(
-    (color, colorName) => ({ name: colorName, family: getColorFamily(color, currentColors) }),
+    (color, colorName) => ({name: colorName, family: getColorFamily(color, currentColors)}),
     currentColors
   )
 }
