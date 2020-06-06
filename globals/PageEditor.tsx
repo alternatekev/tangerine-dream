@@ -11,8 +11,7 @@ import {
   transition
 } from '@td/styles'
 import {EditorState, Viewport} from '@td/types'
-import {Configurator} from './Configurator'
-import {ConfiguratorDropZone} from '@td/components'
+import {ConfiguratorDropZones} from '@td/globals'
 
 interface Props extends ThemeProps {
   editing?: boolean
@@ -38,20 +37,7 @@ class UnthemedPageEditor extends Component<Props, PageEditorState> {
     const {editing,} = this.props
     const {configLocation} = this.state
     const styles = this.getStyles()
-    const configurator = (
-      <Draggable
-        draggableId="configurator"
-        index={0}>
-        {(dragProvided, dragSnapshot) =>
-          <Configurator
-            dragging={dragSnapshot.isDragging}
-            draggingViewport={dragSnapshot.draggingOver as Viewport}
-            viewport={configLocation}
-            {...dragProvided}
-          />
-        }
-      </Draggable>
-    )
+    
 
     return(
       <div css={css(styles.SlideOuter)}>
@@ -67,29 +53,9 @@ class UnthemedPageEditor extends Component<Props, PageEditorState> {
                     editing && styles.isDisplayed
                   )}
                 >
-                  {Object.keys(Viewport).map((vp => {
-                    // @ts-ignore
-                    const vvp = Viewport[vp]
-
-                    return (
-                      <Droppable 
-                        droppableId={vvp} 
-                        key={vvp}
-                        
-                      >
-                        {(provided, snapshot) =>
-                          <ConfiguratorDropZone
-                            open={snapshot.isDraggingOver}
-                            provided={provided}
-                            draggingOver={snapshot.isDraggingOver}
-                            viewport={vvp}
-                          >
-                            {configLocation === vvp && configurator}
-                          </ConfiguratorDropZone>
-                        }
-                      </Droppable>
-                    )
-                  }))}
+                  <ConfiguratorDropZones 
+                    configLocation={configLocation}
+                  />
                 </div>
               </DragDropContext>
           }

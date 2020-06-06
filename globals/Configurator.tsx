@@ -22,14 +22,14 @@ const getStyles = (theme: ThemeState, dragging?: boolean) => {
       ...t.relative
     },
     top: {
-      width: 'calc(100vw - 4px)',
+      width: 'calc(100vw - 150px)',
       height: 50,
       top: 2,
       left: 2,
       borderBottom: `1px ${theme.colors.primary500_25} solid`
     },
     bottom: {
-      width: 'calc(100vw - 4px)',
+      width: 'calc(100vw - 100px)',
       height: 50,
       bottom: 2,
       left: 2,
@@ -37,16 +37,16 @@ const getStyles = (theme: ThemeState, dragging?: boolean) => {
     },
     left: {
       width: 50,
-      height: 'calc(100vh - 4px)',
+      height: 'calc(100vh - 100px)',
       top: 2,
       left: 2,
       borderRight: `1px ${theme.colors.primary500_25} solid`
     },
     right: {
       width: 50,
-      height: 'calc(100vh - 4px)',
+      height: 'calc(100vh - 100px)',
       right: 2,
-      top: 2,
+      top: 0,
       borderLeft: `1px ${theme.colors.primary500_25} solid`
     },
     isDroppable: {
