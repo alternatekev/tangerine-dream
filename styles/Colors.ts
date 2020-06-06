@@ -7,7 +7,7 @@ export * from '@td/data/defaultColors'
 export const immutableThemeColors = {
   alert: Color('#F33'),
   grey: Color('#666'),
-  black: Color('#333'),
+  black: Color('#1F2629'),
   white: Color('#FFF'),
   warning: Color('#F63'),
 }

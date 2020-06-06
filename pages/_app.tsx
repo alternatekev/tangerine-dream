@@ -12,7 +12,7 @@ interface WTFProps {
   pageProps: any //tslint:disable-line no-any
 }
 
-function MyApp(props: AppContext & WTFProps) {
+function Dispensary(props: AppContext & WTFProps) {
   const {Component, pageProps} = props
 
   return (
@@ -24,10 +24,10 @@ function MyApp(props: AppContext & WTFProps) {
   )
 }
 
-MyApp.getInitialProps = async (appContext: AppContext) => {
+Dispensary.getInitialProps = async (appContext: AppContext) => {
   const appProps = await App.getInitialProps(appContext)
 
   return {...appProps}
 }
 
-export default MyApp
+export default Dispensary

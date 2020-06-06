@@ -15,6 +15,7 @@ export interface BlockProps {
   children?: Renderable
   font?: UIFont
   alignment?: Alignment
-  width?: number
-  height?: number
+  width?: number | string
+  height?: number | string
+  innerRef?: HTMLElement | null
 }

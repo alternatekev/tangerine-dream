@@ -17,5 +17,4 @@ export enum Viewport {
   Right = 'right',
   Bottom = 'bottom',
   Left = 'left',
-  Unlocked = 'unlocked'
 }

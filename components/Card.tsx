@@ -2,11 +2,25 @@
 import {FC} from 'react'
 import {jsx} from '@emotion/core'
 
-import {useTheme, t, css, prepareStyles, ThemeState, UIMode, UIWeighting} from '@td/styles'
-import {BlockProps, Alignment} from '@td/types'
+import {
+  useTheme, 
+  t, 
+  css, 
+  prepareStyles, 
+  ThemeState, 
+  UIMode, 
+  UIWeighting,
+  transition
+} from '@td/styles'
+import {
+  BlockProps, 
+  Alignment
+} from '@td/types'
 
 interface Props extends BlockProps {
   tag?: 'div' | 'article' | 'section'
+  borderless?: boolean
+  draggable?: boolean
 }
 
 export interface CardProps extends Props {}
@@ -25,6 +39,7 @@ const getStyles = (
     weighted = 0,
     height,
     topWeighted = 0,
+    borderless
   } = props
 
   const align = alignment === Alignment.Center 
@@ -67,8 +82,8 @@ const getStyles = (
     colors.grey1,
     colors.grey10,
     colors.black50,
-    colors.black200,
-    colors.black500,
+    colors.black700,
+    colors.black900,
     'transparent',
   ]
 
@@ -87,8 +102,9 @@ const getStyles = (
       ...t[`br${ui.card.borderRadius}`],
       ...t[`mt${weight?.topWeighted}`],
       ...t[`mb${weight?.weighted}`],
+      ...transition,
       backgroundColor: backgroundColor[level],
-      border: `${borderWidth[level]}px solid ${borderColor[level]}`,
+      border: !borderless ? `${borderWidth[level]}px solid ${borderColor[level]}` : undefined,
       width,
       height
     }
@@ -99,7 +115,9 @@ export const Card: FC<Props> = ({
   tag,
   children,
   topWeighted,
+  innerRef,
   weighted,
+  draggable,
   unicorn,
   ...rest
 }: Props) => {
@@ -108,6 +126,7 @@ export const Card: FC<Props> = ({
   const styles = getStyles(rest, theme, {topWeighted, weighted})
 
   return jsx(tag || 'div', {
-    css: css(styles.Card, unicorn)
+    css: css(styles.Card, unicorn),
+    innerRef,
   }, children)
 }

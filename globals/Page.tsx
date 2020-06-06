@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import {ThemeProvider} from 'emotion-theming'
 import Head from 'next/head'
-import {SlideDown} from 'react-slidedown'
 
 import {PageEditor} from './PageEditor'
 import {
@@ -114,7 +113,10 @@ export class Page extends Component<Props, ThemeState> {
       image, 
       title, 
     } = this.props
-    const {colors, editing} = this.state
+    const {
+      colors, 
+      editing
+    } = this.state
     const styles = getStyles(image, colors)
 
     return (
@@ -125,18 +127,25 @@ export class Page extends Component<Props, ThemeState> {
           `}</style>
           <title>{name} / {title || 'Untitled Page'}</title>
         </Head>
-        <main id="Page" css={css(
-          styles.Page, 
-          kind === PageKind.Captured && styles.isCaptured,
-          kind === PageKind.FullBleed && styles.isFullBleed,
-          kind === PageKind.Limited && styles.isLimited
-        )}>
+        <main 
+          id="Page" 
+          css={css(
+            styles.Page, 
+            kind === PageKind.Captured && styles.isCaptured,
+            kind === PageKind.FullBleed && styles.isFullBleed,
+            kind === PageKind.Limited && styles.isLimited
+          )}
+        >
           <ThemeProvider theme={this.state}>
-            <SlideDown className="slide-down">
-              {editing ? <PageEditor /> : null}
-            </SlideDown>
-            <EditPageButton setEditing={this.setEditing} editing={editing} />
-            <article css={css(styles.PageChildren)} id="PageChildren">
+            <PageEditor editing={editing} />
+            <EditPageButton 
+              setEditing={this.setEditing} 
+              editing={editing} 
+            />
+            <article 
+              css={css(styles.PageChildren)} 
+              id="PageChildren"
+            >
               {children && typeof children === 'function' ? children(colors) : children}
             </article>
           </ThemeProvider>
