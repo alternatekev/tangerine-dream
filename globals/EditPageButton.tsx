@@ -7,8 +7,8 @@ import {
 } from '@td/styles'
 
 interface Props extends ButtonProps {
-  setEditing(): void
   editing?: boolean
+  setEditing(): void
 }
 
 const styles = prepareStyles({

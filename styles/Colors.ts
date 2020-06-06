@@ -1,13 +1,13 @@
 import Color from 'color'
-import { mapObjIndexed } from 'ramda'
+import {mapObjIndexed} from 'ramda'
 
-import { ThemeOptions, DerivedTheme } from './Theme'
+import {ThemeOptions, DerivedTheme} from './Theme'
 export * from '@td/data/defaultColors'
 
 export const immutableThemeColors = {
   alert: Color('#F33'),
   grey: Color('#666'),
-  black: Color('#333'),
+  black: Color('#1F2629'),
   white: Color('#FFF'),
   warning: Color('#F63'),
 }
@@ -158,7 +158,7 @@ function getColorFamily(thisColor, colors) {
 //@ts-ignore
 function createColorFamilies(currentColors) {
   return mapObjIndexed(
-    (color, colorName) => ({ name: colorName, family: getColorFamily(color, currentColors) }),
+    (color, colorName) => ({name: colorName, family: getColorFamily(color, currentColors)}),
     currentColors
   )
 }

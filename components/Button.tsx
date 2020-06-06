@@ -1,6 +1,6 @@
 /** @jsx jsx */
-import { FC} from 'react'
-import { jsx } from '@emotion/core'
+import {FC} from 'react'
+import {jsx} from '@emotion/core'
 import Link from 'next/link'
 
 import { 
