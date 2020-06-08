@@ -7,14 +7,16 @@ import {Configurator} from '@td/globals'
 
 interface Props {
   configLocation: Viewport
+  config?: any //tslint:disable-line no-any
 }
 
-const configurator = (configLocation: Viewport) => (
+const configurator = (configLocation: Viewport, config: any) => ( //tslint:disable-line no-any
   <Draggable
     draggableId="configurator"
     index={0}>
     {(dragProvided, dragSnapshot) =>
       <Configurator
+        config={config}
         dragging={dragSnapshot.isDragging}
         draggingViewport={dragSnapshot.draggingOver as Viewport}
         viewport={configLocation}
@@ -25,7 +27,8 @@ const configurator = (configLocation: Viewport) => (
 )
 
 export const ConfiguratorDropZones: FC<Props> = ({
-  configLocation
+  configLocation,
+  config
 }: Props) => 
   <>
     {Object.keys(Viewport).map((vp => {
@@ -44,7 +47,7 @@ export const ConfiguratorDropZones: FC<Props> = ({
               draggingOver={snapshot.isDraggingOver}
               viewport={vvp}
             >
-              {configLocation === vvp && configurator(configLocation)}
+              {configLocation === vvp && configurator(configLocation, config)}
             </ConfiguratorDropZone>
           }
         </Droppable>

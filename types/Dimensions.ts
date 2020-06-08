@@ -8,8 +8,8 @@ export interface Dimensions {
 }
 
 export interface ViewportDimensions {
-  top: Dimensions
-  right: Dimensions
-  bottom: Dimensions
-  left: Dimensions
+  'top': Dimensions
+  'right': Dimensions
+  'bottom': Dimensions
+  'left': Dimensions
 }

@@ -7,6 +7,7 @@ import {cache} from 'emotion'
 import 'react-slidedown/lib/slidedown.css' 
 //tslint:disable-next-line no-import-side-effect
 import 'react-medium-image-zoom/dist/styles.css'
+import {resetServerContext} from 'react-beautiful-dnd'
 
 interface WTFProps {
   pageProps: any //tslint:disable-line no-any
@@ -14,6 +15,7 @@ interface WTFProps {
 
 function Dispensary(props: AppContext & WTFProps) {
   const {Component, pageProps} = props
+  resetServerContext()
 
   return (
     <ResponsiveContext.Provider value={{width: 960}}>

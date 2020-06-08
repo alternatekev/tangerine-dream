@@ -1,7 +1,15 @@
 import {UIImage} from './Image'
-import {VerticalAlignment, Alignment} from './Alignment'
+import {
+  VerticalAlignment, 
+  Alignment
+} from './Alignment'
 import {Placement} from './Placement'
-import {UITheme, PageKind, UIBodyText, UIButton} from './UI'
+import {
+  UITheme, 
+  PageKind, 
+  UIBodyText, 
+  UIButton
+} from './UI'
 import {Theme} from '@td/styles'
 
 export interface Dispensary {

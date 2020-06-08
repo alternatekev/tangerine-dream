@@ -1,4 +1,4 @@
 export enum Shapes {
-  Circle = 'circle',
-  RoundRect = 'roundrect'
+  'Circle' = 'circle',
+  'RoundRect' = 'roundrect'
 }

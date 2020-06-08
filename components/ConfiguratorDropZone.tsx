@@ -29,6 +29,14 @@ const getStyles = ({colors}: ThemeState, viewport: Viewport) => {
   const vp = viewport as string
   const fullWidth = 'calc(100vw - 100px)'
   const fullHeight = 'calc(100vh - 100px)'
+  const gradientDirection = viewport === Viewport.Top 
+    ? '0deg'
+    : viewport === Viewport.Bottom
+      ? '-180deg'
+      : viewport === Viewport.Left
+        ? '-90deg'
+        : '90deg'
+        
   const dimensions: ViewportDimensions = {
     top: {
       top: 0,
@@ -68,15 +76,18 @@ const getStyles = ({colors}: ThemeState, viewport: Viewport) => {
     ConfiguratorDropZone: {
       ...t.absolute,
       ...transition,
+      //@ts-ignore
       ...dimensions[vp],
       backgroundColor: colors.white500_0,
     },
     isOpen: {
-      width: dimensions[vp].width ? dimensions[vp].width + 100 : undefined,
-      height: dimensions[vp].height ? dimensions[vp].height + 100 : undefined,
+      //@ts-ignore
+      width: dimensions[vp].width ? Number(dimensions[vp].width) + 100 : undefined,
+      //@ts-ignore
+      height: dimensions[vp].height ? Number(dimensions[vp].height) + 100 : undefined,
     },
     isBeingDraggedOver: {
-      backgroundColor: colors.button500_25,
+      backgroundImage: `linear-gradient(${gradientDirection}, ${colors.button500_25}, ${colors.button500_10})`,
     }
   })
 }

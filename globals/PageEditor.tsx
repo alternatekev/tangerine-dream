@@ -1,6 +1,6 @@
 import {Component} from 'react'
-import { SlideDown } from 'react-slidedown'
-import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautiful-dnd'
+import {SlideDown} from 'react-slidedown'
+import {DragDropContext, DropResult} from 'react-beautiful-dnd'
 
 import {
   withTheme, 
@@ -15,6 +15,7 @@ import {ConfiguratorDropZones} from '@td/globals'
 
 interface Props extends ThemeProps {
   editing?: boolean
+  config: any //tslint:disable-line no-any
 }
 
 interface PageEditorState extends EditorState {
@@ -29,12 +30,12 @@ class UnthemedPageEditor extends Component<Props, PageEditorState> {
       saved: true,
       saving: false,
       touched: false,
-      configLocation: Viewport.Right 
+      configLocation: Viewport.Left 
     }
   }
 
   render() {
-    const {editing,} = this.props
+    const {editing,config} = this.props
     const {configLocation} = this.state
     const styles = this.getStyles()
     
@@ -55,6 +56,7 @@ class UnthemedPageEditor extends Component<Props, PageEditorState> {
                 >
                   <ConfiguratorDropZones 
                     configLocation={configLocation}
+                    config={config}
                   />
                 </div>
               </DragDropContext>
