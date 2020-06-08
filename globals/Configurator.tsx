@@ -7,10 +7,15 @@ import {
   useTheme, 
   t
 } from '@td/styles'
-import {Card} from '@td/components'
+import {
+  Card, 
+  Button
+} from '@td/components'
 import {
   ThemeState, 
-  Viewport
+  Viewport,
+  lookUpField,
+  getType,
 } from '@td/types'
 
 const getStyles = (theme: ThemeState, dragging?: boolean) => {
@@ -19,39 +24,44 @@ const getStyles = (theme: ThemeState, dragging?: boolean) => {
   return (prepareStyles({
     Configurator: {
       ...dropShadow,
-      ...t.relative
+      ...t.relative,
+      color: theme.colors.white500
     },
     top: {
-      width: 'calc(100vw - 4px)',
+      width: 'calc(100vw - 150px)',
       height: 50,
       top: 2,
       left: 2,
-      borderBottom: `1px ${theme.colors.primary500_25} solid`
+      border: `1px ${theme.colors.primary500_25} solid`,
+      ...t.bt0
     },
     bottom: {
-      width: 'calc(100vw - 4px)',
+      width: 'calc(100vw - 100px)',
       height: 50,
       bottom: 2,
       left: 2,
-      borderTop: `1px ${theme.colors.primary500_25} solid`
+      border: `1px ${theme.colors.primary500_25} solid`,
+      ...t.bb0
     },
     left: {
       width: 50,
-      height: 'calc(100vh - 4px)',
+      height: 'calc(100vh - 100px)',
       top: 2,
       left: 2,
-      borderRight: `1px ${theme.colors.primary500_25} solid`
+      border: `1px ${theme.colors.primary500_25} solid`,
+      ...t.bl0
     },
     right: {
       width: 50,
-      height: 'calc(100vh - 4px)',
+      height: 'calc(100vh - 100px)',
       right: 2,
-      top: 2,
-      borderLeft: `1px ${theme.colors.primary500_25} solid`
+      top: 0,
+      border: `1px ${theme.colors.primary500_25} solid`,
+      ...t.br0
     },
     isDroppable: {
       opacity: 0.5,
-      ...t.absolute,
+      ...t.fixed,
     },
   }))
 }
@@ -60,6 +70,7 @@ interface Props extends DraggableProvided {
   dragging?: boolean
   viewport: Viewport
   draggingViewport?: Viewport
+  config?: any // tslint:disable-line no-any
 }
 
 export const Configurator: FC<Props> = ({
@@ -68,7 +79,8 @@ export const Configurator: FC<Props> = ({
   viewport,
   draggingViewport,
   draggableProps,
-  dragHandleProps
+  dragHandleProps,
+  config
 }: Props) => {
   const styles = getStyles(useTheme(), dragging)
   const viewportStyles = draggingViewport 
@@ -81,13 +93,41 @@ export const Configurator: FC<Props> = ({
       {...draggableProps}
       {...dragHandleProps}
     >
-      {console.log(viewport)}
       <Card
         unicorn={[styles.Configurator, ...viewportStyles]}
         width={150}
         borderless
         level={dragging ? 6 : 7}
-      > &nbsp;
+      > 
+        {Object.keys(config).map((c, i) => {
+          const type = getType(config[c])
+          const Icon = lookUpField(type)?.icon
+          
+          return Icon 
+            ? <Button 
+                key={`${type}_${i}`}
+                inline 
+                hoverLabel
+                weighted={3}
+                fullBleed
+                inverted
+                size={1.5}
+                font={{
+                  weight: 100
+                }}
+                compact
+                icon={
+                  <Icon
+                    size={25}
+                  />
+                }
+                level={0}
+              >
+                {c}
+              </Button>
+            : null
+          })
+        }
       </Card>
     </div>
   )

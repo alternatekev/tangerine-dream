@@ -23,8 +23,10 @@ import {
   ConditionalWrap
 } from '@td/components'
 
-interface Props extends BlockProps, Omit<UIButton, 'text'> {
+interface Props extends BlockProps, Omit<UIButton, 'text' | 'level'> {
   href?: string
+  hoverLabel?: boolean
+  icon?: Renderable
   onClick?(): void
 }
 
@@ -45,8 +47,6 @@ const getStyles = (
     borderWidth = 1,
     alignment = Alignment.Center,
     fullBleed,
-    weighted = 0,
-    topWeighted = 0,
   } = props
 
   const align = alignment === Alignment.Center
@@ -60,7 +60,7 @@ const getStyles = (
     ui
   } = theme
 
-  const paddingLevel = compact ? 1 : fullBleed ? 0 : 2
+  const paddingLevel = fullBleed ? 0 : compact ? 1 : 2
   const borderWidths = [
     0,
     1,
@@ -127,15 +127,15 @@ const getStyles = (
       ? colors.white500
       : colors.black500
     : borderColor[level]
+  const iconMargin = compact ? t.mr1 : t.mr2
 
   return prepareStyles({
     Button: {
-      ...t[`pl${paddingLevel + 3}`],
-      ...t[`pr${paddingLevel + 3}`],
+      ...t[`pl${paddingLevel === 0 ? 0 : paddingLevel + 3}`],
+      ...t[`pr${paddingLevel === 0 ? 0 : paddingLevel + 3}`],
       ...t[`pt${paddingLevel}`],
       ...t[`pb${paddingLevel}`],
-      ...t[`mb${weighted}`],
-      ...t[`mb${topWeighted}`],
+      ...t[`mb${weight?.weighted}`],
       ...t[`br${ui.button.borderRadius}`],
       ...t[`mt${weight?.topWeighted}`],
       ...t[`fw${fontWeight}`],
@@ -145,7 +145,7 @@ const getStyles = (
       ...transition,
       ...t.pointer,
       zIndex: 10000,
-      color: level === 0 ? colors.link500 : brColor,
+      color: inverted ? brColor : level === 0 ? colors.link500 : brColor,
       fontFamily: ui.typography.nav.font,
       fontSize: size ? `${size}rem` : t.f2.fontSize,
       backgroundColor: backgroundColor[level],
@@ -161,16 +161,39 @@ const getStyles = (
       ...t.relative,
       ...t.pointer,
       top: -1,
+    },
+    hasIcon: {
+      ...t.flex,
+      flex: '1 10',
+      ...t.justify_start,
+      ...t.items_center,
+      '> svg': {
+        ...t.relative,
+        top: 2,
+        ...iconMargin
+      }
     }
   })
 }
 
-const wrapWithLink = (href?: string) => (children: Renderable) => <Link href={href || '#'}>{children}</Link>
+const wrapWithLink = (
+  href?: string
+  ) => (
+    children: Renderable
+    ) => (
+      <Link 
+        href={href || '#'}
+      >
+        {children}
+      </Link>
+    )
 
 export const Button: FC<Props> = ({
   children,
   weighted,
+  icon,
   topWeighted,
+  hoverLabel,
   unicorn,
   href,
   onClick,
@@ -182,11 +205,24 @@ export const Button: FC<Props> = ({
   const buttonTag = href ? 'a' : 'button'
 
   return(
-    <ConditionalWrap condition={!!href} wrap={wrapWithLink(href)}>
+    <ConditionalWrap 
+      condition={!!href} 
+      wrap={wrapWithLink(href)}
+    >
       {jsx(buttonTag, {
-        css: css(styles.Button, unicorn),
+        css: css(
+          styles.Button, 
+          unicorn
+        ),
         onClick: onClick
-      }, <label css={css(styles.ButtonLabel)}>{children}</label>)}
+      }, 
+        <label 
+          css={css(styles.ButtonLabel, icon && styles.hasIcon)}
+        >
+          {icon}
+          {!hoverLabel && children}
+        </label>)
+      }
     </ConditionalWrap>
   )
 }

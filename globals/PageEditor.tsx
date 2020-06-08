@@ -1,6 +1,6 @@
 import {Component} from 'react'
-import { SlideDown } from 'react-slidedown'
-import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautiful-dnd'
+import {SlideDown} from 'react-slidedown'
+import {DragDropContext, DropResult} from 'react-beautiful-dnd'
 
 import {
   withTheme, 
@@ -11,11 +11,11 @@ import {
   transition
 } from '@td/styles'
 import {EditorState, Viewport} from '@td/types'
-import {Configurator} from './Configurator'
-import {ConfiguratorDropZone} from '@td/components'
+import {ConfiguratorDropZones} from '@td/globals'
 
 interface Props extends ThemeProps {
   editing?: boolean
+  config: any //tslint:disable-line no-any
 }
 
 interface PageEditorState extends EditorState {
@@ -30,28 +30,15 @@ class UnthemedPageEditor extends Component<Props, PageEditorState> {
       saved: true,
       saving: false,
       touched: false,
-      configLocation: Viewport.Right 
+      configLocation: Viewport.Left 
     }
   }
 
   render() {
-    const {editing,} = this.props
+    const {editing,config} = this.props
     const {configLocation} = this.state
     const styles = this.getStyles()
-    const configurator = (
-      <Draggable
-        draggableId="configurator"
-        index={0}>
-        {(dragProvided, dragSnapshot) =>
-          <Configurator
-            dragging={dragSnapshot.isDragging}
-            draggingViewport={dragSnapshot.draggingOver as Viewport}
-            viewport={configLocation}
-            {...dragProvided}
-          />
-        }
-      </Draggable>
-    )
+    
 
     return(
       <div css={css(styles.SlideOuter)}>
@@ -67,29 +54,10 @@ class UnthemedPageEditor extends Component<Props, PageEditorState> {
                     editing && styles.isDisplayed
                   )}
                 >
-                  {Object.keys(Viewport).map((vp => {
-                    // @ts-ignore
-                    const vvp = Viewport[vp]
-
-                    return (
-                      <Droppable 
-                        droppableId={vvp} 
-                        key={vvp}
-                        
-                      >
-                        {(provided, snapshot) =>
-                          <ConfiguratorDropZone
-                            open={snapshot.isDraggingOver}
-                            provided={provided}
-                            draggingOver={snapshot.isDraggingOver}
-                            viewport={vvp}
-                          >
-                            {configLocation === vvp && configurator}
-                          </ConfiguratorDropZone>
-                        }
-                      </Droppable>
-                    )
-                  }))}
+                  <ConfiguratorDropZones 
+                    configLocation={configLocation}
+                    config={config}
+                  />
                 </div>
               </DragDropContext>
           }

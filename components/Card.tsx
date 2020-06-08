@@ -104,7 +104,9 @@ const getStyles = (
       ...t[`mb${weight?.weighted}`],
       ...transition,
       backgroundColor: backgroundColor[level],
-      border: !borderless ? `${borderWidth[level]}px solid ${borderColor[level]}` : undefined,
+      border: !borderless 
+        ? `${borderWidth[level]}px solid ${borderColor[level]}` 
+        : undefined,
       width,
       height
     }
@@ -127,6 +129,6 @@ export const Card: FC<Props> = ({
 
   return jsx(tag || 'div', {
     css: css(styles.Card, unicorn),
-    innerRef,
+    ref: innerRef,
   }, children)
 }

@@ -7,7 +7,7 @@ import {ExtraStyles} from '@td/styles'
 export interface BlockProps {
   fontTheme?: Omit<UIBodyText, 'text'>
   unicorn?: ExtraStyles
-  level?: Level
+  level?: Level | number
   compact?: boolean
   fullBleed?: boolean
   weighted?: Level

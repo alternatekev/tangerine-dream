@@ -7,7 +7,7 @@ export enum UIMode {
 }
 
 export interface UITheme {
-  button: Omit<UIButton, 'text'>
+  button: Omit<UIButton, 'text' | 'level'>
   card: UICard
   typography: UITypography
   logo: UILogo
@@ -41,6 +41,20 @@ export enum PageKind {
   Limited = 'limited',
   FullBleed = 'fullBleed'
 }
+export enum UIFieldKind {
+  'TextField' = 'textfield',
+  'Dropdown' = 'dropdown',
+  'TextArea' = 'textarea',
+  'Image' = 'image'
+}
+
+export interface UIField {
+  label: string
+  value?: string
+  id: string
+  kind: UIFieldKind
+  setFieldValue(): void
+}
 
 export interface UIBodyText {
   lineHeight?: Level
@@ -49,6 +63,7 @@ export interface UIBodyText {
   size?: number
   inverted?: boolean
   alignment?: Alignment
+  fields?: UIField[]
 }
 
 export interface UIButton extends UIBodyText {
@@ -56,9 +71,11 @@ export interface UIButton extends UIBodyText {
   borderWidth?: Level
   borderColor?: string
   inline?: boolean
+  level: number
 }
 
 export interface UIWeighting {
   weighted?: Level
   topWeighted?: Level
 }
+

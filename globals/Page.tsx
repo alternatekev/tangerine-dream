@@ -33,6 +33,7 @@ interface Props {
   theme: Theme
   header?: string
   editing?: boolean
+  config?: any //tslint:disable-line no-any
   children?(theme: DerivedTheme): JSX.Element
 }
 
@@ -112,6 +113,7 @@ export class Page extends Component<Props, ThemeState> {
       name,
       image, 
       title, 
+      config,
     } = this.props
     const {
       colors, 
@@ -137,7 +139,7 @@ export class Page extends Component<Props, ThemeState> {
           )}
         >
           <ThemeProvider theme={this.state}>
-            <PageEditor editing={editing} />
+            <PageEditor config={config} editing={editing} />
             <EditPageButton 
               setEditing={this.setEditing} 
               editing={editing} 

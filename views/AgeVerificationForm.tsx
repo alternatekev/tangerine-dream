@@ -1,7 +1,12 @@
 import {FC} from 'react'
 
 import {AgeVerification} from '@td/types'
-import {Card, Logo, P, Button} from '@td/components'
+import {
+  Card, 
+  Logo, 
+  P, 
+  Button
+} from '@td/components'
 
 export const AgeVerificationForm: FC<AgeVerification> = ({
   logoImage,

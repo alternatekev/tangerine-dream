@@ -6,22 +6,22 @@ export enum Breakpoints {
 }
 
 export const BreakpointProps = {
-  Large: {
+  'Large': {
     minWidth: 1024,
   },
-  Medium: {
+  'Medium': {
     minWidth: 768
   },
-  Small: {
+  'Small': {
     maxWidth: 768
   },
-  NotSmall: {
+  'NotSmall': {
     minWidth: 768
   },
-  XSmall: {
+  'XSmall': {
     maxWidth: 460
   },
-  NotXSmall: {
+  'NotXSmall': {
     minWidth: 460
   }
 }
