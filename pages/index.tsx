@@ -12,6 +12,7 @@ export default () =>
     uiTheme={defaults.ui}
     image={defaults.age.backgroundImage}
     editing
+    menuDividers={[2]}
   >
     {() => 
     <AgeVerificationForm 

@@ -26,6 +26,7 @@ interface Props {
   title?: string
   name: string
   pageLayout: PageLayout
+  menuDividers?: number[]
   captured?: boolean
   compact?: boolean
   uiTheme: UITheme
@@ -111,6 +112,7 @@ export class Page extends Component<Props, ThemeState> {
     const {
       children, 
       pageLayout,
+      menuDividers,
       name,
       image, 
       title, 
@@ -140,7 +142,7 @@ export class Page extends Component<Props, ThemeState> {
           )}
         >
           <ThemeProvider theme={this.state}>
-            <PageEditor config={config} editing={editing} />
+            <PageEditor menuDividers={menuDividers} config={config} editing={editing} />
             <EditPageButton 
               setEditing={this.setEditing} 
               editing={editing} 

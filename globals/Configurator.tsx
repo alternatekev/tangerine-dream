@@ -75,12 +75,14 @@ interface Props extends DraggableProvided {
   dragging?: boolean
   viewport: Viewport
   draggingViewport?: Viewport
+  menuDividers?: number[]
   config?: any // tslint:disable-line no-any
 }
 
 export const Configurator: FC<Props> = ({
   innerRef,
   dragging,
+  menuDividers,
   viewport,
   draggingViewport,
   draggableProps,
@@ -110,7 +112,10 @@ export const Configurator: FC<Props> = ({
         borderless
         level={dragging ? 6 : 7}
       > 
-        <Menu orientation={viewport === Viewport.Bottom || viewport === Viewport.Top ? Orientation.Horizontal : undefined}>
+        <Menu 
+          dividers={menuDividers}
+          itemSpacing={3}
+          orientation={viewport === Viewport.Bottom || viewport === Viewport.Top ? Orientation.Horizontal : undefined}>
           {Object.keys(config).map((c, i) => {
             const type = getType(config[c])
             const Icon = lookUpField(type)?.icon
@@ -119,7 +124,6 @@ export const Configurator: FC<Props> = ({
               ? <Button 
                   key={`${type}_${i}`}
                   hoverLabel={labelPlacement[viewport]}
-                  weighted={3}
                   fullBleed
                   inverted
                   size={1.5}
