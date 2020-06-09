@@ -15,6 +15,7 @@ import {ConfiguratorDropZones} from '@td/globals'
 
 interface Props extends ThemeProps {
   editing?: boolean
+  menuDividers?: number[]
   config: any //tslint:disable-line no-any
 }
 
@@ -35,7 +36,7 @@ class UnthemedPageEditor extends Component<Props, PageEditorState> {
   }
 
   render() {
-    const {editing,config} = this.props
+    const {editing, config, menuDividers} = this.props
     const {configLocation} = this.state
     const styles = this.getStyles()
     
@@ -55,6 +56,7 @@ class UnthemedPageEditor extends Component<Props, PageEditorState> {
                   )}
                 >
                   <ConfiguratorDropZones 
+                    menuDividers={menuDividers}
                     configLocation={configLocation}
                     config={config}
                   />
@@ -106,7 +108,8 @@ class UnthemedPageEditor extends Component<Props, PageEditorState> {
       noBorder: {
         outline: 0,
         zIndex: 1,
-        pointerEvents: 'auto'
+        pointerEvents: 'auto',
+        height: 'auto'
       }
     })
   }
