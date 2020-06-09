@@ -11,7 +11,6 @@ export default () =>
     theme={defaults.colors}
     uiTheme={defaults.ui}
     image={defaults.age.backgroundImage}
-    editing
     menuDividers={[2]}
   >
     {() => 
