@@ -1,5 +1,5 @@
 import {Level} from './Level'
-import {Alignment} from './Alignment'
+import {Alignment, VerticalAlignment} from './Alignment'
 
 export enum UIMode {
   Light = 'light',
@@ -36,11 +36,12 @@ export interface UIFont {
 
 export type FontWeight = 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900
 
-export enum PageKind {
+export enum PageTemplate {
   Captured = 'captured',
   Limited = 'limited',
   FullBleed = 'fullBleed'
 }
+
 export enum UIFieldKind {
   'TextField' = 'textfield',
   'Dropdown' = 'dropdown',
@@ -77,5 +78,11 @@ export interface UIButton extends UIBodyText {
 export interface UIWeighting {
   weighted?: Level
   topWeighted?: Level
+}
+
+export interface PageLayout {
+  template: PageTemplate
+  align: Alignment
+  verticalAlign: VerticalAlignment
 }
 

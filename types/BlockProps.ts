@@ -1,3 +1,4 @@
+import {Ref} from 'react'
 import {Level} from './Level'
 import {Renderable} from './Renderable'
 import {UIFont, UIBodyText} from './UI'
@@ -18,4 +19,5 @@ export interface BlockProps {
   width?: number | string
   height?: number | string
   innerRef?: HTMLElement | null
+  ref?: Ref<any> //tslint:disable-line no-any
 }

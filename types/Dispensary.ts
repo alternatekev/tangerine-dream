@@ -1,12 +1,7 @@
 import {UIImage} from './Image'
 import {
-  VerticalAlignment, 
-  Alignment
-} from './Alignment'
-import {Placement} from './Placement'
-import {
   UITheme, 
-  PageKind, 
+  PageLayout, 
   UIBodyText, 
   UIButton
 } from './UI'
@@ -21,16 +16,13 @@ export interface Dispensary {
 
 export interface DispensaryPage {
   backgroundImage: UIImage
-  title: string
-  body: UIBodyText
-  kind: PageKind
+  pageTitle: string
+  bodyText: UIBodyText
+  pageLayout: PageLayout
 }
 
 export interface AgeVerification extends DispensaryPage {
   logoImage: UIImage
-  button: UIButton
+  actionButton: UIButton
   checkbox: boolean
-  vAlign: VerticalAlignment
-  align: Alignment
-  logoPlacement: Placement
 }

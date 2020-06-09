@@ -5,9 +5,9 @@ import {AgeVerificationForm} from '@td/views'
 export default () =>
   <Page
     config={defaults.age}
-    kind={defaults.age.kind}
+    pageLayout={defaults.age.pageLayout}
     name={defaults.name}
-    title={defaults.age.title}
+    title={defaults.age.pageTitle}
     theme={defaults.colors}
     uiTheme={defaults.ui}
     image={defaults.age.backgroundImage}

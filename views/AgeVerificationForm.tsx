@@ -10,16 +10,16 @@ import {
 
 export const AgeVerificationForm: FC<AgeVerification> = ({
   logoImage,
-  body,
-  button
+  bodyText,
+  actionButton
 }: AgeVerification) => {
-  const {text, ...rest} = body
+  const {text, ...rest} = bodyText
 
   return (
     <Card level={0} alignment={rest.alignment}>
       <Logo {...logoImage} />
       <P fontTheme={rest}>{text}</P>
-      <Button level={1} {...button}>{button.text}</Button>
+      <Button level={1} {...actionButton}>{actionButton.text}</Button>
     </Card>
   )
 }

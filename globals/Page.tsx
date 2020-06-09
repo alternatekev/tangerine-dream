@@ -7,7 +7,8 @@ import {
   Breakpoints, 
   UITheme, 
   ThemeState, 
-  PageKind
+  PageLayout,
+  PageTemplate
 } from '@td/types'
 
 import {
@@ -24,7 +25,7 @@ import {EditPageButton} from './EditPageButton'
 interface Props {
   title?: string
   name: string
-  kind: PageKind
+  pageLayout: PageLayout
   captured?: boolean
   compact?: boolean
   uiTheme: UITheme
@@ -109,7 +110,7 @@ export class Page extends Component<Props, ThemeState> {
    
     const {
       children, 
-      kind,
+      pageLayout,
       name,
       image, 
       title, 
@@ -133,9 +134,9 @@ export class Page extends Component<Props, ThemeState> {
           id="Page" 
           css={css(
             styles.Page, 
-            kind === PageKind.Captured && styles.isCaptured,
-            kind === PageKind.FullBleed && styles.isFullBleed,
-            kind === PageKind.Limited && styles.isLimited
+            pageLayout.template === PageTemplate.Captured && styles.isCaptured,
+            pageLayout.template === PageTemplate.FullBleed && styles.isFullBleed,
+            pageLayout.template === PageTemplate.Limited && styles.isLimited
           )}
         >
           <ThemeProvider theme={this.state}>

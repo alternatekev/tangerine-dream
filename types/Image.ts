@@ -1,7 +1,11 @@
+import {Alignment, Placement} from './'
+
 export interface UIImage {
   alt?: string
   src: string
   size?: ImageSize
+  align?: Alignment
+  placement?: Placement
 }
 
 export type ImageSize = number | Size

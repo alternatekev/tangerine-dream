@@ -87,7 +87,7 @@ const getStyles = (
     'transparent',
   ]
 
-  if (ui.mode === UIMode.Dark) {
+  if (ui.mode === UIMode.Light) {
     backgroundColor.reverse()
     borderColor.reverse()
   }
@@ -117,6 +117,7 @@ export const Card: FC<Props> = ({
   tag,
   children,
   topWeighted,
+  ref,
   innerRef,
   weighted,
   draggable,
@@ -129,6 +130,6 @@ export const Card: FC<Props> = ({
 
   return jsx(tag || 'div', {
     css: css(styles.Card, unicorn),
-    ref: innerRef,
+    ref: innerRef || ref,
   }, children)
 }
