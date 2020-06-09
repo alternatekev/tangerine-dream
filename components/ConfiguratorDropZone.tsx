@@ -43,7 +43,7 @@ const getStyles = ({colors}: ThemeState, viewport: Viewport) => {
       right: offset * 2,
       bottom: undefined,
       left: offset,
-      width: `calc(100vw - 150px)`,
+      width: `calc(100vw - 50px)`,
       height: offset
     },
     right: {

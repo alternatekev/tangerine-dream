@@ -20,7 +20,7 @@ import {
   themify, 
 } from '@td/styles'
 
-import {EditPageButton} from './EditPageButton'
+import {EditPageButtons} from './EditPageButtons'
 
 interface Props {
   title?: string
@@ -143,7 +143,7 @@ export class Page extends Component<Props, ThemeState> {
         >
           <ThemeProvider theme={this.state}>
             <PageEditor menuDividers={menuDividers} config={config} editing={editing} />
-            <EditPageButton 
+            <EditPageButtons 
               setEditing={this.setEditing} 
               editing={editing} 
             />
