@@ -1,7 +1,7 @@
 import {FC} from 'react'
 
 import {BlockProps, ThemeState, UIFont, UIWeighting} from '@td/types'
-import {prepareStyles, css, useTheme, UIBodyText, UIMode, t} from '@td/styles'
+import {prepareStyles, css, useTheme, UIBodyText, t} from '@td/styles'
 
 const getStyles = (
   theme: ThemeState, 
@@ -9,16 +9,12 @@ const getStyles = (
   fontTheme?: Omit<UIBodyText, 'text'>,
   weight?: UIWeighting
 ) => {
-  const {ui: {typography, mode}} = theme
+  const {ui: {typography}} = theme
   const white = theme.colors.white500
   const black = theme.colors.black500
-  const color = mode === UIMode.Light 
-    ? fontTheme?.inverted
-      ? white
-      : black
-    : fontTheme?.inverted
-      ? black
-      : white
+  const color = fontTheme?.inverted
+    ? white
+    : black
 
   return prepareStyles({
     Paragrah: {

@@ -9,14 +9,19 @@ import {
 } from '@td/styles'
 import {
   Card, 
-  Button
+  Button,
+  Menu,
+  Capitalize
 } from '@td/components'
 import {
   ThemeState, 
   Viewport,
   lookUpField,
   getType,
+  Orientation,
+  Placement,
 } from '@td/types'
+import {formatConfiguratorLabel} from '@td/utils'
 
 const getStyles = (theme: ThemeState, dragging?: boolean) => {
   const dropShadow = dragging ? shadow(theme)[4] : shadow(theme)[0]
@@ -86,6 +91,12 @@ export const Configurator: FC<Props> = ({
   const viewportStyles = draggingViewport 
     ? [styles[draggingViewport as string], styles.isDroppable] 
     : [styles[viewport as string]]
+  const labelPlacement = {
+    [Viewport.Top]: Placement.Bottom,
+    [Viewport.Right]: Placement.Left,
+    [Viewport.Bottom]: Placement.Top,
+    [Viewport.Left]: Placement.Right
+  }
 
   return (
     <div
@@ -99,35 +110,38 @@ export const Configurator: FC<Props> = ({
         borderless
         level={dragging ? 6 : 7}
       > 
-        {Object.keys(config).map((c, i) => {
-          const type = getType(config[c])
-          const Icon = lookUpField(type)?.icon
-          
-          return Icon 
-            ? <Button 
-                key={`${type}_${i}`}
-                inline 
-                hoverLabel
-                weighted={3}
-                fullBleed
-                inverted
-                size={1.5}
-                font={{
-                  weight: 100
-                }}
-                compact
-                icon={
-                  <Icon
-                    size={25}
-                  />
-                }
-                level={0}
-              >
-                {c}
-              </Button>
-            : null
-          })
-        }
+        <Menu orientation={viewport === Viewport.Bottom || viewport === Viewport.Top ? Orientation.Horizontal : undefined}>
+          {Object.keys(config).map((c, i) => {
+            const type = getType(config[c])
+            const Icon = lookUpField(type)?.icon
+            
+            return Icon 
+              ? <Button 
+                  key={`${type}_${i}`}
+                  hoverLabel={labelPlacement[viewport]}
+                  weighted={3}
+                  fullBleed
+                  inverted
+                  size={1.5}
+                  font={{
+                    weight: 100
+                  }}
+                  compact
+                  icon={
+                    <Icon
+                      size={25}
+                    />
+                  }
+                  level={0}
+                >
+                  <Capitalize>
+                    {formatConfiguratorLabel(c)}
+                  </Capitalize>
+                </Button>
+              : null
+            })
+          }
+        </Menu>
       </Card>
     </div>
   )

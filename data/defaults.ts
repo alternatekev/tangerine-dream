@@ -2,8 +2,7 @@ import {
   Dispensary, 
   Alignment, 
   VerticalAlignment, 
-  Placement, 
-  PageKind, 
+  PageTemplate, 
   UIMode
 } from '@td/types'
 import {defaultColors as defaultThemeColors} from './defaultColors'
@@ -13,10 +12,12 @@ export const defaultColors = defaultThemeColors
 export const defaults: Dispensary = {
   name: 'TangerineDream',
   age: {
-    title: `Let's check your ID.`,
-    kind: PageKind.Captured,
-    vAlign: VerticalAlignment.Middle,
-    align: Alignment.Center,
+    pageTitle: `Let's check your ID.`,
+    pageLayout: {
+      template: PageTemplate.Captured,
+      align: Alignment.Left,
+      verticalAlign: VerticalAlignment.Middle
+    },
     backgroundImage: {
       alt: 'default age verification image',
       src: 'https://images.unsplash.com/photo-1512691831679-83dfb93bddd6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3151&q=80',
@@ -26,15 +27,14 @@ export const defaults: Dispensary = {
       src: '/tangerine-dream-logo.svg',
       size: {w: 300}
     },
-    logoPlacement: Placement.Top,
-    body: {
+    bodyText: {
       text: 'By entering the site below, I verify I am at least 21 years of age.',
       inverted: true,
       size: 2.0,
       lineHeight: 1,
       alignment: Alignment.Center
     },
-    button: {
+    actionButton: {
       text: 'Enter Site',
       size: 2.25,
       font: {weight: 600},
@@ -47,7 +47,7 @@ export const defaults: Dispensary = {
   },
   colors: defaultColors,
   ui: {
-    mode: UIMode.Light,
+    mode: UIMode.Dark,
     card: {
       borderRadius: 3,
     },

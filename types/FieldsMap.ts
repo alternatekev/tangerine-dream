@@ -9,9 +9,15 @@ import ArrowExpandVerticalIcon from 'mdi-react/ArrowExpandVerticalIcon'
 import GestureTapButtonIcon from 'mdi-react/GestureTapButtonIcon'
 import FormatTextboxIcon from 'mdi-react/FormatTextboxIcon'
 import StretchToPageOutlineIcon from 'mdi-react/StretchToPageOutlineIcon'
-import TextShortIcon from 'mdi-react/TextShortIcon'
+import FormatTitleIcon from 'mdi-react/FormatTitleIcon'
 
-import * as UI from './UI'
+import {
+  PageLayout,
+  UIBodyText,
+  UIButton,
+  PageTemplate,
+  UIField
+} from './UI'
 import {Placement} from './Placement'
 import {UIImage} from './Image'
 import {Alignment, VerticalAlignment} from './Alignment'
@@ -20,11 +26,11 @@ export type FieldTypes = UIImage
 | Placement 
 | Alignment 
 | VerticalAlignment 
-| UI.UIButton 
+| UIButton 
 | boolean 
 | string 
-| UI.UIBodyText 
-| UI.PageKind
+| UIBodyText 
+| PageLayout
 
 export const isUIImage = (arg: any): arg is UIImage => {
   return arg.src !== undefined && arg.alt !== undefined
@@ -58,12 +64,12 @@ const isAlignment = (arg: any): arg is Alignment => {
   return alignment
 }
 
-const isPageKind = (arg: any): arg is UI.PageKind => { 
+const isPageLayout = (arg: any): arg is PageLayout => { 
   let pageKind: boolean = false
 
-  Object.keys(UI.PageKind).forEach(pk => {
+  Object.keys(PageTemplate).forEach(pk => {
     // @ts-ignore
-    if (UI.PageKind[pk] === arg) {
+    if (PageTemplate[pk] === arg.template) {
       pageKind = true
     }
   })
@@ -84,11 +90,11 @@ const isVerticalAlignment = (arg: any): arg is VerticalAlignment => {
 
   return alignment
 }
-const isUIBodyText = (arg: any): arg is UI.UIBodyText => { 
+const isUIBodyText = (arg: any): arg is UIBodyText => { 
   return arg.text && arg.level === undefined
 }
 
-const isUIButton = (arg: any): arg is UI.UIButton => {
+const isUIButton = (arg: any): arg is UIButton => {
   return arg.level !== undefined
 }
 
@@ -102,7 +108,7 @@ const isString = (arg: any): arg is string => {
 } */
 
 export const getType = (arg?: any): (string | undefined) => {
-  if (isPageKind(arg)) { return 'PageKind' }
+  if (isPageLayout(arg)) { return 'PageLayout' }
   if (isAlignment(arg)) {return 'Alignment'}
   if (isVerticalAlignment(arg)) {return 'VerticalAlignment'}
   if (isPlacement(arg)){ return 'Placement'}
@@ -119,7 +125,7 @@ export const getType = (arg?: any): (string | undefined) => {
 export interface FieldMapping {
   icon: ComponentType<MdiReactIconProps>
   type: string
-  fields: UI.UIField[]
+  fields: UIField[]
 }
 
 export const fieldsMap: FieldMapping[] = [
@@ -134,7 +140,7 @@ export const fieldsMap: FieldMapping[] = [
     fields: []
   },
   {
-    icon: TextShortIcon,
+    icon: FormatTitleIcon,
     type: 'string',
     fields: []
   },
@@ -165,7 +171,7 @@ export const fieldsMap: FieldMapping[] = [
   },
   {
     icon: StretchToPageOutlineIcon,
-    type: 'PageKind',
+    type: 'PageLayout',
     fields: []
   }
 ]
