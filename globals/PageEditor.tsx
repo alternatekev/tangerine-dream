@@ -11,7 +11,10 @@ import {
   transition
 } from '@td/styles'
 import {EditorState, Viewport} from '@td/types'
-import {ConfiguratorDropZones} from '@td/globals'
+import {
+  ConfiguratorDropZones,
+  Sheet
+} from '@td/globals'
 
 interface Props extends ThemeProps {
   editing?: boolean
@@ -21,6 +24,7 @@ interface Props extends ThemeProps {
 
 interface PageEditorState extends EditorState {
   configLocation: Viewport
+  sheet?: Viewport
 }
 
 class UnthemedPageEditor extends Component<Props, PageEditorState> {
@@ -36,8 +40,15 @@ class UnthemedPageEditor extends Component<Props, PageEditorState> {
   }
 
   render() {
-    const {editing, config, menuDividers} = this.props
-    const {configLocation} = this.state
+    const {
+      editing, 
+      config, 
+      menuDividers
+    } = this.props
+    const {
+      configLocation, 
+      sheet
+    } = this.state
     const styles = this.getStyles()
     
 
@@ -62,7 +73,17 @@ class UnthemedPageEditor extends Component<Props, PageEditorState> {
                   />
                 </div>
               </DragDropContext>
-          }
+            }
+            <SlideDown className="slide-down">
+              {sheet &&
+                <Sheet
+                  level={4}
+                  viewport={Viewport.Top}
+                >
+                  hello
+                </Sheet>
+              }
+            </SlideDown>
           </SlideDown>
           </div>
       </div>

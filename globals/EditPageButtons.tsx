@@ -15,12 +15,14 @@ const styles = prepareStyles({
   CancelButton: {
     ...t.fixed,
     top: 12.5,
-    right: 125
+    right: 125,
+    transform: 'translateZ(0)'
   },
   SavePageButton: {
     ...t.fixed,
     top: 12.5,
-    right: 12.5
+    right: 12.5,
+    transform: 'translateZ(0)'
   }
 })
 

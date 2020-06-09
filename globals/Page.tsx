@@ -3,12 +3,14 @@ import {ThemeProvider} from 'emotion-theming'
 import Head from 'next/head'
 
 import {PageEditor} from './PageEditor'
+import {Sheet} from './Sheet'
 import {
   Breakpoints, 
   UITheme, 
   ThemeState, 
   PageLayout,
-  PageTemplate
+  PageTemplate,
+  Viewport
 } from '@td/types'
 
 import {
@@ -82,6 +84,7 @@ const getStyles = (image: any, theme: DerivedTheme) => { // tslint:disable-line 
       ...t.flex_column,
       zIndex: 1,
       ...t.relative,
+      transformStyle: 'preserve-3d',
     },
   })
 }
@@ -152,7 +155,9 @@ export class Page extends Component<Props, ThemeState> {
               id="PageChildren"
             >
               {children && typeof children === 'function' ? children(colors) : children}
+             
             </article>
+            
           </ThemeProvider>
         </main>
       </>
