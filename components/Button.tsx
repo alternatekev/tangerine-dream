@@ -3,6 +3,7 @@ import {FC, Dispatch, SetStateAction, useState} from 'react'
 import {jsx} from '@emotion/core'
 import Link from 'next/link'
 import Popover, {Position} from 'react-tiny-popover'
+import {clamp} from 'ramda'
 
 import { 
   useTheme, 
@@ -32,6 +33,7 @@ interface Props extends BlockProps, Omit<UIButton, 'text' | 'level'> {
   href?: string
   hoverLabel?: Placement
   icon?: Renderable
+  draggable?: boolean
   onClick?(): void
 }
 
@@ -49,6 +51,7 @@ const getStyles = (
     level = 1,
     size = 1,
     font,
+    draggable,
     borderWidth = 1,
     alignment = Alignment.Center,
     fullBleed,
@@ -109,19 +112,6 @@ const getStyles = (
     colors.button500,
     colors.button500,
   ]
-  const invertedBackgroundColor = [
-    'transparent',
-    'transparent',
-    colors.white500_10,
-    colors.white500,
-    colors.white500,
-    colors.white500,
-    colors.white500,
-    colors.white500,
-    colors.white500,
-    'transparent',
-    'transparent',
-  ]
 
   if (ui.mode === UIMode.Light) {
     backgroundColor.reverse()
@@ -136,6 +126,7 @@ const getStyles = (
     ? colors.white500
     : borderColor[level]
   const iconMargin = compact ? t.mr1 : t.mr2
+  const cursor = draggable ? {cursor: 'grab'} : {cursor: 'pointer'}
 
   return prepareStyles({
     Button: {
@@ -151,7 +142,7 @@ const getStyles = (
       ...t.border_box,
       ...align,
       ...transition,
-      ...t.pointer,
+      ...cursor,
       zIndex: 10000,
       color: inverted ? brColor : level === 0 ? colors.link500 : brColor,
       fontFamily: ui.typography.nav.font,
@@ -159,15 +150,15 @@ const getStyles = (
       backgroundColor: backgroundColor[level],
       border: `${borderWidths[borderWidth]}px solid ${level === 0 ? 'transparent' : brColor}`,
       ':hover': {
-        ...t.pointer,
-        backgroundColor: inverted ? invertedBackgroundColor[level + 1] : backgroundColor[level + 1],
+        ...cursor,
+        backgroundColor: backgroundColor[clamp(0, 6)(level + 1)],
         border: `${borderWidths[borderWidth]}px solid ${level === 0 ? 'transparent' : brColor}`,
 
       }
     },
     ButtonLabel: {
       ...t.relative,
-      ...t.pointer,
+      ...cursor,
       top: -1,
     },
     hasIcon: {

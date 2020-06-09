@@ -92,6 +92,8 @@ const getStyles = (
     borderColor.reverse()
   }
 
+  const borderRadius = borderless ? undefined : t[`br${ui.card.borderRadius}`]
+
   return prepareStyles({
     Card: {
       ...t.border_box,
@@ -99,7 +101,7 @@ const getStyles = (
       ...t[`pa${paddingLevel}`],
       ...t[`mb${weighted}`],
       ...t[`mb${topWeighted}`],
-      ...t[`br${ui.card.borderRadius}`],
+      ...borderRadius,
       ...t[`mt${weight?.topWeighted}`],
       ...t[`mb${weight?.weighted}`],
       ...transition,
