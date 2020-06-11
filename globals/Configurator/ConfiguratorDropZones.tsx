@@ -1,4 +1,4 @@
-import {FC, FormEvent} from 'react'
+import {FC} from 'react'
 import {Droppable, Draggable} from 'react-beautiful-dnd'
 
 import {Viewport} from '@td/types'
@@ -9,10 +9,10 @@ interface Props {
   configLocation: Viewport
   menuDividers?: number[]
   config?: any //tslint:disable-line no-any
-  onClick(contentType?: string): (event: FormEvent<HTMLButtonElement>) => void
+  onClick(contentType?: string): (event: MouseEvent | TouchEvent) => void
 }
 
-const configurator = (configLocation: Viewport, config: any, onClick: (contentType?: string) => (event: FormEvent<HTMLButtonElement>) => void, menuDividers?: number[]) => ( //tslint:disable-line no-any
+const configurator = (configLocation: Viewport, config: any, onClick: (contentType?: string) => (event: MouseEvent | TouchEvent) => void, menuDividers?: number[]) => ( //tslint:disable-line no-any
   <Draggable
     draggableId="configurator"
     index={0}>

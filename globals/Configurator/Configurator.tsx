@@ -1,4 +1,4 @@
-import {FC, FormEvent} from 'react'
+import {FC} from 'react'
 import {DraggableProvided} from 'react-beautiful-dnd'
 
 import { 
@@ -20,7 +20,7 @@ interface Props extends DraggableProvided {
   draggingViewport?: Viewport
   menuDividers?: number[]
   config?: any // tslint:disable-line no-any
-  onClick(contentType?: string): (event: FormEvent<HTMLButtonElement>) => void
+  onClick(contentType?: string): (event: MouseEvent | TouchEvent) => void
 }
 
 export const Configurator: FC<Props> = ({

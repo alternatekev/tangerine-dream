@@ -1,4 +1,4 @@
-import {Component, FormEvent} from 'react'
+import {Component} from 'react'
 import {SlideDown} from 'react-slidedown'
 import {DragDropContext, DropResult} from 'react-beautiful-dnd'
 

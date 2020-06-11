@@ -1,4 +1,4 @@
-import {FormEvent, FC} from 'react'
+import {FC} from 'react'
 
 import {
   Menu,
@@ -19,7 +19,7 @@ interface Props {
   menuDividers?: number[]
   viewport: Viewport
   config?: any // tslint:disable-line no-any
-  onClick(contentType?: string): (event: FormEvent<HTMLButtonElement>) => void
+  onClick(contentType?: string): (event: MouseEvent | TouchEvent) => void
 }
 
 export const ConfiguratorMenu: FC<Props> = ({

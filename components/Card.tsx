@@ -48,7 +48,6 @@ const getStyles = (
     weighted = 0,
     height,
     topWeighted = 0,
-    fadeIn,
     borderless
   } = props
 
@@ -103,7 +102,7 @@ const getStyles = (
   }
 
   const borderRadius = borderless ? undefined : t[`br${ui.card.borderRadius}`]
-  const opacity = isBrowser && fadeIn ? 1 : 1
+  // const opacity = isBrowser && fadeIn ? 1 : 1
 
   return prepareStyles({
     Card: {

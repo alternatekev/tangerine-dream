@@ -3,14 +3,12 @@ import {ThemeProvider} from 'emotion-theming'
 import Head from 'next/head'
 
 import {PageEditor} from './PageEditor'
-import {Sheet} from './Sheet'
 import {
   Breakpoints, 
   UITheme, 
   ThemeState, 
   PageLayout,
   PageTemplate,
-  Viewport
 } from '@td/types'
 
 import {
