@@ -1,6 +1,11 @@
 /** @jsx jsx */
 import {FC} from 'react'
 import {jsx} from '@emotion/core'
+import {useSSR} from 'use-ssr'
+import SlideDown from 'react-slidedown'
+
+import { ConditionalWrap } from '@td/components'
+
 
 import {
   useTheme, 
@@ -14,13 +19,15 @@ import {
 } from '@td/styles'
 import {
   BlockProps, 
-  Alignment
+  Renderable,
+  Alignment,
 } from '@td/types'
 
 interface Props extends BlockProps {
   tag?: 'div' | 'article' | 'section'
   borderless?: boolean
   draggable?: boolean
+  onClick?(e: MouseEvent | TouchEvent): void
 }
 
 export interface CardProps extends Props {}
@@ -28,7 +35,9 @@ export interface CardProps extends Props {}
 const getStyles = (
   props: Omit<Props, 'tag' | 'children'>, 
   theme: ThemeState,
-  weight: UIWeighting
+  weight: UIWeighting,
+  isBrowser: boolean,
+  mounted: boolean
 ) => {
   const {
     compact,
@@ -39,6 +48,7 @@ const getStyles = (
     weighted = 0,
     height,
     topWeighted = 0,
+    fadeIn,
     borderless
   } = props
 
@@ -93,6 +103,7 @@ const getStyles = (
   }
 
   const borderRadius = borderless ? undefined : t[`br${ui.card.borderRadius}`]
+  const opacity = isBrowser && fadeIn ? 1 : 1
 
   return prepareStyles({
     Card: {
@@ -110,10 +121,15 @@ const getStyles = (
         ? `${borderWidth[level]}px solid ${borderColor[level]}` 
         : undefined,
       width,
-      height
+      height,
     }
   })
 }
+
+const wrapWithSlideDown = (isBrowser: boolean) => (children: Renderable) => 
+  <SlideDown className="fade-in">
+    {isBrowser ? children : null}
+  </SlideDown>
 
 export const Card: FC<Props> = ({
   tag,
@@ -121,17 +137,26 @@ export const Card: FC<Props> = ({
   topWeighted,
   ref,
   innerRef,
+  fadeIn,
   weighted,
   draggable,
+  onClick,
   unicorn,
   ...rest
 }: Props) => {
 
   const theme: ThemeState = useTheme()
-  const styles = getStyles(rest, theme, {topWeighted, weighted})
-
-  return jsx(tag || 'div', {
-    css: css(styles.Card, unicorn),
+  const { isBrowser } = useSSR()
+  const styles = getStyles({...rest, fadeIn}, theme, {topWeighted, weighted}, isBrowser, false)
+  const cardComponent = jsx(tag || 'div', {
+    css: [css(styles.Card, unicorn)],
     ref: innerRef || ref,
+    onClick: onClick
   }, children)
+
+  return (
+    <ConditionalWrap condition={!!fadeIn} wrap={wrapWithSlideDown(isBrowser)}>
+      {cardComponent}
+    </ConditionalWrap>
+  )
 }

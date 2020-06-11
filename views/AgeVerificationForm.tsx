@@ -16,7 +16,7 @@ export const AgeVerificationForm: FC<AgeVerification> = ({
   const {text, ...rest} = bodyText
 
   return (
-    <Card level={0} alignment={rest.alignment}>
+    <Card fadeIn level={0} alignment={rest.alignment}>
       <Logo {...logoImage} />
       <P fontTheme={rest}>{text}</P>
       <Button level={1} {...actionButton}>{actionButton.text}</Button>

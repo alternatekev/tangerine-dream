@@ -9,4 +9,3 @@ export const labelPlacement = {
   [Viewport.Bottom]: Placement.Top,
   [Viewport.Left]: Placement.Right
 }
-

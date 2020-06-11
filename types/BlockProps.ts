@@ -19,5 +19,6 @@ export interface BlockProps {
   width?: number | string
   height?: number | string
   innerRef?: HTMLElement | null
+  fadeIn?: boolean
   ref?: Ref<any> //tslint:disable-line no-any
 }

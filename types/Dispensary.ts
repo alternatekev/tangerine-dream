@@ -14,9 +14,13 @@ export interface Dispensary {
   colors: Theme
 }
 
+export interface PageTitle {
+  titleText: string
+}
+
 export interface DispensaryPage {
   backgroundImage: UIImage
-  pageTitle: string
+  pageTitle: PageTitle
   bodyText: UIBodyText
   pageLayout: PageLayout
 }

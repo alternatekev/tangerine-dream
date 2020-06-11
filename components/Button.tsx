@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import {FC, Dispatch, SetStateAction, useState} from 'react'
+import {FC, Dispatch, SetStateAction, useState, FormEvent} from 'react'
 import {jsx} from '@emotion/core'
 import Link from 'next/link'
 import Popover, {Position} from 'react-tiny-popover'
@@ -34,13 +34,13 @@ interface Props extends BlockProps, Omit<UIButton, 'text' | 'level'> {
   hoverLabel?: Placement
   icon?: Renderable
   draggable?: boolean
-  onClick?(): void
+  onClick?(event: MouseEvent | TouchEvent): void
 }
 
 export interface ButtonProps extends Props { }
 
 const getStyles = (
-  props: Omit<Props, 'tag' | 'children'>, 
+  props: Omit<Props, 'tag' | 'children' | 'onClick'>, 
   theme: ThemeState, 
   weight: UIWeighting
 ) => {

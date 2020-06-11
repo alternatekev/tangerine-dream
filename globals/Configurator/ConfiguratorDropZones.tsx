@@ -1,4 +1,4 @@
-import {FC} from 'react'
+import {FC, FormEvent} from 'react'
 import {Droppable, Draggable} from 'react-beautiful-dnd'
 
 import {Viewport} from '@td/types'
@@ -9,9 +9,10 @@ interface Props {
   configLocation: Viewport
   menuDividers?: number[]
   config?: any //tslint:disable-line no-any
+  onClick(contentType?: string): (event: FormEvent<HTMLButtonElement>) => void
 }
 
-const configurator = (configLocation: Viewport, config: any, menuDividers?: number[]) => ( //tslint:disable-line no-any
+const configurator = (configLocation: Viewport, config: any, onClick: (contentType?: string) => (event: FormEvent<HTMLButtonElement>) => void, menuDividers?: number[]) => ( //tslint:disable-line no-any
   <Draggable
     draggableId="configurator"
     index={0}>
@@ -22,6 +23,7 @@ const configurator = (configLocation: Viewport, config: any, menuDividers?: numb
         dragging={dragSnapshot.isDragging}
         draggingViewport={dragSnapshot.draggingOver as Viewport}
         viewport={configLocation}
+        onClick={onClick}
         {...dragProvided}
       />
     }
@@ -31,6 +33,7 @@ const configurator = (configLocation: Viewport, config: any, menuDividers?: numb
 export const ConfiguratorDropZones: FC<Props> = ({
   configLocation,
   config,
+  onClick,
   menuDividers
 }: Props) => 
   <>
@@ -50,7 +53,7 @@ export const ConfiguratorDropZones: FC<Props> = ({
               draggingOver={snapshot.isDraggingOver}
               viewport={vvp}
             >
-              {configLocation === vvp && configurator(configLocation, config, menuDividers)}
+              {configLocation === vvp && configurator(configLocation, config, onClick, menuDividers)}
             </ConfiguratorDropZone>
           }
         </Droppable>

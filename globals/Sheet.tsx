@@ -1,4 +1,5 @@
-import {FC} from 'react'
+import {FC, useRef} from 'react'
+import {css, keyframes} from '@emotion/core'
 
 import {
   BlockProps,
@@ -23,39 +24,61 @@ const getStyles = (theme: ThemeState) => prepareStyles({
   SheetCard: {
     width: 500,
     margin: '2px auto',
+    ...t.br2,
     ...t.br__bottom,
     borderTop: 0,
-    ...shadow(theme)[3]
+    ...shadow(theme)[3],
   }
 })
+
+const slide = keyframes`
+  from {
+    transform: translate3d(0,-500px,0);
+  }
+  to {
+    transform: translate3d(0,0,0)
+  }
+`
 
 interface Props extends BlockProps {
   viewport: Viewport 
   open?: boolean
+  onClose(e: MouseEvent | TouchEvent): void
 }
 
 export const Sheet: FC<Props> = ({
   children,
   level,
   viewport,
+  onClose,
   open
 }: Props) => {
   const theme: ThemeState = useTheme()
   const styles = getStyles(theme)
+  const ref = useRef(null)
 
   return (
-    <>
+
       <Card
         unicorn={styles.SheetBackdrop}
+        fadeIn
         level={7}
         fullBleed
         borderless
+        onClick={onClose}
       >
-        <Card unicorn={styles.SheetCard} level={5}>
+      <div css={css`
+        animation: ${slide} 100ms ease-in-out normal;
+      `}>
+        <Card 
+          ref={ref}
+          unicorn={styles.SheetCard} 
+          level={2}
+        >
           {children}
         </Card>
-      </Card>
-    </>
+      </div>
+    </Card>
   )
 }
  

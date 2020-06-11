@@ -125,7 +125,20 @@ strong {
   font-weight: 700;
 }
 
-.react-slidedown.slide-down {
-    transition-duration: 100ms;
-    transition-timing-function: ease-in-out;
+.react-slidedown {
+  height: 'auto';
+  opacity: 1;
+  transition-property: 'opacity';
+  transition-duration: 100ms;
+  transition-timing-function: ease-in-out;
+}
+
+.react-slidedown.transitioning {
+  overflow-y: hidden;
+  opacity: 1;
+}
+
+.react-slidedown.closed {
+  opacity: 0;
+  display: none;
 }

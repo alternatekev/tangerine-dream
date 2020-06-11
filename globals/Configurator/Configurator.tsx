@@ -1,4 +1,4 @@
-import {FC} from 'react'
+import {FC, FormEvent} from 'react'
 import {DraggableProvided} from 'react-beautiful-dnd'
 
 import { 
@@ -20,6 +20,7 @@ interface Props extends DraggableProvided {
   draggingViewport?: Viewport
   menuDividers?: number[]
   config?: any // tslint:disable-line no-any
+  onClick(contentType?: string): (event: FormEvent<HTMLButtonElement>) => void
 }
 
 export const Configurator: FC<Props> = ({
@@ -30,6 +31,7 @@ export const Configurator: FC<Props> = ({
   draggingViewport,
   draggableProps,
   dragHandleProps,
+  onClick,
   config
 }: Props) => {
   const styles = getStyles(useTheme(), dragging)
@@ -57,6 +59,7 @@ export const Configurator: FC<Props> = ({
         <ConfiguratorMenu 
           viewport={viewport}
           config={config}
+          onClick={onClick}
           menuDividers={menuDividers}
         />
       </Card>

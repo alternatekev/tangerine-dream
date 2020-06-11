@@ -1,4 +1,4 @@
-import {Component} from 'react'
+import {Component, FormEvent} from 'react'
 import {SlideDown} from 'react-slidedown'
 import {DragDropContext, DropResult} from 'react-beautiful-dnd'
 
@@ -10,7 +10,10 @@ import {
   prepareStyles, 
   transition
 } from '@td/styles'
-import {EditorState, Viewport} from '@td/types'
+import {
+  EditorState, 
+  Viewport
+} from '@td/types'
 import {
   ConfiguratorDropZones,
   Sheet
@@ -57,6 +60,7 @@ class UnthemedPageEditor extends Component<Props, PageEditorState> {
         <div css={css(styles.SlideOuter, styles.noBorder)}>
           <SlideDown className="slide-down">
             {editing && 
+            <>
               <DragDropContext 
                 onDragEnd={this.onDragEnd}
               >
@@ -69,25 +73,38 @@ class UnthemedPageEditor extends Component<Props, PageEditorState> {
                   <ConfiguratorDropZones 
                     menuDividers={menuDividers}
                     configLocation={configLocation}
+                    onClick={this.onClick}
                     config={config}
                   />
                 </div>
               </DragDropContext>
-            }
-            <SlideDown className="slide-down">
               {sheet &&
                 <Sheet
                   level={4}
+                  onClose={this.onClick()}
                   viewport={Viewport.Top}
                 >
                   hello
                 </Sheet>
-              }
-            </SlideDown>
+               }
+            </>
+          } 
           </SlideDown>
-          </div>
+        </div>
       </div>
     )
+  }
+
+  private onClick = (contentType?: string) => (_: MouseEvent | TouchEvent) => {
+    if(contentType === 'PageTitle') {
+      this.setState({
+        sheet: Viewport.Top
+      })
+    } else {
+      this.setState({
+        sheet: undefined
+      })
+    }
   }
 
   private onDragEnd = (e: DropResult) => {

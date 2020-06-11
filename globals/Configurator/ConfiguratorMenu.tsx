@@ -1,4 +1,4 @@
-import {FC} from 'react'
+import {FormEvent, FC} from 'react'
 
 import {
   Menu,
@@ -19,12 +19,14 @@ interface Props {
   menuDividers?: number[]
   viewport: Viewport
   config?: any // tslint:disable-line no-any
+  onClick(contentType?: string): (event: FormEvent<HTMLButtonElement>) => void
 }
 
 export const ConfiguratorMenu: FC<Props> = ({
   menuDividers,
   viewport,
-  config
+  config,
+  onClick
 }: Props) =>
   <Menu
     dividers={menuDividers}
@@ -36,28 +38,30 @@ export const ConfiguratorMenu: FC<Props> = ({
 
       return Icon
         ? <Button
-          key={`${type}_${i}`}
-          hoverLabel={labelPlacement[viewport]}
-          alignment={Alignment.Center}
-          inverted
-          size={1.5}
-          font={{
-            weight: 100
-          }}
-          fullBleed
-          compact
-          icon={
-            <Icon
-              size={25}
-            />
-          }
-          level={0}
-        >
-          <Capitalize>
-            {formatConfiguratorLabel(c)}
-          </Capitalize>
-        </Button>
-        : null
-    })
+            key={`${type}_${i}`}
+            hoverLabel={labelPlacement[viewport]}
+            alignment={Alignment.Center}
+            onClick={onClick(type)}
+            inverted
+            size={1.5}
+            font={{
+              weight: 100
+            }}
+            fullBleed
+            compact
+            icon={
+              <Icon
+                size={25}
+              />
+            }
+            level={0}
+          >
+            <Capitalize>
+              {formatConfiguratorLabel(c)}
+            </Capitalize>
+          </Button>
+          : null
+        }
+      )
     }
   </Menu>
