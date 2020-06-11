@@ -12,7 +12,9 @@ export const defaultColors = defaultThemeColors
 export const defaults: Dispensary = {
   name: 'TangerineDream',
   age: {
-    pageTitle: `Let's check your ID.`,
+    pageTitle: {
+      titleText: `Let's check your ID.`
+    },
     pageLayout: {
       template: PageTemplate.Captured,
       align: Alignment.Left,
@@ -34,6 +36,7 @@ export const defaults: Dispensary = {
       lineHeight: 1,
       alignment: Alignment.Center
     },
+    checkbox: false,
     actionButton: {
       text: 'Enter Site',
       size: 2.25,
@@ -43,7 +46,6 @@ export const defaults: Dispensary = {
       inverted: true,
       level: 1
     },
-    checkbox: false,
   },
   colors: defaultColors,
   ui: {

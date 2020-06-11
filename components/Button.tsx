@@ -34,13 +34,13 @@ interface Props extends BlockProps, Omit<UIButton, 'text' | 'level'> {
   hoverLabel?: Placement
   icon?: Renderable
   draggable?: boolean
-  onClick?(): void
+  onClick?(event: MouseEvent | TouchEvent): void
 }
 
 export interface ButtonProps extends Props { }
 
 const getStyles = (
-  props: Omit<Props, 'tag' | 'children'>, 
+  props: Omit<Props, 'tag' | 'children' | 'onClick'>, 
   theme: ThemeState, 
   weight: UIWeighting
 ) => {

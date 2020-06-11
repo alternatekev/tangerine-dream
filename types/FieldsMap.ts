@@ -10,6 +10,7 @@ import GestureTapButtonIcon from 'mdi-react/GestureTapButtonIcon'
 import FormatTextboxIcon from 'mdi-react/FormatTextboxIcon'
 import StretchToPageOutlineIcon from 'mdi-react/StretchToPageOutlineIcon'
 import FormatTitleIcon from 'mdi-react/FormatTitleIcon'
+import TextIcon from 'mdi-react/TextIcon'
 
 import {
   PageLayout,
@@ -21,6 +22,7 @@ import {
 import {Placement} from './Placement'
 import {UIImage} from './Image'
 import {Alignment, VerticalAlignment} from './Alignment'
+import { PageTitle } from './Dispensary'
 
 export type FieldTypes = UIImage 
 | Placement 
@@ -34,6 +36,10 @@ export type FieldTypes = UIImage
 
 export const isUIImage = (arg: any): arg is UIImage => {
   return arg.src !== undefined && arg.alt !== undefined
+}
+
+export const isPageTitle = (arg: any): arg is PageTitle => {
+  return arg.titleText !== undefined
 }
 
 const isPlacement = (arg: any): arg is Placement => { 
@@ -103,12 +109,13 @@ const isString = (arg: any): arg is string => {
   return typeof arg === 'string'
 }
 
-/* const isBoolean = (arg: any): arg is boolean => {
+const isBoolean = (arg: any) => {
   return typeof arg === 'boolean'
-} */
+}
 
 export const getType = (arg?: any): (string | undefined) => {
   if (isPageLayout(arg)) { return 'PageLayout' }
+  if (isPageTitle(arg)) { return 'PageTitle' }
   if (isAlignment(arg)) {return 'Alignment'}
   if (isVerticalAlignment(arg)) {return 'VerticalAlignment'}
   if (isPlacement(arg)){ return 'Placement'}
@@ -116,7 +123,7 @@ export const getType = (arg?: any): (string | undefined) => {
   if (isUIButton(arg)){ return 'UIButton'}
   if (isUIImage(arg)) { return 'UIImage' }
   if (isString(arg)){return 'string'}
-//  if (isBoolean(arg)){ return 'boolean'}
+  if (isBoolean(arg)){ return 'boolean'}
 
   return undefined
 }
@@ -140,7 +147,7 @@ export const fieldsMap: FieldMapping[] = [
     fields: []
   },
   {
-    icon: FormatTitleIcon,
+    icon: TextIcon,
     type: 'string',
     fields: []
   },
@@ -172,6 +179,11 @@ export const fieldsMap: FieldMapping[] = [
   {
     icon: StretchToPageOutlineIcon,
     type: 'PageLayout',
+    fields: []
+  },
+  {
+    icon: FormatTitleIcon,
+    type: 'PageTitle',
     fields: []
   }
 ]

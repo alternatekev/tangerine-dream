@@ -10,8 +10,14 @@ import {
   prepareStyles, 
   transition
 } from '@td/styles'
-import {EditorState, Viewport} from '@td/types'
-import {ConfiguratorDropZones} from '@td/globals'
+import {
+  EditorState, 
+  Viewport
+} from '@td/types'
+import {
+  ConfiguratorDropZones,
+  Sheet
+} from '@td/globals'
 
 interface Props extends ThemeProps {
   editing?: boolean
@@ -21,6 +27,7 @@ interface Props extends ThemeProps {
 
 interface PageEditorState extends EditorState {
   configLocation: Viewport
+  sheet?: Viewport
 }
 
 class UnthemedPageEditor extends Component<Props, PageEditorState> {
@@ -36,8 +43,15 @@ class UnthemedPageEditor extends Component<Props, PageEditorState> {
   }
 
   render() {
-    const {editing, config, menuDividers} = this.props
-    const {configLocation} = this.state
+    const {
+      editing, 
+      config, 
+      menuDividers
+    } = this.props
+    const {
+      configLocation, 
+      sheet
+    } = this.state
     const styles = this.getStyles()
     
 
@@ -46,6 +60,7 @@ class UnthemedPageEditor extends Component<Props, PageEditorState> {
         <div css={css(styles.SlideOuter, styles.noBorder)}>
           <SlideDown className="slide-down">
             {editing && 
+            <>
               <DragDropContext 
                 onDragEnd={this.onDragEnd}
               >
@@ -58,15 +73,38 @@ class UnthemedPageEditor extends Component<Props, PageEditorState> {
                   <ConfiguratorDropZones 
                     menuDividers={menuDividers}
                     configLocation={configLocation}
+                    onClick={this.onClick}
                     config={config}
                   />
                 </div>
               </DragDropContext>
-          }
+              {sheet &&
+                <Sheet
+                  level={4}
+                  onClose={this.onClick()}
+                  viewport={Viewport.Top}
+                >
+                  hello
+                </Sheet>
+               }
+            </>
+          } 
           </SlideDown>
-          </div>
+        </div>
       </div>
     )
+  }
+
+  private onClick = (contentType?: string) => (_: MouseEvent | TouchEvent) => {
+    if(contentType === 'PageTitle') {
+      this.setState({
+        sheet: Viewport.Top
+      })
+    } else {
+      this.setState({
+        sheet: undefined
+      })
+    }
   }
 
   private onDragEnd = (e: DropResult) => {
