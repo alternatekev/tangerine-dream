@@ -11,6 +11,7 @@ export interface BlockProps {
   level?: Level | number
   compact?: boolean
   fullBleed?: boolean
+  block?: boolean
   weighted?: Level
   topWeighted?: Level
   children?: Renderable
@@ -20,5 +21,5 @@ export interface BlockProps {
   height?: number | string
   innerRef?: HTMLElement | null
   fadeIn?: boolean
-  ref?: Ref<any> //tslint:disable-line no-any
+  outerRef?: Ref<any> //tslint:disable-line no-any
 }

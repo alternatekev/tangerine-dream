@@ -1,5 +1,6 @@
 import {FC, useRef} from 'react'
 import {css, keyframes} from '@emotion/core'
+import useOnClickOutside from 'use-onclickoutside'
 
 import {
   BlockProps,
@@ -19,7 +20,7 @@ import {
 const getStyles = (theme: ThemeState) => prepareStyles({
   SheetBackdrop: {
     ...t.aspect_ratio__object,
-    opacity: 0.5
+    zIndex: 1000
   },
   SheetCard: {
     width: 500,
@@ -46,9 +47,11 @@ interface Props extends BlockProps {
   onClose(e: MouseEvent | TouchEvent): void
 }
 
+export const preventDefault = (e: MouseEvent | TouchEvent) => {e.preventDefault()}
+
 export const Sheet: FC<Props> = ({
   children,
-  level,
+  level = 5,
   viewport,
   onClose,
   open
@@ -56,29 +59,31 @@ export const Sheet: FC<Props> = ({
   const theme: ThemeState = useTheme()
   const styles = getStyles(theme)
   const ref = useRef(null)
+  useOnClickOutside(ref, onClose)
 
   return (
-
-      <Card
+    <>
+       <Card
         unicorn={styles.SheetBackdrop}
         fadeIn
         level={7}
         fullBleed
         borderless
-        onClick={onClose}
       >
       <div css={css`
         animation: ${slide} 100ms ease-in-out normal;
       `}>
         <Card 
-          ref={ref}
+          outerRef={ref}
+          onClick={preventDefault}
           unicorn={styles.SheetCard} 
-          level={2}
+          level={level}
         >
           {children}
         </Card>
       </div>
     </Card>
+    </>
   )
 }
  

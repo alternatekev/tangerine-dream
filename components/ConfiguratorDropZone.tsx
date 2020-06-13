@@ -44,7 +44,7 @@ const getStyles = ({colors}: ThemeState, viewport: Viewport) => {
       bottom: undefined,
       left: offset,
       width: `calc(100vw - 50px)`,
-      height: offset
+      height: offset,
     },
     right: {
       top: offset,
@@ -52,7 +52,7 @@ const getStyles = ({colors}: ThemeState, viewport: Viewport) => {
       bottom: offset,
       left: undefined,
       width: offset,
-      height: fullHeight
+      height: fullHeight,
     },
     bottom: {
       top: undefined,
@@ -60,7 +60,7 @@ const getStyles = ({colors}: ThemeState, viewport: Viewport) => {
       bottom: 0,
       left: offset,
       width: fullWidth,
-      height: offset
+      height: offset,
     },
     left: {
       top: offset,
@@ -68,7 +68,7 @@ const getStyles = ({colors}: ThemeState, viewport: Viewport) => {
       bottom: offset,
       left: 0,
       width: offset,
-      height: fullHeight
+      height: fullHeight,
     }
   }
 
@@ -76,6 +76,7 @@ const getStyles = ({colors}: ThemeState, viewport: Viewport) => {
     ConfiguratorDropZone: {
       ...t.absolute,
       ...transition,
+      zIndex: 800,
       //@ts-ignore
       ...dimensions[vp],
       backgroundColor: colors.white500_0,
