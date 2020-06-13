@@ -92,7 +92,7 @@ const getStyles = (
     colors.grey10,
     colors.black50,
     colors.black700,
-    colors.black900,
+    colors.black500_50,
     'transparent',
   ]
 
@@ -134,7 +134,7 @@ export const Card: FC<Props> = ({
   tag,
   children,
   topWeighted,
-  ref,
+  outerRef,
   innerRef,
   fadeIn,
   weighted,
@@ -149,7 +149,7 @@ export const Card: FC<Props> = ({
   const styles = getStyles({...rest, fadeIn}, theme, {topWeighted, weighted}, isBrowser, false)
   const cardComponent = jsx(tag || 'div', {
     css: [css(styles.Card, unicorn)],
-    ref: innerRef || ref,
+    ref: innerRef || outerRef,
     onClick: onClick
   }, children)
 

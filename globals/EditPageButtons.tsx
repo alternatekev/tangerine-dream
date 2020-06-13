@@ -16,12 +16,14 @@ const styles = prepareStyles({
     ...t.fixed,
     top: 12.5,
     right: 125,
+    zIndex: 900,
     transform: 'translateZ(0)'
   },
   SavePageButton: {
     ...t.fixed,
     top: 12.5,
     right: 12.5,
+    zIndex: 900,
     transform: 'translateZ(0)'
   }
 })

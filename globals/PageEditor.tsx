@@ -12,17 +12,23 @@ import {
 } from '@td/styles'
 import {
   EditorState, 
-  Viewport
+  Viewport,
+  FieldOption
 } from '@td/types'
 import {
   ConfiguratorDropZones,
-  Sheet
+  Sheet,
+  EditPageButtons
 } from '@td/globals'
+import {
+  TextField
+} from '@td/components'
 
 interface Props extends ThemeProps {
   editing?: boolean
   menuDividers?: number[]
   config: any //tslint:disable-line no-any
+  setEditing(): void
 }
 
 interface PageEditorState extends EditorState {
@@ -46,7 +52,8 @@ class UnthemedPageEditor extends Component<Props, PageEditorState> {
     const {
       editing, 
       config, 
-      menuDividers
+      menuDividers,
+      setEditing
     } = this.props
     const {
       configLocation, 
@@ -70,6 +77,10 @@ class UnthemedPageEditor extends Component<Props, PageEditorState> {
                     editing && styles.isDisplayed
                   )}
                 >
+                  <EditPageButtons 
+                    editing={editing}
+                    setEditing={setEditing}
+                  />
                   <ConfiguratorDropZones 
                     menuDividers={menuDividers}
                     configLocation={configLocation}
@@ -80,11 +91,17 @@ class UnthemedPageEditor extends Component<Props, PageEditorState> {
               </DragDropContext>
               {sheet &&
                 <Sheet
-                  level={4}
+                  level={6}
                   onClose={this.onClick()}
                   viewport={Viewport.Top}
                 >
-                  hello
+                  <TextField 
+                    label="Page Title"
+                    name="pageTitle" 
+                    block
+                    autoFocus
+                    setFieldValue={this.setFieldValue} 
+                  />
                 </Sheet>
                }
             </>
@@ -105,6 +122,10 @@ class UnthemedPageEditor extends Component<Props, PageEditorState> {
         sheet: undefined
       })
     }
+  }
+
+  private setFieldValue = (field: string, value: FieldOption | string) => () => {
+    // do stuff
   }
 
   private onDragEnd = (e: DropResult) => {
@@ -137,7 +158,7 @@ class UnthemedPageEditor extends Component<Props, PageEditorState> {
         ...t.fixed,
         width: '100vw',
         height: '100vh',
-        zIndex: 10000,
+        zIndex: 800,
         pointerEvents: 'none'
       },
       isDisplayed: {

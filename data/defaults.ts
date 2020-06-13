@@ -58,7 +58,7 @@ export const defaults: Dispensary = {
       borderRadius: 2,
     },
     logo: {
-      borderRadius: 4
+      borderRadius: 3
     },
     typography: {
       header: {

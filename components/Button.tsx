@@ -143,7 +143,6 @@ const getStyles = (
       ...align,
       ...transition,
       ...cursor,
-      zIndex: 10000,
       color: inverted ? brColor : level === 0 ? colors.link500 : brColor,
       fontFamily: ui.typography.nav.font,
       fontSize: size ? `${size}rem` : t.f2.fontSize,

@@ -143,11 +143,18 @@ export class Page extends Component<Props, ThemeState> {
           )}
         >
           <ThemeProvider theme={this.state}>
-            <PageEditor menuDividers={menuDividers} config={config} editing={editing} />
-            <EditPageButtons 
-              setEditing={this.setEditing} 
+            <PageEditor 
+              menuDividers={menuDividers} 
+              config={config} 
               editing={editing} 
+              setEditing={this.setEditing}
             />
+            {!editing && 
+              <EditPageButtons 
+                setEditing={this.setEditing} 
+                editing={editing} 
+              />
+            }
             <article 
               css={css(styles.PageChildren)} 
               id="PageChildren"
