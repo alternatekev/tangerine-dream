@@ -1,12 +1,13 @@
 import {FC} from 'react'
 import {Droppable, Draggable} from 'react-beautiful-dnd'
 
-import {Viewport} from '@td/types'
+import {Viewport, Pages} from '@td/types'
 import {ConfiguratorDropZone} from '@td/components'
 import {Configurator} from '@td/globals'
 
 interface Props {
   configLocation: Viewport
+  page: Pages
   menuDividers?: number[]
   config?: any //tslint:disable-line no-any
   onClick(contentType?: string): (event: MouseEvent | TouchEvent) => void
@@ -34,6 +35,7 @@ export const ConfiguratorDropZones: FC<Props> = ({
   configLocation,
   config,
   onClick,
+  page,
   menuDividers
 }: Props) => 
   <>
@@ -53,7 +55,7 @@ export const ConfiguratorDropZones: FC<Props> = ({
               draggingOver={snapshot.isDraggingOver}
               viewport={vvp}
             >
-              {configLocation === vvp && configurator(configLocation, config, onClick, menuDividers)}
+              {configLocation === vvp && configurator(configLocation, config[page], onClick, menuDividers)}
             </ConfiguratorDropZone>
           }
         </Droppable>

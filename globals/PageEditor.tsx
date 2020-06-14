@@ -1,6 +1,8 @@
 import {Component} from 'react'
 import {SlideDown} from 'react-slidedown'
 import {DragDropContext, DropResult} from 'react-beautiful-dnd'
+import {Formik} from 'formik'
+
 
 import {
   withTheme, 
@@ -13,7 +15,9 @@ import {
 import {
   EditorState, 
   Viewport,
-  FieldOption
+  FieldOption,
+  Dispensary,
+  Pages,
 } from '@td/types'
 import {
   ConfiguratorDropZones,
@@ -27,6 +31,7 @@ import {
 interface Props extends ThemeProps {
   editing?: boolean
   menuDividers?: number[]
+  page: Pages
   config: any //tslint:disable-line no-any
   setEditing(): void
 }
@@ -51,6 +56,7 @@ class UnthemedPageEditor extends Component<Props, PageEditorState> {
   render() {
     const {
       editing, 
+      page,
       config, 
       menuDividers,
       setEditing
@@ -60,56 +66,69 @@ class UnthemedPageEditor extends Component<Props, PageEditorState> {
       sheet
     } = this.state
     const styles = this.getStyles()
-    
+    const initialValues: Dispensary = config
 
     return(
       <div css={css(styles.SlideOuter)}>
         <div css={css(styles.SlideOuter, styles.noBorder)}>
-          <SlideDown className="slide-down">
-            {editing && 
-            <>
-              <DragDropContext 
-                onDragEnd={this.onDragEnd}
-              >
-                <div 
-                  css={css(
-                    styles.PageEditor, 
-                    editing && styles.isDisplayed
-                  )}
-                >
-                  <EditPageButtons 
-                    editing={editing}
-                    setEditing={setEditing}
-                  />
-                  <ConfiguratorDropZones 
-                    menuDividers={menuDividers}
-                    configLocation={configLocation}
-                    onClick={this.onClick}
-                    config={config}
-                  />
-                </div>
-              </DragDropContext>
-              {sheet &&
-                <Sheet
-                  level={6}
-                  onClose={this.onClick()}
-                  viewport={Viewport.Top}
-                >
-                  <TextField 
-                    label="Page Title"
-                    name="pageTitle" 
-                    block
-                    autoFocus
-                    setFieldValue={this.setFieldValue} 
-                  />
-                </Sheet>
-               }
-            </>
-          } 
-          </SlideDown>
+          <Formik
+            initialValues={initialValues}
+            onSubmit={this.onSubmit}
+          >
+           {formikProps => 
+              <SlideDown className="slide-down">
+                {editing && 
+                  <>
+                    <DragDropContext
+                      onDragEnd={this.onDragEnd}
+                    >
+                      <div
+                        css={css(
+                          styles.PageEditor,
+                          editing && styles.isDisplayed
+                        )}
+                      >
+                        <EditPageButtons
+                          editing={editing}
+                          setEditing={setEditing}
+                        />
+                        <ConfiguratorDropZones
+                          menuDividers={menuDividers}
+                          page={page}
+                          configLocation={configLocation}
+                          onClick={this.onClick}
+                          config={config}
+                        />
+                      </div>
+                    </DragDropContext>
+                    {sheet &&
+                      <Sheet
+                        level={6}
+                        onClose={this.onClick()}
+                        viewport={Viewport.Top}
+                      >
+                        <TextField
+                          label="Page Title"
+                          value={formikProps.values[page].pageTitle.titleText}
+                          name="pageTitle"
+                          block
+                          autoFocus
+                          setFieldValue={this.setFieldValue}
+                        />
+                      </Sheet>
+                    }
+                  </>
+                }
+              </SlideDown>
+           }
+          </Formik>
         </div>
       </div>
     )
+  }
+
+  private onSubmit = (values: Dispensary) => {
+    // hi
   }
 
   private onClick = (contentType?: string) => (_: MouseEvent | TouchEvent) => {

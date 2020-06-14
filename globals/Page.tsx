@@ -9,6 +9,7 @@ import {
   ThemeState, 
   PageLayout,
   PageTemplate,
+  Pages
 } from '@td/types'
 
 import {
@@ -24,6 +25,7 @@ import {EditPageButtons} from './EditPageButtons'
 
 interface Props {
   title?: string
+  page: Pages
   name: string
   pageLayout: PageLayout
   menuDividers?: number[]
@@ -114,6 +116,7 @@ export class Page extends Component<Props, ThemeState> {
       children, 
       pageLayout,
       menuDividers,
+      page,
       name,
       image, 
       title, 
@@ -145,6 +148,7 @@ export class Page extends Component<Props, ThemeState> {
           <ThemeProvider theme={this.state}>
             <PageEditor 
               menuDividers={menuDividers} 
+              page={page}
               config={config} 
               editing={editing} 
               setEditing={this.setEditing}
