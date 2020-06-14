@@ -24,5 +24,11 @@ export const shadow = (theme: ThemeState) => ([
   },
   {
     boxShadow: `0 40px 75px ${theme.colors.black1000}`
+  },
+  {
+    boxShadow: `0 0 0 ${theme.colors.primary500_0} inset`
+  },
+  {
+    boxShadow: `0 0 5px ${theme.colors.primary500_50} inset`
   }
 ])

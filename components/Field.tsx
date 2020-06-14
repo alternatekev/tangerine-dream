@@ -1,14 +1,27 @@
 import {FC} from 'react'
+import {Field as FormikField, FormikBag, FormikFormProps} from 'formik'
 
-import {FieldProps} from '@td/types'
+import {FieldProps, Dispensary} from '@td/types'
 import {FieldLabel} from './'
 
-export const Field: FC<FieldProps> = ({
+interface Props extends Omit<FieldProps, 'formikProps'> {}
+
+export const Field: FC<Props> = ({
   label,
   children,
   name
-}: FieldProps) =>
-  <div>
-    {label && <FieldLabel for={name}>{label}</FieldLabel>}
-    {children}
-  </div>
+}: Props) =>
+  <FormikField name={name}>
+    {(formikBag: FormikBag<FormikFormProps, Dispensary>) =>
+      <>
+        {label &&
+          <FieldLabel
+            for={name}
+          >
+            {label}
+          </FieldLabel>
+        }
+        {typeof children === 'function' ? children(formikBag) : null}
+      </>
+    }  
+  </FormikField>
