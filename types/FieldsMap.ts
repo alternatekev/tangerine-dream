@@ -17,12 +17,15 @@ import {
   UIBodyText,
   UIButton,
   PageTemplate,
-  UIField
 } from './UI'
 import {Placement} from './Placement'
 import {UIImage} from './Image'
 import {Alignment, VerticalAlignment} from './Alignment'
 import { PageTitle } from './Dispensary'
+
+import {
+  PageLayoutForm
+} from '@td/views'
 
 export type FieldTypes = UIImage 
 | Placement 
@@ -132,59 +135,59 @@ export const getType = (arg?: any): (string | undefined) => {
 export interface FieldMapping {
   icon: ComponentType<MdiReactIconProps>
   type: string
-  fields: UIField[]
+  component?: ComponentType
 }
 
 export const fieldsMap: FieldMapping[] = [
   {
     icon: ImageIcon,
     type: 'UIImage',
-    fields: []
+    component: undefined
   },
   {
     icon: CheckboxIcon,
     type: 'boolean',
-    fields: []
+    component: undefined
   },
   {
     icon: TextIcon,
     type: 'string',
-    fields: []
+    component: undefined
   },
   {
     icon: ArrowExpandAllIcon,
     type: 'Placement',
-    fields: []
+    component: undefined
   },
   {
     icon: ArrowExpandHorizontalIcon,
     type: 'Alignment',
-    fields: []
+    component: undefined
   },
   {
     icon: ArrowExpandVerticalIcon,
     type: 'VerticalAlignment',
-    fields: []
+    component: undefined
   },
   {
     icon: GestureTapButtonIcon,
     type: 'UIButton',
-    fields: []
+    component: undefined
   },
   {
     icon: FormatTextboxIcon,
     type: 'UIBodyText',
-    fields: []
+    component: undefined
   },
   {
     icon: StretchToPageOutlineIcon,
     type: 'PageLayout',
-    fields: []
+    component: PageLayoutForm
   },
   {
     icon: FormatTitleIcon,
     type: 'PageTitle',
-    fields: []
+    component: undefined
   }
 ]
 
