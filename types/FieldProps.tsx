@@ -1,4 +1,6 @@
 import {BlockProps} from '@td/types'
+import {FormikProps} from 'formik'
+import {Dispensary} from './Dispensary'
 
 export interface FieldOption {
   label: string
@@ -12,4 +14,8 @@ export interface FieldProps extends BlockProps {
   placeholder?: string
   autoFocus?: boolean
   setFieldValue?(field: string, value: string): void
+}
+
+export interface FormProps {
+  formikProps: FormikProps<Dispensary>
 }

@@ -62,8 +62,8 @@ export const defaults: Dispensary = {
     },
     typography: {
       header: {
-        font: 'Barlow Condensed',
-        weight: 300,
+        font: 'Yrsa',
+        weight: 500,
       },
       body: {
         font: 'Yrsa',

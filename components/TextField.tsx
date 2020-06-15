@@ -13,7 +13,7 @@ import {
   FieldProps,
   ThemeState,
 } from '@td/types'
-import { Field } from '@td/components'
+import {Field} from '@td/components'
 
 interface Props extends Omit<FieldProps, 'value'> {
   value?: string
@@ -24,7 +24,7 @@ const onChange = (setFieldValue: (field: string, value: string) => void, props: 
 }
 
 const getStyles = (theme: ThemeState) => {
-  const { ui, colors } = theme
+  const {ui, colors} = theme
 
   return prepareStyles({
     TextField: {
@@ -61,7 +61,7 @@ export const TextField: FC<Props> = (props: Props) => {
   const theme: ThemeState = useTheme()
   const styles = getStyles(theme)
   const ref = useRef(null)
-  if(autoFocus) {
+  if (autoFocus) {
     useAutoFocus(ref)
   }
  

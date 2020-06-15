@@ -19,7 +19,7 @@ const getStyles = (theme: ThemeState) => {
   return prepareStyles({
     FieldLabel: {
       fontFamily: ui.typography.body.font,
-      weight: 200,
+      fontWeight: 100,
       ...t.db,
       ...t.f3,
       color: ui.mode === UIMode.Dark ? colors.secondary100 : colors.secondary500

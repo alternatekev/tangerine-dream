@@ -1,8 +1,7 @@
 import {Component} from 'react'
 import {SlideDown} from 'react-slidedown'
-import {DragDropContext, DropResult} from 'react-beautiful-dnd'
+import {DropResult} from 'react-beautiful-dnd'
 import {Formik} from 'formik'
-
 
 import {
   withTheme, 
@@ -10,7 +9,6 @@ import {
   css, 
   t, 
   prepareStyles, 
-  transition
 } from '@td/styles'
 import {
   EditorState, 
@@ -20,13 +18,9 @@ import {
   Pages,
 } from '@td/types'
 import {
-  ConfiguratorDropZones,
-  Sheet,
-  EditPageButtons
+  DragDropContext,
+  PageTitleField
 } from '@td/globals'
-import {
-  TextField
-} from '@td/components'
 
 interface Props extends ThemeProps {
   editing?: boolean
@@ -38,8 +32,26 @@ interface Props extends ThemeProps {
 
 interface PageEditorState extends EditorState {
   configLocation: Viewport
+  popover?: string
   sheet?: Viewport
+  popoverId?: string
 }
+
+const styles = prepareStyles({
+  SlideOuter: {
+    ...t.fixed,
+    width: '100vw',
+    height: '100vh',
+    zIndex: 800,
+    pointerEvents: 'none'
+  },
+  noBorder: {
+    outline: 0,
+    zIndex: 1,
+    pointerEvents: 'auto',
+    height: 'auto'
+  }
+})
 
 class UnthemedPageEditor extends Component<Props, PageEditorState> {
   constructor(props: Props) {
@@ -49,7 +61,7 @@ class UnthemedPageEditor extends Component<Props, PageEditorState> {
       saved: true,
       saving: false,
       touched: false,
-      configLocation: Viewport.Left 
+      configLocation: Viewport.Right 
     }
   }
 
@@ -63,9 +75,10 @@ class UnthemedPageEditor extends Component<Props, PageEditorState> {
     } = this.props
     const {
       configLocation, 
-      sheet
+      sheet,
+      popover,
+      popoverId
     } = this.state
-    const styles = this.getStyles()
     const initialValues: Dispensary = config
 
     return(
@@ -81,41 +94,25 @@ class UnthemedPageEditor extends Component<Props, PageEditorState> {
                   <>
                     <DragDropContext
                       onDragEnd={this.onDragEnd}
-                    >
-                      <div
-                        css={css(
-                          styles.PageEditor,
-                          editing && styles.isDisplayed
-                        )}
-                      >
-                        <EditPageButtons
-                          editing={editing}
-                          setEditing={setEditing}
-                        />
-                        <ConfiguratorDropZones
-                          menuDividers={menuDividers}
-                          page={page}
-                          configLocation={configLocation}
-                          onClick={this.onClick}
-                          config={config}
-                        />
-                      </div>
-                    </DragDropContext>
+                      formikProps={formikProps}
+                      editing={editing}
+                      setEditing={setEditing}
+                      page={page}
+                      onClose={this.onClose}
+                      menuDividers={menuDividers}
+                      configLocation={configLocation}
+                      config={config}
+                      popover={popover}
+                      popoverId={popoverId}
+                      onClick={this.onClick}
+                    />
                     {sheet &&
-                      <Sheet
-                        level={6}
-                        onClose={this.onClick()}
-                        viewport={Viewport.Top}
-                      >
-                        <TextField
-                          label="Page Title"
-                          value={formikProps.values[page].pageTitle.titleText}
-                          name="pageTitle"
-                          block
-                          autoFocus
-                          setFieldValue={this.setFieldValue}
-                        />
-                      </Sheet>
+                      <PageTitleField 
+                        formikProps={formikProps}
+                        setFieldValue={this.setFieldValue}
+                        onClick={this.onClick}
+                        page={page}
+                      />
                     }
                   </>
                 }
@@ -131,15 +128,30 @@ class UnthemedPageEditor extends Component<Props, PageEditorState> {
     // hi
   }
 
-  private onClick = (contentType?: string) => (_: MouseEvent | TouchEvent) => {
-    if(contentType === 'PageTitle') {
-      this.setState({
-        sheet: Viewport.Top
-      })
-    } else {
-      this.setState({
-        sheet: undefined
-      })
+  private onClose = () => {
+    this.setState({
+      sheet: undefined,
+      popover: undefined,
+      popoverId: undefined
+    })
+  }
+
+  private onClick = (contentType?: string, contentId?: string) => (_?: MouseEvent | TouchEvent) => {
+    switch (contentType) {
+      case 'PageTitle':
+        this.setState({
+          sheet: Viewport.Top,
+          popover: undefined,
+          popoverId: 'pageTitle'
+        })
+
+        return false
+      default:
+        this.setState({
+          sheet: undefined,
+          popover: contentType,
+          popoverId: contentId
+        })
     }
   }
 
@@ -153,43 +165,6 @@ class UnthemedPageEditor extends Component<Props, PageEditorState> {
         configLocation: e.destination.droppableId as Viewport
       })
     }
-  }
-
-  private getStyles = () => {
-    const {theme} = this.props
-    const {saving, touched} = this.state
-    const kind = saving ? 'saving' : touched ? 'touched' : 'saved'
-
-    const borderColors = {
-      saved: theme.colors.primary500,
-      saving: theme.colors.warning500,
-      touched: theme.colors.secondary500
-    }
-
-    return prepareStyles({
-      PageEditor: {
-        ...transition,
-        outlineOffset: -2.5,
-        width: '100vw',
-        height: '100vh',
-      },
-      SlideOuter: {
-        ...t.fixed,
-        width: '100vw',
-        height: '100vh',
-        zIndex: 800,
-        pointerEvents: 'none'
-      },
-      isDisplayed: {
-        outline: `5px solid ${borderColors[kind]}`,
-      },
-      noBorder: {
-        outline: 0,
-        zIndex: 1,
-        pointerEvents: 'auto',
-        height: 'auto'
-      }
-    })
   }
 }
 

@@ -38,7 +38,7 @@ const getStyles = (props: Props, theme: ThemeState) => {
   const display = orientation === Orientation.Horizontal
     ? t.dib
     : t.db
-  const divider = orientation === Orientation.Horizontal ? { borderRight: `1px ${theme.colors.grey500} solid` } : { borderBottom: `1px ${theme.colors.grey500} solid` }
+  const divider = orientation === Orientation.Horizontal ? {borderRight: `1px ${theme.colors.grey500} solid`} : {borderBottom: `1px ${theme.colors.grey500} solid`}
   const modifier = orientation === Orientation.Horizontal ? {
     ...t[`pr${itemSpacing + 2}`],
     ...t[`mr${itemSpacing + 1}`]
@@ -49,7 +49,7 @@ const getStyles = (props: Props, theme: ThemeState) => {
     ...t.pr0
   }
 
-  const spacing = orientation === Orientation.Horizontal ? { ...t[`pr${itemSpacing}`], ...t[`pl${itemSpacing}`],} : { ...t[`pt${itemSpacing}`], ...t[`pb${itemSpacing}`], }
+  const spacing = orientation === Orientation.Horizontal ? {...t[`pr${itemSpacing}`], ...t[`pl${itemSpacing}`],} : {...t[`pt${itemSpacing}`], ...t[`pb${itemSpacing}`],}
 
   return prepareStyles({
     Menu: {
