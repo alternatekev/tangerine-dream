@@ -32,7 +32,9 @@ interface Props extends ThemeProps {
 
 interface PageEditorState extends EditorState {
   configLocation: Viewport
+  popover?: string
   sheet?: Viewport
+  popoverId?: string
 }
 
 const styles = prepareStyles({
@@ -59,7 +61,7 @@ class UnthemedPageEditor extends Component<Props, PageEditorState> {
       saved: true,
       saving: false,
       touched: false,
-      configLocation: Viewport.Left 
+      configLocation: Viewport.Right 
     }
   }
 
@@ -73,7 +75,9 @@ class UnthemedPageEditor extends Component<Props, PageEditorState> {
     } = this.props
     const {
       configLocation, 
-      sheet
+      sheet,
+      popover,
+      popoverId
     } = this.state
     const initialValues: Dispensary = config
 
@@ -90,12 +94,16 @@ class UnthemedPageEditor extends Component<Props, PageEditorState> {
                   <>
                     <DragDropContext
                       onDragEnd={this.onDragEnd}
+                      formikProps={formikProps}
                       editing={editing}
                       setEditing={setEditing}
                       page={page}
+                      onClose={this.onClose}
                       menuDividers={menuDividers}
                       configLocation={configLocation}
                       config={config}
+                      popover={popover}
+                      popoverId={popoverId}
                       onClick={this.onClick}
                     />
                     {sheet &&
@@ -120,18 +128,29 @@ class UnthemedPageEditor extends Component<Props, PageEditorState> {
     // hi
   }
 
-  private onClick = (contentType?: string) => (_: MouseEvent | TouchEvent) => {
+  private onClose = () => {
+    this.setState({
+      sheet: undefined,
+      popover: undefined,
+      popoverId: undefined
+    })
+  }
 
-    switch( contentType) {
+  private onClick = (contentType?: string, contentId?: string) => (_?: MouseEvent | TouchEvent) => {
+    switch (contentType) {
       case 'PageTitle':
         this.setState({
-          sheet: Viewport.Top
+          sheet: Viewport.Top,
+          popover: undefined,
+          popoverId: 'pageTitle'
         })
 
         return false
       default:
         this.setState({
-          sheet: undefined
+          sheet: undefined,
+          popover: contentType,
+          popoverId: contentId
         })
     }
   }

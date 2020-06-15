@@ -4,7 +4,7 @@ import {jsx} from '@emotion/core'
 import {useSSR} from 'use-ssr'
 import SlideDown from 'react-slidedown'
 
-import { ConditionalWrap } from '@td/components'
+import {ConditionalWrap} from '@td/components'
 
 
 import {
@@ -96,7 +96,7 @@ const getStyles = (
     'transparent',
   ]
 
-  if (ui.mode === UIMode.Light) {
+  if (ui.mode === UIMode.Dark) {
     backgroundColor.reverse()
     borderColor.reverse()
   }
@@ -115,6 +115,7 @@ const getStyles = (
       ...t[`mt${weight?.topWeighted}`],
       ...t[`mb${weight?.weighted}`],
       ...transition,
+      color: ui.mode === UIMode.Dark ? colors.white100 : colors.black500,
       backgroundColor: backgroundColor[level],
       border: !borderless 
         ? `${borderWidth[level]}px solid ${borderColor[level]}` 
@@ -145,7 +146,7 @@ export const Card: FC<Props> = ({
 }: Props) => {
 
   const theme: ThemeState = useTheme()
-  const { isBrowser } = useSSR()
+  const {isBrowser} = useSSR()
   const styles = getStyles({...rest, fadeIn}, theme, {topWeighted, weighted}, isBrowser, false)
   const cardComponent = jsx(tag || 'div', {
     css: [css(styles.Card, unicorn)],

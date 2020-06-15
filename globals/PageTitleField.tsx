@@ -1,5 +1,5 @@
 import {FC} from 'react'
-import { FormikValues } from 'formik'
+import {FormikValues} from 'formik'
 
 import {Sheet} from '@td/globals'
 import {TextField} from '@td/components'
@@ -19,7 +19,7 @@ export const PageTitleField: FC<Props> = ({
   page
 }: Props) =>
   <Sheet
-    level={6}
+    level={2}
     onClose={onClick()}
     viewport={Viewport.Top}
   >

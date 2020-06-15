@@ -2,8 +2,8 @@ import {Level} from './Level'
 import {Alignment, VerticalAlignment} from './Alignment'
 
 export enum UIMode {
-  Light = 'light',
-  Dark = 'dark'
+  'Light' = 'light',
+  'Dark' = 'dark'
 }
 
 export interface UITheme {
@@ -34,12 +34,14 @@ export interface UIFont {
   weight?: FontWeight
 }
 
+export const menuOffset = 50
+
 export type FontWeight = 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900
 
 export enum PageTemplate {
-  Captured = 'captured',
-  Limited = 'limited',
-  FullBleed = 'fullBleed'
+  'Captured' = 'captured',
+  'Limited' = 'limited',
+  'FullBleed' = 'fullBleed'
 }
 
 export enum UIFieldKind {

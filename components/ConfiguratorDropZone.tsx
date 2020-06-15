@@ -13,6 +13,7 @@ import {
 import {
   Renderable, 
   Viewport, 
+  menuOffset,
   ViewportDimensions
 } from '@td/types'
 
@@ -25,7 +26,6 @@ interface Props extends ThemeProps {
 }
 
 const getStyles = ({colors}: ThemeState, viewport: Viewport) => {
-  const offset = 50
   const vp = viewport as string
   const fullWidth = 'calc(100vw - 100px)'
   const fullHeight = 'calc(100vh - 100px)'
@@ -40,34 +40,34 @@ const getStyles = ({colors}: ThemeState, viewport: Viewport) => {
   const dimensions: ViewportDimensions = {
     top: {
       top: 0,
-      right: offset * 2,
+      right: menuOffset * 2,
       bottom: undefined,
-      left: offset,
+      left: menuOffset,
       width: `calc(100vw - 50px)`,
-      height: offset,
+      height: menuOffset,
     },
     right: {
-      top: offset,
+      top: menuOffset,
       right: 0,
-      bottom: offset,
+      bottom: menuOffset,
       left: undefined,
-      width: offset,
+      width: menuOffset,
       height: fullHeight,
     },
     bottom: {
       top: undefined,
-      right: offset,
+      right: menuOffset,
       bottom: 0,
-      left: offset,
+      left: menuOffset,
       width: fullWidth,
-      height: offset,
+      height: menuOffset,
     },
     left: {
-      top: offset,
+      top: menuOffset,
       right: undefined,
-      bottom: offset,
+      bottom: menuOffset,
       left: 0,
-      width: offset,
+      width: menuOffset,
       height: fullHeight,
     }
   }

@@ -21,7 +21,8 @@ import {
 import {Placement} from './Placement'
 import {UIImage} from './Image'
 import {Alignment, VerticalAlignment} from './Alignment'
-import { PageTitle } from './Dispensary'
+import {PageTitle} from './Dispensary'
+import {FormProps} from './FieldProps'
 
 import {
   PageLayoutForm
@@ -135,7 +136,7 @@ export const getType = (arg?: any): (string | undefined) => {
 export interface FieldMapping {
   icon: ComponentType<MdiReactIconProps>
   type: string
-  component?: ComponentType
+  component?: ComponentType<FormProps>
 }
 
 export const fieldsMap: FieldMapping[] = [
@@ -191,7 +192,7 @@ export const fieldsMap: FieldMapping[] = [
   }
 ]
 
-export const lookUpField = (fieldType?: string) => {
+export const getFieldMapping = (fieldType?: string) => {
   return fieldsMap.find(f => f.type === fieldType)
 }
 

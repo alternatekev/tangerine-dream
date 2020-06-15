@@ -51,7 +51,7 @@ export const preventDefault = (e: MouseEvent | TouchEvent) => {e.preventDefault(
 
 export const Sheet: FC<Props> = ({
   children,
-  level = 5,
+  level = 2,
   viewport,
   onClose,
   open
@@ -63,10 +63,10 @@ export const Sheet: FC<Props> = ({
 
   return (
     <>
-       <Card
+      <Card
         unicorn={styles.SheetBackdrop}
         fadeIn
-        level={7}
+        level={1}
         fullBleed
         borderless
       >

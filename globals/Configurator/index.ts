@@ -3,6 +3,7 @@ import {Viewport, Placement} from '@td/types'
 export * from './Configurator'
 export * from './ConfiguratorDropZones'
 export * from './ConfiguratorMenu'
+export * from './ConfiguratorPopover'
 export * from './DragDropContext'
 export const labelPlacement = {
   [Viewport.Top]: Placement.Bottom,

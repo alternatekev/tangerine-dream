@@ -32,6 +32,7 @@ import {
 interface Props extends BlockProps, Omit<UIButton, 'text' | 'level'> {
   href?: string
   hoverLabel?: Placement
+  selected?: boolean
   icon?: Renderable
   draggable?: boolean
   onClick?(event: MouseEvent | TouchEvent): void
@@ -155,6 +156,9 @@ const getStyles = (
 
       }
     },
+    isSelected: {
+      color: ui.mode === UIMode.Dark ? colors.button100 : colors.button700
+    },
     ButtonLabel: {
       ...t.relative,
       ...cursor,
@@ -190,10 +194,10 @@ const wrapWithPopover = (isOpen: boolean, position: Placement, hoverLabel?: Rend
   <Popover 
     isOpen={isOpen}
     padding={20}
-    position={[position as Position]}
+    position={[position.toLowerCase() as Position]}
     content={
       <Card
-        level={7}
+        level={2}
         fontTheme={{inverted: true}}
       >
         <P 
@@ -227,6 +231,7 @@ export const Button: FC<Props> = ({
   weighted,
   icon,
   topWeighted,
+  selected,
   hoverLabel,
   unicorn,
   href,
@@ -251,6 +256,7 @@ export const Button: FC<Props> = ({
         {jsx(buttonTag, {
           css: css(
             styles.Button, 
+            selected && styles.isSelected,
             unicorn
           ),
           onClick: onClick,

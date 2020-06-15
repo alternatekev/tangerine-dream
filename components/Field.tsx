@@ -13,7 +13,7 @@ export const Field: FC<Props> = ({
 }: Props) =>
   <FormikField name={name}>
     {(formikBag: FormikBag<FormikFormProps, Dispensary>) =>
-      <>
+      <div>
         {label &&
           <FieldLabel
             for={name}
@@ -22,6 +22,6 @@ export const Field: FC<Props> = ({
           </FieldLabel>
         }
         {typeof children === 'function' ? children(formikBag) : null}
-      </>
+      </div>
     }  
   </FormikField>

@@ -1,14 +1,30 @@
-import {FC} from 'react'
-import {DragDropContext as BDNDragDropContext, DropResult} from 'react-beautiful-dnd'
+import {FC, ComponentType, useState, Dispatch, SetStateAction} from 'react'
+import {
+  DragDropContext as BDNDragDropContext, 
+  DropResult,
+} from 'react-beautiful-dnd'
 
 import {
   EditPageButtons, 
   ConfiguratorDropZones
 } from '@td/globals'
-import { Pages, Viewport, ThemeState } from '@td/types'
-import {css, prepareStyles, transition, useTheme} from '@td/styles'
+import {
+  Pages, 
+  Viewport, 
+  ThemeState,
+  getFieldMapping,
+  Dispensary,
+} from '@td/types'
+import {
+  css, 
+  prepareStyles, 
+  transition, 
+  useTheme
+} from '@td/styles'
+import {ConfiguratorPopover} from './ConfiguratorPopover'
+import {FormikProps} from 'formik'
 
-const getStyles = (theme: ThemeState, saving: boolean, touched: boolean) => {
+const getStyles = (theme: ThemeState, saving?: boolean, touched?: boolean) => {
   const kind = saving ? 'saving' : touched ? 'touched' : 'saved'
 
   const borderColors = {
@@ -26,41 +42,68 @@ const getStyles = (theme: ThemeState, saving: boolean, touched: boolean) => {
     },
     isDisplayed: {
       outline: `5px solid ${borderColors[kind]}`,
-    },
+    }
   })
 }
 
 interface Props {
   editing?: boolean
   menuDividers?: number[]
+  formikProps: FormikProps<Dispensary>
   page: Pages
   configLocation: Viewport
-  config: any
+  popover?: string
+  popoverId?: string
+  config: any // tslint:disable-line no-any 
   saving?: boolean
   touched?: boolean
   onDragEnd(e: DropResult): void
-  onClick(contentType?: string | undefined): (event: MouseEvent | TouchEvent) => void
+  onClose(): void
+  onClick(contentType?: string | undefined): (event?: MouseEvent | TouchEvent) => void
   setEditing(): void
+}
+
+const onDragStart = (
+  popoverId: string, setDragging: Dispatch<SetStateAction<string>>
+) => () => {
+  setDragging(popoverId)
+}
+const handleDragEnd = (
+  setDragging: Dispatch<SetStateAction<string>>, 
+  onClick: (e?: MouseEvent | TouchEvent) => void,
+  onDragEnd: (e: DropResult) => void, 
+  popoverId: string
+) => (e: DropResult) => { 
+  onDragEnd(e)
+  onClick()
+  setDragging('') 
 }
 
 export const DragDropContext: FC<Props> = ({
   onDragEnd,
   onClick,
   setEditing,
+  formikProps,
   config,
   page,
+  popoverId,
   saving,
   touched,
   editing,
+  popover,
   configLocation,
+  onClose,
   menuDividers
 }: Props) => {
   const theme: ThemeState = useTheme()
+  const [dragging, setDragging] = useState('')
   const styles = getStyles(theme, saving, touched)
+  const UIComponent: ComponentType<any> | undefined = getFieldMapping(popover)?.component // tslint:disable-line no-any 
 
   return (
     <BDNDragDropContext
-      onDragEnd={onDragEnd}
+      onDragEnd={handleDragEnd(setDragging, onClick(popoverId), onDragEnd, popoverId as string)}
+      onDragStart={onDragStart(popoverId as string, setDragging)}
     >
       <div
         css={css(
@@ -75,10 +118,22 @@ export const DragDropContext: FC<Props> = ({
         <ConfiguratorDropZones
           menuDividers={menuDividers}
           page={page}
+          popover={popover}
+          popoverId={popoverId}
           configLocation={configLocation}
           onClick={onClick}
           config={config}
         />
+        {popover && UIComponent && 
+          <ConfiguratorPopover
+            level={dragging ? 1 : 2}
+            dragging={dragging !== ''}
+            onClose={onClose}
+            viewport={configLocation}
+          >
+            <UIComponent formikProps={formikProps} />
+          </ConfiguratorPopover>
+        }
       </div>
     </BDNDragDropContext>
 
