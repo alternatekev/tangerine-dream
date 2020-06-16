@@ -16,7 +16,7 @@ export const defaults: Dispensary = {
       titleText: `Let's check your ID.`
     },
     pageLayout: {
-      template: PageTemplate.Captured,
+      template: PageTemplate.Limited,
       align: Alignment.Left,
       verticalAlign: VerticalAlignment.Middle
     },

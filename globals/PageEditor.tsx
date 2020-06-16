@@ -1,7 +1,6 @@
 import {Component} from 'react'
 import {SlideDown} from 'react-slidedown'
 import {DropResult} from 'react-beautiful-dnd'
-import {Formik} from 'formik'
 
 import {
   withTheme, 
@@ -14,15 +13,15 @@ import {
   EditorState, 
   Viewport,
   FieldOption,
-  Dispensary,
   Pages,
+  FormProps,
 } from '@td/types'
 import {
   DragDropContext,
   PageTitleField
 } from '@td/globals'
 
-interface Props extends ThemeProps {
+interface Props extends ThemeProps, FormProps {
   editing?: boolean
   menuDividers?: number[]
   page: Pages
@@ -70,6 +69,7 @@ class UnthemedPageEditor extends Component<Props, PageEditorState> {
       editing, 
       page,
       config, 
+      formikProps,
       menuDividers,
       setEditing
     } = this.props
@@ -79,53 +79,41 @@ class UnthemedPageEditor extends Component<Props, PageEditorState> {
       popover,
       popoverId
     } = this.state
-    const initialValues: Dispensary = config
 
     return(
       <div css={css(styles.SlideOuter)}>
         <div css={css(styles.SlideOuter, styles.noBorder)}>
-          <Formik
-            initialValues={initialValues}
-            onSubmit={this.onSubmit}
-          >
-           {formikProps => 
-              <SlideDown className="slide-down">
-                {editing && 
-                  <>
-                    <DragDropContext
-                      onDragEnd={this.onDragEnd}
-                      formikProps={formikProps}
-                      editing={editing}
-                      setEditing={setEditing}
-                      page={page}
-                      onClose={this.onClose}
-                      menuDividers={menuDividers}
-                      configLocation={configLocation}
-                      config={config}
-                      popover={popover}
-                      popoverId={popoverId}
-                      onClick={this.onClick}
-                    />
-                    {sheet &&
-                      <PageTitleField 
-                        formikProps={formikProps}
-                        setFieldValue={this.setFieldValue}
-                        onClick={this.onClick}
-                        page={page}
-                      />
-                    }
-                  </>
+          <SlideDown className="slide-down">
+            {editing && 
+              <>
+                <DragDropContext
+                  onDragEnd={this.onDragEnd}
+                  formikProps={formikProps}
+                  editing={editing}
+                  setEditing={setEditing}
+                  page={page}
+                  onClose={this.onClose}
+                  menuDividers={menuDividers}
+                  configLocation={configLocation}
+                  config={config}
+                  popover={popover}
+                  popoverId={popoverId}
+                  onClick={this.onClick}
+                />
+                {sheet &&
+                  <PageTitleField 
+                    formikProps={formikProps}
+                    setFieldValue={this.setFieldValue}
+                    onClick={this.onClick}
+                    page={page}
+                  />
                 }
-              </SlideDown>
-           }
-          </Formik>
+              </>
+            }
+          </SlideDown>
         </div>
       </div>
     )
-  }
-
-  private onSubmit = (values: Dispensary) => {
-    // hi
   }
 
   private onClose = () => {

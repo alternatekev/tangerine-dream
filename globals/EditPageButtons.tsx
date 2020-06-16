@@ -15,7 +15,7 @@ const styles = prepareStyles({
   CancelButton: {
     ...t.fixed,
     top: 12.5,
-    right: 125,
+    right: 95,
     zIndex: 900,
     transform: 'translateZ(0)'
   },
@@ -60,6 +60,6 @@ export const EditPageButtons: FC<Props> = ({
         }}
         {...rest}
       >
-        {editing ? 'Save Changes' : 'Edit Page'}
+        {editing ? 'Publish' : 'Edit Page'}
       </Button>
  </>

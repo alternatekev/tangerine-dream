@@ -1,3 +1,4 @@
+// tslint:disable react-a11y-no-onchange
 import {FC, useRef, ChangeEvent} from 'react'
 import ChevronDownIcon from 'mdi-react/ChevronDownIcon'
 
@@ -25,6 +26,7 @@ export interface SelectProps extends Props {}
 
 const onChange = (setFieldValue: (field: string, value: string) => void, props: Props) => (e: ChangeEvent<HTMLSelectElement>) => {
   setFieldValue(props.name, e.currentTarget.value)
+  console.log(`${props.name}: ${e.currentTarget.value}`)
 }
 
 const getStyles = (theme: ThemeState, props: Props) => {
@@ -105,20 +107,17 @@ export const SelectField: FC<Props> = (props: Props) => {
               weighted && styles.isWeighted
             )}
             ref={ref}
-            onBlur={setFieldValue && onChange(setFieldValue, props)}
-          >
+            defaultValue={value?.value}
+            onChange={setFieldValue && onChange(setFieldValue, props)}
+          > 
             {options && options.map(o => <option 
               role="option" 
-              css={css(styles.Option)}
-              selected={value?.value === o.value} 
+              css={css(styles.Option)} 
               aria-selected={value?.value === o.value} 
               key={o.value} 
               value={o.value}
             >
               {o.label}
-              {console.log(value)}
-              {console.log(o)}
-              {console.log('---------------------------')}
             </option>
           )}
           </select>

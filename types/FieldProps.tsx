@@ -10,6 +10,7 @@ export interface FieldOption {
 export interface FieldProps extends BlockProps {
   name: string
   value?: string | FieldOption
+  defaultValue?: string | FieldOption
   label?: string
   placeholder?: string
   autoFocus?: boolean
@@ -18,4 +19,5 @@ export interface FieldProps extends BlockProps {
 
 export interface FormProps {
   formikProps: FormikProps<Dispensary>
+  title?: string
 }

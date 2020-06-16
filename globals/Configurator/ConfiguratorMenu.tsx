@@ -40,8 +40,6 @@ export const ConfiguratorMenu: FC<Props> = ({
       const type = getType(config[c])
       const Icon = getFieldMapping(type)?.icon
 
-      console.log(`${c} / ${popoverId}`)
-
       return Icon
         ? <Button
             key={`${type}_${i}`}

@@ -1,6 +1,6 @@
 import decamelize from 'decamelize'
-import capitalize from 'capitalize'
+import {words} from 'capitalize'
 
 export const formatConfiguratorLabel = (label: string) => {
-  return capitalize(decamelize(label, ' '))
+  return words(decamelize(label, ' '))
 }

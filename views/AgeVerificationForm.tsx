@@ -11,15 +11,17 @@ import {
 export const AgeVerificationForm: FC<AgeVerification> = ({
   logoImage,
   bodyText,
-  actionButton
+  actionButton,
+  ...parentRest
 }: AgeVerification) => {
   const {text, ...rest} = bodyText
+  const {pageLayout: {align}} = parentRest
 
   return (
-    <Card fadeIn level={0} alignment={rest.alignment}>
+    <Card fadeIn level={0} alignment={align}>
       <Logo {...logoImage} />
       <P fontTheme={rest}>{text}</P>
-      <Button level={1} {...actionButton}>{actionButton.text}</Button>
+      <Button {...actionButton}>{actionButton.text}</Button>
     </Card>
   )
 }

@@ -1,6 +1,7 @@
 export * from './Alignment'
 export * from './BlockProps'
 export * from './Breakpoints'
+export * from './Context'
 export * from './Dimensions'
 export * from './Dispensary'
 export * from './Editor'
