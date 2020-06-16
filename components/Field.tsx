@@ -21,7 +21,7 @@ export const Field: FC<Props> = ({
             {label}
           </FieldLabel>
         }
-        {typeof children === 'function' ? children(formikBag) : null}
+        {typeof children === 'function' ? children(formikBag) : children}
       </div>
     }  
   </FormikField>

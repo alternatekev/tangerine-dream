@@ -7,17 +7,12 @@ export default () =>
   <Page
     config={defaults}
     page={Pages.Age}
-    pageLayout={defaults.age.pageLayout}
-    name={defaults.name}
-    title={defaults.age.pageTitle.titleText}
-    theme={defaults.colors}
-    uiTheme={defaults.ui}
-    image={defaults.age.backgroundImage}
+    name="Tangerine Dream"
     menuDividers={[2]}
   >
-    {() => 
+    {(_, formikProps) => 
     <AgeVerificationForm 
-      {...defaults.age}
+      {...formikProps.values.age}
     />
     }
   </Page>

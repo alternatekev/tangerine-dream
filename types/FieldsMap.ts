@@ -25,7 +25,8 @@ import {PageTitle} from './Dispensary'
 import {FormProps} from './FieldProps'
 
 import {
-  PageLayoutForm
+  PageLayoutForm,
+  ImageForm
 } from '@td/views'
 
 export type FieldTypes = UIImage 
@@ -141,8 +142,8 @@ export interface FieldMapping {
 
 export const fieldsMap: FieldMapping[] = [
   {
-    icon: ImageIcon,
-    type: 'UIImage',
+    icon: ArrowExpandHorizontalIcon,
+    type: 'Alignment',
     component: undefined
   },
   {
@@ -151,8 +152,13 @@ export const fieldsMap: FieldMapping[] = [
     component: undefined
   },
   {
-    icon: TextIcon,
-    type: 'string',
+    icon: StretchToPageOutlineIcon,
+    type: 'PageLayout',
+    component: PageLayoutForm
+  },
+  {
+    icon: FormatTitleIcon,
+    type: 'PageTitle',
     component: undefined
   },
   {
@@ -161,14 +167,14 @@ export const fieldsMap: FieldMapping[] = [
     component: undefined
   },
   {
-    icon: ArrowExpandHorizontalIcon,
-    type: 'Alignment',
+    icon: TextIcon,
+    type: 'string',
     component: undefined
   },
   {
-    icon: ArrowExpandVerticalIcon,
-    type: 'VerticalAlignment',
-    component: undefined
+    icon: ImageIcon,
+    type: 'UIImage',
+    component: ImageForm
   },
   {
     icon: GestureTapButtonIcon,
@@ -181,15 +187,10 @@ export const fieldsMap: FieldMapping[] = [
     component: undefined
   },
   {
-    icon: StretchToPageOutlineIcon,
-    type: 'PageLayout',
-    component: PageLayoutForm
-  },
-  {
-    icon: FormatTitleIcon,
-    type: 'PageTitle',
+    icon: ArrowExpandVerticalIcon,
+    type: 'VerticalAlignment',
     component: undefined
-  }
+  },
 ]
 
 export const getFieldMapping = (fieldType?: string) => {

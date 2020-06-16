@@ -1,4 +1,5 @@
 import {FC, ComponentType, useState, Dispatch, SetStateAction} from 'react'
+import {FormikProps} from 'formik'
 import {
   DragDropContext as BDNDragDropContext, 
   DropResult,
@@ -22,7 +23,8 @@ import {
   useTheme
 } from '@td/styles'
 import {ConfiguratorPopover} from './ConfiguratorPopover'
-import {FormikProps} from 'formik'
+import {formatConfiguratorLabel} from '@td/utils'
+
 
 const getStyles = (theme: ThemeState, saving?: boolean, touched?: boolean) => {
   const kind = saving ? 'saving' : touched ? 'touched' : 'saved'
@@ -98,7 +100,8 @@ export const DragDropContext: FC<Props> = ({
   const theme: ThemeState = useTheme()
   const [dragging, setDragging] = useState('')
   const styles = getStyles(theme, saving, touched)
-  const UIComponent: ComponentType<any> | undefined = getFieldMapping(popover)?.component // tslint:disable-line no-any 
+  const fieldMap = getFieldMapping(popover)
+  const UIComponent: ComponentType<any> | undefined = fieldMap?.component // tslint:disable-line no-any 
 
   return (
     <BDNDragDropContext
@@ -131,7 +134,10 @@ export const DragDropContext: FC<Props> = ({
             onClose={onClose}
             viewport={configLocation}
           >
-            <UIComponent formikProps={formikProps} />
+            <UIComponent 
+              title={popoverId && formatConfiguratorLabel(popoverId)}
+              formikProps={formikProps} 
+            />
           </ConfiguratorPopover>
         }
       </div>

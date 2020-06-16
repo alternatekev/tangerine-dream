@@ -1,20 +1,20 @@
 import React, {Component} from 'react'
 import {ThemeProvider} from 'emotion-theming'
 import Head from 'next/head'
+import {Formik, FormikProps} from 'formik'
 
 import {PageEditor} from './PageEditor'
 import {
   Breakpoints, 
-  UITheme, 
   ThemeState, 
-  PageLayout,
   PageTemplate,
-  Pages
+  Pages,
+  Dispensary,
+  PageContext
 } from '@td/types'
 
 import {
   css, 
-  Theme,
   prepareStyles, 
   t,
   DerivedTheme,
@@ -24,21 +24,16 @@ import {
 import {EditPageButtons} from './EditPageButtons'
 
 interface Props {
-  title?: string
   page: Pages
   name: string
-  pageLayout: PageLayout
   menuDividers?: number[]
   captured?: boolean
   compact?: boolean
-  uiTheme: UITheme
   invertedMenu?: boolean
-  image?: any // tslint:disable-line no-any
-  theme: Theme
   header?: string
   editing?: boolean
-  config?: any //tslint:disable-line no-any
-  children?(theme: DerivedTheme): JSX.Element
+  config: Dispensary //tslint:disable-line no-any
+  children?(theme: DerivedTheme, formikProps: FormikProps<Dispensary>): JSX.Element
 }
 
 const getStyles = (image: any, theme: DerivedTheme) => { // tslint:disable-line no-any
@@ -93,11 +88,11 @@ export class Page extends Component<Props, ThemeState> {
   constructor(props: Props) {
     super(props)
 
-    const colors = themify(props.theme)
+    const colors = themify(props.config.colors)
     this.state = { 
       editing: props.editing || false,
       colors, 
-      ui: props.uiTheme
+      ui: props.config.ui
     }
   }
 
@@ -107,69 +102,96 @@ export class Page extends Component<Props, ThemeState> {
       ui: theme.ui
     })
   }
-
+  
   setEditing = () => { this.setState(prevState => ({editing: !prevState.editing}))}
 
   render() {
    
     const {
       children, 
-      pageLayout,
       menuDividers,
       page,
-      name,
-      image, 
-      title, 
       config,
     } = this.props
     const {
       colors, 
       editing
     } = this.state
-    const styles = getStyles(image, colors)
+    const initialValues: Dispensary = config
 
+    const name = config.name
+ 
     return (
-      <>
-        <Head>
-          <style type="text/css" media="screen">{`
-            body {${styles.body.styles}};
-          `}</style>
-          <title>{name} / {title || 'Untitled Page'}</title>
-        </Head>
-        <main 
-          id="Page" 
-          css={css(
-            styles.Page, 
-            pageLayout.template === PageTemplate.Captured && styles.isCaptured,
-            pageLayout.template === PageTemplate.FullBleed && styles.isFullBleed,
-            pageLayout.template === PageTemplate.Limited && styles.isLimited
-          )}
-        >
-          <ThemeProvider theme={this.state}>
-            <PageEditor 
-              menuDividers={menuDividers} 
-              page={page}
-              config={config} 
-              editing={editing} 
-              setEditing={this.setEditing}
-            />
-            {!editing && 
-              <EditPageButtons 
-                setEditing={this.setEditing} 
-                editing={editing} 
-              />
-            }
-            <article 
-              css={css(styles.PageChildren)} 
-              id="PageChildren"
-            >
-              {children && typeof children === 'function' ? children(colors) : children}
-             
-            </article>
-            
-          </ThemeProvider>
-        </main>
-      </>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={this.onSubmit}
+      >
+        {formikProps => {
+          const {values} = formikProps
+          const {
+            pageTitle,
+            backgroundImage,
+            pageLayout,
+          } = values[page]
+
+          const styles = getStyles(backgroundImage, colors)
+          console.log(pageTitle)
+
+          return (
+            <>
+              <Head>
+                <style type="text/css" media="screen">{`
+                body {${styles.body.styles}};
+              `}</style>
+                <title>{name} / {pageTitle.titleText || 'Untitled Page'}</title>
+              </Head>
+
+                <PageContext.Provider value={page}>
+                  <ThemeProvider theme={this.state}>
+                    <>
+                      <PageEditor
+                        menuDividers={menuDividers}
+                        formikProps={formikProps}
+                        page={page}
+                        config={config}
+                        editing={editing}
+                        setEditing={this.setEditing}
+                      />
+                      {!editing &&
+                        <EditPageButtons
+                          setEditing={this.setEditing}
+                          editing={editing}
+                        />
+                      }
+                      <main
+                        id="Page"
+                        css={css(
+                          styles.Page,
+                          pageLayout.template === PageTemplate.Captured && styles.isCaptured,
+                          pageLayout.template === PageTemplate.FullBleed && styles.isFullBleed,
+                          pageLayout.template === PageTemplate.Limited && styles.isLimited
+                        )}
+                      >
+                        <article
+                          css={css(styles.PageChildren)}
+                          id="PageChildren"
+                        >
+                          {children && typeof children === 'function' ? children(colors, formikProps) : children}
+                        </article>
+                      </main>
+                    </>
+                  </ThemeProvider>
+                </PageContext.Provider>
+            </>
+          )
+        }
+          
+        }
+      </Formik>
     )
+  }
+
+  private onSubmit = (values: Dispensary) => {
+    // hi
   }
 }
