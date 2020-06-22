@@ -1,10 +1,10 @@
 import {FC} from 'react'
 
-import {UIImage, Shapes, Renderable, ImageSize} from '@td/types'
+import {UIImage, Shapes, Renderable, ImageSize, BlockProps, Level} from '@td/types'
 import {t, prepareStyles, css} from '@td/styles'
 import {Image, ConditionalWrap, calcSize} from './'
 
-const getStyles = (size?: ImageSize) => {
+const getStyles = (size?: ImageSize, weighted?: Level) => {
 
   return prepareStyles({
     ShapedLogo: {
@@ -16,11 +16,14 @@ const getStyles = (size?: ImageSize) => {
     },
     isRoundRect: {
       ...t.br
+    },
+    isWeighted: {
+      ...t[`mb${weighted}`]
     }
   }
 )}
 
-export interface LogoProps extends UIImage {
+export interface LogoProps extends UIImage, BlockProps {
   shape?: Shapes
 }
 
@@ -39,6 +42,7 @@ const wrapWithShape = (shape?: Shapes, size?: ImageSize) => (children: Renderabl
 
 export const Logo: FC<LogoProps> = ({
   shape, 
+  weighted,
   ...rest
 }: LogoProps) =>
   <ConditionalWrap
@@ -47,5 +51,6 @@ export const Logo: FC<LogoProps> = ({
   >
     <Image 
       {...rest}
+      unicorn={weighted ? getStyles(undefined, weighted).isWeighted : undefined}
     />
   </ConditionalWrap>

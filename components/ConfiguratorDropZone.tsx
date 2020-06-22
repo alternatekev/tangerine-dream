@@ -75,6 +75,7 @@ const getStyles = ({colors}: ThemeState, viewport: Viewport) => {
   return prepareStyles({
     ConfiguratorDropZone: {
       ...t.absolute,
+      ...t.br3,
       ...transition,
       zIndex: 800,
       //@ts-ignore

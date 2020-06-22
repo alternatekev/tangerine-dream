@@ -16,8 +16,8 @@ export const defaults: Dispensary = {
       titleText: `Let's check your ID.`
     },
     pageLayout: {
-      template: PageTemplate.Limited,
-      align: Alignment.Left,
+      template: PageTemplate.Captured,
+      align: Alignment.Center,
       verticalAlign: VerticalAlignment.Middle
     },
     backgroundImage: {
@@ -45,6 +45,25 @@ export const defaults: Dispensary = {
       borderWidth: 3,
       inverted: true,
       level: 1
+    },
+  },
+  adminLogin: {
+    pageTitle: {
+      titleText: `Admin Login`
+    },
+    pageLayout: {
+      template: PageTemplate.Captured,
+      align: Alignment.Center,
+      verticalAlign: VerticalAlignment.Middle
+    },
+    backgroundImage: {
+      alt: 'default login background image',
+      src: 'https://images.unsplash.com/photo-1512691831679-83dfb93bddd6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3151&q=80',
+    },
+    logoImage: {
+      alt: 'default dispensary logo',
+      src: '/tangerine-dream-logo.svg',
+      size: { w: 300 }
     },
   },
   colors: defaultColors,

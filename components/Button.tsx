@@ -13,7 +13,8 @@ import {
   ThemeState, 
   UIMode, 
   UIButton, 
-  transition
+  transition,
+  findAccessibleContrast
 } from '@td/styles'
 import { 
   BlockProps, 
@@ -33,6 +34,7 @@ interface Props extends BlockProps, Omit<UIButton, 'text' | 'level'> {
   href?: string
   hoverLabel?: Placement
   selected?: boolean
+  submit?: boolean
   icon?: Renderable
   draggable?: boolean
   onClick?(event: MouseEvent | TouchEvent): void
@@ -47,10 +49,11 @@ const getStyles = (
 ) => {
   const {
     compact,
+    block,
     inverted,
     inline,
     level = 1,
-    size = 1,
+    size = 1.5,
     font,
     draggable,
     borderWidth = 1,
@@ -123,6 +126,7 @@ const getStyles = (
   const fontWeight = font && font.weight ? font.weight / 100 : globalWeight / 100
 
   const display = inline ? t.dib : t.db
+  const width = block ? ['-moz-available','-webkit-fill-available'] : undefined 
   const brColor = inverted 
     ? colors.white500
     : borderColor[level]
@@ -144,7 +148,13 @@ const getStyles = (
       ...align,
       ...transition,
       ...cursor,
-      color: inverted ? brColor : level === 0 ? colors.link500 : brColor,
+      width,
+      color: inverted ? brColor : level === 0 ? colors.link500 : findAccessibleContrast({
+        backgroundColor: backgroundColor[level],
+        foregroundColorFamily: 'background',
+        large: size > 3,
+        theme: theme.colors
+      }),
       fontFamily: ui.typography.nav.font,
       fontSize: size ? `${size}rem` : t.f2.fontSize,
       backgroundColor: backgroundColor[level],
@@ -153,7 +163,12 @@ const getStyles = (
         ...cursor,
         backgroundColor: backgroundColor[clamp(0, 6)(level + 1)],
         border: `${borderWidths[borderWidth]}px solid ${level === 0 ? 'transparent' : brColor}`,
-
+        color: inverted ? brColor : level === 0 ? colors.link500 : findAccessibleContrast({
+          backgroundColor: backgroundColor[clamp(0, 6)(level + 1)],
+          foregroundColorFamily: 'background',
+          large: size > 3,
+          theme: theme.colors
+        }),
       }
     },
     isSelected: {
@@ -234,6 +249,7 @@ export const Button: FC<Props> = ({
   selected,
   hoverLabel,
   unicorn,
+  submit,
   href,
   onClick,
   ...rest
@@ -259,6 +275,7 @@ export const Button: FC<Props> = ({
             selected && styles.isSelected,
             unicorn
           ),
+          type: submit ? 'submit' : 'button',
           onClick: onClick,
           onMouseEnter: handleMouseOver(setOpen, open),
           onMouseLeave: handleMouseOver(setOpen, open)
