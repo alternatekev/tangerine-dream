@@ -53,7 +53,8 @@ export class Page extends Component<PageProps, PageState> {
     const initialValues: AuthorizedDispensary = {
       ...config, 
       username: '', 
-      password: ''
+      password: '',
+      prodUrl: process.env.PROD_URL || 'http://localhost:3000'
     }
 
     const name = config.name

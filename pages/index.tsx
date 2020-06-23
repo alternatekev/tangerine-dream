@@ -20,7 +20,6 @@ export default ({
   >
     {(_, formikProps) => 
     <>
-      {console.log(token)}
       <AgeVerificationForm 
         {...formikProps.values.age}
       />

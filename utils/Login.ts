@@ -15,8 +15,9 @@ export const tryLogin = async (url: string, username: string, password: string) 
 }
 
 export const onLogin = (formikProps: FormikProps<AuthorizedDispensary>) => async (e: MouseEvent | TouchEvent) => {
-  const {username, password} = formikProps.values
-  const url = `/api/login`
+  const {username, password, prodUrl} = formikProps.values
+  const url = `${prodUrl}/api/login`
+  console.log(`logging into ${url}`)
   const auth = await tryLogin(url, username as string, password as string)
   
   if (auth.statusCode !== 200) {

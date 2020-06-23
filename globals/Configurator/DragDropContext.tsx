@@ -14,7 +14,7 @@ import {
   Viewport, 
   ThemeState,
   getFieldMapping,
-  Dispensary,
+  AuthorizedDispensary,
 } from '@td/types'
 import {
   css, 
@@ -51,7 +51,7 @@ const getStyles = (theme: ThemeState, saving?: boolean, touched?: boolean) => {
 interface Props {
   editing?: boolean
   menuDividers?: number[]
-  formikProps: FormikProps<Dispensary>
+  formikProps: FormikProps<AuthorizedDispensary>
   page: Pages
   configLocation: Viewport
   popover?: string
@@ -142,6 +142,5 @@ export const DragDropContext: FC<Props> = ({
         }
       </div>
     </BDNDragDropContext>
-
   )
 }
