@@ -1,20 +1,44 @@
 import {defaults} from '@td/data'
 import {Page} from '@td/globals'
 import {AdminLoginForm} from '@td/views'
-import {Pages} from '@td/types'
+import {Pages, User} from '@td/types'
 
-export default () =>
+interface Props {
+  user: User
+  prodUrl: string
+}
+
+export default ({
+  prodUrl,user
+}: Props) =>
   <Page
     config={defaults}
+    prodUrl={prodUrl}
     page={Pages.AdminLogin}
     name="Tangerine Dream"
     menuDividers={[2]}
   >
     {(_, formikProps, onLogin) => 
-      <AdminLoginForm 
-        onLogin={onLogin}
-        logoImage={defaults.adminLogin.logoImage}
-        formikProps={formikProps}
-      />
+      <>
+        {!user && 
+          <AdminLoginForm
+            onLogin={onLogin}
+            logoImage={defaults.adminLogin.logoImage}
+            formikProps={formikProps}
+          />
+        }{user &&
+          <div>Logged In</div>
+        }
+      </>
     }
   </Page>
+
+import { withSession } from '@td/utils/Session'
+export const getServerSideProps = withSession(async function ({ req }) {
+  const user = req.session.get('user') || null
+  const prodUrl = process.env.PROD_URL
+
+  return {
+    props: {user, prodUrl},
+  }
+})

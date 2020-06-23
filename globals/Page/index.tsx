@@ -44,6 +44,7 @@ export class Page extends Component<PageProps, PageState> {
       menuDividers,
       page,
       user,
+      prodUrl,
       config,
     } = this.props
     const {
@@ -54,10 +55,11 @@ export class Page extends Component<PageProps, PageState> {
       ...config, 
       username: '', 
       password: '',
-      prodUrl: process.env.PROD_URL || 'http://localhost:3000'
+      prodUrl
     }
 
     const name = config.name
+    console.log(prodUrl)
  
     return (
       <Formik

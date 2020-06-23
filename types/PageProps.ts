@@ -15,6 +15,7 @@ export interface PageProps {
   page: Pages
   name: string
   user?: User
+  prodUrl: string
   menuDividers?: number[]
   captured?: boolean
   compact?: boolean
