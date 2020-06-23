@@ -15,6 +15,7 @@ import {
   ThemeState,
   getFieldMapping,
   AuthorizedDispensary,
+  User,
 } from '@td/types'
 import {
   css, 
@@ -53,6 +54,7 @@ interface Props {
   menuDividers?: number[]
   formikProps: FormikProps<AuthorizedDispensary>
   page: Pages
+  user?: User
   configLocation: Viewport
   popover?: string
   popoverId?: string

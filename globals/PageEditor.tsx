@@ -16,6 +16,7 @@ import {
   Pages,
   FormProps,
   AuthorizedDispensary,
+  User,
 } from '@td/types'
 import {
   DragDropContext,
@@ -27,6 +28,7 @@ interface Props extends ThemeProps, FormProps {
   menuDividers?: number[]
   page: Pages
   config: AuthorizedDispensary
+  user?: User
   setEditing(): void
 }
 
@@ -70,6 +72,7 @@ class UnthemedPageEditor extends Component<Props, PageEditorState> {
       editing, 
       page,
       config, 
+      user,
       formikProps,
       menuDividers,
       setEditing
@@ -96,6 +99,7 @@ class UnthemedPageEditor extends Component<Props, PageEditorState> {
                   onClose={this.onClose}
                   menuDividers={menuDividers}
                   configLocation={configLocation}
+                  user={user}
                   config={config}
                   popover={popover}
                   popoverId={popoverId}
