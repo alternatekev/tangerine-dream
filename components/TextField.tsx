@@ -28,7 +28,7 @@ const onChange = (setFieldValue: (field: string, value: string) => void, props: 
 
 const getStyles = (
   theme: ThemeState, 
-  fontTheme?: Pick<UIBodyText, 'font' | 'alignment' | 'lineHeight' | 'size' | 'inverted' | 'fields'>,
+  fontTheme?: Pick<UIBodyText, 'font' | 'alignment' | 'lineHeight' | 'size' | 'inverted'>,
   weighted?: Level
 ) => {
   const {ui, colors} = theme

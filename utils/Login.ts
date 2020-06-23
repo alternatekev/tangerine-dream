@@ -14,16 +14,18 @@ export const tryLogin = async (url: string, username: string, password: string) 
     .then(results => results.json())
 }
 
-export const onLogin = (formikProps: FormikProps<AuthorizedDispensary>) => async (_: MouseEvent | TouchEvent) => {
+export const onLogin = (formikProps: FormikProps<AuthorizedDispensary>) => async (e: MouseEvent | TouchEvent) => {
   const {username, password} = formikProps.values
   const url = `/api/login`
-  const auth = await tryLogin(url, username, password)
+  const auth = await tryLogin(url, username as string, password as string)
   
-  if(auth.statusCode !== 200) {
+  if (auth.statusCode !== 200) {
     formikProps.setErrors({
       username: 'Bad username or password.'
     })
   } else {
     await Router.push('/')
   }
+
+  return e
 }

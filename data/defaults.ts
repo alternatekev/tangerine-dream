@@ -63,7 +63,7 @@ export const defaults: Dispensary = {
     logoImage: {
       alt: 'default dispensary logo',
       src: '/tangerine-dream-logo.svg',
-      size: { w: 300 }
+      size: {w: 300}
     },
   },
   colors: defaultColors,

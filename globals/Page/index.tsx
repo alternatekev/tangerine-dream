@@ -126,12 +126,12 @@ export class Page extends Component<PageProps, PageState> {
     )
   }
 
-  private setTheme = (theme: ThemeState) => {
+/*   private setTheme = (theme: ThemeState) => {
     this.setState({
       colors: theme.colors,
       ui: theme.ui
     })
-  }
+  } */
 
   private setEditing = () => { this.setState(prevState => ({ 
     editing: !prevState.editing 

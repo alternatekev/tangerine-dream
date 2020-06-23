@@ -1,6 +1,6 @@
 import {FC} from 'react'
 
-import {AdminLogin, Alignment} from '@td/types'
+import {AdminLoginProps, Alignment} from '@td/types'
 import {
   Card,
   Logo,
@@ -9,11 +9,11 @@ import {
   Button
 } from '@td/components'
 
-export const AdminLoginForm: FC<Pick<AdminLogin, 'formikProps' | 'onLogin' | 'logoImage'>> = ({
+export const AdminLoginForm: FC<Pick<AdminLoginProps, 'formikProps' | 'onLogin' | 'logoImage'>> = ({
   formikProps,
   logoImage,
   onLogin
-}: Pick<AdminLogin, 'formikProps' | 'onLogin' | 'logoImage'>) => {
+}: Pick<AdminLoginProps, 'formikProps' | 'onLogin' | 'logoImage'>) => {
 
   return (
     <Card fadeIn level={2} width={425}>
@@ -38,7 +38,13 @@ export const AdminLoginForm: FC<Pick<AdminLogin, 'formikProps' | 'onLogin' | 'lo
         setFieldValue={formikProps.setFieldValue}
         weighted={6}
       />
-      <Button level={5} onClick={onLogin(formikProps)} block>Log In</Button>
+      <Button 
+        level={5} 
+        onClick={onLogin(formikProps)} 
+        block
+      >
+        Log In
+      </Button>
     </Card>
   )
 }

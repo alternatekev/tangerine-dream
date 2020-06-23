@@ -6,7 +6,7 @@ import {
   UIButton
 } from './UI'
 import {Theme} from '@td/styles'
-import { FormikProps } from 'formik'
+import {FormikProps} from 'formik'
 
 export interface Dispensary {
   name: string
@@ -17,8 +17,8 @@ export interface Dispensary {
 }
 
 export interface AuthorizedDispensary extends Dispensary {
-  username: string
-  password: string
+  username?: string
+  password?: string
 }
 
 export interface PageTitle {
@@ -39,7 +39,10 @@ export interface AgeVerification extends DispensaryPage {
 }
 
 export interface AdminLogin extends DispensaryPage {
-  formikProps: FormikProps<AuthorizedDispensary>
   logoImage: UIImage
-  onLogin(formikProps: FormikProps<AuthorizedDispensary>): void
+}
+
+export interface AdminLoginProps extends AdminLogin {
+  formikProps: FormikProps<AuthorizedDispensary>
+  onLogin(formikProps: FormikProps<AuthorizedDispensary>): (e: MouseEvent | TouchEvent) => void
 }
