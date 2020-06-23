@@ -8,7 +8,7 @@ export interface User {
   nicename: string
   firstName: string
   lastName: string
-  displayName: stirng
+  displayName: string
 }
 
 export interface PageProps {

@@ -28,6 +28,7 @@ interface Props extends ThemeProps, FormProps {
   menuDividers?: number[]
   page: Pages
   config: AuthorizedDispensary
+  user?: User
   setEditing(): void
 }
 
@@ -36,7 +37,6 @@ interface PageEditorState extends EditorState {
   popover?: string
   sheet?: Viewport
   popoverId?: string
-  user: User
 }
 
 const styles = prepareStyles({
@@ -72,6 +72,7 @@ class UnthemedPageEditor extends Component<Props, PageEditorState> {
       editing, 
       page,
       config, 
+      user,
       formikProps,
       menuDividers,
       setEditing
@@ -98,6 +99,7 @@ class UnthemedPageEditor extends Component<Props, PageEditorState> {
                   onClose={this.onClose}
                   menuDividers={menuDividers}
                   configLocation={configLocation}
+                  user={user}
                   config={config}
                   popover={popover}
                   popoverId={popoverId}
