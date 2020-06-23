@@ -1,21 +1,21 @@
 import {defaults} from '@td/data'
 import {Page} from '@td/globals'
 import {AgeVerificationForm} from '@td/views'
-import {Pages} from '@td/types'
+import {Pages, User} from '@td/types'
 import {withSession} from '@td/utils'
 
 interface Props {
-  token?: string
+  user: User
 }
 
 export default ({
-  token
+  user
 }: Props) =>
   <Page
     config={defaults}
     page={Pages.Age}
     name="Tangerine Dream"
-    token={token}
+    user={user}
     menuDividers={[2]}
   >
     {(_, formikProps) => 
@@ -28,9 +28,9 @@ export default ({
   </Page>
 
 export const getServerSideProps = withSession(async function ({req}) {
-  const token = req.session.get('token') || null
+  const user = req.session.get('user') || null
 
   return {
-    props: {token},
+    props: {user},
   }
 })

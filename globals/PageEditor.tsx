@@ -16,6 +16,7 @@ import {
   Pages,
   FormProps,
   AuthorizedDispensary,
+  User,
 } from '@td/types'
 import {
   DragDropContext,
@@ -35,6 +36,7 @@ interface PageEditorState extends EditorState {
   popover?: string
   sheet?: Viewport
   popoverId?: string
+  user: User
 }
 
 const styles = prepareStyles({

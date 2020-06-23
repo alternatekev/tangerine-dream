@@ -1,10 +1,20 @@
 import {FormikProps} from 'formik'
 import {Pages, Dispensary, DerivedTheme, AuthorizedDispensary} from './'
 
+export interface User {
+  token: string
+  id: number
+  email: string
+  nicename: string
+  firstName: string
+  lastName: string
+  displayName: stirng
+}
+
 export interface PageProps {
   page: Pages
   name: string
-  token?: string
+  user?: User
   menuDividers?: number[]
   captured?: boolean
   compact?: boolean
@@ -19,3 +29,4 @@ export interface PageProps {
     ) => (e: MouseEvent | TouchEvent) => void
   ): JSX.Element
 }
+

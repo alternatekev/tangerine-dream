@@ -8,7 +8,7 @@ import {
   PageTemplate,
   PageProps,
   AuthorizedDispensary,
-  PageContext
+  PageContext,
 } from '@td/types'
 import {PageHead} from './PageHead'
 import {
@@ -43,7 +43,7 @@ export class Page extends Component<PageProps, PageState> {
       children, 
       menuDividers,
       page,
-      token,
+      user,
       config,
     } = this.props
     const {
@@ -87,12 +87,13 @@ export class Page extends Component<PageProps, PageState> {
                     <PageEditor
                       menuDividers={menuDividers}
                       formikProps={formikProps}
+                      user={user}
                       page={page}
                       config={formikProps.values}
                       editing={editing}
                       setEditing={this.setEditing}
                     />
-                    {!editing && token &&
+                    {!editing && user &&
                       <EditPageButtons
                         setEditing={this.setEditing}
                         editing={editing}
