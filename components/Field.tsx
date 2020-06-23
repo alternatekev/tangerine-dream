@@ -9,6 +9,7 @@ interface Props extends Omit<FieldProps, 'formikProps'> {}
 export const Field: FC<Props> = ({
   label,
   children,
+  disabled,
   name
 }: Props) =>
   <FormikField name={name}>
@@ -17,6 +18,7 @@ export const Field: FC<Props> = ({
         {label &&
           <FieldLabel
             for={name}
+            disabled={disabled}
           >
             {label}
           </FieldLabel>

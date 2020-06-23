@@ -7,9 +7,8 @@ export enum Alignment {
 
 export enum VerticalAlignment {
   'Top' = 'top',
+  'Middle' = 'middle',
   'Bottom' = 'bottom',
-  'Auto' = 'auto',
-  'Middle' = 'middle'
 }
 
 export enum Viewport {

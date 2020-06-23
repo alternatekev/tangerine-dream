@@ -19,6 +19,7 @@ import {Field} from '@td/components'
 
 interface Props extends Omit<FieldProps, 'value'> {
   value?: FieldOption
+  disabled?: boolean
   options?: FieldOption[]
 }
 
@@ -44,9 +45,7 @@ const getStyles = (theme: ThemeState, props: Props) => {
       border: `1px ${ui.mode === UIMode.Dark ? colors.primary900 : colors.primary500} solid`,
       color: `${ui.mode === UIMode.Dark ? colors.secondary25 : colors.secondary200}`,
       fill: `${ui.mode === UIMode.Dark ? colors.secondary25 : colors.secondary200}`,
-      ':hover': {
-        ...t.pointer
-      },
+      ...t.pointer,
       ':focus': {
         backgroundColor: ui.mode === UIMode.Dark ? colors.black500 : colors.white500,
         border: `1px ${ui.mode === UIMode.Dark ? colors.primary500 : colors.primary700} solid`,
@@ -74,6 +73,10 @@ const getStyles = (theme: ThemeState, props: Props) => {
       ...t.relative,
       color: UIMode.Dark ? colors.primary800 : colors.primary200,
       fill: UIMode.Dark ? colors.primary800 : colors.primary200
+    },
+    isDisabled: {
+      opacity: 0.5,
+      cursor: 'not-allowed',
     }
   })
 }
@@ -85,6 +88,7 @@ export const SelectField: FC<Props> = (props: Props) => {
     label,
     setFieldValue,
     options,
+    disabled,
     weighted,
     block = true
   } = props
@@ -96,6 +100,7 @@ export const SelectField: FC<Props> = (props: Props) => {
     <Field
       name={name}
       label={label}
+      disabled={disabled}
     >
       {() =>
         <div css={css(styles.OuterFieldContainer)}>
@@ -103,8 +108,10 @@ export const SelectField: FC<Props> = (props: Props) => {
             css={css(
               styles.SelectField, 
               block && styles.isBlock, 
-              weighted && styles.isWeighted
+              weighted && styles.isWeighted,
+              disabled && styles.isDisabled
             )}
+            disabled={disabled}
             ref={ref}
             defaultValue={value?.value}
             onChange={setFieldValue && onChange(setFieldValue, props)}
@@ -120,11 +127,12 @@ export const SelectField: FC<Props> = (props: Props) => {
             </option>
           )}
           </select>
-          <ChevronDownIcon size={20} css={css(styles.SelectIcon)} />
+          <ChevronDownIcon 
+            size={20} 
+            css={css(styles.SelectIcon)} 
+          />
         </div>
       }
-
-     
     </Field>
   )
 }
