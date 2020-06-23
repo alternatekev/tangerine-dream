@@ -15,6 +15,7 @@ import {
   FieldOption,
   Pages,
   FormProps,
+  AuthorizedDispensary,
 } from '@td/types'
 import {
   DragDropContext,
@@ -25,7 +26,7 @@ interface Props extends ThemeProps, FormProps {
   editing?: boolean
   menuDividers?: number[]
   page: Pages
-  config: any //tslint:disable-line no-any
+  config: AuthorizedDispensary
   setEditing(): void
 }
 

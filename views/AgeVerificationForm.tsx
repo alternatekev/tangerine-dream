@@ -14,13 +14,13 @@ export const AgeVerificationForm: FC<AgeVerification> = ({
   actionButton,
   ...parentRest
 }: AgeVerification) => {
-  const {text, ...rest} = bodyText
+  
   const {pageLayout: {align}} = parentRest
 
   return (
     <Card fadeIn level={0} alignment={align}>
       <Logo {...logoImage} />
-      <P fontTheme={rest}>{text}</P>
+      {bodyText && <P fontTheme={bodyText}>{bodyText.text}</P>}
       <Button {...actionButton}>{actionButton.text}</Button>
     </Card>
   )

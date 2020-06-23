@@ -66,7 +66,6 @@ export interface UIBodyText {
   size?: number
   inverted?: boolean
   alignment?: Alignment
-  fields?: UIField[]
 }
 
 export interface UIButton extends UIBodyText {

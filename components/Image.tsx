@@ -1,5 +1,6 @@
 import {FC} from 'react'
-import {UIImage, ImageSize} from '@td/types'
+import {UIImage, ImageSize, BlockProps} from '@td/types'
+import {css} from '@emotion/core'
 
 export const calcSize = (kind: 'w' | 'h', size?: ImageSize) => {
   return size === undefined 
@@ -9,14 +10,16 @@ export const calcSize = (kind: 'w' | 'h', size?: ImageSize) => {
       : size[kind]
 }
 
-export const Image: FC<UIImage> = ({
+export const Image: FC<UIImage & BlockProps> = ({
   size,
   alt = 'TD Image',
-  src
-}: UIImage) =>
+  src,
+  unicorn
+}: UIImage & BlockProps) =>
   <img 
     src={src}
     alt={alt}
+    css={css(unicorn)}
     width={calcSize('w', size)}
     height={calcSize('h', size)}
   />

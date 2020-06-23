@@ -61,7 +61,7 @@ const getStyles = (
     ui
   } = theme
 
-  const paddingLevel = compact ? 1 : fullBleed ? 0 : 2
+  const paddingLevel = compact ? 1 : fullBleed ? 0 : 3
   const borderWidth = [
     0,
     1,

@@ -1,3 +1,4 @@
 export enum Pages {
-  Age = 'age'
+  Age = 'age',
+  AdminLogin = 'adminLogin'
 }

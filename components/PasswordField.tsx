@@ -59,7 +59,7 @@ const getStyles = (
   })
 }
 
-export const TextField: FC<Props> = (props: Props) => {
+export const PasswordField: FC<Props> = (props: Props) => {
   const { 
     name,
     value,
@@ -88,7 +88,7 @@ export const TextField: FC<Props> = (props: Props) => {
           css={css(styles.TextField, block && styles.isBlock)}
           ref={ref}
           onChange={setFieldValue && onChange(setFieldValue, props)}
-          type="text"
+          type="password"
           name={name}
           defaultValue={defaultValue as string}
           value={value}
