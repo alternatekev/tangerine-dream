@@ -19,6 +19,7 @@ export interface Dispensary {
 export interface AuthorizedDispensary extends Dispensary {
   username?: string
   password?: string
+  prodUrl: string
 }
 
 export interface PageTitle {

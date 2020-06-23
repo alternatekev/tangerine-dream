@@ -26,7 +26,6 @@ export interface SelectProps extends Props {}
 
 const onChange = (setFieldValue: (field: string, value: string) => void, props: Props) => (e: ChangeEvent<HTMLSelectElement>) => {
   setFieldValue(props.name, e.currentTarget.value)
-  console.log(`${props.name}: ${e.currentTarget.value}`)
 }
 
 const getStyles = (theme: ThemeState, props: Props) => {

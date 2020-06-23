@@ -22,7 +22,6 @@ interface Props extends Omit<FieldProps, 'value'> {
 }
 
 const onChange = (setFieldValue: (field: string, value: string) => void, props: Props) => (e: ChangeEvent<HTMLInputElement>) => {
-  console.log(`${props.name}: ${e.currentTarget.value}`)
   setFieldValue(props.name, e.currentTarget.value)
 }
 
