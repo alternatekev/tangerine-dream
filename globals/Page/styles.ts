@@ -25,11 +25,12 @@ export const getStyles = (image: any, theme: DerivedTheme) => { // tslint:disabl
     isLimited: {
       maxWidth: 960,
       margin: '0 auto',
-      ...t.pa0
+      ...t.pa5,
+      minHeight: 'calc(100vh - 5rem)'
     },
     isFullBleed: {
       maxWidth: '100vw',
-      ...t.pa0,
+      ...t.pa5,
       ...t.ma0
     },
     isCaptured: {
@@ -48,5 +49,19 @@ export const getStyles = (image: any, theme: DerivedTheme) => { // tslint:disabl
       ...t.relative,
       transformStyle: 'preserve-3d',
     },
+    isVerticallyCentered: {
+      ...t.flex,
+      ...t.items_center,
+    },
+    isVerticallyBottom: {
+      ...t.flex,
+      ...t.items_end,
+    },
+    isHorizontallyCentered: {
+      ...t.justify_center
+    },
+    isHorizontallyRight: {
+      ...t.justify_end
+    }
   })
 }

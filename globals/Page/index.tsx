@@ -9,6 +9,8 @@ import {
   PageProps,
   AuthorizedDispensary,
   PageContext,
+  Alignment,
+  VerticalAlignment,
 } from '@td/types'
 import {PageHead} from './PageHead'
 import {
@@ -107,7 +109,11 @@ export class Page extends Component<PageProps, PageState> {
                         styles.Page,
                         pageLayout.template === PageTemplate.Captured && styles.isCaptured,
                         pageLayout.template === PageTemplate.FullBleed && styles.isFullBleed,
-                        pageLayout.template === PageTemplate.Limited && styles.isLimited
+                        pageLayout.template === PageTemplate.Limited && styles.isLimited,
+                        pageLayout.verticalAlign === VerticalAlignment.Middle && styles.isVerticallyCentered,
+                        pageLayout.verticalAlign === VerticalAlignment.Bottom && styles.isVerticallyBottom,
+                        pageLayout.align === Alignment.Center && styles.isHorizontallyCentered,
+                        pageLayout.align === Alignment.Right && styles.isHorizontallyRight
                       )}
                     >
                       <article

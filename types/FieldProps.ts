@@ -11,6 +11,7 @@ export interface FieldProps extends BlockProps {
   name: string
   value?: string | FieldOption
   defaultValue?: string | FieldOption
+  disabled?: boolean
   label?: string
   placeholder?: string
   autoFocus?: boolean

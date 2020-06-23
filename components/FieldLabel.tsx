@@ -11,6 +11,7 @@ import {
 
 interface Props {
   for: string
+  disabled?: boolean
 }
 
 const getStyles = (theme: ThemeState) => {
@@ -23,6 +24,9 @@ const getStyles = (theme: ThemeState) => {
       ...t.db,
       ...t.f3,
       color: ui.mode === UIMode.Dark ? colors.secondary100 : colors.secondary500
+    },
+    isDisabled: {
+      color: ui.mode === UIMode.Dark ? colors.grey500_50 : colors.grey500_50
     }
   })
 }
@@ -32,7 +36,10 @@ export const FieldLabel: FC<Props> = (props) => {
   const styles = getStyles(theme)
  
   return(
-    <label css={css(styles.FieldLabel)} htmlFor={props.for}>
+    <label 
+      css={css(styles.FieldLabel, props.disabled && styles.isDisabled)} 
+      htmlFor={props.for}
+    >
       {props.children}
     </label>
   )
