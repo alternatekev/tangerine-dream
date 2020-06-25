@@ -77,7 +77,9 @@ export const defaults: Dispensary = {
       borderRadius: 2,
     },
     logo: {
-      borderRadius: 3
+      borderRadius: 3,
+      src: '/tangerine-dream-logo.svg',
+      alt: 'default logo'
     },
     typography: {
       header: {

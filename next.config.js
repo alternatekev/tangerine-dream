@@ -1,6 +1,10 @@
 const path = require('path');
+const withPWA = require('next-pwa')
 
-module.exports = {
+module.exports = withPWA({
+  pwa: {
+    dest: 'public'
+  },
   webpack: (config) => {
     config.node = {
       fs: 'empty'
@@ -10,4 +14,4 @@ module.exports = {
     return config
   },
   cssModules: true
-}
+})
