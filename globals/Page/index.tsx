@@ -46,7 +46,9 @@ export class Page extends Component<PageProps, PageState> {
       menuDividers,
       page,
       user,
+      userMeta,
       prodUrl,
+      wpUrl,
       config,
     } = this.props
     const {
@@ -54,14 +56,12 @@ export class Page extends Component<PageProps, PageState> {
       editing,
     } = this.state
     const initialValues: AuthorizedDispensary = {
-      ...config, 
-      username: '', 
-      password: '',
-      prodUrl
+      ...config,
+      prodUrl,
+      wpUrl
     }
 
     const name = config.name
-    console.log(prodUrl)
  
     return (
       <Formik
@@ -92,6 +92,7 @@ export class Page extends Component<PageProps, PageState> {
                       menuDividers={menuDividers}
                       formikProps={formikProps}
                       user={user}
+                      userMeta={userMeta}
                       page={page}
                       config={formikProps.values}
                       editing={editing}

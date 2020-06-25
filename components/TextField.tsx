@@ -17,8 +17,9 @@ import {
 } from '@td/types'
 import {Field} from '@td/components'
 
-interface Props extends Omit<FieldProps, 'value'> {
+interface Props extends Omit<FieldProps, 'value' | 'defaultValue'> {
   value?: string
+  defaultValue?: string
 }
 
 const onChange = (setFieldValue: (field: string, value: string) => void, props: Props) => (e: ChangeEvent<HTMLInputElement>) => {
@@ -61,7 +62,6 @@ const getStyles = (
 export const TextField: FC<Props> = (props: Props) => {
   const { 
     name,
-    value,
     label,
     fontTheme,
     weighted,
@@ -82,14 +82,14 @@ export const TextField: FC<Props> = (props: Props) => {
       name={name}
       label={label}
     >
-     {() =>
+     {({value}) =>
         <input
           css={css(styles.TextField, block && styles.isBlock)}
           ref={ref}
           onChange={setFieldValue && onChange(setFieldValue, props)}
           type="text"
+          defaultValue={defaultValue}
           name={name}
-          defaultValue={defaultValue as string}
           value={value}
         />
      }
