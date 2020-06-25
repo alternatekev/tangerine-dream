@@ -4,16 +4,20 @@ import {AdminLoginForm} from '@td/views'
 import {Pages, User} from '@td/types'
 
 interface Props {
-  user: User
+  user?: User
   prodUrl: string
+  wpUrl: string
 }
 
 export default ({
-  prodUrl,user
+  prodUrl,
+  user,
+  wpUrl
 }: Props) =>
   <Page
     config={defaults}
     prodUrl={prodUrl}
+    wpUrl={wpUrl}
     page={Pages.AdminLogin}
     name="Tangerine Dream"
     menuDividers={[2]}
@@ -37,8 +41,9 @@ import { withSession } from '@td/utils/Session'
 export const getServerSideProps = withSession(async function ({ req }) {
   const user = req.session.get('user') || null
   const prodUrl = process.env.PROD_URL
+  const wpUrl = process.env.WP_URL
 
   return {
-    props: {user, prodUrl},
+    props: {user, prodUrl, wpUrl},
   }
 })

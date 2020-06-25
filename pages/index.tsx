@@ -6,6 +6,7 @@ import {Pages, User} from '@td/types'
 
 interface Props {
   user: User
+  userMeta: any
   prodUrl: string
   wpUrl: string
 }
@@ -13,20 +14,21 @@ interface Props {
 export default ({
   user,
   prodUrl,
-  wpUrl
+  wpUrl,
+  userMeta
 }: Props) =>
   <Page
     config={defaults}
     page={Pages.Age}
     name="Tangerine Dream"
     prodUrl={prodUrl}
+    wpUrl={wpUrl}
     user={user}
+    userMeta={userMeta}
     menuDividers={[2]}
   >
     {(_, formikProps) => 
     <>
-      {console.log(prodUrl)}
-      {console.log(wpUrl)}
       <AgeVerificationForm 
         {...formikProps.values.age}
       />
@@ -34,13 +36,15 @@ export default ({
     }
   </Page>
 
-import { withSession } from '@td/utils/Session'
-export const getServerSideProps = withSession(async function ({ req }) {
+import {withSession} from '@td/utils/Session'
+export const getServerSideProps = withSession(async function ({req}) {
   const user = req.session.get('user') || null
+  const userMeta = req.session.get('userMeta') || null
+  console.log(userMeta)
   const prodUrl = process.env.PROD_URL
   const wpUrl = process.env.WP_URL
 
   return {
-    props: {user, prodUrl, wpUrl},
+    props: {user, userMeta, prodUrl, wpUrl},
   }
 })

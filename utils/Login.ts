@@ -20,7 +20,7 @@ export const onLogin = (formikProps: FormikProps<AuthorizedDispensary>) => async
   console.log(`logging into ${url}`)
   const auth = await tryLogin(url, username as string, password as string)
   
-  if (auth.statusCode !== 200) {
+  if (auth.response.statusCode !== 200) {
     formikProps.setErrors({
       username: 'Bad username or password.'
     })

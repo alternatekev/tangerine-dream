@@ -1,6 +1,7 @@
 import {Component} from 'react'
 import {SlideDown} from 'react-slidedown'
 import {DropResult} from 'react-beautiful-dnd'
+import fetch from 'isomorphic-fetch'
 
 import {
   withTheme, 
@@ -29,6 +30,7 @@ interface Props extends ThemeProps, FormProps {
   page: Pages
   config: AuthorizedDispensary
   user?: User
+  userMeta?: any
   setEditing(): void
 }
 
@@ -63,7 +65,7 @@ class UnthemedPageEditor extends Component<Props, PageEditorState> {
       saved: true,
       saving: false,
       touched: false,
-      configLocation: Viewport.Right 
+      configLocation: props.userMeta?.acf.menu_position || Viewport.Right
     }
   }
 
@@ -152,11 +154,26 @@ class UnthemedPageEditor extends Component<Props, PageEditorState> {
     // do stuff
   }
 
-  private onDragEnd = (e: DropResult) => {
+  private onDragEnd = async (e: DropResult) => {
     if (e.destination?.droppableId) {
       this.setState({
         configLocation: e.destination.droppableId as Viewport
       })
+
+      const {config} = this.props
+      const url = `${config.prodUrl}/api/saveMenuPosition`
+      await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          fields: {
+            menu_position: e.destination.droppableId
+          }
+        })
+      }).then(async res => res.json())
+      
     }
   }
 }
