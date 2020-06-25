@@ -1,5 +1,6 @@
 import {Level} from './Level'
 import {Alignment, VerticalAlignment} from './Alignment'
+import {UIImage} from './Image'
 
 export enum UIMode {
   'Light' = 'light',
@@ -14,7 +15,7 @@ export interface UITheme {
   mode: UIMode
 }
 
-export interface UILogo {
+export interface UILogo extends UIImage {
   borderRadius: number
 }
 
