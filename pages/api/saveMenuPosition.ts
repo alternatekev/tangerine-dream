@@ -35,9 +35,6 @@ export default withSession(async (req: NextApiRequest & SessionInterface, res: N
           console.log('saved.')
           req.session.set('user', response.data)
         }
-
-        console.log(`fetching user ${user.displayName}`)
-
         const userResponse = await fetch(userUrl, {
           method: 'GET',
           headers: {
@@ -46,7 +43,6 @@ export default withSession(async (req: NextApiRequest & SessionInterface, res: N
           },
         }).then(async userMeta => userMeta.json())
 
-        console.log(userResponse)
         req.session.unset('userMeta')
         req.session.set('userMeta', userResponse)
         await req.session.save()

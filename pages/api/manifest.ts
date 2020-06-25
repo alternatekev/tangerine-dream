@@ -1,13 +1,8 @@
 import {
   NextApiRequest, 
-  NextApiResponse
+  NextApiResponse, 
 } from 'next'
 
-interface Props {
-  req: NextApiRequest
-  res: NextApiResponse
-}
-
-export default ({req, res}: Props) => {
-  res.send(req.query)
+export default (req: NextApiRequest, res: NextApiResponse) => {
+  res.send(req.query ? `${req.query}` : 'empty manifest!')
 }
