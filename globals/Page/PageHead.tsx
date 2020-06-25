@@ -1,6 +1,6 @@
 import {FC} from 'react'
 import Head from 'next/head'
-import buildQueryString from 'build-query-string'
+import queryString from 'query-string'
 
 import {PageTitle} from '@td/types'
 
@@ -30,7 +30,7 @@ export const PageHead: FC<Props> = ({
   scope: '/',
   background_color: themeColor,
   theme_color: themeColor,
-  icons: buildQueryString([{
+  icons: queryString.stringify([{
     src: logoImage,
     sizes: '512x512',
     type: 'image/png'
@@ -39,7 +39,7 @@ export const PageHead: FC<Props> = ({
 
   return (
     <Head>
-      <link rel="manifest" href={`/api/manifest/?${buildQueryString(manifest)}`}  />
+      <link rel="manifest" href={queryString.stringifyUrl({url: '/api/manifest/', query: manifest})}  />
       <style type="text/css" media="screen">{`
         body {${styles}};
       `}</style>
