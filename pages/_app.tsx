@@ -23,7 +23,7 @@ function Dispensary(props: AppContext & WTFProps) {
   )
 }
 
-Dispensary.getInitialProps = async (appContext: AppContext) => {
+Dispensary.getStaticProps = async (appContext: AppContext) => {
   const appProps = await App.getInitialProps(appContext)
 
   return {...appProps}

@@ -83,7 +83,7 @@ export class Page extends Component<PageProps, PageState> {
               <PageHead 
                 name={name}
                 logoImage={config.ui.logo.src}
-                pageTitle={pageTitle}
+                pageTitle={pageTitle.titleText}
                 prodUrl={prodUrl}
                 themeColor={colors.primary500}
                 styles={styles.body.styles}
