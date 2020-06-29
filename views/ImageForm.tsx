@@ -19,7 +19,7 @@ export const ImageForm: FC<FormProps> = ({
     <ImageField 
       name="background"
       label="Image"
-      value={formikProps.values.age.backgroundImage.src}
+      value={formikProps.values.pages.age.backgroundImage.src}
       weighted={2}
     />
     <TextField 
@@ -32,13 +32,13 @@ export const ImageForm: FC<FormProps> = ({
       label="Horizontal Alignment"
       weighted={4}
       name="align"
-      value={optionize(formikProps.values.age.pageLayout.align)}
+      value={optionize(formikProps.values.pages.age.pageLayout.align)}
       setFieldValue={formikProps.setFieldValue}
     />
     <VerticalAlignmentSelectField
       label="Vertical Alignment"
       name="verticalAlign"
-      value={optionize(formikProps.values.age.pageLayout.verticalAlign)}
+      value={optionize(formikProps.values.pages.age.pageLayout.verticalAlign)}
       setFieldValue={formikProps.setFieldValue}
     />
   </div>

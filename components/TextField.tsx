@@ -1,4 +1,4 @@
-import {FC, useRef, ChangeEvent} from 'react'
+import {FC, useRef} from 'react'
 import {
   prepareStyles, 
   css, 
@@ -20,10 +20,6 @@ import {Field} from '@td/components'
 interface Props extends Omit<FieldProps, 'value' | 'defaultValue'> {
   value?: string
   defaultValue?: string
-}
-
-const onChange = (setFieldValue: (field: string, value: string) => void, props: Props) => (e: ChangeEvent<HTMLInputElement>) => {
-  setFieldValue(props.name, e.currentTarget.value)
 }
 
 const getStyles = (
@@ -67,7 +63,6 @@ export const TextField: FC<Props> = (props: Props) => {
     weighted,
     defaultValue,
     autoFocus,
-    setFieldValue,
     block = true
   } = props
   const theme: ThemeState = useTheme()
@@ -82,17 +77,20 @@ export const TextField: FC<Props> = (props: Props) => {
       name={name}
       label={label}
     >
-     {({value}) =>
+     {(formik) => {
+        const {
+        field, // { name, value, onChange, onBlur }
+      } = formik
+
+      return (
         <input
           css={css(styles.TextField, block && styles.isBlock)}
           ref={ref}
-          onChange={setFieldValue && onChange(setFieldValue, props)}
+          {...field}
           type="text"
           defaultValue={defaultValue}
-          name={name}
-          value={value}
         />
-     }
+      )}}
     </Field>
   )
 }

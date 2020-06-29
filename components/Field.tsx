@@ -12,7 +12,7 @@ export const Field: FC<Props> = ({
   disabled,
   name
 }: Props) =>
-  <FormikField name={name}>
+  <FormikField name={name} type="text">
     {(formikBag: FormikBag<FormikFormProps, Dispensary>) =>
       <div>
         {label &&

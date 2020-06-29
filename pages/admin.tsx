@@ -27,7 +27,7 @@ export default ({
         {!user && 
           <AdminLoginForm
             onLogin={onLogin}
-            logoImage={defaults.adminLogin.logoImage}
+            logoImage={defaults.pages.adminLogin.logoImage}
             formikProps={formikProps}
           />
         }{user &&

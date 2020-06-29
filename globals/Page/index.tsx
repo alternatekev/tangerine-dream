@@ -1,6 +1,10 @@
 import React, {Component} from 'react'
 import {ThemeProvider} from 'emotion-theming'
-import {Formik} from 'formik'
+import {
+  Formik, 
+  FormikProps
+} from 'formik'
+import fetch from 'isomorphic-fetch'
 
 import {PageEditor} from '../PageEditor'
 import {
@@ -74,7 +78,7 @@ export class Page extends Component<PageProps, PageState> {
             pageTitle,
             backgroundImage,
             pageLayout,
-          } = values[page]
+          } = values.pages[page]
 
           const styles = getStyles(backgroundImage, colors)
 
@@ -99,11 +103,11 @@ export class Page extends Component<PageProps, PageState> {
                       page={page}
                       config={formikProps.values}
                       editing={editing}
-                      setEditing={this.setEditing}
+                      setEditing={this.setEditing(formikProps)}
                     />
                     {!editing && user &&
                       <EditPageButtons
-                        setEditing={this.setEditing}
+                        setEditing={this.setEditing(formikProps)}
                         editing={editing}
                       />
                     }
@@ -140,18 +144,23 @@ export class Page extends Component<PageProps, PageState> {
     )
   }
 
-/*   private setTheme = (theme: ThemeState) => {
+  private setEditing = (formikProps: FormikProps<AuthorizedDispensary>) => () => { 
+    this.setState(prevState => ({ 
+      editing: !prevState.editing 
+    })) 
+    formikProps.resetForm()
+  }
+
+  private onSubmit = async (values: AuthorizedDispensary) => {
     this.setState({
-      colors: theme.colors,
-      ui: theme.ui
+      editing: false,
+      ui: values.ui,
+      colors: themify(values.colors)
     })
-  } */
 
-  private setEditing = () => { this.setState(prevState => ({ 
-    editing: !prevState.editing 
-  })) }
-
-  private onSubmit = (values: AuthorizedDispensary) => {
-    // hi
+    await fetch('/api/savePageEdits/age', {
+      method: 'POST',
+      body: JSON.stringify(values)
+    })
   }
 }

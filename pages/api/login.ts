@@ -43,8 +43,6 @@ export default withSession(async (req: NextApiRequest & SessionInterface, res: N
           },
         }).then(async user => user.json())
 
-        console.log(userResponse)
-
         req.session.set('userMeta', userResponse)
         await req.session.save()
         res.send({

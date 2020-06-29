@@ -68,7 +68,7 @@ export const ConfiguratorDropZones: FC<Props> = ({
               draggingOver={snapshot.isDraggingOver}
               viewport={vvp}
             >
-              {configLocation === vvp && configurator(configLocation, config[page], onClick, menuDividers, popover, popoverId)}
+              {configLocation === vvp && configurator(configLocation, config.pages[page], onClick, menuDividers, popover, popoverId)}
             </ConfiguratorDropZone>
           }
         </Droppable>
