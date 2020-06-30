@@ -5,7 +5,7 @@ export const getStyles = (image: any, theme: DerivedTheme) => { // tslint:disabl
 
   return prepareStyles({
     body: {
-      backgroundImage: `url(${image.src})`,
+      backgroundImage: image ? `url(${image.src})` : undefined,
       ...t.cover,
       ...t.bg_center,
       minHeight: '100vh'

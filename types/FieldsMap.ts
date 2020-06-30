@@ -40,11 +40,11 @@ export type FieldTypes = UIImage
 | PageLayout
 
 export const isUIImage = (arg: any): arg is UIImage => {
-  return arg.src !== undefined && arg.alt !== undefined
+  return arg && arg.src !== undefined && arg.alt !== undefined
 }
 
 export const isPageTitle = (arg: any): arg is PageTitle => {
-  return arg.titleText !== undefined
+  return arg && arg.titleText !== undefined
 }
 
 const isPlacement = (arg: any): arg is Placement => { 
@@ -78,12 +78,14 @@ const isAlignment = (arg: any): arg is Alignment => {
 const isPageLayout = (arg: any): arg is PageLayout => { 
   let pageKind: boolean = false
 
-  Object.keys(PageTemplate).forEach(pk => {
-    // @ts-ignore
-    if (PageTemplate[pk] === arg.template) {
-      pageKind = true
-    }
-  })
+  if(arg) {
+    Object.keys(PageTemplate).forEach(pk => {
+      // @ts-ignore
+      if (PageTemplate[pk] === arg.template) {
+        pageKind = true
+      }
+    })
+  }
 
   return pageKind
 }
@@ -102,20 +104,20 @@ const isVerticalAlignment = (arg: any): arg is VerticalAlignment => {
   return alignment
 }
 const isUIBodyText = (arg: any): arg is UIBodyText => { 
-  return arg.text && arg.level === undefined
+  return arg && arg.text && arg.level === undefined
 }
 
 const isUIButton = (arg: any): arg is UIButton => {
-  return arg.level !== undefined
+  return arg && arg.level !== undefined
 }
 
 
 const isString = (arg: any): arg is string => {
-  return typeof arg === 'string'
+  return arg && typeof arg === 'string'
 }
 
 const isBoolean = (arg: any) => {
-  return typeof arg === 'boolean'
+  return arg && typeof arg === 'boolean'
 }
 
 export const getType = (arg?: any): (string | undefined) => {

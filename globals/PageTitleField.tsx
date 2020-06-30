@@ -25,9 +25,9 @@ export const PageTitleField: FC<Props> = ({
   >
     <TextField
       label="Page Title"
-      defaultValue={formikProps.values[page].pageTitle.titleText}
-      value={formikProps.values[page].pageTitle.titleText}
-      name={`${page}.pageTitle.titleText`}
+      defaultValue={formikProps.values.pages[page].pageTitle.titleText}
+      value={formikProps.values.pages[page].pageTitle.titleText}
+      name={`pages.${page}.pageTitle.titleText`}
       block
       autoFocus
       setFieldValue={setFieldValue}

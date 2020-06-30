@@ -18,6 +18,7 @@ import {
   FormProps,
   AuthorizedDispensary,
   User,
+  UserMeta,
 } from '@td/types'
 import {
   DragDropContext,
@@ -30,7 +31,7 @@ interface Props extends ThemeProps, FormProps {
   page: Pages
   config: AuthorizedDispensary
   user?: User
-  userMeta?: any
+  userMeta?: UserMeta
   setEditing(): void
 }
 
@@ -77,7 +78,7 @@ class UnthemedPageEditor extends Component<Props, PageEditorState> {
       user,
       formikProps,
       menuDividers,
-      setEditing
+      setEditing,
     } = this.props
     const {
       configLocation, 

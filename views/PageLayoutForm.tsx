@@ -26,22 +26,22 @@ export const PageLayoutForm: FC<FormProps> = ({
         label="Page Template"
         weighted={4}
         name={`${page}.pageLayout.template`}
-        value={optionize(formikProps.values.age.pageLayout.template)}
+        value={optionize(formikProps.values.pages.age.pageLayout.template)}
         setFieldValue={formikProps.setFieldValue}
       />
       <AlignmentSelectField
         label="Horizontal Alignment"
         weighted={4}
-        disabled={formikProps.values.age.pageLayout.template === PageTemplate.Captured}
+        disabled={formikProps.values.pages.age.pageLayout.template === PageTemplate.Captured}
         name={`${page}.pageLayout.align`}
-        value={optionize(formikProps.values.age.pageLayout.align)}
+        value={optionize(formikProps.values.pages.age.pageLayout.align)}
         setFieldValue={formikProps.setFieldValue}
       />
       <VerticalAlignmentSelectField
         label="Vertical Alignment"
-        disabled={formikProps.values.age.pageLayout.template === PageTemplate.Captured}
+        disabled={formikProps.values.pages.age.pageLayout.template === PageTemplate.Captured}
         name={`${page}.pageLayout.verticalAlign`}
-        value={optionize(formikProps.values.age.pageLayout.verticalAlign)}
+        value={optionize(formikProps.values.pages.age.pageLayout.verticalAlign)}
         setFieldValue={formikProps.setFieldValue}
       />
     </div>

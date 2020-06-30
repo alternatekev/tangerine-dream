@@ -5,3 +5,4 @@ export {Login}
 export * from './Session'
 import useAutoFocus from './useAutoFocus'
 export {useAutoFocus}
+export * from './WordPress'

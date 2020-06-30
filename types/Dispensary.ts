@@ -8,10 +8,14 @@ import {
 import {Theme} from '@td/styles'
 import {FormikProps} from 'formik'
 
-export interface Dispensary {
-  name: string
+export interface DispensaryPages {
   age: AgeVerification
   adminLogin: AdminLogin
+}
+
+export interface Dispensary {
+  name: string
+  pages: DispensaryPages
   ui: UITheme
   colors: Theme
 }

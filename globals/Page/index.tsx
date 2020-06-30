@@ -1,6 +1,10 @@
 import React, {Component} from 'react'
 import {ThemeProvider} from 'emotion-theming'
-import {Formik} from 'formik'
+import {
+  Formik, 
+  FormikProps
+} from 'formik'
+import fetch from 'isomorphic-fetch'
 
 import {PageEditor} from '../PageEditor'
 import {
@@ -25,6 +29,7 @@ import {EditPageButtons} from '../EditPageButtons'
 
 interface PageState extends ThemeState {
   token?: string
+  initialValues: AuthorizedDispensary
 }
 
 export class Page extends Component<PageProps, PageState> {
@@ -35,7 +40,12 @@ export class Page extends Component<PageProps, PageState> {
     this.state = { 
       editing: props.editing || false,
       colors, 
-      ui: props.config.ui
+      ui: props.config.ui,
+      initialValues: {
+        ...props.config,
+        prodUrl: props.prodUrl,
+        wpUrl: props.wpUrl
+      }
     }
   }
 
@@ -48,18 +58,13 @@ export class Page extends Component<PageProps, PageState> {
       user,
       userMeta,
       prodUrl,
-      wpUrl,
       config,
     } = this.props
     const {
       colors, 
       editing,
+      initialValues
     } = this.state
-    const initialValues: AuthorizedDispensary = {
-      ...config,
-      prodUrl,
-      wpUrl
-    }
 
     const name = config.name
  
@@ -74,7 +79,7 @@ export class Page extends Component<PageProps, PageState> {
             pageTitle,
             backgroundImage,
             pageLayout,
-          } = values[page]
+          } = values.pages[page]
 
           const styles = getStyles(backgroundImage, colors)
 
@@ -99,11 +104,11 @@ export class Page extends Component<PageProps, PageState> {
                       page={page}
                       config={formikProps.values}
                       editing={editing}
-                      setEditing={this.setEditing}
+                      setEditing={this.setEditing(formikProps)}
                     />
                     {!editing && user &&
                       <EditPageButtons
-                        setEditing={this.setEditing}
+                        setEditing={this.setEditing(formikProps)}
                         editing={editing}
                       />
                     }
@@ -140,18 +145,24 @@ export class Page extends Component<PageProps, PageState> {
     )
   }
 
-/*   private setTheme = (theme: ThemeState) => {
+  private setEditing = (formikProps: FormikProps<AuthorizedDispensary>) => () => { 
+    this.setState(prevState => ({ 
+      editing: !prevState.editing 
+    })) 
+    formikProps.resetForm()
+  }
+
+  private onSubmit = async (values: AuthorizedDispensary) => {
     this.setState({
-      colors: theme.colors,
-      ui: theme.ui
+      editing: false,
+      ui: values.ui,
+      colors: themify(values.colors),
+      initialValues: values
     })
-  } */
 
-  private setEditing = () => { this.setState(prevState => ({ 
-    editing: !prevState.editing 
-  })) }
-
-  private onSubmit = (values: AuthorizedDispensary) => {
-    // hi
+    await fetch('/api/savePageEdits/age', {
+      method: 'POST',
+      body: JSON.stringify(values)
+    })
   }
 }
