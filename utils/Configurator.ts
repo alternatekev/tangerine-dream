@@ -7,9 +7,9 @@ export const formatConfiguratorLabel = (label: string) => {
 }
 
 // tslint:disable-next-line no-any
-export const mergeConfig = (toMerge: any) => {
+export const mergeConfig = (key: string, toMerge: any) => {
   return {
     ...defaults,
-    ...toMerge
+    [key]: toMerge
   }
 }

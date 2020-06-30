@@ -29,6 +29,5 @@ export default withSession(async (req: NextApiRequest & SessionInterface, res: N
     },
   }).then(response => response.json())
   console.log(wp)
-
   res.send(wp)
 })

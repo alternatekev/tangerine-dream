@@ -2,9 +2,8 @@ import {
   Dispensary, 
   Alignment, 
   VerticalAlignment, 
-  PageTemplate, 
-  UIMode
 } from '@td/types'
+import {PageTemplate, UIMode} from '@td/types/UI'
 import {defaultColors as defaultThemeColors} from './defaultColors'
 
 export const defaultColors = defaultThemeColors

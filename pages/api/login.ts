@@ -26,8 +26,6 @@ export default withSession(async (req: NextApiRequest & SessionInterface, res: N
     .then(async response => {
       if (response) {
 
-        console.log(response.data.token)
-
         if (response.statusCode === 200) {
           console.log('saving...')
           req.session.set('user', response.data)

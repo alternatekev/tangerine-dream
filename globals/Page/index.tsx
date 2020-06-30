@@ -29,6 +29,7 @@ import {EditPageButtons} from '../EditPageButtons'
 
 interface PageState extends ThemeState {
   token?: string
+  initialValues: AuthorizedDispensary
 }
 
 export class Page extends Component<PageProps, PageState> {
@@ -39,7 +40,12 @@ export class Page extends Component<PageProps, PageState> {
     this.state = { 
       editing: props.editing || false,
       colors, 
-      ui: props.config.ui
+      ui: props.config.ui,
+      initialValues: {
+        ...props.config,
+        prodUrl: props.prodUrl,
+        wpUrl: props.wpUrl
+      }
     }
   }
 
@@ -52,18 +58,13 @@ export class Page extends Component<PageProps, PageState> {
       user,
       userMeta,
       prodUrl,
-      wpUrl,
       config,
     } = this.props
     const {
       colors, 
       editing,
+      initialValues
     } = this.state
-    const initialValues: AuthorizedDispensary = {
-      ...config,
-      prodUrl,
-      wpUrl
-    }
 
     const name = config.name
  
@@ -155,7 +156,8 @@ export class Page extends Component<PageProps, PageState> {
     this.setState({
       editing: false,
       ui: values.ui,
-      colors: themify(values.colors)
+      colors: themify(values.colors),
+      initialValues: values
     })
 
     await fetch('/api/savePageEdits/age', {

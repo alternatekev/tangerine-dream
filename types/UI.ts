@@ -20,7 +20,7 @@ export interface UILogo extends UIImage {
 }
 
 export interface UICard {
-  borderRadius: Level
+  borderRadius: number | Level
 }
 
 export interface UITypography {
@@ -37,7 +37,7 @@ export interface UIFont {
 
 export const menuOffset = 50
 
-export type FontWeight = 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900
+export type FontWeight = 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | number
 
 export enum PageTemplate {
   'Captured' = 'captured',
@@ -71,10 +71,10 @@ export interface UIBodyText {
 
 export interface UIButton extends UIBodyText {
   borderRadius?: Level
-  borderWidth?: Level
+  borderWidth?: number | Level
   borderColor?: string
   inline?: boolean
-  level: number
+  level: number | Level
 }
 
 export interface UIWeighting {
