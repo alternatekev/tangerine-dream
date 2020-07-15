@@ -14,7 +14,7 @@ import {
   Viewport, 
   ThemeState,
   getFieldMapping,
-  AuthorizedDispensary,
+  Dispensary,
   User,
 } from '@td/types'
 import {
@@ -52,7 +52,7 @@ const getStyles = (theme: ThemeState, saving?: boolean, touched?: boolean) => {
 interface Props {
   editing?: boolean
   menuDividers?: number[]
-  formikProps: FormikProps<AuthorizedDispensary>
+  formikProps: FormikProps<Dispensary>
   page: Pages
   user?: User
   configLocation: Viewport

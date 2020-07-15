@@ -1,6 +1,6 @@
 import {BlockProps} from '@td/types'
 import {FormikProps} from 'formik'
-import {AuthorizedDispensary} from './Dispensary'
+import {Dispensary} from './Dispensary'
 
 export interface FieldOption {
   label: string
@@ -19,6 +19,6 @@ export interface FieldProps extends BlockProps {
 }
 
 export interface FormProps {
-  formikProps: FormikProps<AuthorizedDispensary>
+  formikProps: FormikProps<Dispensary>
   title?: string
 }

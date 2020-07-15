@@ -4,14 +4,13 @@ import {
   Formik, 
   FormikProps
 } from 'formik'
-import fetch from 'isomorphic-fetch'
 
 import {PageEditor} from '../PageEditor'
 import {
   ThemeState, 
   PageTemplate,
   PageProps,
-  AuthorizedDispensary,
+  Dispensary,
   PageContext,
   Alignment,
   VerticalAlignment,
@@ -21,15 +20,12 @@ import {
   css, 
   themify, 
 } from '@td/styles'
-import {Login} from '@td/utils'
-
 import {getStyles} from './styles'
-
 import {EditPageButtons} from '../EditPageButtons'
 
 interface PageState extends ThemeState {
   token?: string
-  initialValues: AuthorizedDispensary
+  initialValues: Dispensary
 }
 
 export class Page extends Component<PageProps, PageState> {
@@ -41,11 +37,7 @@ export class Page extends Component<PageProps, PageState> {
       editing: props.editing || false,
       colors, 
       ui: props.config.ui,
-      initialValues: {
-        ...props.config,
-        prodUrl: props.prodUrl,
-        wpUrl: props.wpUrl
-      }
+      initialValues: props.config
     }
   }
 
@@ -57,7 +49,6 @@ export class Page extends Component<PageProps, PageState> {
       page,
       user,
       userMeta,
-      prodUrl,
       config,
     } = this.props
     const {
@@ -89,7 +80,6 @@ export class Page extends Component<PageProps, PageState> {
                 name={name}
                 logoImage={config.ui.logo.src}
                 pageTitle={pageTitle.titleText}
-                prodUrl={prodUrl}
                 themeColor={colors.primary500}
                 styles={styles.body.styles}
               />
@@ -130,7 +120,7 @@ export class Page extends Component<PageProps, PageState> {
                         id="PageChildren"
                       >
                         {children && typeof children === 'function' 
-                          ? children(colors, formikProps, Login.onLogin) 
+                          ? children(colors, formikProps) 
                           : children
                         }
                       </article>
@@ -145,24 +135,19 @@ export class Page extends Component<PageProps, PageState> {
     )
   }
 
-  private setEditing = (formikProps: FormikProps<AuthorizedDispensary>) => () => { 
+  private setEditing = (formikProps: FormikProps<Dispensary>) => () => { 
     this.setState(prevState => ({ 
       editing: !prevState.editing 
     })) 
     formikProps.resetForm()
   }
 
-  private onSubmit = async (values: AuthorizedDispensary) => {
+  private onSubmit = async (values: Dispensary) => {
     this.setState({
       editing: false,
       ui: values.ui,
       colors: themify(values.colors),
       initialValues: values
-    })
-
-    await fetch('/api/savePageEdits/age', {
-      method: 'POST',
-      body: JSON.stringify(values)
     })
   }
 }

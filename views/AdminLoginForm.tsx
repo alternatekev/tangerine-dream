@@ -9,11 +9,10 @@ import {
   Button
 } from '@td/components'
 
-export const AdminLoginForm: FC<Pick<AdminLoginProps, 'formikProps' | 'onLogin' | 'logoImage'>> = ({
+export const AdminLoginForm: FC<Pick<AdminLoginProps, 'formikProps' | 'logoImage'>> = ({
   formikProps,
   logoImage,
-  onLogin
-}: Pick<AdminLoginProps, 'formikProps' | 'onLogin' | 'logoImage'>) => {
+}: Pick<AdminLoginProps, 'formikProps' | 'logoImage'>) => {
 
   return (
     <Card fadeIn level={2} width={425}>
@@ -40,7 +39,7 @@ export const AdminLoginForm: FC<Pick<AdminLoginProps, 'formikProps' | 'onLogin' 
       />
       <Button 
         level={5} 
-        onClick={onLogin(formikProps)} 
+         
         block
       >
         Log In

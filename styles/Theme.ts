@@ -8,29 +8,6 @@ export interface ThemeState {
   editing: boolean
 }
 
-export type ValueFamilies =  // tslint:disable:no-multi-spaces
-  | 1000
-  | 975
-  | 950
-  | 900
-  | 800
-  | 700
-  | 600
-  | 500
-  | 400
-  | 300
-  | 200
-  | 100
-  | 50
-  | 40
-  | 30
-  | 25
-  | 20
-  | 10
-  | 5
-  | 2
-  | 1
-
 export type Opacities = 95 | 90 | 75 | 50 | 25 | 10 | 5 // tslint:disable:no-multi-space
 
 export type ThemeOptions =  // tslint:disable:no-multi-spaces
@@ -47,7 +24,7 @@ export type ThemeOptions =  // tslint:disable:no-multi-spaces
   | 'warning'
 
 export type Theme = {
-  [Option in ThemeOptions]?: Color
+  [Option in ThemeOptions]?: string
 }
 
 type RequireOnlyOne<T, Keys extends keyof T = keyof T> = Pick<

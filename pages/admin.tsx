@@ -16,17 +16,14 @@ export default ({
 }: Props) =>
   <Page
     config={defaults}
-    prodUrl={prodUrl}
-    wpUrl={wpUrl}
     page={Pages.AdminLogin}
     name="Tangerine Dream"
     menuDividers={[2]}
   >
-    {(_, formikProps, onLogin) => 
+    {(_, formikProps) => 
       <>
         {!user && 
           <AdminLoginForm
-            onLogin={onLogin}
             logoImage={defaults.pages.adminLogin.logoImage}
             formikProps={formikProps}
           />
@@ -36,14 +33,3 @@ export default ({
       </>
     }
   </Page>
-
-import { withSession } from '@td/utils/Session'
-export const getServerSideProps = withSession(async function ({ req }) {
-  const user = req.session.get('user') || null
-  const prodUrl = process.env.PROD_URL
-  const wpUrl = process.env.WP_URL
-
-  return {
-    props: {user, prodUrl, wpUrl},
-  }
-})

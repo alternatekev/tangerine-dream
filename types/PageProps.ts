@@ -1,10 +1,9 @@
 import {FormikProps} from 'formik'
 import {
   Pages, 
-  Dispensary, 
   DerivedTheme, 
   Viewport,
-  AuthorizedDispensary
+  Dispensary
 } from './'
 
 export interface ACUserFields {
@@ -30,8 +29,6 @@ export interface PageProps {
   name: string
   user?: User
   userMeta?: UserMeta
-  prodUrl: string
-  wpUrl: string
   menuDividers?: number[]
   captured?: boolean
   compact?: boolean
@@ -41,9 +38,7 @@ export interface PageProps {
   config: Dispensary //tslint:disable-line no-any
   children?(
     theme: DerivedTheme,
-    formikProps: FormikProps<AuthorizedDispensary>,
-    onLogin: (formikProps: FormikProps<AuthorizedDispensary>
-    ) => (e: MouseEvent | TouchEvent) => void
+    formikProps: FormikProps<Dispensary>
   ): JSX.Element
 }
 

@@ -20,13 +20,6 @@ export interface Dispensary {
   colors: Theme
 }
 
-export interface AuthorizedDispensary extends Dispensary {
-  prodUrl: string
-  wpUrl: string
-  username?: string
-  password?: string
-}
-
 export interface PageTitle {
   titleText: string
 }
@@ -49,6 +42,6 @@ export interface AdminLogin extends DispensaryPage {
 }
 
 export interface AdminLoginProps extends AdminLogin {
-  formikProps: FormikProps<AuthorizedDispensary>
-  onLogin(formikProps: FormikProps<AuthorizedDispensary>): (e: MouseEvent | TouchEvent) => void
+  formikProps: FormikProps<Dispensary>
+//  onLogin(formikProps: FormikProps<Dispensary>): (e: MouseEvent | TouchEvent) => void
 }

@@ -6,7 +6,7 @@ import {
   t, 
   prepareStyles
 } from '@td/styles'
-import { AuthorizedDispensary } from '@td/types'
+import {Dispensary} from '@td/types'
 
 interface Props extends ButtonProps {
   editing?: boolean
@@ -35,7 +35,7 @@ export const EditPageButtons: FC<Props> = ({
   editing,
   ...rest
 }: Props) => {
-  const {submitForm}: FormikProps<AuthorizedDispensary> = useFormikContext()
+  const {submitForm}: FormikProps<Dispensary> = useFormikContext()
 
   return (
     <>{editing &&

@@ -2,14 +2,14 @@ import Color from 'color'
 import {mapObjIndexed} from 'ramda'
 
 import {ThemeOptions, DerivedTheme} from './Theme'
-export * from '@td/data/defaultColors'
+export * from '@td/data/defaults/defaultColors'
 
 export const immutableThemeColors = {
-  alert: Color('#F33'),
-  grey: Color('#666'),
-  black: Color('#1F2629'),
-  white: Color('#FFF'),
-  warning: Color('#F63'),
+  alert: '#F33',
+  grey: '#666',
+  black: '#1F2629',
+  white: '#FFF',
+  warning: '#F63',
 }
 
 export interface ContrastColors {
@@ -54,7 +54,7 @@ export function calculateColorSteps(
 
   return Object.keys(themeColors).reduce((results, colorName) => {
     // @ts-ignore
-    const color = themeColors[colorName] 
+    const color = Color(themeColors[colorName]) 
 
     return Object.keys(valueFamilies).reduce((innerResults, level) => {
       const levelInt = parseInt(level, 10)
@@ -95,7 +95,7 @@ export function calculateColorSteps(
         return {
           ...innerResults,
           // @ts-ignore
-          [colorName + level]: themeColors[colorName]
+          [colorName + level]: Color(themeColors[colorName])
             //@ts-ignore
 
             .darken(valueFamilies[level])
@@ -107,7 +107,7 @@ export function calculateColorSteps(
         return {
           ...innerResults,
           // @ts-ignore
-          [colorName + level]: themeColors[colorName]
+          [colorName + level]: Color(themeColors[colorName])
             //@ts-ignore
 
             .mix(Color(`#FFFFFF`), valueFamilies[level])
