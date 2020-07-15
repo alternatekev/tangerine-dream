@@ -7,7 +7,7 @@ import {AgeVerificationForm} from '@td/views'
 import {Pages, User, UserMeta} from '@td/types'
 import {defaults, convertWpToTs, initializeApollo, WP} from '@td/data'
 import {mergeConfig} from '@td/utils'
-import {NextPage, NextApiResponse, NextPageContext} from 'next'
+import {NextPage, NextPageContext} from 'next'
 
 export const AGE_VERIFICATION_QUERY = gql`
   query GET_PAGE {
