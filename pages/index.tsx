@@ -7,7 +7,7 @@ import {AgeVerificationForm} from '@td/views'
 import {Pages, User, UserMeta} from '@td/types'
 import {defaults, convertWpToTs, initializeApollo, WP} from '@td/data'
 import {mergeConfig} from '@td/utils'
-import {NextPage} from 'next'
+import {NextPage, NextApiResponse, NextPageContext} from 'next'
 
 export const AGE_VERIFICATION_QUERY = gql`
   query GET_PAGE {
@@ -86,7 +86,8 @@ const AgeVerificationPage: NextPage<Props> = ({
   )
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps({res}: NextPageContext) {
+  res?.setHeader('Cache-Control', 's-maxage=1, stale-while-revalidate') 
   const apolloClient = initializeApollo({}, process.env.WP_URL || '')
   const raw = await apolloClient.query({
     query: AGE_VERIFICATION_QUERY,
