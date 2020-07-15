@@ -78,7 +78,7 @@ const isAlignment = (arg: any): arg is Alignment => {
 const isPageLayout = (arg: any): arg is PageLayout => { 
   let pageKind: boolean = false
 
-  if(arg) {
+  if (arg) {
     Object.keys(PageTemplate).forEach(pk => {
       // @ts-ignore
       if (PageTemplate[pk] === arg.template) {

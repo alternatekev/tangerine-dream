@@ -8,6 +8,7 @@ module.exports = (api) => {
 
     const plugins = [
         "emotion",
+        "graphql-tag"
     ];
 
     return {

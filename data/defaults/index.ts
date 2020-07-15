@@ -27,7 +27,7 @@ export const defaults: Dispensary = {
       logoImage: {
         alt: 'default dispensary logo',
         src: '/tangerine-dream-logo.svg',
-        size: { w: 300 }
+        size: {w: 300}
       },
       bodyText: {
         text: 'By entering the site below, I verify I am at least 21 years of age.',
@@ -40,7 +40,7 @@ export const defaults: Dispensary = {
       actionButton: {
         text: 'Enter Site',
         size: 2.25,
-        font: { weight: 600 },
+        font: {weight: 600},
         inline: true,
         borderWidth: 3,
         inverted: true,
@@ -63,7 +63,7 @@ export const defaults: Dispensary = {
       logoImage: {
         alt: 'default dispensary logo',
         src: '/tangerine-dream-logo.svg',
-        size: { w: 300 }
+        size: {w: 300}
       },
     },
   },

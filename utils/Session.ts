@@ -1,4 +1,4 @@
-import { withIronSession, Handler} from 'next-iron-session'
+import {withIronSession, Handler} from 'next-iron-session'
 
 export function withSession(handler: Handler) {
   return withIronSession(handler, {

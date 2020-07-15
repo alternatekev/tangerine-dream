@@ -1,4 +1,4 @@
-import { Dictionary } from '@td/types'
+import {Dictionary} from '@td/types'
 
 export const formatACFFields = (fields: Dictionary): string => {
   return `

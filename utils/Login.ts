@@ -1,6 +1,3 @@
-import {FormikProps} from 'formik'
-import {AuthorizedDispensary} from '@td/types'
-import Router from 'next/router'
 
 export const tryLogin = async (url: string, username: string, password: string) => {
 
@@ -14,19 +11,3 @@ export const tryLogin = async (url: string, username: string, password: string) 
     .then(results => results.json())
 }
 
-export const onLogin = (formikProps: FormikProps<AuthorizedDispensary>) => async (e: MouseEvent | TouchEvent) => {
-  const {username, password, prodUrl} = formikProps.values
-  const url = `${prodUrl}/api/login`
-  console.log(`logging into ${url}`)
-  const auth = await tryLogin(url, username as string, password as string)
-  
-  if (auth.response.statusCode !== 200) {
-    formikProps.setErrors({
-      username: 'Bad username or password.'
-    })
-  } else {
-    await Router.push('/')
-  }
-
-  return e
-}

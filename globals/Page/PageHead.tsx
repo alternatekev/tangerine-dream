@@ -1,11 +1,12 @@
-import {FC} from 'react'
+import {FC, useContext} from 'react'
 import Head from 'next/head'
 import queryString from 'query-string'
+
+import {DispensaryContext} from '@td/types'
 
 interface Props {
   name: string
   pageTitle: string
-  prodUrl: string
   styles: string
   logoImage: string
   themeColor: string
@@ -17,7 +18,6 @@ export const PageHead: FC<Props> = ({
   styles, 
   themeColor,
   logoImage,
-  prodUrl
 }: Props) => {
   const manifest = {
     name,
@@ -30,7 +30,10 @@ export const PageHead: FC<Props> = ({
     theme_color: themeColor,
     icon: logoImage
   }
-  const href = queryString.stringifyUrl({url: `${prodUrl}/api/manifest`, query: manifest})
+
+  const {selfUrl} = useContext(DispensaryContext)
+
+  const href = queryString.stringifyUrl({url: `${selfUrl}/api/manifest`, query: manifest})
 
   return (
     <Head>

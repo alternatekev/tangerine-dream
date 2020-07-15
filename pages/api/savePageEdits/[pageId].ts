@@ -1,9 +1,9 @@
-import { NextApiRequest, NextApiResponse } from 'next'
-import { Session } from 'next-iron-session'
+import {NextApiRequest, NextApiResponse} from 'next'
+import {Session} from 'next-iron-session'
 import fetch from 'isomorphic-fetch'
 
-import { wpUrls } from '@td/data'
-import { withSession } from '@td/utils'
+import {wpUrls} from '@td/data'
+import {withSession} from '@td/utils'
 import {Pages} from '@td/types'
 
 interface SessionInterface {

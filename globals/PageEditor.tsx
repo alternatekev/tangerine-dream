@@ -16,9 +16,10 @@ import {
   FieldOption,
   Pages,
   FormProps,
-  AuthorizedDispensary,
+  Dispensary,
   User,
   UserMeta,
+  DispensaryContext,
 } from '@td/types'
 import {
   DragDropContext,
@@ -29,7 +30,7 @@ interface Props extends ThemeProps, FormProps {
   editing?: boolean
   menuDividers?: number[]
   page: Pages
-  config: AuthorizedDispensary
+  config: Dispensary
   user?: User
   userMeta?: UserMeta
   setEditing(): void
@@ -160,9 +161,8 @@ class UnthemedPageEditor extends Component<Props, PageEditorState> {
       this.setState({
         configLocation: e.destination.droppableId as Viewport
       })
-
-      const {config} = this.props
-      const url = `${config.prodUrl}/api/saveMenuPosition`
+      const {wpUrl} = this.context
+      const url = `${wpUrl}/api/saveMenuPosition`
       await fetch(url, {
         method: 'POST',
         headers: {
@@ -178,5 +178,7 @@ class UnthemedPageEditor extends Component<Props, PageEditorState> {
     }
   }
 }
+
+UnthemedPageEditor.contextType = DispensaryContext
 
 export const PageEditor = withTheme(UnthemedPageEditor)
