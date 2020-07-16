@@ -87,7 +87,7 @@ const AgeVerificationPage: NextPage<Props> = ({
 }
 
 export async function getServerSideProps({res}: NextPageContext) {
-  res?.setHeader('Cache-Control', 's-maxage=1')
+  res?.setHeader('cache-control', 'max-age=1')
   const apolloClient = initializeApollo({}, process.env.WP_URL || '')
   const raw = await apolloClient.query({
     query: AGE_VERIFICATION_QUERY,
