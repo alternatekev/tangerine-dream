@@ -11,7 +11,7 @@ import {NextPage, NextPageContext} from 'next'
 
 export const AGE_VERIFICATION_QUERY = gql`
   query GET_PAGE {
-    page(id: 434, idType: DATABASE_ID) @cacheControl(maxAge: 0) {
+    page(id: 434, idType: DATABASE_ID) {
       title
       backgroundImage {
         horizontalalignment
@@ -86,7 +86,7 @@ const AgeVerificationPage: NextPage<Props> = ({
   )
 }
 
-export async function getServerSideProps({req}: NextPageContext) {
+export async function getServerSideProps({res}: NextPageContext) {
   const apolloClient = initializeApollo({}, process.env.WP_URL || '')
   const raw = await apolloClient.query({
     query: AGE_VERIFICATION_QUERY,

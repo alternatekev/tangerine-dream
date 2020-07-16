@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "next",
+    "dev": "node index.js",
     "build": "next build",
-    "start": "next start",
+    "start": "NODE_ENV=production node index.js",
     "lint": "tslint --format stylish --project tsconfig.json",
     "types": "npx tsc --pretty --noEmit --skipLibCheck",
     "deploy": "now"
