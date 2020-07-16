@@ -1,7 +1,7 @@
 {
   "headers": [
     {
-      "source": "/(*.*)",
+      "source": "/pages/*",
       "headers": [
         {
           "key": "Cache-Control",
