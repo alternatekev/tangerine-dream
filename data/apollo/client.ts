@@ -14,10 +14,18 @@ export function createApolloClient(url: string) {
       headers: {
         'Cache-Control': 'no-cache'
       },
+      fetchOptions: {
+        headers: {
+          'Cache-Control': 'no-cache'
+        }
+      },
       uri: url, // Server URL (must be absolute)
       //credentials: 'cross-origin', // Additional fetch() options like `credentials` or `headers`
     }),
     cache: new InMemoryCache(),
+    headers: {
+      'Cache-Control': 'no-cache'
+    }
   })
 }
 
