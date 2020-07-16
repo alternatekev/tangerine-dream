@@ -1,7 +1,5 @@
 import {useMemo} from 'react'
-import {ApolloClient} from 'apollo-client'
-import {InMemoryCache} from 'apollo-cache-inmemory'
-import {HttpLink} from 'apollo-link-http'
+import { ApolloClient, InMemoryCache } from '@apollo/client'
 import {Dispensary} from '@td/types'
 import {useSSR} from 'use-ssr'
 
@@ -10,18 +8,7 @@ let apolloClient: ApolloClient<Dispensary | {}>
 export function createApolloClient(url: string) {
   return new ApolloClient({
     ssrMode: useSSR().isServer,
-    link: new HttpLink({
-      headers: {
-        'Cache-Control': 'no-cache'
-      },
-      fetchOptions: {
-        headers: {
-          'Cache-Control': 'no-cache'
-        }
-      },
-      uri: url, // Server URL (must be absolute)
-      //credentials: 'cross-origin', // Additional fetch() options like `credentials` or `headers`
-    }),
+    uri: url, // Server URL (must be absolute)
     cache: new InMemoryCache(),
     headers: {
       'Cache-Control': 'no-cache'

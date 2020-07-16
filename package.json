@@ -15,7 +15,7 @@
   "author": "Kevin Conboy",
   "license": "ISC",
   "dependencies": {
-    "@apollo/react-hooks": "^3.1.5",
+    "@apollo/client": "^3.0.1",
     "@dz-web/http-build-query": "^0.2.2",
     "@emotion/babel-preset-css-prop": "^10.0.27",
     "@emotion/core": "10.0.27",
@@ -29,9 +29,6 @@
     "@types/react-motion": "^0.0.29",
     "@types/react-responsive": "^8.0.2",
     "@types/react-select": "^3.0.13",
-    "apollo-cache-inmemory": "^1.6.6",
-    "apollo-client": "^2.6.10",
-    "apollo-link-http": "^1.5.17",
     "capitalize": "^2.0.3",
     "color": "^3.1.2",
     "decamelize": "3.2.0",

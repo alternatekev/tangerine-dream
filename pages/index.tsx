@@ -1,4 +1,4 @@
-import {ApolloError, ApolloQueryResult} from 'apollo-client'
+import {ApolloError, ApolloQueryResult} from '@apollo/client'
 import gql from 'graphql-tag'
 
 import {Page} from '@td/globals'
