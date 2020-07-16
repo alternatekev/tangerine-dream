@@ -11,6 +11,9 @@ export function createApolloClient(url: string) {
   return new ApolloClient({
     ssrMode: useSSR().isServer,
     link: new HttpLink({
+      headers: {
+        'Cache-Control': 'no-cache'
+      },
       uri: url, // Server URL (must be absolute)
       //credentials: 'cross-origin', // Additional fetch() options like `credentials` or `headers`
     }),
