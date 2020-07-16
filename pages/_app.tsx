@@ -5,7 +5,7 @@ import {CacheProvider} from '@emotion/core'
 import {cache} from 'emotion'
 //tslint:disable-next-line no-import-side-effect
 import {resetServerContext} from 'react-beautiful-dnd'
-import {ApolloProvider} from '@apollo/react-hooks'
+import {ApolloProvider} from '@apollo/client'
 import {useApollo} from '@td/data'
 import {DispensaryContext} from '@td/types'
 import {NextPageContext} from 'next'

@@ -1,4 +1,4 @@
-import {ApolloError, ApolloQueryResult} from 'apollo-client'
+import {ApolloError, ApolloQueryResult} from '@apollo/client'
 import gql from 'graphql-tag'
 
 import {Page} from '@td/globals'
@@ -87,7 +87,7 @@ const AgeVerificationPage: NextPage<Props> = ({
 }
 
 export async function getServerSideProps({res}: NextPageContext) {
-  res?.setHeader('Cache-Control', 'no-cache') 
+  res?.setHeader('cache-control', 'max-age=0, must-revalidate')
   const apolloClient = initializeApollo({}, process.env.WP_URL || '')
   const raw = await apolloClient.query({
     query: AGE_VERIFICATION_QUERY,
