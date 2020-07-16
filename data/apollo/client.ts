@@ -11,7 +11,7 @@ export function createApolloClient(url: string) {
     uri: url,
     cache: new InMemoryCache(),
     headers: {
-      'Cache-Control': 'max-age=1'
+      'cache-control': 'no-cache'
     }
   })
 }
