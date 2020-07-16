@@ -1,7 +1,7 @@
 {
   "headers": [
     {
-      "source": "/pages/*",
+      "source": "/pages/index.tsx",
       "headers": [
         {
           "key": "Cache-Control",
